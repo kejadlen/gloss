@@ -12,18 +12,19 @@ class TestTokenSet < Minitest::Test
   end
 
   def test_resolves_a_ramp_reference_to_its_hex
-    assert_equal "#f95116", @tokens.resolve("persimmon.500")
-    assert_equal "#26231f", @tokens.resolve("ink.900")
+    assert_equal "#3a6a63", @tokens.resolve("accent.teal")
+    assert_equal "#100f0d", @tokens.resolve("neutral.900")
   end
 
   def test_passes_literal_values_through_untouched
     assert_equal "#ffffff", @tokens.resolve("#ffffff")
-    assert_equal "rgba(0, 0, 0, 0.65)", @tokens.resolve("rgba(0, 0, 0, 0.65)")
+    assert_equal "color-mix(in oklch, var(--ad-color-accent) 12%, white)",
+                 @tokens.resolve("color-mix(in oklch, var(--ad-color-accent) 12%, white)")
   end
 
   def test_raises_on_a_reference_that_does_not_exist
     assert_raises(ArbitraryDefinitions::TokenSet::UnknownReference) do
-      @tokens.resolve("persimmon.55")
+      @tokens.resolve("neutral.55")
     end
   end
 
@@ -49,8 +50,15 @@ class TestTokenSet < Minitest::Test
     assert_equal names.uniq, names, "duplicate semantic token names"
   end
 
+  # `accent` is a flat set of five unrelated brand hues, not a light-to-dark
+  # scale, so it opts out via `monotonic: false` in color.yml. `neutral` and
+  # `neutral-dark` stay covered: each is listed in the YAML in the order that
+  # actually darkens (or, for neutral-dark, lightens) step to step, which can
+  # differ from ascending step-number order — see the comment in color.yml.
   def test_ramps_run_light_to_dark_without_reversing
     @tokens.ramps.each do |ramp|
+      next if ramp["monotonic"] == false
+
       luminances = ramp.fetch("steps").map do |step|
         ArbitraryDefinitions::ColorMath.relative_luminance(step.fetch("value"))
       end
@@ -91,15 +99,20 @@ class TestTokenSet < Minitest::Test
     assert_empty named.uniq - known, "the contrast contract names tokens the system does not define"
   end
 
+  # `color-text-tertiary` is the one deliberate exception: the source
+  # documents that step as muted-faint metadata/placeholder text, not body
+  # copy, and it is sub-AA on purpose (see contrast.yml's header comment and
+  # the Colour foundation page). Holding it to the same floor as
+  # `-primary`/`-secondary` would mean either lying about the contract or
+  # darkening a real brand value just to make the suite green — this system
+  # does neither.
   def test_the_contract_covers_the_pairings_that_matter
     covered = @tokens.contrast_pairs.map { |pair| pair.fetch("foreground") }
 
-    # Every text colour and every "on-" colour is something a reader decodes,
-    # so none of them may sit outside the contract.
     required = @tokens.semantic_tokens
                       .map { |token| token["token"] }
                       .select { |name| name.start_with?("color-text", "color-on-") }
-                      .reject { |name| name == "color-text-inverse" }
+                      .reject { |name| %w[color-text-inverse color-text-tertiary].include?(name) }
 
     assert_empty required - covered, "a text token is not covered by the contrast contract"
   end

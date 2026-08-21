@@ -64,10 +64,13 @@ jobs:
           # Every page in the nav should have been rendered.
           for page in rationale install foundations/color foundations/typography \
                       foundations/space foundations/elevation foundations/motion \
-                      components/button components/field components/badge \
-                      components/callout components/card components/table \
-                      components/tabs components/progress \
-                      patterns/settings-form patterns/kitchen-sink; do
+                      components/button components/icon-button components/badge \
+                      components/tag components/card components/card-row \
+                      components/field components/input components/select \
+                      components/checkbox components/radio components/switch \
+                      components/tooltip components/toast components/dialog \
+                      components/tabs \
+                      patterns/loop patterns/archive; do
             test -s "_site/$page/index.html" || { echo "missing $page"; exit 1; }
           done
 

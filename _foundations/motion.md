@@ -1,14 +1,15 @@
 ---
 title: Motion
 summary: >-
-  Four durations, four easings, and one rule that overrides all of them: if the
-  reader asked for less motion, they get none.
+  Two durations, one easing curve, and one rule that overrides both: if the
+  reader asked for less motion, they get none. This is an interface, not a
+  title sequence.
 ---
 
 ## Durations
 
-Interface motion is short. Anything over a third of a second stops feeling like
-a response and starts feeling like a wait.
+Short ease transitions on hover and focus only — no bounce, no springy
+easing, no page-transition choreography.
 
 <div class="ad-table-wrap">
   <table class="ad-table ad-table--compact">
@@ -25,55 +26,51 @@ a response and starts feeling like a wait.
   </table>
 </div>
 
-## Easings
+## One easing
 
-Hover or focus a tile to run its curve. All four move the same distance over the
-same 320ms, so the only difference you are seeing is the shape.
+There is exactly one curve in the system. Hover the tile below to run it.
 
 <ul class="ad-motion-grid">
   {%- for row in site.data.tokens.scale.motion.easings %}
   <li>
-    <div class="ad-motion-demo" tabindex="0"
-         style="--_easing: {{ row.value }}; --_duration: var(--ad-duration-slow);">
+    <div class="ad-motion-demo" tabindex="0">
       <span class="ad-motion-demo__dot"></span>
     </div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">{{ row.token }}</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-text-xs); margin: var(--ad-space-1) 0 0;">{{ row.usage }}</p>
+    <div class="ad-specimen__meta"><span class="ad-token-name">{{ row.token | custom_property }}</span></div>
+    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">{{ row.usage }}</p>
   </li>
   {%- endfor %}
 </ul>
 
 ## Reduced motion is not a downgrade
 
-`_plugins/token_generator.rb` emits a `prefers-reduced-motion: reduce` block that
-sets every duration token to `0ms`, and the base stylesheet clamps any remaining
-transition or animation to a hundredth of a millisecond. Components do not have
-to opt in, and cannot opt out.
+`_plugins/token_generator.rb` emits a `prefers-reduced-motion: reduce` block
+that sets every duration token to `0ms`, and the base stylesheet clamps any
+remaining transition or animation to a hundredth of a millisecond. Components
+do not have to opt in, and cannot opt out.
 
 ```css
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --ad-duration-instant: 0ms;
-    --ad-duration-fast: 0ms;
-    --ad-duration-base: 0ms;
-    --ad-duration-slow: 0ms;
+    --ad-dur-fast: 0ms;
+    --ad-dur-base: 0ms;
   }
 }
 ```
 
-The state change still happens. The switch still moves. It simply arrives
+The state change still happens. The Switch still moves. It simply arrives
 instead of travelling.
 
-{% example title="The one component allowed to overshoot" %}
+{% example title="Motion in practice" %}
 <label class="ad-switch">
   <input type="checkbox" checked>
   <span class="ad-switch__track"></span>
-  <span>Ship on merge</span>
+  <span>Dark mode</span>
 </label>
 <label class="ad-switch">
   <input type="checkbox">
   <span class="ad-switch__track"></span>
-  <span>Notify the channel</span>
+  <span>Weekly digest</span>
 </label>
 {% endexample %}
 
@@ -81,9 +78,8 @@ instead of travelling.
 
 - **Transition named properties, never `all`.** `transition: all` animates
   things you did not think about, including layout.
-- **Prefer `opacity` and `transform`.** They are the two properties the
-  compositor can animate without a layout pass.
-- **Exit faster than you enter.** `--ad-ease-exit` is steeper than
-  `--ad-ease-entrance` for exactly this reason.
-- **`--ad-ease-spring` is for toggles only.** Overshoot on a panel or a dialog
-  reads as a bug.
+- **Hover states shift a background one step deeper, never a colour or
+  opacity trick.** Surface → fill is the whole vocabulary.
+- **Press is not animated.** Rely on the hover-darken plus native `:active`,
+  if anything at all.
+- **Motion is for hover and focus only.** No page-transition choreography.

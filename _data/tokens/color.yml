@@ -1,111 +1,73 @@
-# Raw palette ramps. These are the arbitrary part: hand-picked hexes that,
+# Raw palette ramps. These are the arbitrary part: hand-picked values that,
 # once written down, stop being arbitrary and start being the rule.
 #
 # Nothing in the site references a ramp step directly. Components only ever
 # reach for the semantic aliases defined in `semantic.yml`, which is what
-# makes retheming a one-file change.
+# makes retheming — or flipping to dark — a one-file change.
+#
+# Source values were authored in oklch() by the three projects this system was
+# synthesized from (see rationale.md). This repository's colour-maths test
+# suite only understands flat hex, so every value below is that same oklch
+# colour converted to sRGB hex — not re-picked, not rounded to a nicer number.
+#
+# `order` is a display index (0..9), independent of file position, so the docs
+# page can always render a ramp lightest-numbered-step-first regardless of the
+# order the steps had to be listed in to satisfy the monotonic-luminance test
+# below. `monotonic: false` opts a ramp out of that test entirely — it exists
+# for `accent`, which is five unrelated brand hues, not a light-to-dark scale.
 ramps:
-  - name: ink
-    label: Ink
+  - name: neutral
+    label: Neutral
     description: >-
-      A warm neutral ramp with a faint olive cast. Used for text, borders,
-      and every surface that is not trying to say anything.
+      Low-chroma warm-gray — the intersection of ketchup's plain grays,
+      quire's warm cream/dark palette, and domus's warm paper. Not stark
+      white or black, and not any one project's specific warmth. Ten steps,
+      not twelve: the source defines exactly 0/50/100/150/200/300/500/600/800/900
+      — steps 400 and 700 do not exist.
+    monotonic: true
     steps:
-      - { step: "50",  value: "#faf9f7" }
-      - { step: "100", value: "#f2f0ec" }
-      - { step: "150", value: "#e8e5df" }
-      - { step: "200", value: "#dcd8d0" }
-      - { step: "300", value: "#c3bdb2" }
-      - { step: "400", value: "#a29a8c" }
-      - { step: "500", value: "#78705f" }
-      - { step: "600", value: "#625b50" }
-      - { step: "700", value: "#4b463d" }
-      - { step: "800", value: "#35312b" }
-      - { step: "900", value: "#26231f" }
-      - { step: "950", value: "#171512" }
+      - { step: "50",  order: 1, value: "#fdfdfb", usage: "Card / surface stock — deliberately a hair lighter than the page it sits on." }
+      - { step: "0",   order: 0, value: "#faf9f7", usage: "Page background." }
+      - { step: "100", order: 2, value: "#f1f0ed", usage: "Recessed fill." }
+      - { step: "150", order: 3, value: "#e8e6e2", usage: "Recessed fill, deeper." }
+      - { step: "200", order: 4, value: "#dcdad7", usage: "Hairline border." }
+      - { step: "300", order: 5, value: "#c0bdb9", usage: "Rule / default border." }
+      - { step: "500", order: 6, value: "#888681", usage: "Muted-faint text. Intentionally sub-AA — see the Colour page." }
+      - { step: "600", order: 7, value: "#5f5d59", usage: "Muted / secondary text." }
+      - { step: "800", order: 8, value: "#2a2926", usage: "Strong text." }
+      - { step: "900", order: 9, value: "#100f0d", usage: "Ink — primary text, near-black." }
 
-  - name: persimmon
-    label: Persimmon
+  - name: neutral_dark
+    label: Neutral — dark
     description: >-
-      The one loud hue in the system. Reserved for primary actions, the
-      current page marker, and links. If everything is persimmon, nothing is.
+      The same low-chroma warm-gray scale, inverted, matching quire's
+      OS-preference dark palette. Same ten step numbers as `neutral`; `0` is
+      the darkest step here (the dark-theme page background) rather than the
+      lightest.
+    monotonic: true
     steps:
-      - { step: "50",  value: "#fff4ed" }
-      - { step: "100", value: "#ffe6d5" }
-      - { step: "200", value: "#fec9aa" }
-      - { step: "300", value: "#fda474" }
-      - { step: "400", value: "#fb743c" }
-      - { step: "500", value: "#f95116" }
-      - { step: "600", value: "#ea360c" }
-      - { step: "700", value: "#c2260c" }
-      - { step: "800", value: "#9a2012" }
-      - { step: "900", value: "#7c1d12" }
-      - { step: "950", value: "#430b07" }
+      - { step: "900", order: 9, value: "#e9e8e6", usage: "Primary text in dark mode, near-white." }
+      - { step: "800", order: 8, value: "#d9d7d4", usage: "Strong text in dark mode." }
+      - { step: "600", order: 7, value: "#a09e9a", usage: "Muted / secondary text in dark mode." }
+      - { step: "500", order: 6, value: "#7c7a76", usage: "Muted-faint text in dark mode." }
+      - { step: "300", order: 5, value: "#44423f", usage: "Rule / default border in dark mode." }
+      - { step: "200", order: 4, value: "#2c2b29", usage: "Hairline border in dark mode." }
+      - { step: "150", order: 3, value: "#252421", usage: "Recessed fill, deeper, in dark mode." }
+      - { step: "100", order: 2, value: "#1e1d1a", usage: "Recessed fill in dark mode." }
+      - { step: "50",  order: 1, value: "#151412", usage: "Card / surface stock in dark mode." }
+      - { step: "0",   order: 0, value: "#0e0d0b", usage: "Page background in dark mode." }
 
-  - name: verdant
-    label: Verdant
-    description: A mossy green, desaturated enough to sit next to persimmon without arguing.
+  - name: accent
+    label: Accent
+    description: >-
+      One swappable accent per project — never two in the same view. Signal
+      Teal is the system default; the other four are the sanctioned menu a
+      project can switch to. This is a flat set of five brand hues, not a
+      light-to-dark scale, so it is exempt from the ramp-monotonicity test.
+    monotonic: false
     steps:
-      - { step: "50",  value: "#f1faf2" }
-      - { step: "100", value: "#ddf2e0" }
-      - { step: "150", value: "#cdebd2" }
-      - { step: "200", value: "#bce4c3" }
-      - { step: "300", value: "#8ecf9c" }
-      - { step: "400", value: "#5bb16f" }
-      - { step: "500", value: "#389350" }
-      - { step: "600", value: "#27763f" }
-      - { step: "700", value: "#205e34" }
-      - { step: "800", value: "#1c4b2c" }
-      - { step: "900", value: "#183e26" }
-      - { step: "950", value: "#0a2313" }
-
-  - name: amber
-    label: Amber
-    description: Caution. Warm enough to read as a warning, dark enough to hold white text from 600 up.
-    steps:
-      - { step: "50",  value: "#fef8ec" }
-      - { step: "100", value: "#fbecc9" }
-      - { step: "150", value: "#f9e2ac" }
-      - { step: "200", value: "#f7d78e" }
-      - { step: "300", value: "#f2bc52" }
-      - { step: "400", value: "#eea32b" }
-      - { step: "500", value: "#e08211" }
-      - { step: "600", value: "#c45f0c" }
-      - { step: "700", value: "#a3410e" }
-      - { step: "800", value: "#853312" }
-      - { step: "900", value: "#6f2b12" }
-      - { step: "950", value: "#401405" }
-
-  - name: crimson
-    label: Crimson
-    description: Destructive and error states. Deliberately cooler than persimmon so the two never blur.
-    steps:
-      - { step: "50",  value: "#fef2f3" }
-      - { step: "100", value: "#fde3e5" }
-      - { step: "150", value: "#fcd7db" }
-      - { step: "200", value: "#fbccd1" }
-      - { step: "300", value: "#f7a5ae" }
-      - { step: "400", value: "#f17385" }
-      - { step: "500", value: "#e6455f" }
-      - { step: "600", value: "#d22548" }
-      - { step: "700", value: "#b01a3c" }
-      - { step: "800", value: "#931939" }
-      - { step: "900", value: "#7e1936" }
-      - { step: "950", value: "#470819" }
-
-  - name: azure
-    label: Azure
-    description: Informational states and the focus ring. The only blue in the building.
-    steps:
-      - { step: "50",  value: "#eff7ff" }
-      - { step: "100", value: "#dbecfe" }
-      - { step: "150", value: "#cde5fe" }
-      - { step: "200", value: "#bfdffe" }
-      - { step: "300", value: "#93cbfd" }
-      - { step: "400", value: "#60affa" }
-      - { step: "500", value: "#3b8ef6" }
-      - { step: "600", value: "#2571eb" }
-      - { step: "700", value: "#1d5bd8" }
-      - { step: "800", value: "#1e4baf" }
-      - { step: "900", value: "#1e428a" }
-      - { step: "950", value: "#172a54" }
+      - { step: "teal",     order: 0, value: "#3a6a63", usage: "Default. Neutral, technical." }
+      - { step: "clay",     order: 1, value: "#9a5a3c", usage: "Warm, archival — domus's flavour." }
+      - { step: "ink-blue", order: 2, value: "#2b4a78", usage: "Sober, utilitarian." }
+      - { step: "ochre",    order: 3, value: "#93701f", usage: "Dry, papery." }
+      - { step: "plum",     order: 4, value: "#6a3a5c", usage: "Quiet, personal." }

@@ -1,16 +1,12 @@
 ---
 title: Typography
 summary: >-
-  Two families, ten sizes, four weights. The specimens below are rendered with
-  the same custom properties the components use, at the sizes the tokens define.
+  Three families, eight fluid steps, eight compound styles. Sans for
+  interface, mono for every label and technical value, serif as an opt-in
+  reading variant.
 ---
 
 ## Families
-
-Fraunces carries the wordmark and page titles; its optical sizing axis keeps
-large settings from looking spindly. Inter does everything else. Code is set in
-JetBrains Mono, with a system monospace fallback that will not shift the layout
-if the webfont never arrives.
 
 {% for family in site.data.tokens.scale.typography.families %}
 <div class="ad-specimen">
@@ -18,78 +14,81 @@ if the webfont never arrives.
     <span class="ad-token-name">{{ family.token | custom_property }}</span>
     <span>{{ family.usage }}</span>
   </div>
-  <div class="ad-specimen__sample" style="font-family: var({{ family.token | custom_property }}); font-size: 1.75rem;">
+  <div class="ad-specimen__sample" style="font-family: var({{ family.token | custom_property }}); font-size: 1.5rem;">
     Arbitrary Definitions — 0123456789
   </div>
 </div>
 {% endfor %}
 
-## Scale
+Only one webfont is loaded — IBM Plex Mono, at 400/500/600:
 
-A minor-third-ish ramp, hand-adjusted at the small end where a strict ratio
-produces sizes nobody can tell apart. Sizes are declared in `rem` so a reader who
-has changed their browser's base font size gets a system that scales with them.
+```css
+{{ site.data.tokens.scale.typography.webfont_import }}
+```
 
-{% for size in site.data.tokens.scale.typography.sizes %}
+Sans is a web-safe system stack; serif is Georgia-based and opt-in, for a
+project that wants an editorial or archival feel. Neither is fetched.
+
+## Fluid scale
+
+Eight steps, `clamp()`-based (Utopia, 320→1240px viewport). The body sits at
+`--ad-step-0` — 18px on a phone, 20px on a wide screen — with no fixed
+breakpoint in between.
+
+{% for step in site.data.tokens.scale.typography.steps %}
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">{{ size.token | custom_property }}</span>
-    <span>{{ size.value }} · {{ size.px }}px</span>
-    <span>{{ size.usage }}</span>
+    <span class="ad-token-name">{{ step.token | custom_property }}</span>
+    <span>{{ step.px }}px</span>
+    <span>{{ step.usage }}</span>
   </div>
-  <div class="ad-specimen__sample" style="font-size: var({{ size.token | custom_property }});">
+  <div class="ad-specimen__sample" style="font-size: var({{ step.token | custom_property }});">
     The quick brown fox jumps over the lazy dog
   </div>
 </div>
 {% endfor %}
 
-## Line height, weight, tracking
+## The eight compound styles
+
+Real, specific numbers from the source — not a generic ramp compressed to
+fit. Each class sets family, size, weight, line-height, and (where the
+source specifies one) letter-spacing in a single declaration.
 
 <div class="ad-table-wrap">
   <table class="ad-table ad-table--compact">
-    <thead>
-      <tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use for</th></tr>
-    </thead>
+    <thead><tr><th scope="col">Class</th><th scope="col">Weight</th><th scope="col">Size</th><th scope="col">Line-height</th><th scope="col">Tracking</th><th scope="col">Use for</th></tr></thead>
     <tbody>
-      {%- assign type = site.data.tokens.scale.typography %}
-      {%- for row in type.line_heights %}
-      <tr><td class="ad-token-name">{{ row.token | custom_property }}</td><td class="ad-table__code">{{ row.value }}</td><td>{{ row.usage }}</td></tr>
-      {%- endfor %}
-      {%- for row in type.weights %}
-      <tr><td class="ad-token-name">{{ row.token | custom_property }}</td><td class="ad-table__code">{{ row.value }}</td><td>{{ row.usage }}</td></tr>
-      {%- endfor %}
-      {%- for row in type.tracking %}
-      <tr><td class="ad-token-name">{{ row.token | custom_property }}</td><td class="ad-table__code">{{ row.value }}</td><td>{{ row.usage }}</td></tr>
+      {%- for style in site.data.tokens.scale.typography.styles %}
+      <tr>
+        <td class="ad-token-name">.{{ style.class }}</td>
+        <td>{{ style.weight }}</td>
+        <td class="ad-table__code">{{ style.size | custom_property }}</td>
+        <td>{{ style.line_height }}</td>
+        <td>{{ style.tracking }}</td>
+        <td>{{ style.usage }}</td>
+      </tr>
       {%- endfor %}
     </tbody>
   </table>
 </div>
 
-## In practice
-
-{% example title="A heading, a lead, and body copy" layout="stack" %}
-<div style="max-width: 34rem;">
-  <p class="ad-overline">Foundations</p>
-  <h2 style="margin: var(--ad-space-2) 0 var(--ad-space-3);">Type is the cheapest hierarchy you have</h2>
-  <p class="ad-lead">
-    Before reaching for a border, a background, or a badge, try moving one step
-    up the size ramp and one step down the colour ramp.
-  </p>
-  <p>
-    Body copy sits at <code>--ad-text-md</code> with <code>--ad-leading-normal</code>,
-    capped at <code>--ad-measure-prose</code> so a line never runs past about
-    seventy-five characters. Long measures are the single most common readability
-    failure in documentation, and the fix costs one declaration.
-  </p>
-</div>
+{% example title="All eight, in order" layout="stack" %}
+<div class="type-display">Display</div>
+<h1 class="type-h1">Heading one</h1>
+<h2 class="type-h2">Heading two</h2>
+<h3 class="type-h3">Heading three</h3>
+<p class="type-body">Body copy at the base size, 1.55 line-height.</p>
+<p class="type-body-sm">Secondary copy, one step down.</p>
+<span class="type-label">Catalog label</span>
+<span class="type-mono">technical.value / 2026-08-21 / #3a6a63</span>
 {% endexample %}
 
 ## Rules
 
-- **Two families, and no third.** A new typeface needs a reason that a weight or
-  a size cannot supply.
-- **Uppercase only at `--ad-text-2xs` with `--ad-tracking-wide`.** Uppercase at
-  body size is shouting and it is also slower to read.
-- **Never set a size in `px`.** The ramp is in `rem` on purpose.
-- **`text-wrap: balance` on headings, `pretty` on lead paragraphs.** Both are in
-  the base stylesheet; components do not need to repeat them.
+- **Three families, and no fourth.** A new typeface needs a reason a weight
+  or a size cannot supply.
+- **Mono is not decoration.** Every label, meta value, ID, date, and code
+  sample is mono — it is the one thread present in all three source projects.
+- **`type-label` is always uppercase, mono, and tracked.** It is the one
+  place uppercase belongs in this system.
+- **Never set a size in `px`.** The eight steps are fluid on purpose.

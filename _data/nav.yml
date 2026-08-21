@@ -10,17 +10,31 @@
     - { text: Space,      url: /foundations/space/ }
     - { text: Elevation,  url: /foundations/elevation/ }
     - { text: Motion,     url: /foundations/motion/ }
-- title: Components
+- title: Core
   links:
     - { text: Button,     url: /components/button/ }
-    - { text: Field,      url: /components/field/ }
+    - { text: IconButton, url: /components/icon-button/ }
     - { text: Badge,      url: /components/badge/ }
-    - { text: Callout,    url: /components/callout/ }
+    - { text: Tag,        url: /components/tag/ }
     - { text: Card,       url: /components/card/ }
-    - { text: Table,      url: /components/table/ }
+    - { text: CardRow,    url: /components/card-row/ }
+- title: Forms
+  links:
+    - { text: Field,      url: /components/field/ }
+    - { text: Input,      url: /components/input/ }
+    - { text: Select,     url: /components/select/ }
+    - { text: Checkbox,   url: /components/checkbox/ }
+    - { text: Radio,      url: /components/radio/ }
+    - { text: Switch,     url: /components/switch/ }
+- title: Feedback
+  links:
+    - { text: Tooltip,    url: /components/tooltip/ }
+    - { text: Toast,      url: /components/toast/ }
+    - { text: Dialog,     url: /components/dialog/ }
+- title: Navigation
+  links:
     - { text: Tabs,       url: /components/tabs/ }
-    - { text: Progress,   url: /components/progress/ }
 - title: Patterns
   links:
-    - { text: Settings form, url: /patterns/settings-form/ }
-    - { text: Kitchen sink,  url: /patterns/kitchen-sink/ }
+    - { text: "Loop — task dashboard",  url: /patterns/loop/ }
+    - { text: "Archive — capture app",  url: /patterns/archive/ }

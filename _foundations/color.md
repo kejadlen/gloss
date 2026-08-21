@@ -1,46 +1,49 @@
 ---
 title: Colour
 summary: >-
-  Six ramps and thirty-two semantic aliases. Components never touch a ramp
-  directly, which is the only reason the dark theme is one file and not a rewrite.
+  Two neutral ramps, five accents, two fixed semantic colours, seventeen
+  semantic aliases. Low-chroma warm-gray, never stark white or black.
 ---
 
 ## The two layers
 
 The system separates *what a colour is* from *what a colour is for*.
 
-The **ramps** below are raw material: twelve steps of ink, eleven of persimmon,
-and four supporting hues. They exist so that the next decision has something to
-choose from. No component references them.
+The **ramps** below are raw material: ten steps of neutral (light), the same
+ten inverted for dark mode, and five accent hues. No component references
+them directly.
 
-The **aliases** underneath are the working vocabulary — `--ad-color-text`,
-`--ad-color-critical-subtle`, `--ad-color-focus`. Every rule in every component
-stylesheet reads from these. Swapping a theme means repointing aliases at
-different ramp steps, which is exactly what the dark theme does.
+The **aliases** underneath are the working vocabulary — `--ad-color-text-primary`,
+`--ad-color-surface-card`, `--ad-color-accent`. Every component stylesheet
+reads from these. Retheming, or switching to dark, means repointing aliases
+at different values — which is exactly what the dark block does.
 
-<div class="ad-callout ad-callout--neutral">
-  <div class="ad-callout__body">
-    <p class="ad-callout__title">Contrast figures on this page are computed, not typed</p>
-    <p style="margin:0">
-      Each ratio comes from <code>lib/arbitrary_definitions/color_math.rb</code>, run
-      against the token value during the Jekyll build. A hex cannot change without its
-      contrast number changing with it.
-    </p>
-  </div>
+<div class="ad-callout">
+  <p style="margin:0; font-size: var(--ad-step--1);">
+    The neutral ramps were authored in <code>oklch()</code> by the three
+    projects this system was synthesized from (see
+    <a href="{{ '/rationale/' | relative_url }}">Why arbitrary</a>). This
+    site's contrast-testing suite only understands flat hex, so every value
+    below is that same colour converted to sRGB — not re-picked, not rounded.
+    Contrast figures on this page are computed from those hex values during
+    the build by <code>lib/arbitrary_definitions/color_math.rb</code>.
+  </p>
 </div>
 
-## Ramps
+## Neutral
 
-{% for ramp in site.data.tokens.color.ramps %}
-### {{ ramp.label }}
+Low-chroma warm-gray — the intersection of ketchup's plain grays, quire's
+warm cream/dark palette, and domus's warm paper. Ten steps, not twelve or
+sixteen: the source defines exactly these.
 
-<p class="ad-muted">{{ ramp.description }}</p>
-
+{% assign neutral = site.data.tokens.color.ramps | where: "name", "neutral" | first %}
+<p class="ad-muted">{{ neutral.description }}</p>
 <ul class="ad-swatch-grid">
-  {%- for step in ramp.steps %}
+  {%- assign steps = neutral.steps | sort: "order" %}
+  {%- for step in steps %}
   {%- assign on = step.value | readable_on %}
   <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: {{ step.value }}; color: {{ on }};">{{ ramp.name }}&nbsp;{{ step.step }}</div>
+    <div class="ad-swatch__chip" style="background: {{ step.value }}; color: {{ on }};">n-{{ step.step }}</div>
     <div class="ad-swatch__meta">
       <span class="ad-swatch__hex">{{ step.value }}</span>
       <span class="ad-swatch__ratio">{{ step.value | contrast_with: '#ffffff' }} on white</span>
@@ -48,13 +51,55 @@ different ramp steps, which is exactly what the dark theme does.
   </li>
   {%- endfor %}
 </ul>
-{% endfor %}
+
+{% assign neutral_dark = site.data.tokens.color.ramps | where: "name", "neutral_dark" | first %}
+<p class="ad-muted">{{ neutral_dark.description }}</p>
+<ul class="ad-swatch-grid">
+  {%- assign dsteps = neutral_dark.steps | sort: "order" %}
+  {%- for step in dsteps %}
+  {%- assign on = step.value | readable_on %}
+  <li class="ad-swatch">
+    <div class="ad-swatch__chip" style="background: {{ step.value }}; color: {{ on }};">nd-{{ step.step }}</div>
+    <div class="ad-swatch__meta">
+      <span class="ad-swatch__hex">{{ step.value }}</span>
+      <span class="ad-swatch__ratio">{{ step.value | contrast_with: '#000000' }} on black</span>
+    </div>
+  </li>
+  {%- endfor %}
+</ul>
+
+## Accent
+
+One swappable accent per project — never two in the same view. Signal Teal is
+the default; the other four are the sanctioned menu a project can switch to.
+
+{% assign accent = site.data.tokens.color.ramps | where: "name", "accent" | first %}
+<ul class="ad-accent-grid">
+  {%- for step in accent.steps %}
+  <li>
+    <div class="ad-accent-demo" style="background: {{ step.value }};">{{ step.step }}{% if step.step == "teal" %} (default){% endif %}</div>
+    <div class="ad-specimen__meta"><span class="ad-token-name">{{ step.value }}</span><span>{{ step.value | contrast_with: '#ffffff' }}:1 on white</span></div>
+    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">{{ step.usage }}</p>
+  </li>
+  {%- endfor %}
+</ul>
+
+<div class="ad-callout">
+  <p style="margin:0; font-size: var(--ad-step--1);">
+    All five clear AA (4.5:1) for white text at their own value, but Ochre is
+    the tightest of the five at roughly 4.6:1 — closer to the floor than the
+    others (Ink Blue and Plum both clear 8.5:1). That is a real property of a
+    dry, papery ochre and is not being rounded away; a project choosing Ochre
+    as its accent should re-check any place it sets small white text directly
+    on the accent fill, rather than through <code>--ad-color-accent-fg</code>
+    on a full-size Button.
+  </p>
+</div>
 
 ## Semantic aliases
 
-Both themes, side by side. The left half of each chip is the light value and the
-right half is the dark one — a token whose halves look identical across a whole
-group usually means somebody forgot to think about dark mode.
+Both themes, side by side. The left half of each chip is the light value and
+the right half is the dark one.
 
 {% assign groups = site.data.tokens.semantic.groups %}
 {% for group in groups %}
@@ -78,15 +123,19 @@ group usually means somebody forgot to think about dark mode.
       <tr>
         <td>
           <div class="ad-alias-row">
+            {%- if flat.light contains "color-mix" %}
+            <span class="ad-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--ad-color-surface-fill) 0 4px, var(--ad-color-surface-card) 4px 8px);"></span>
+            {%- else %}
             <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
               <span style="background: {{ flat.light }}"></span>
               <span style="background: {{ flat.dark }}"></span>
             </span>
+            {%- endif %}
             <span class="ad-token-name">{{ flat.name }}</span>
           </div>
         </td>
-        <td class="ad-table__code">{{ token.light }}<br><span class="ad-subtle">{{ flat.light }}</span></td>
-        <td class="ad-table__code">{{ token.dark }}<br><span class="ad-subtle">{{ flat.dark }}</span></td>
+        <td class="ad-table__code">{{ token.light }}</td>
+        <td class="ad-table__code">{{ token.dark }}</td>
         <td>{{ token.usage }}</td>
       </tr>
       {%- endfor %}
@@ -97,12 +146,11 @@ group usually means somebody forgot to think about dark mode.
 
 ## Contrast that has to hold
 
-Colour is the one part of this system that is not arbitrary: a ratio is a fact
-about two colours and a pair of eyes, and it does not care what the palette
-wants. So the pairings below are a contract. They live in
-`_data/tokens/contrast.yml`, `test/test_token_set.rb` asserts every one of them
-in both themes, and the table is rendered from that same file — the deploy
-fails before a regression can reach this page.
+Colour is the one part of this system that is not arbitrary: a ratio is a
+fact about two colours and a pair of eyes, and it does not care what the
+palette wants. The pairings below live in `_data/tokens/contrast.yml`,
+`test/test_token_set.rb` asserts every one of them in both themes, and this
+table is rendered from that same file.
 
 {% assign contract = site.data.tokens.contrast %}
 {% assign flat = site.data.semantic_flat %}
@@ -147,31 +195,32 @@ fails before a regression can reach this page.
 </div>
 {% endfor %}
 
-Every figure in those two tables was computed during this build by
-`lib/arbitrary_definitions/color_math.rb`, from the token value itself. None of
-them was typed by a person, which is the only way a number in documentation
-stays true.
+Every figure above was computed during this build from the token value
+itself — none of it was typed by a person.
 
-<div class="ad-callout ad-callout--caution">
-  <div class="ad-callout__body">
-    <p class="ad-callout__title">Where the system knowingly stops short</p>
-    <p style="margin:0">
-      <code>--ad-color-border</code> sits around 1.3:1 against the surfaces it divides.
-      That is well under the 3:1 that WCAG 1.4.11 asks of a boundary a user has to
-      find. It is deliberate — a table gridded in 3:1 lines is unreadable — but it
-      means the default border is decorative. Any edge that is the <em>only</em> way
-      to locate a control uses <code>--ad-color-border-strong</code>, which is tested
-      at 3:1 in both themes.
-    </p>
-  </div>
+<div class="ad-callout">
+  <p style="margin:0; font-size: var(--ad-step--1);">
+    Two things this contract deliberately does not assert.
+    <strong>Text tertiary</strong> — <code>--ad-color-text-tertiary</code>
+    (neutral.500) is roughly 3.46:1 against the page in light mode, under the
+    4.5:1 floor. The source documents that step as muted-faint text —
+    placeholders and de-emphasised metadata, never body copy — so this is a
+    real, intentional property of the palette, not a bug to patch by
+    darkening the step.
+    <strong>Borders</strong> — <code>--ad-color-border-hairline</code> and
+    <code>--ad-color-border-default</code> sit well under the 3:1 that WCAG
+    1.4.11 asks of a meaningful boundary. The source's own words are
+    "hairline (1px) borders and dividers do most of the elevation work" —
+    borders here are deliberately quiet, and the source never claims a 3:1
+    bar for them, so this contract does not invent one.
+  </p>
 </div>
 
 ## Rules
 
-- **Never write a hex outside `_data/tokens/color.yml`.** If a component needs a
-  colour that does not exist yet, the colour does not exist yet. Add the alias.
-- **Status colour is never the only signal.** Every status component carries an
-  icon, a label, or a dot alongside the hue.
-- **One focus colour.** `--ad-color-focus` is azure everywhere, including on
-  persimmon surfaces, because a focus ring that changes per component is a focus
-  ring nobody learns.
+- **Never write a hex outside `_data/tokens/color.yml`.** If a component
+  needs a colour that does not exist yet, add the alias.
+- **One accent per project, never two in a view.** Swapping `--ad-color-accent`
+  re-derives `-ink` and `-soft` automatically via `color-mix()`.
+- **`--ad-color-success` and `--ad-color-danger` are fixed.** They read the
+  same in every project and are never swapped the way the accent is.

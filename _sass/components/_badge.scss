@@ -1,49 +1,74 @@
 /* Badge
-   A label, not a button. Never put a click handler on one. */
+   Mono, uppercase, tracked — the catalog-label convention for status and
+   meta values (SAVED, OVERDUE, RECOMMENDED). A label, never a button. */
 
 .ad-badge {
-  /* --_tone is the badge's hue; --_fg is where that hue lands. Keeping them
-     apart is what lets --solid swap background and foreground without a
-     custom property referring to itself, which resolves to the wrong value. */
-  --_tone: var(--ad-color-text-muted);
-  --_bg: var(--ad-color-surface-sunken);
-  --_fg: var(--_tone);
-  --_border: var(--ad-color-border);
+  --_bg: var(--ad-color-surface-fill);
+  --_fg: var(--ad-color-text-secondary);
+  --_border: var(--ad-color-border-hairline);
 
   display: inline-flex;
   align-items: center;
-  gap: var(--ad-space-1);
-  padding: 0.125rem var(--ad-space-2);
+  gap: 0.25rem;
+  padding: 0.1875rem 0.5rem;
   border: 1px solid var(--_border);
-  border-radius: var(--ad-radius-xs);
+  border-radius: var(--ad-radius-sm);
   background: var(--_bg);
   color: var(--_fg);
-  font-size: var(--ad-text-xs);
-  font-weight: var(--ad-weight-medium);
-  line-height: 1.5;
+  font-family: var(--ad-font-mono);
+  font-size: var(--ad-step--2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
   white-space: nowrap;
 }
 
-.ad-badge--accent   { --_bg: var(--ad-color-accent-subtle);   --_tone: var(--ad-color-accent);   --_border: var(--ad-color-accent-border); }
-.ad-badge--positive { --_bg: var(--ad-color-positive-subtle); --_tone: var(--ad-color-positive); --_border: var(--ad-color-positive-border); }
-.ad-badge--caution  { --_bg: var(--ad-color-caution-subtle);  --_tone: var(--ad-color-caution);  --_border: var(--ad-color-caution-border); }
-.ad-badge--critical { --_bg: var(--ad-color-critical-subtle); --_tone: var(--ad-color-critical); --_border: var(--ad-color-critical-border); }
-.ad-badge--info     { --_bg: var(--ad-color-info-subtle);     --_tone: var(--ad-color-info);     --_border: var(--ad-color-info-border); }
-
-.ad-badge--pill { border-radius: var(--ad-radius-full); padding-inline: var(--ad-space-3); }
-.ad-badge--solid { --_bg: var(--_tone); --_fg: var(--ad-color-text-inverse); --_border: transparent; }
-
-/* A dot lets a badge carry status without relying on colour alone… */
-.ad-badge__dot {
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: var(--ad-radius-full);
-  background: currentColor;
-  flex: none;
-}
+.ad-badge--accent  { --_bg: var(--ad-color-accent-soft);  --_fg: var(--ad-color-accent-ink);  --_border: transparent; }
+.ad-badge--success { --_bg: var(--ad-color-success-bg);   --_fg: var(--ad-color-success);      --_border: transparent; }
+.ad-badge--danger  { --_bg: var(--ad-color-danger-bg);    --_fg: var(--ad-color-danger);       --_border: transparent; }
 
 .ad-badge-set {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ad-space-2);
+  gap: var(--ad-space-2xs);
+}
+
+/* Tag
+   A removable mono chip for freeform tags — locations, categories.
+   `--dashed` renders an "add tag" affordance instead of a value. */
+
+.ad-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--ad-radius-sm);
+  background: var(--ad-color-surface-fill);
+  border: 1px solid var(--ad-color-border-default);
+  color: var(--ad-color-text-secondary);
+  font-family: var(--ad-font-mono);
+  font-size: var(--ad-step--2);
+  line-height: 1;
+}
+
+.ad-tag--dashed {
+  background: transparent;
+  border-style: dashed;
+  color: var(--ad-color-text-tertiary);
+  cursor: pointer;
+}
+
+.ad-tag__remove {
+  all: unset;
+  cursor: pointer;
+  color: var(--ad-color-text-tertiary);
+  line-height: 1;
+  font-size: 0.75rem;
+}
+.ad-tag__remove:hover { color: var(--ad-color-text-primary); }
+
+.ad-tag-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
 }

@@ -1,67 +1,62 @@
-/* Every rule here reads from a type token. If a size appears in this file as
-   a raw value, it is a bug. */
+/* Every rule here reads a type token for family and size. Weight, line-height,
+   and letter-spacing are hardcoded to the exact numbers the source ships —
+   there is no `--ad-weight-*` / `--ad-leading-*` / `--ad-tracking-*` scale in
+   the real system, only eight fixed compound styles (see scale.yml's
+   `typography.styles`, which this file implements verbatim). */
 
-h1, h2, h3, h4 {
-  font-weight: var(--ad-weight-semibold);
-  line-height: var(--ad-leading-snug);
-  text-wrap: balance;
+.type-display { font: 600 var(--ad-step-4)/1.08 var(--ad-font-sans); letter-spacing: -0.015em; }
+.type-h1      { font: 600 var(--ad-step-3)/1.12 var(--ad-font-sans); letter-spacing: -0.012em; }
+.type-h2      { font: 600 var(--ad-step-2)/1.16 var(--ad-font-sans); letter-spacing: -0.01em; }
+.type-h3      { font: 600 var(--ad-step-1)/1.25 var(--ad-font-sans); }
+.type-body    { font: 400 var(--ad-step-0)/1.55 var(--ad-font-sans); }
+.type-body-sm { font: 400 var(--ad-step--1)/1.5 var(--ad-font-sans); }
+.type-label {
+  font: 500 var(--ad-step--2)/1 var(--ad-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ad-color-text-secondary);
 }
+.type-mono { font: 400 var(--ad-step--1)/1.5 var(--ad-font-mono); }
 
-h1 {
-  font-family: var(--ad-font-display);
-  font-size: var(--ad-text-3xl);
-  font-weight: var(--ad-weight-semibold);
-  line-height: var(--ad-leading-tight);
-  letter-spacing: var(--ad-tracking-tight);
-  font-optical-sizing: auto;
-}
+/* Prose defaults for the documentation body copy. These read the same
+   tokens the compound classes above do; they are not a second scale. */
+h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 
-h2 {
-  font-size: var(--ad-text-2xl);
-  letter-spacing: var(--ad-tracking-tight);
-}
+h1 { @extend .type-h1; }
+h2 { @extend .type-h2; }
+h3 { @extend .type-h3; }
+h4 { font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans); }
 
-h3 { font-size: var(--ad-text-xl); }
-h4 { font-size: var(--ad-text-lg); }
-
-p, ul, ol { margin: 0 0 var(--ad-space-4); }
-li + li { margin-top: var(--ad-space-1); }
+p, ul, ol { margin: 0 0 var(--ad-space-s); }
+li + li { margin-top: var(--ad-space-3xs); }
 
 a {
   color: var(--ad-color-accent);
   text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
   text-underline-offset: 0.18em;
   text-decoration-thickness: 1px;
-  transition: color var(--ad-duration-fast) var(--ad-ease-standard),
-              text-decoration-color var(--ad-duration-fast) var(--ad-ease-standard);
+  transition: color var(--ad-dur-fast) var(--ad-ease),
+              text-decoration-color var(--ad-dur-fast) var(--ad-ease);
 }
 a:hover {
-  color: var(--ad-color-accent-hover);
+  color: var(--ad-color-accent-ink);
   text-decoration-color: currentColor;
 }
 
-strong, b { font-weight: var(--ad-weight-semibold); }
+strong, b { font-weight: 600; }
 
-small { font-size: var(--ad-text-sm); }
-
-.ad-overline {
-  font-size: var(--ad-text-2xs);
-  font-weight: var(--ad-weight-semibold);
-  letter-spacing: var(--ad-tracking-wide);
-  text-transform: uppercase;
-  color: var(--ad-color-text-muted);
-}
+small { font-size: var(--ad-step--1); }
 
 .ad-lead {
-  font-size: var(--ad-text-lg);
-  line-height: var(--ad-leading-relaxed);
-  color: var(--ad-color-text-muted);
-  max-width: var(--ad-measure-prose);
+  font-size: var(--ad-step-1);
+  line-height: 1.5;
+  color: var(--ad-color-text-secondary);
+  max-width: 68ch;
   text-wrap: pretty;
 }
 
-.ad-muted { color: var(--ad-color-text-muted); }
-.ad-subtle { color: var(--ad-color-text-subtle); }
+.ad-muted { color: var(--ad-color-text-secondary); }
+.ad-subtle { color: var(--ad-color-text-tertiary); }
 
 code, kbd, samp, pre {
   font-family: var(--ad-font-mono);
@@ -71,27 +66,27 @@ code, kbd, samp, pre {
 :not(pre) > code {
   padding: 0.15em 0.4em;
   font-size: 0.875em;
-  background: var(--ad-color-surface-sunken);
-  border: 1px solid var(--ad-color-border-subtle);
-  border-radius: var(--ad-radius-xs);
+  background: var(--ad-color-surface-fill);
+  border: 1px solid var(--ad-color-border-hairline);
+  border-radius: var(--ad-radius-sm);
   white-space: nowrap;
 }
 
 kbd {
   display: inline-block;
   padding: 0.1em 0.45em;
-  font-size: var(--ad-text-xs);
+  font-size: var(--ad-step--2);
   line-height: 1.6;
-  background: var(--ad-color-surface);
-  border: 1px solid var(--ad-color-border);
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-default);
   border-bottom-width: 2px;
-  border-radius: var(--ad-radius-xs);
-  color: var(--ad-color-text-muted);
+  border-radius: var(--ad-radius-sm);
+  color: var(--ad-color-text-secondary);
 }
 
 blockquote {
-  margin-block: var(--ad-space-4);
-  padding-left: var(--ad-space-4);
-  border-left: 2px solid var(--ad-color-accent-border);
-  color: var(--ad-color-text-muted);
+  margin-block: var(--ad-space-s);
+  padding-left: var(--ad-space-s);
+  border-left: 2px solid var(--ad-color-accent);
+  color: var(--ad-color-text-secondary);
 }

@@ -1,76 +1,29 @@
 ---
 title: Badge
 summary: >-
-  A label with a background. Six tones, two shapes, and a dot for the times when
-  colour alone will not do.
+  Mono, uppercase, tracked — the catalog-label convention for status and meta
+  values. An archivist's tag, not a badge asking for attention.
 ---
+
+Labels are catalog-style: short, mono, uppercase — `SAVED`, `RECOMMENDED`,
+`OVERDUE`. Never a click handler on one; a Badge is a label, not a button.
 
 ## Tones
 
 {% example title="Tones" open %}
-<span class="ad-badge">Neutral</span>
-<span class="ad-badge ad-badge--accent">Accent</span>
-<span class="ad-badge ad-badge--positive">Positive</span>
-<span class="ad-badge ad-badge--caution">Caution</span>
-<span class="ad-badge ad-badge--critical">Critical</span>
-<span class="ad-badge ad-badge--info">Info</span>
+<span class="ad-badge">Unassigned</span>
+<span class="ad-badge ad-badge--accent">Draft</span>
+<span class="ad-badge ad-badge--success">Saved</span>
+<span class="ad-badge ad-badge--danger">Overdue</span>
 {% endexample %}
 
-Each tone pulls the whole status triple — foreground, tint, edge — from the same
-tokens the callout uses. A caution badge and a caution callout on the same page
-cannot drift apart, because there is only one definition of caution.
+## In a set
 
-## Shapes
-
-{% example title="Square and pill, outline and solid" %}
-<span class="ad-badge ad-badge--positive">Passing</span>
-<span class="ad-badge ad-badge--positive ad-badge--pill">Passing</span>
-<span class="ad-badge ad-badge--positive ad-badge--solid">Passing</span>
-<span class="ad-badge ad-badge--positive ad-badge--pill ad-badge--solid">Passing</span>
-{% endexample %}
-
-Square badges read as metadata attached to something. Pills read as free-standing
-tags. Pick one per surface and stay with it.
-
-## Status with a dot
-
-Colour on its own excludes anyone who cannot distinguish the hues, and it also
-fails on a greyscale print. The dot is not decoration — it is a second channel
-that a text label can attach to.
-
-{% example title="Status" %}
-<span class="ad-badge ad-badge--positive"><span class="ad-badge__dot"></span>Deployed</span>
-<span class="ad-badge ad-badge--caution"><span class="ad-badge__dot"></span>Degraded</span>
-<span class="ad-badge ad-badge--critical"><span class="ad-badge__dot"></span>Down</span>
-<span class="ad-badge"><span class="ad-badge__dot"></span>Unknown</span>
-{% endexample %}
-
-## In context
-
-{% example title="Badges in a table" layout="stack" %}
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--hover">
-    <thead>
-      <tr><th scope="col">Token</th><th scope="col">Status</th><th scope="col">Since</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="ad-table__code">--ad-color-accent</td>
-        <td><span class="ad-badge ad-badge--positive"><span class="ad-badge__dot"></span>Stable</span></td>
-        <td>v1.0.0</td>
-      </tr>
-      <tr>
-        <td class="ad-table__code">--ad-color-surface-hover</td>
-        <td><span class="ad-badge ad-badge--caution"><span class="ad-badge__dot"></span>Experimental</span></td>
-        <td>v1.0.0</td>
-      </tr>
-      <tr>
-        <td class="ad-table__code">--ad-shadow-soft</td>
-        <td><span class="ad-badge ad-badge--critical"><span class="ad-badge__dot"></span>Removed</span></td>
-        <td>v0.9.0</td>
-      </tr>
-    </tbody>
-  </table>
+{% example title="Badge set" %}
+<div class="ad-badge-set">
+  <span class="ad-badge ad-badge--accent">Recommended</span>
+  <span class="ad-badge">Every 2 weeks</span>
+  <span class="ad-badge ad-badge--danger">3d overdue</span>
 </div>
 {% endexample %}
 
@@ -78,6 +31,17 @@ that a text label can attach to.
 
 - **A badge is never interactive.** No click handlers, no `<button>`, no cursor
   change. If it does something, it is a button that happens to be small.
-- **Two words at most.** A badge that wraps is a sentence in the wrong clothes.
-- **Solid badges are for counts and hard states**, outline for everything else.
-  A page of solid badges is a page of alarms.
+- **Two or three words at most.** A badge that wraps is a sentence in the wrong clothes.
+- **`danger` means something needs attention, not that something failed.** The
+  source uses it for overdue, not for a system error — that is what prose is for.
+
+## API
+
+<div class="ad-table-wrap">
+  <table class="ad-table ad-table--compact">
+    <thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="ad-token-name">tone</td><td class="ad-table__code">neutral | accent | success | danger</td><td>Default <code>neutral</code>.</td></tr>
+    </tbody>
+  </table>
+</div>

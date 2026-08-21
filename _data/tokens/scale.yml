@@ -1,121 +1,99 @@
-# Non-colour tokens. Same deal: `_plugins/token_generator.rb` turns each
-# group into a block of CSS custom properties under `:root`.
-
+# Non-colour tokens. `_plugins/token_generator.rb` turns most groups below
+# into a block of CSS custom properties under `:root`; `typography.styles` is
+# the one exception — those eight are compound rules (family + size + weight +
+# line-height + tracking in one declaration, exactly as the source ships
+# them), so they are written directly into `_sass/base/_typography.scss`
+# rather than compiled from here. This file is still their source of record:
+# the typography foundation page renders its specimen table from `styles`.
 typography:
   label: Typography
+  description: >-
+    Three families and eight fluid Utopia steps (320→1240px viewport, 18→20px
+    body). Only one webfont is loaded — IBM Plex Mono; sans is a web-safe
+    system stack and serif is an opt-in reading variant, not loaded by default.
+  webfont_import: "@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');"
   families:
-    - token: font-display
-      value: "\"Fraunces\", \"Iowan Old Style\", Georgia, serif"
-      usage: Wordmark and page titles. Optical sizing does the heavy lifting.
     - token: font-sans
-      value: "\"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
-      usage: Everything else. Body copy, UI labels, tables.
+      value: '-apple-system, "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif'
+      usage: Interface text — every component, every screen. Web-safe; nothing is loaded for it.
     - token: font-mono
-      value: "\"JetBrains Mono\", ui-monospace, SFMono-Regular, \"SF Mono\", Menlo, monospace"
-      usage: Code, token names, and any value the reader might need to copy.
-  sizes:
-    - { token: text-2xs, value: "0.6875rem", px: 11, usage: Overlines and table micro-labels. Uppercase only. }
-    - { token: text-xs,  value: "0.75rem",   px: 12, usage: Badges, captions, keyboard hints. }
-    - { token: text-sm,  value: "0.875rem",  px: 14, usage: Dense UI — small buttons, helper text, table cells. }
-    - { token: text-md,  value: "1rem",      px: 16, usage: The default. Body copy and standard controls. }
-    - { token: text-lg,  value: "1.125rem",  px: 18, usage: Lead paragraphs and large controls. }
-    - { token: text-xl,  value: "1.375rem",  px: 22, usage: Section headings (h3). }
-    - { token: text-2xl, value: "1.75rem",   px: 28, usage: Subsection headings (h2). }
-    - { token: text-3xl, value: "2.25rem",   px: 36, usage: Page titles (h1). }
-    - { token: text-4xl, value: "3rem",      px: 48, usage: Hero headline. }
-    - { token: text-5xl, value: "3.75rem",   px: 60, usage: One per site, at most. }
-  line_heights:
-    - { token: leading-tight,   value: "1.15", usage: Display sizes, 28px and up. }
-    - { token: leading-snug,    value: "1.3",  usage: Headings and multi-line labels. }
-    - { token: leading-normal,  value: "1.55", usage: Body copy. }
-    - { token: leading-relaxed, value: "1.75", usage: Long-form prose columns. }
-  weights:
-    - { token: weight-regular,  value: "400", usage: Body copy. }
-    - { token: weight-medium,   value: "500", usage: UI labels and table headers. }
-    - { token: weight-semibold, value: "600", usage: Buttons and headings. }
-    - { token: weight-bold,     value: "700", usage: Emphasis inside running text. }
-  tracking:
-    - { token: tracking-tight,  value: "-0.02em", usage: Sizes 28px and up, where default spacing looks loose. }
-    - { token: tracking-normal, value: "0",       usage: Everything from 12px to 22px. }
-    - { token: tracking-wide,   value: "0.08em",  usage: Uppercase overlines only. }
+      value: '"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace'
+      usage: Every label, meta value, technical/catalog value, and code sample. The system's one loaded webfont.
+    - token: font-serif
+      value: 'Georgia, "Times New Roman", "Iowan Old Style", serif'
+      usage: Opt-in reading variant for a project that wants an editorial, archival feel (domus-style). Not loaded by default; web-safe only.
+  steps:
+    - { token: step--2, value: "clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem)",        px: "12.5 → 12.8", usage: "type-label — eyebrows, catalog labels, meta." }
+    - { token: step--1, value: "clamp(0.9375rem, 0.9119rem + 0.1136vw, 1rem)",          px: "15 → 16",     usage: "type-body-sm and type-mono — secondary copy, technical values." }
+    - { token: step-0,  value: "clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem)",        px: "18 → 20",     usage: "type-body — the base size, and the body element's own size." }
+    - { token: step-1,  value: "clamp(1.35rem, 1.2631rem + 0.3864vw, 1.5625rem)",       px: "22 → 25",     usage: "type-h3 — card and subsection headings." }
+    - { token: step-2,  value: "clamp(1.62rem, 1.4837rem + 0.6057vw, 1.9531rem)",       px: "26 → 31",     usage: "type-h2 — section headings." }
+    - { token: step-3,  value: "clamp(1.944rem, 1.7405rem + 0.9044vw, 2.4414rem)",      px: "31 → 39",     usage: "type-h1 — screen titles." }
+    - { token: step-4,  value: "clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem)",     px: "37 → 49",     usage: "type-display — one hero title per screen, at most." }
+    - { token: step-5,  value: "clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem)",      px: "45 → 61",     usage: "Reserved headroom. No compound style claims it yet." }
+  styles:
+    - { class: type-display, family: font-sans, weight: 600, size: step-4,  line_height: "1.08", tracking: "-0.015em", transform: none,    usage: "Page-level hero title, once per screen." }
+    - { class: type-h1,      family: font-sans, weight: 600, size: step-3,  line_height: "1.12", tracking: "-0.012em", transform: none,    usage: "Screen title." }
+    - { class: type-h2,      family: font-sans, weight: 600, size: step-2,  line_height: "1.16", tracking: "-0.01em",  transform: none,    usage: "Section heading." }
+    - { class: type-h3,      family: font-sans, weight: 600, size: step-1,  line_height: "1.25", tracking: "normal",   transform: none,    usage: "Card / subsection heading." }
+    - { class: type-body,    family: font-sans, weight: 400, size: step-0,  line_height: "1.55", tracking: "normal",   transform: none,    usage: "Body copy." }
+    - { class: type-body-sm, family: font-sans, weight: 400, size: step--1, line_height: "1.5",  tracking: "normal",   transform: none,    usage: "Secondary copy, hints." }
+    - { class: type-label,   family: font-mono, weight: 500, size: step--2, line_height: "1",    tracking: "0.08em",   transform: uppercase, usage: "Eyebrows, catalog labels, meta — SAVED, RECOMMENDED, OVERDUE." }
+    - { class: type-mono,    family: font-mono, weight: 400, size: step--1, line_height: "1.5",  tracking: "normal",   transform: none,    usage: "Technical values, IDs, dates, code." }
 
 space:
   label: Space
   description: >-
-    A 4px base with a ramp that thins out as it grows. Small increments matter
-    inside a control; nobody can see the difference between 76px and 80px.
+    Nine fluid Utopia steps (320→1240px viewport), the same shared config as
+    type. 3xs through 3xl — no numbered scale, because there is no fixed base
+    unit here to count multiples of.
   scale:
-    - { token: space-0,  value: "0",       px: 0 }
-    - { token: space-1,  value: "0.25rem", px: 4 }
-    - { token: space-2,  value: "0.5rem",  px: 8 }
-    - { token: space-3,  value: "0.75rem", px: 12 }
-    - { token: space-4,  value: "1rem",    px: 16 }
-    - { token: space-5,  value: "1.5rem",  px: 24 }
-    - { token: space-6,  value: "2rem",    px: 32 }
-    - { token: space-7,  value: "2.5rem",  px: 40 }
-    - { token: space-8,  value: "3rem",    px: 48 }
-    - { token: space-9,  value: "4rem",    px: 64 }
-    - { token: space-10, value: "6rem",    px: 96 }
-    - { token: space-11, value: "8rem",    px: 128 }
+    - { token: space-3xs, value: "clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem)",       px: "5",       usage: "The tightest gap — an icon to its label inside a small control." }
+    - { token: space-2xs, value: "clamp(0.5625rem, 0.5369rem + 0.1136vw, 0.625rem)",   px: "9 → 10",  usage: "Field-internal gaps, badge and tag padding." }
+    - { token: space-xs,  value: "clamp(0.875rem, 0.8494rem + 0.1136vw, 0.9375rem)",   px: "14 → 15", usage: "Control padding-inline, row-internal gaps, CardRow padding." }
+    - { token: space-s,   value: "clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem)",     px: "18 → 20", usage: "Field-to-field spacing, Dialog title/footer padding." }
+    - { token: space-m,   value: "clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem)",   px: "27 → 30", usage: "Card body padding, Dialog body padding — the system's default inset." }
+    - { token: space-l,   value: "clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem)",       px: "36 → 40", usage: "Page gutters, section-to-section gaps." }
+    - { token: space-xl,  value: "clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem)",     px: "54 → 60", usage: "Major section spacing — the gap above a dashboard's task list." }
+    - { token: space-2xl, value: "clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem)",          px: "72 → 80", usage: "Page-level rhythm." }
+    - { token: space-3xl, value: "clamp(6.75rem, 6.4432rem + 1.3636vw, 7.5rem)",       px: "108 → 120", usage: "Hero and empty-state breathing room." }
 
 radius:
   label: Radius
-  description: Corner rounding. The system tops out at 16px; anything softer reads as a toy.
+  description: >-
+    Small and quiet: a 4/6/10px scale, kept modest so it reads as a neutral
+    default rather than any one source project's specific softness. Nothing
+    pill-shaped except true pills.
   scale:
-    - { token: radius-none, value: "0",      usage: Tables, full-bleed bands. }
-    - { token: radius-xs,   value: "3px",    usage: Badges and inline code. }
-    - { token: radius-sm,   value: "5px",    usage: Inputs, buttons, checkboxes. }
-    - { token: radius-md,   value: "8px",    usage: Cards and callouts. }
-    - { token: radius-lg,   value: "12px",   usage: Panels and modals. }
-    - { token: radius-xl,   value: "16px",   usage: Hero surfaces. }
-    - { token: radius-full, value: "999px",  usage: Pills, avatars, switches. }
+    - { token: radius-sm,   value: "4px",   usage: "Buttons, inputs, badges, tags." }
+    - { token: radius-md,   value: "6px",   usage: "IconButton, the segmented-tabs track, avatar chips." }
+    - { token: radius-lg,   value: "10px",  usage: "Cards, dialogs, toasts, photo slots — the system's \"surface\" radius." }
+    - { token: radius-full, value: "999px", usage: "True pills only — Badge, Tag, Switch, round avatars." }
+    - { token: border-w,    value: "1px",   usage: "The one hairline weight in the system." }
 
 elevation:
   label: Elevation
   description: >-
-    Five levels, each a two-shadow stack: a tight contact shadow plus a wider
-    ambient one. Levels are about hierarchy, not distance.
+    Two levels only, as every source project uses: flat — no shadow, a
+    hairline border does the work, and the default everywhere — and one
+    `shadow-float` for the single most-elevated element in a view: a Dialog,
+    a Toast, a floating menu.
   scale:
-    - token: elevation-0
-      value: "none"
-      usage: Flush with the canvas. Bordered cards live here.
-    - token: elevation-1
-      value: "0 1px 2px rgba(23, 21, 18, 0.06), 0 1px 3px rgba(23, 21, 18, 0.08)"
-      usage: Resting cards that need to separate from a busy background.
-    - token: elevation-2
-      value: "0 2px 4px rgba(23, 21, 18, 0.06), 0 4px 12px rgba(23, 21, 18, 0.08)"
-      usage: Dropdowns, popovers, sticky headers once they detach.
-    - token: elevation-3
-      value: "0 4px 8px rgba(23, 21, 18, 0.07), 0 12px 28px rgba(23, 21, 18, 0.12)"
-      usage: Dialogs and side sheets.
-    - token: elevation-4
-      value: "0 8px 16px rgba(23, 21, 18, 0.08), 0 24px 56px rgba(23, 21, 18, 0.16)"
-      usage: Full-screen overlays. One per view.
+    - token: shadow-sm
+      value: "0 1px 2px rgba(20, 18, 14, 0.05)"
+      usage: Barely-there separation — a Switch thumb, a focused Input.
+    - token: shadow-float
+      value: "0 2px 6px rgba(20, 18, 14, 0.06), 0 10px 24px -12px rgba(20, 18, 14, 0.18)"
+      usage: The one floating layer in a view. Apply it to at most one element on screen at a time.
 
 motion:
   label: Motion
   description: >-
-    Durations are short because this is an interface, not a title sequence.
-    Every one of these is muted to 0ms under `prefers-reduced-motion`.
+    Two durations and one easing curve — this is an interface, not a title
+    sequence. Short ease transitions on hover/focus only; no bounce, no
+    spring, no page-transition choreography.
   durations:
-    - { token: duration-instant, value: "0ms",   usage: State changes that must feel like they already happened. }
-    - { token: duration-fast,    value: "120ms", usage: Hover, focus, and colour transitions. }
-    - { token: duration-base,    value: "200ms", usage: Expanding, revealing, switching. }
-    - { token: duration-slow,    value: "320ms", usage: Anything that crosses more than half the viewport. }
-    - { token: duration-spin,    value: "700ms", usage: One rotation of the button spinner. }
-    - { token: duration-loop,    value: "1400ms", usage: One pass of an indeterminate indicator. }
+    - { token: dur-fast, value: "0.12s", usage: "Hover and focus colour/border transitions — the default." }
+    - { token: dur-base, value: "0.16s", usage: "Switch track and thumb — the one moving part in the system." }
   easings:
-    - { token: ease-standard, value: "cubic-bezier(0.2, 0, 0, 1)",    usage: The default. Fast out, settles gently. }
-    - { token: ease-entrance, value: "cubic-bezier(0, 0, 0.2, 1)",    usage: Elements arriving on screen. }
-    - { token: ease-exit,     value: "cubic-bezier(0.4, 0, 1, 1)",    usage: Elements leaving. Quicker than arriving. }
-    - { token: ease-spring,   value: "cubic-bezier(0.34, 1.4, 0.64, 1)", usage: Toggles and switches. The only overshoot in the system. }
-
-layout:
-  label: Layout
-  description: Container widths and the one breakpoint that actually changes the page.
-  scale:
-    - { token: measure-prose,  value: "68ch",   usage: Max width for running text. Roughly 75 characters. }
-    - { token: width-content,  value: "50rem",  usage: Documentation column. }
-    - { token: width-wide,     value: "72rem",  usage: Full site shell including the sidebar. }
-    - { token: sidebar-width,  value: "16rem",  usage: Persistent navigation rail. }
-    - { token: header-height,  value: "3.5rem", usage: Sticky masthead. }
+    - { token: ease, value: "cubic-bezier(0.2, 0, 0, 1)", usage: "The only easing curve in the system. Fast out, settles gently, applied to every transition." }

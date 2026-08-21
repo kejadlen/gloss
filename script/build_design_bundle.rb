@@ -33,16 +33,24 @@ CARDS = [
   ["foundations/space",       "foundations/space.html",       "Foundations", "Space"],
   ["foundations/elevation",   "foundations/elevation.html",   "Foundations", "Elevation"],
   ["foundations/motion",      "foundations/motion.html",      "Foundations", "Motion"],
-  ["components/button",       "components/button.html",       "Components",  "Button"],
-  ["components/field",        "components/field.html",        "Components",  "Field"],
-  ["components/badge",        "components/badge.html",        "Components",  "Badge"],
-  ["components/callout",      "components/callout.html",      "Components",  "Callout"],
-  ["components/card",         "components/card.html",         "Components",  "Card"],
-  ["components/table",        "components/table.html",        "Components",  "Table"],
-  ["components/tabs",         "components/tabs.html",         "Components",  "Tabs"],
-  ["components/progress",     "components/progress.html",     "Components",  "Progress"],
-  ["patterns/settings-form",  "patterns/settings-form.html",  "Patterns",    "Settings form"],
-  ["patterns/kitchen-sink",   "patterns/kitchen-sink.html",   "Patterns",    "Kitchen sink"],
+  ["components/button",       "components/button.html",       "Core",        "Button"],
+  ["components/icon-button",  "components/icon-button.html",  "Core",        "IconButton"],
+  ["components/badge",        "components/badge.html",        "Core",        "Badge"],
+  ["components/tag",          "components/tag.html",          "Core",        "Tag"],
+  ["components/card",         "components/card.html",         "Core",        "Card"],
+  ["components/card-row",     "components/card-row.html",     "Core",        "CardRow"],
+  ["components/field",        "components/field.html",        "Forms",       "Field"],
+  ["components/input",        "components/input.html",        "Forms",       "Input"],
+  ["components/select",       "components/select.html",       "Forms",       "Select"],
+  ["components/checkbox",     "components/checkbox.html",     "Forms",       "Checkbox"],
+  ["components/radio",        "components/radio.html",        "Forms",       "Radio"],
+  ["components/switch",       "components/switch.html",       "Forms",       "Switch"],
+  ["components/tooltip",      "components/tooltip.html",      "Feedback",    "Tooltip"],
+  ["components/toast",        "components/toast.html",        "Feedback",    "Toast"],
+  ["components/dialog",       "components/dialog.html",       "Feedback",    "Dialog"],
+  ["components/tabs",         "components/tabs.html",         "Navigation",  "Tabs"],
+  ["patterns/loop",           "patterns/loop.html",           "Patterns",    "Loop"],
+  ["patterns/archive",        "patterns/archive.html",        "Patterns",    "Archive"],
 ].freeze
 
 def read_site(path)
@@ -76,13 +84,13 @@ def card_html(group:, title:, body:, tokens:, styles:, script:)
     <title>#{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap">
     <style>
     #{tokens}
     #{styles}
     /* Card chrome. The pane supplies the frame; this just insets the page. */
-    body { padding: var(--ad-space-6) var(--ad-space-5); }
-    .ad-doc-main { max-width: var(--ad-width-content); margin-inline: auto; }
+    body { padding: var(--ad-space-l) var(--ad-space-m); }
+    .ad-doc-main { max-width: 50rem; margin-inline: auto; }
     .ad-doc-main > * { max-width: none; }
     </style>
     </head>

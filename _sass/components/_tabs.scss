@@ -1,37 +1,61 @@
 /* Tabs
    Markup follows the WAI-ARIA tabs pattern: a `tablist` of `tab` buttons
-   controlling `tabpanel`s. The keyboard wiring lives in assets/js/system.js. */
+   controlling `tabpanel`s. The keyboard wiring lives in assets/js/system.js
+   and is variant-agnostic — it only cares about `[data-tabs]` / `[role=tab]`.
 
-.ad-tabs { display: flex; flex-direction: column; gap: var(--ad-space-4); }
+   Two real variants: `underline` (mono, accent underline — primary section
+   nav) and `segmented` (pill track, active segment lifts to the surface —
+   filters like All · Overdue · Upcoming, never primary navigation). */
 
-.ad-tabs__list {
-  display: flex;
-  gap: var(--ad-space-1);
-  overflow-x: auto;
-  border-bottom: 1px solid var(--ad-color-border);
-  scrollbar-width: none;
+.ad-tabs__list { display: flex; }
+
+.ad-tabs--underline .ad-tabs__list {
+  gap: var(--ad-space-m);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
 }
-.ad-tabs__list::-webkit-scrollbar { display: none; }
-
-.ad-tabs__tab {
-  position: relative;
-  padding: var(--ad-space-2) var(--ad-space-3);
+.ad-tabs--underline .ad-tabs__tab {
+  padding: 0.5rem 0;
   margin-bottom: -1px;
   background: none;
   border: 0;
   border-bottom: 2px solid transparent;
-  color: var(--ad-color-text-muted);
-  font-size: var(--ad-text-sm);
-  font-weight: var(--ad-weight-medium);
-  white-space: nowrap;
+  color: var(--ad-color-text-secondary);
+  font-family: var(--ad-font-mono);
+  font-size: var(--ad-step--1);
+  letter-spacing: 0.02em;
   cursor: pointer;
-  transition: color var(--ad-duration-fast) var(--ad-ease-standard),
-              border-color var(--ad-duration-fast) var(--ad-ease-standard);
+  transition: color var(--ad-dur-fast) var(--ad-ease), border-color var(--ad-dur-fast) var(--ad-ease);
 }
-.ad-tabs__tab:hover { color: var(--ad-color-text); }
-.ad-tabs__tab[aria-selected="true"] {
-  color: var(--ad-color-accent);
+.ad-tabs--underline .ad-tabs__tab:hover { color: var(--ad-color-text-primary); }
+.ad-tabs--underline .ad-tabs__tab[aria-selected="true"] {
+  color: var(--ad-color-text-primary);
   border-bottom-color: var(--ad-color-accent);
 }
+
+.ad-tabs--segmented .ad-tabs__list {
+  display: inline-flex;
+  gap: 0.125rem;
+  padding: 0.1875rem;
+  background: var(--ad-color-surface-fill);
+  border-radius: var(--ad-radius-md);
+}
+.ad-tabs--segmented .ad-tabs__tab {
+  all: unset;
+  cursor: pointer;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--ad-radius-sm);
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step--1);
+  font-weight: 550;
+  color: var(--ad-color-text-secondary);
+  transition: background-color var(--ad-dur-fast) var(--ad-ease), color var(--ad-dur-fast) var(--ad-ease);
+}
+.ad-tabs--segmented .ad-tabs__tab[aria-selected="true"] {
+  color: var(--ad-color-text-primary);
+  background: var(--ad-color-surface-card);
+  box-shadow: var(--ad-shadow-sm);
+}
+
+.ad-tabs__panel { padding-top: var(--ad-space-s); }
 .ad-tabs__panel[hidden] { display: none; }
 .ad-tabs__panel:focus-visible { outline-offset: 4px; }

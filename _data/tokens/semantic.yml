@@ -1,176 +1,113 @@
 # Semantic colour aliases. Every component reads from this file and never
-# from a raw ramp. Values are either a `ramp.step` reference or a literal
-# CSS colour; `_plugins/token_generator.rb` resolves references at build time.
+# from a raw ramp. Values are either a `ramp.step` reference or a literal CSS
+# colour; `_plugins/token_generator.rb` resolves references at build time.
 #
 # `light` and `dark` are emitted as `:root` and `[data-theme="dark"]` blocks.
+# Two groups below — Accent's `-ink`/`-soft` pair and Status's `-bg` pair —
+# are literal `color-mix()` expressions rather than ramp references, exactly
+# mirroring the source's own `tokens/colors.css`. A `color-mix()` string is
+# not a flat hex, so `lib/arbitrary_definitions/color_math.rb` declines to
+# measure it (by design — see `HEX_PATTERN` / `UNMEASURABLE`); none of those
+# four tokens appears in `contrast.yml` for that reason.
 groups:
   - name: Surfaces
     id: surface
-    description: Backgrounds, from the page itself up to the topmost floating layer.
+    description: Backgrounds, from the page itself up to a card sitting on it.
     tokens:
-      - token: color-canvas
-        light: ink.50
-        dark: ink.950
-        usage: The page. Nothing sits behind it.
-      - token: color-surface
-        light: "#ffffff"
-        dark: ink.900
-        usage: Cards, panels, table bodies — anything that reads as a sheet on the canvas.
-      - token: color-surface-sunken
-        light: ink.100
-        dark: "#100e0c"
-        usage: Wells, code blocks, inset examples. Recessed relative to the canvas.
-      - token: color-surface-raised
-        light: "#ffffff"
-        dark: ink.800
-        usage: Menus, popovers, tooltips. Pairs with elevation 2 or higher.
-      - token: color-surface-hover
-        light: ink.100
-        dark: ink.800
-        usage: The wash under a hovered row or list item.
+      - token: color-surface-page
+        light: neutral.0
+        dark: neutral_dark.0
+        usage: The page itself. Nothing sits behind it.
+      - token: color-surface-card
+        light: neutral.50
+        dark: neutral_dark.50
+        usage: Cards, dialogs, toasts — anything that reads as a sheet on the page.
+      - token: color-surface-fill
+        light: neutral.100
+        dark: neutral_dark.100
+        usage: Recessed fill — a hovered row, a segmented-tab track, a photo placeholder.
+      - token: color-surface-fill-2
+        light: neutral.150
+        dark: neutral_dark.150
+        usage: A second, deeper fill step — the diagonal-grain stripe inside an empty photo slot.
 
   - name: Borders
     id: border
-    description: Three weights, because two was never enough and four was too many.
+    description: Two weights. Hairlines do most of the elevation work in this system, so there was never a reason for a third.
     tokens:
-      - token: color-border-subtle
-        light: ink.150
-        dark: ink.800
-        usage: Hairlines between rows and inside dense tables.
-      - token: color-border
-        light: ink.200
-        dark: ink.700
-        usage: The default. Card edges, input outlines, dividers.
-      - token: color-border-strong
-        light: ink.500
-        dark: ink.400
-        usage: Hovered inputs and anything that needs to look grabbable.
+      - token: color-border-hairline
+        light: neutral.200
+        dark: neutral_dark.200
+        usage: Card edges, row dividers, dialog dividers. The default edge everywhere.
+      - token: color-border-default
+        light: neutral.300
+        dark: neutral_dark.300
+        usage: Input and button borders — anything a reader has to recognise as a control.
 
   - name: Text
     id: text
-    description: Four levels of emphasis. Past four, readers stop perceiving a hierarchy.
+    description: Three levels of emphasis, deliberately not four. Past three, a reader stops perceiving a hierarchy and starts perceiving noise.
     tokens:
-      - token: color-text
-        light: ink.900
-        dark: ink.100
-        usage: Body copy and headings.
-      - token: color-text-muted
-        light: ink.600
-        dark: ink.300
-        usage: Supporting copy, table captions, helper text.
-      - token: color-text-subtle
-        light: ink.500
-        dark: ink.400
-        usage: Placeholders, disabled labels, metadata nobody reads on purpose.
-      - token: color-text-inverse
-        light: ink.50
-        dark: ink.950
-        usage: Text on a filled accent or inverted surface.
+      - token: color-text-primary
+        light: neutral.900
+        dark: neutral_dark.900
+        usage: Body copy, headings, and every control label.
+      - token: color-text-secondary
+        light: neutral.600
+        dark: neutral_dark.600
+        usage: Supporting copy, hints, mono meta values, type-label's colour.
+      - token: color-text-tertiary
+        light: neutral.500
+        dark: neutral_dark.500
+        usage: >-
+          Placeholders and de-emphasised metadata only — never body text. This
+          step is intentionally sub-AA against the page; see the caveat on the
+          Colour page.
 
   - name: Accent
     id: accent
-    description: Persimmon, rationed.
+    description: >-
+      One swappable accent per project, held constant across a whole view.
+      `-ink` and `-soft` re-derive from `--ad-color-accent` via `color-mix()`
+      exactly as the source computes them, so retheming the accent retones
+      both automatically.
     tokens:
       - token: color-accent
-        light: persimmon.700
-        dark: persimmon.400
-        usage: Primary buttons, links, the active nav marker.
-      - token: color-accent-hover
-        light: persimmon.800
-        dark: persimmon.300
-        usage: Hover and active states for accent surfaces.
-      - token: color-accent-subtle
-        light: persimmon.50
-        dark: persimmon.950
-        usage: Tinted backgrounds — selected rows, accent callouts.
-      - token: color-accent-border
-        light: persimmon.200
-        dark: persimmon.800
-        usage: Edges on accent-tinted surfaces.
-      - token: color-on-accent
+        light: accent.teal
+        dark: accent.teal
+        usage: Primary buttons, links, focus affordance, the active tab underline. Never two accents in one view.
+      - token: color-accent-fg
         light: "#ffffff"
-        dark: persimmon.950
-        usage: Text and icons sitting on a filled accent.
+        dark: "#ffffff"
+        usage: Label and icon colour on a filled accent surface. Fixed white, not a ramp reference.
+      - token: color-accent-ink
+        light: "color-mix(in oklch, var(--ad-color-accent) 78%, black)"
+        dark: "color-mix(in oklch, var(--ad-color-accent) 78%, black)"
+        usage: Text sitting on an `-soft` accent tint — an IconButton's active state, an accent avatar's initials.
+      - token: color-accent-soft
+        light: "color-mix(in oklch, var(--ad-color-accent) 12%, white)"
+        dark: "color-mix(in oklch, var(--ad-color-accent) 12%, white)"
+        usage: The tint behind an accent Badge, a toggled IconButton, an accent avatar chip.
 
   - name: Status
     id: status
     description: >-
-      Four states, each with a foreground, a tint, and an edge. Components take
-      the whole triple so a callout and a badge can never drift apart.
+      Exactly two states, both fixed — they read the same in every project and
+      are never swapped the way the accent is.
     tokens:
-      - token: color-positive
-        light: verdant.700
-        dark: verdant.300
-        usage: Success messaging and healthy indicators.
-      - token: color-positive-subtle
-        light: verdant.50
-        dark: verdant.950
-        usage: Tint behind positive content.
-      - token: color-positive-border
-        light: verdant.200
-        dark: verdant.800
-        usage: Edge on positive surfaces.
-      - token: color-caution
-        light: amber.700
-        dark: amber.300
-        usage: Warnings that do not block the user.
-      - token: color-caution-subtle
-        light: amber.50
-        dark: amber.950
-        usage: Tint behind caution content.
-      - token: color-caution-border
-        light: amber.200
-        dark: amber.800
-        usage: Edge on caution surfaces.
-      - token: color-critical
-        light: crimson.700
-        dark: crimson.300
-        usage: Errors, validation failures, destructive actions.
-      - token: color-critical-subtle
-        light: crimson.50
-        dark: crimson.950
-        usage: Tint behind critical content.
-      - token: color-critical-border
-        light: crimson.200
-        dark: crimson.800
-        usage: Edge on critical surfaces.
-      - token: color-critical-solid
-        light: crimson.700
-        dark: crimson.600
-        usage: >-
-          Fill for a destructive button. Distinct from `color-critical`, which is
-          a text colour and goes light in the dark theme — filling a button with
-          it would put white on pink.
-      - token: color-on-critical
-        light: "#ffffff"
-        dark: "#ffffff"
-        usage: Label on a filled destructive button.
-      - token: color-info
-        light: azure.700
-        dark: azure.300
-        usage: Neutral notices and tips.
-      - token: color-info-subtle
-        light: azure.50
-        dark: azure.950
-        usage: Tint behind informational content.
-      - token: color-info-border
-        light: azure.200
-        dark: azure.800
-        usage: Edge on informational surfaces.
-
-  - name: Interaction
-    id: interaction
-    description: The bits that only exist while a finger or a caret is involved.
-    tokens:
-      - token: color-focus
-        light: azure.500
-        dark: azure.400
-        usage: The focus ring. One colour, system-wide, never restyled per component.
-      - token: color-selection
-        light: persimmon.100
-        dark: persimmon.900
-        usage: Text selection highlight.
-      - token: color-overlay
-        light: "rgba(38, 35, 31, 0.5)"
-        dark: "rgba(0, 0, 0, 0.65)"
-        usage: Scrim behind modal surfaces.
+      - token: color-success
+        light: "#3f7a4a"
+        dark: "#3f7a4a"
+        usage: Success text and icons — a completed task's check, a saved-state badge.
+      - token: color-success-bg
+        light: "color-mix(in oklch, var(--ad-color-success) 12%, white)"
+        dark: "color-mix(in oklch, var(--ad-color-success) 12%, white)"
+        usage: Tint behind a success Badge. Mixed against literal white, so it stays constant across themes.
+      - token: color-danger
+        light: "#ad3a2c"
+        dark: "#ad3a2c"
+        usage: Overdue/destructive text, the Toast undo action, a danger Button's fill.
+      - token: color-danger-bg
+        light: "color-mix(in oklch, var(--ad-color-danger) 10%, white)"
+        dark: "color-mix(in oklch, var(--ad-color-danger) 10%, white)"
+        usage: Tint behind a danger Badge. Mixed against literal white, so it stays constant across themes.

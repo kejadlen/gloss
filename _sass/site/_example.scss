@@ -1,30 +1,31 @@
 /* The live-example figure emitted by _plugins/example_tag.rb. */
 
 .ad-example {
-  margin: var(--ad-space-5) 0 var(--ad-space-6);
-  border: 1px solid var(--ad-color-border);
-  border-radius: var(--ad-radius-md);
-  background: var(--ad-color-surface);
+  margin: var(--ad-space-s) 0 var(--ad-space-l);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-lg);
+  background: var(--ad-color-surface-card);
   overflow: hidden;
 }
 
 .ad-example__title {
-  padding: var(--ad-space-2) var(--ad-space-4);
-  border-bottom: 1px solid var(--ad-color-border-subtle);
-  background: var(--ad-color-surface-sunken);
-  font-size: var(--ad-text-2xs);
-  font-weight: var(--ad-weight-semibold);
-  letter-spacing: var(--ad-tracking-wide);
+  padding: var(--ad-space-2xs) var(--ad-space-xs);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+  background: var(--ad-color-surface-fill);
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ad-color-text-muted);
+  color: var(--ad-color-text-secondary);
 }
 
 .ad-example__preview {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--ad-space-3);
-  padding: var(--ad-space-5);
+  gap: var(--ad-space-xs);
+  padding: var(--ad-space-s);
 }
 .ad-example__preview--center { justify-content: center; }
 .ad-example__preview--end { justify-content: flex-end; }
@@ -38,25 +39,25 @@
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   align-items: start;
 }
-.ad-example__preview--sunken { background: var(--ad-color-surface-sunken); }
+.ad-example__preview--sunken { background: var(--ad-color-surface-fill); }
 .ad-example__preview--plain { padding: 0; }
 .ad-example__preview > * { min-width: 0; }
 
 .ad-example__source {
-  border-top: 1px solid var(--ad-color-border-subtle);
-  background: var(--ad-color-surface-sunken);
+  border-top: 1px solid var(--ad-color-border-hairline);
+  background: var(--ad-color-surface-fill);
 }
 .ad-example__summary {
-  padding: var(--ad-space-2) var(--ad-space-4);
-  font-size: var(--ad-text-xs);
-  font-weight: var(--ad-weight-medium);
-  color: var(--ad-color-text-muted);
+  padding: var(--ad-space-2xs) var(--ad-space-xs);
+  font-size: var(--ad-step--2);
+  font-weight: 500;
+  color: var(--ad-color-text-secondary);
   cursor: pointer;
   list-style: none;
   user-select: none;
   display: flex;
   align-items: center;
-  gap: var(--ad-space-2);
+  gap: var(--ad-space-2xs);
 }
 .ad-example__summary::-webkit-details-marker { display: none; }
 .ad-example__summary::before {
@@ -66,39 +67,40 @@
   border-inline-end: 1.5px solid currentColor;
   border-block-end: 1.5px solid currentColor;
   rotate: -45deg;
-  transition: rotate var(--ad-duration-fast) var(--ad-ease-standard);
+  transition: rotate var(--ad-dur-fast) var(--ad-ease);
 }
 .ad-example__source[open] > .ad-example__summary::before { rotate: 45deg; }
-.ad-example__summary:hover { color: var(--ad-color-text); }
+.ad-example__summary:hover { color: var(--ad-color-text-primary); }
 
 .ad-example__code {
   position: relative;
-  border-top: 1px solid var(--ad-color-border-subtle);
+  border-top: 1px solid var(--ad-color-border-hairline);
 }
 .ad-example__copy {
   position: absolute;
-  inset-block-start: var(--ad-space-2);
-  inset-inline-end: var(--ad-space-2);
-  padding: 0.125rem var(--ad-space-2);
-  background: var(--ad-color-surface);
-  border: 1px solid var(--ad-color-border);
-  border-radius: var(--ad-radius-xs);
-  color: var(--ad-color-text-muted);
-  font-size: var(--ad-text-2xs);
+  inset-block-start: var(--ad-space-2xs);
+  inset-inline-end: var(--ad-space-2xs);
+  padding: 0.125rem var(--ad-space-2xs);
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-sm);
+  color: var(--ad-color-text-secondary);
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
   cursor: pointer;
   opacity: 0;
-  transition: opacity var(--ad-duration-fast) var(--ad-ease-standard);
+  transition: opacity var(--ad-dur-fast) var(--ad-ease);
 }
 .ad-example__code:hover .ad-example__copy,
 .ad-example__copy:focus-visible { opacity: 1; }
-.ad-example__copy[data-copied="true"] { color: var(--ad-color-positive); border-color: var(--ad-color-positive-border); }
+.ad-example__copy[data-copied="true"] { color: var(--ad-color-success); border-color: var(--ad-color-success); }
 
 .ad-example pre {
   margin: 0;
-  padding: var(--ad-space-4);
+  padding: var(--ad-space-xs);
   overflow-x: auto;
-  font-size: var(--ad-text-xs);
-  line-height: var(--ad-leading-normal);
+  font-size: var(--ad-step--2);
+  line-height: 1.5;
   tab-size: 2;
 }
 .ad-example pre code { background: none; border: 0; padding: 0; white-space: pre; }
@@ -106,28 +108,30 @@
 /* Standalone fenced code blocks in the prose. */
 .ad-doc-main > .highlighter-rouge,
 .ad-doc-main > .highlight {
-  margin-block: var(--ad-space-4);
-  border: 1px solid var(--ad-color-border);
+  margin-block: var(--ad-space-xs);
+  border: 1px solid var(--ad-color-border-default);
   border-radius: var(--ad-radius-md);
-  background: var(--ad-color-surface-sunken);
+  background: var(--ad-color-surface-fill);
   overflow: hidden;
 }
 .ad-doc-main > .highlighter-rouge pre {
   margin: 0;
-  padding: var(--ad-space-4);
+  padding: var(--ad-space-xs);
   overflow-x: auto;
-  font-size: var(--ad-text-xs);
-  line-height: var(--ad-leading-normal);
+  font-size: var(--ad-step--2);
+  line-height: 1.5;
 }
 .ad-doc-main > .highlighter-rouge pre code { background: none; border: 0; padding: 0; white-space: pre; }
 
-/* Rouge tokens, mapped onto system colours so highlighting themes with the page. */
-.highlight { color: var(--ad-color-text); }
-.highlight .c, .highlight .c1, .highlight .cm, .highlight .cd { color: var(--ad-color-text-subtle); font-style: italic; }
+/* Rouge tokens, mapped onto system colours so highlighting themes with the
+   page. The source's palette has no caution/info hue, so both collapse onto
+   the nearest thing this system does have. */
+.highlight { color: var(--ad-color-text-primary); }
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cd { color: var(--ad-color-text-tertiary); font-style: italic; }
 .highlight .nt { color: var(--ad-color-accent); }
-.highlight .na { color: var(--ad-color-info); }
-.highlight .s, .highlight .s1, .highlight .s2, .highlight .dl { color: var(--ad-color-positive); }
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kr { color: var(--ad-color-critical); }
-.highlight .p, .highlight .o { color: var(--ad-color-text-muted); }
-.highlight .m, .highlight .mi, .highlight .mf { color: var(--ad-color-caution); }
-.highlight .nc, .highlight .nf, .highlight .nn { color: var(--ad-color-info); }
+.highlight .na { color: var(--ad-color-accent-ink); }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .dl { color: var(--ad-color-success); }
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kr { color: var(--ad-color-danger); }
+.highlight .p, .highlight .o { color: var(--ad-color-text-secondary); }
+.highlight .m, .highlight .mi, .highlight .mf { color: var(--ad-color-accent-ink); }
+.highlight .nc, .highlight .nf, .highlight .nn { color: var(--ad-color-accent-ink); }

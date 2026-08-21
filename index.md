@@ -1,20 +1,24 @@
 ---
 layout: default
 title: Overview
-description: A small, documented design system rendered from YAML tokens by Jekyll on Ruby 4.0.
+description: >-
+  A personal design system for self-hosted, single-user tools — synthesized
+  from three real running projects and rendered from YAML tokens by Jekyll on
+  Ruby 4.0.
 ---
 
 <div class="ad-hero">
   <p class="ad-overline">Design system</p>
-  <h1 class="ad-hero__title">Every design system is a pile of arbitrary definitions. This one says so out loud.</h1>
+  <h1 class="ad-hero__title">A personal umbrella for side projects, given a shared visual spine.</h1>
   <p class="ad-lead">
-    Somebody decided that the gap is 16px, that the accent is this orange and not that one,
-    and that a warning is amber. None of it was inevitable. What makes it a system is that
-    the decisions got written down in one place, given names, and then actually used.
+    Arbitrary Definitions is not a company's design system — it is one person's,
+    synthesized by reading three real, running personal projects rather than
+    written from a spec. Each project keeps its own accent colour and
+    typographic mood; this system is what they all share underneath.
   </p>
   <div class="ad-hero__actions">
     <a class="ad-btn ad-btn--primary ad-btn--lg" href="{{ '/foundations/color/' | relative_url }}">Start with colour</a>
-    <a class="ad-btn ad-btn--secondary ad-btn--lg" href="{{ '/components/button/' | relative_url }}">Jump to components</a>
+    <a class="ad-btn ad-btn--lg" href="{{ '/components/button/' | relative_url }}">Jump to components</a>
   </div>
 </div>
 
@@ -32,30 +36,45 @@ description: A small, documented design system rendered from YAML tokens by Jeky
     <span class="ad-stat__label">Components</span>
   </div>
   <div class="ad-stat">
-    <span class="ad-stat__value">{{ site.data.build.ruby }}</span>
-    <span class="ad-stat__label">Ruby</span>
+    <span class="ad-stat__value">3</span>
+    <span class="ad-stat__label">Source projects</span>
   </div>
 </div>
 
+## Where it came from
+
+Synthesized by reading three real projects, not copied from any one of them:
+[domus](https://github.com/kejadlen/domus) (a household inventory and
+document archive — warm paper surfaces, a swappable "Clay" accent, a
+capture dock), [ketchup](https://github.com/kejadlen/ketchup) (a
+recurring-task tracker — all-mono, plain grays, a flash-bar toast), and
+[quire](https://github.com/kejadlen/quire) (a personal git forge — humanist
+sans and mono, a full dark palette, underline tabs). The one literal constant
+across all three is an identical Utopia fluid type/space scale — adopted
+verbatim as this system's spine. Everything else is a synthesized middle
+ground. See [Why arbitrary]({{ '/rationale/' | relative_url }}) for the full
+story, including where this system knowingly guesses.
+
 ## How it is put together
 
-Three YAML files under `_data/tokens/` hold every value in the system. A Jekyll
-generator written in Ruby reads them at build time and emits
+Three YAML files under `_data/tokens/` hold every value in the system. A
+Jekyll generator written in Ruby reads them at build time and emits
 `assets/css/tokens.css` — one flat block of custom properties, plus the dark
 theme and a `prefers-reduced-motion` override. The component stylesheets read
 `var(--ad-*)` and nothing else.
 
-The same YAML feeds the tables and swatches on these pages, so the documentation
-cannot drift from the stylesheet. If a hex changes in the YAML, the swatch, the
-contrast figure, and the button all change together or none of them do.
+The same YAML feeds the tables and swatches on these pages, so the
+documentation cannot drift from the stylesheet. If a hex changes in the YAML,
+the swatch, the contrast figure, and the button all change together or none
+of them do.
 
 <div class="ad-card-grid">
   <article class="ad-card ad-card--link">
     <div class="ad-card__body">
       <h3 class="ad-card__title"><a href="{{ '/foundations/color/' | relative_url }}">Foundations</a></h3>
       <p class="ad-card__text">
-        Colour, type, space, elevation, and motion — with contrast ratios computed
-        from the tokens during the build rather than typed in by hand.
+        Colour, type, space, elevation, and motion — with contrast ratios
+        computed from the tokens during the build rather than typed by hand.
       </p>
     </div>
   </article>
@@ -63,17 +82,17 @@ contrast figure, and the button all change together or none of them do.
     <div class="ad-card__body">
       <h3 class="ad-card__title"><a href="{{ '/components/button/' | relative_url }}">Components</a></h3>
       <p class="ad-card__text">
-        Eight components, each rendered live next to the exact markup that produced
-        it. The demo and the snippet are the same string.
+        Sixteen components across core, forms, feedback, and navigation, each
+        rendered live next to the exact markup that produced it.
       </p>
     </div>
   </article>
   <article class="ad-card ad-card--link">
     <div class="ad-card__body">
-      <h3 class="ad-card__title"><a href="{{ '/rationale/' | relative_url }}">Why arbitrary</a></h3>
+      <h3 class="ad-card__title"><a href="{{ '/patterns/loop/' | relative_url }}">Patterns</a></h3>
       <p class="ad-card__text">
-        The argument for naming a decision you cannot justify, and the four rules
-        this system actually enforces.
+        Loop and Archive — a task dashboard and a capture app — put every
+        component family in one screen at once.
       </p>
     </div>
   </article>
@@ -82,16 +101,17 @@ contrast figure, and the button all change together or none of them do.
 ## A taste of it
 
 {% example title="Everything on one card" layout="stack" %}
-<article class="ad-card ad-card--raised" style="max-width: 26rem;">
+<article class="ad-card ad-card--elevated" style="max-width: 26rem;">
   <div class="ad-card__body">
     <div class="ad-badge-set">
-      <span class="ad-badge ad-badge--accent">Draft</span>
-      <span class="ad-badge"><span class="ad-badge__dot"></span>Unassigned</span>
+      <span class="ad-badge ad-badge--accent">Recommended</span>
+      <span class="ad-badge">Unassigned</span>
     </div>
     <h3 class="ad-card__title">Rename the caution colour</h3>
     <p class="ad-card__text">
-      Three people have called it “yellow” in review this month. The token is
-      <code>--ad-color-caution</code>; the ramp is amber.
+      Three people have called it "yellow" in review this month. There is no
+      caution token in this system — only <code>--ad-color-success</code> and
+      <code>--ad-color-danger</code>, fixed across every project.
     </p>
   </div>
   <div class="ad-card__footer">
@@ -101,15 +121,23 @@ contrast figure, and the button all change together or none of them do.
 </article>
 {% endexample %}
 
+## Voice
+
+Plain, unhurried, never marketing copy. "Take a photo or pick a file to
+keep." — not "Effortlessly supercharge your workflow!" These are tools for
+one person or household; copy never addresses "you" as a customer, and an
+empty state just states the fact: "Nothing tracked yet."
+
 ## Using it elsewhere
 
-Everything the system needs is two stylesheets and no JavaScript. Copy them into
-any project and the class names work as documented.
+Everything the system needs is two stylesheets and, for most components, no
+JavaScript at all.
 
 ```html
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="style.css">
 ```
 
-See [Using the CSS]({{ '/install/' | relative_url }}) for the details, including
-how to retheme the whole thing by overriding a dozen custom properties.
+See [Using the CSS]({{ '/install/' | relative_url }}) for the details,
+including how to retheme the whole thing by overriding a dozen custom
+properties.

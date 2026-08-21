@@ -14,7 +14,7 @@ module ArbitraryDefinitions
   class TokenSet
     class UnknownReference < StandardError; end
 
-    # A `ramp.step` reference, e.g. `persimmon.600`.
+    # A `ramp.step` reference, e.g. `accent.teal`.
     REFERENCE = /\A([a-z][a-z0-9_]*)\.([a-z0-9]+)\z/
 
     attr_reader :prefix, :ramps, :semantic, :scale, :contrast
@@ -184,16 +184,12 @@ module ArbitraryDefinitions
       groups = []
       typography = scale.fetch("typography")
       groups << ["Type families", typography.fetch("families")]
-      groups << ["Type sizes", typography.fetch("sizes")]
-      groups << ["Line heights", typography.fetch("line_heights")]
-      groups << ["Weights", typography.fetch("weights")]
-      groups << ["Tracking", typography.fetch("tracking")]
+      groups << ["Type steps", typography.fetch("steps")]
       groups << ["Space", scale.dig("space", "scale")]
       groups << ["Radius", scale.dig("radius", "scale")]
       groups << ["Elevation", scale.dig("elevation", "scale")]
       groups << ["Durations", scale.dig("motion", "durations")]
       groups << ["Easings", scale.dig("motion", "easings")]
-      groups << ["Layout", scale.dig("layout", "scale")]
       groups.reject { |(_, entries)| entries.nil? || entries.empty? }
     end
 

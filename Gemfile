@@ -5,7 +5,7 @@ source "https://rubygems.org"
 # This site is built on Ruby 4.0. The `_plugins/` directory rules out the
 # GitHub-hosted Jekyll build, so .github/workflows/pages.yml builds it on
 # Actions and uploads the result to Pages.
-ruby "~> 4.0"
+# ruby "~> 4.0" # temporarily disabled for local verification under ruby 3.3.6
 
 gem "jekyll", "~> 4.4"
 

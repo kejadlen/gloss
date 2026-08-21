@@ -1,0 +1,129 @@
+/* Tooltip — a dark mono label on hover, positioned above the child. Pure CSS:
+   the trigger and bubble are siblings inside one relatively-positioned span,
+   shown on :hover/:focus-within so it works from the keyboard too. */
+.ad-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.ad-tooltip__bubble {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--ad-radius-sm);
+  background: var(--ad-color-text-primary);
+  color: var(--ad-color-surface-page);
+  font-family: var(--ad-font-mono);
+  /* 11px is the source's own literal choice — smaller than --ad-step--2, the
+     smallest step on the scale, because a tooltip is meant to read as a
+     glance-only aside rather than body text. */
+  font-size: 11px;
+  white-space: nowrap;
+  line-height: 1.4;
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--ad-dur-fast) var(--ad-ease);
+}
+.ad-tooltip:hover .ad-tooltip__bubble,
+.ad-tooltip:focus-within .ad-tooltip__bubble {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Toast — the real pattern used for delete confirmations: a flat bar with an
+   optional destructive action and a dismiss. `--fixed` pins it bottom-right
+   for real use; the bare class stays in document flow for documentation. */
+.ad-toast {
+  display: flex;
+  align-items: center;
+  gap: var(--ad-space-xs);
+  min-width: 20rem;
+  padding: var(--ad-space-xs) var(--ad-space-s);
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-md);
+  box-shadow: var(--ad-shadow-float);
+  color: var(--ad-color-text-primary);
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step--2);
+}
+.ad-toast--fixed {
+  position: fixed;
+  inset-block-end: var(--ad-space-s);
+  inset-inline-end: var(--ad-space-s);
+  z-index: 60;
+}
+.ad-toast__message { flex: 1; }
+.ad-toast__action {
+  all: unset;
+  cursor: pointer;
+  color: var(--ad-color-danger);
+  font-weight: 600;
+}
+.ad-toast__dismiss {
+  all: unset;
+  cursor: pointer;
+  color: var(--ad-color-text-tertiary);
+  font-size: 1rem;
+  line-height: 1;
+}
+.ad-toast__dismiss:hover { color: var(--ad-color-text-primary); }
+
+/* Dialog — a centered modal: flat surface, no coloured header, hairline
+   dividers between title/body/footer. `.ad-dialog-demo` scopes the overlay
+   to its own preview container instead of the viewport, so a static,
+   always-open example can sit safely inside a documentation page; wire real
+   open/close state (and a viewport-fixed overlay) in the consuming app. */
+.ad-dialog-demo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20rem;
+  background: var(--ad-color-surface-fill);
+  border-radius: var(--ad-radius-lg);
+}
+.ad-dialog__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ad-space-s);
+  background: rgba(20, 18, 14, 0.35);
+  border-radius: inherit;
+}
+.ad-dialog {
+  width: 26rem;
+  max-width: 100%;
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-hairline);
+  border-radius: var(--ad-radius-lg);
+  box-shadow: var(--ad-shadow-float);
+  overflow: hidden;
+}
+.ad-dialog__title {
+  padding: var(--ad-space-s) var(--ad-space-m);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+  font-family: var(--ad-font-sans);
+  font-weight: 600;
+  font-size: var(--ad-step-0);
+  color: var(--ad-color-text-primary);
+}
+.ad-dialog__body {
+  padding: var(--ad-space-m);
+  color: var(--ad-color-text-primary);
+  font-size: var(--ad-step--1);
+}
+.ad-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ad-space-2xs);
+  padding: var(--ad-space-s) var(--ad-space-m);
+  border-top: 1px solid var(--ad-color-border-hairline);
+}

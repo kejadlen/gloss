@@ -18,7 +18,7 @@ class TestColorMath < Minitest::Test
   def test_declines_values_that_have_no_single_luminance
     assert_nil CM.to_rgb("rgba(38, 35, 31, 0.5)")
     assert_nil CM.to_rgb("none")
-    assert_nil CM.relative_luminance("var(--ad-color-canvas)")
+    assert_nil CM.relative_luminance("var(--ad-color-surface-page)")
     assert_nil CM.contrast_ratio("#ffffff", "none")
   end
 
