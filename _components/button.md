@@ -16,11 +16,11 @@ is destructive and irreversible only.
 <figure class="example">
 <figcaption>Variants</figcaption>
 <div>
-<button type="button">Cancel</button>
-<button type="button" data-variant="primary">Save</button>
-<button type="button" data-variant="dark">Finish setup</button>
-<button type="button" data-variant="ghost">Dismiss</button>
-<button type="button" data-variant="danger">Delete</button>
+<button>Cancel</button>
+<button data-variant="primary">Save</button>
+<button data-variant="dark">Finish setup</button>
+<button data-variant="ghost">Dismiss</button>
+<button data-variant="danger">Delete</button>
 </div>
 <details open><summary>Markup</summary>
 <pre><code>&lt;button type=&quot;button&quot;&gt;Cancel&lt;/button&gt;
@@ -39,9 +39,9 @@ grow a step of its own.
 <figure class="example">
 <figcaption>Sizes</figcaption>
 <div>
-<button type="button" data-variant="primary" data-size="sm">Small</button>
-<button type="button" data-variant="primary">Medium</button>
-<button type="button" data-variant="primary" data-size="lg">Large</button>
+<button data-variant="primary" data-size="sm">Small</button>
+<button data-variant="primary">Medium</button>
+<button data-variant="primary" data-size="lg">Large</button>
 </div>
 <details><summary>Markup</summary>
 <pre><code>&lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Small&lt;/button&gt;
@@ -58,8 +58,8 @@ disabled primary still reads as the primary.
 <figure class="example">
 <figcaption>States</figcaption>
 <div>
-<button type="button" data-variant="primary" disabled="">Disabled</button>
-<button type="button" aria-disabled="true">Not yet available</button>
+<button data-variant="primary" disabled="">Disabled</button>
+<button aria-disabled="true">Not yet available</button>
 </div>
 <details><summary>Markup</summary>
 <pre><code>&lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; disabled=&quot;&quot;&gt;Disabled&lt;/button&gt;
@@ -86,7 +86,7 @@ button itself.
 <figure class="example">
 <figcaption>Icon</figcaption>
 <div>
-<button type="button" data-variant="primary">
+<button data-variant="primary">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
   New
 </button>
@@ -108,9 +108,9 @@ buttons, so it doubles as the styling hook — no wrapper class.
 <figcaption>Button group</figcaption>
 <div>
 <div role="group" aria-label="View">
-  <button type="button" data-size="sm">List</button>
-  <button type="button" data-size="sm">Board</button>
-  <button type="button" data-size="sm">Calendar</button>
+  <button data-size="sm">List</button>
+  <button data-size="sm">Board</button>
+  <button data-size="sm">Calendar</button>
 </div>
 </div>
 <details><summary>Markup</summary>
@@ -127,7 +127,7 @@ buttons, so it doubles as the styling hook — no wrapper class.
 <figure class="example">
 <figcaption>Block</figcaption>
 <div data-layout="stack">
-<button type="button" data-variant="primary" data-block>Take a photo</button>
+<button data-variant="primary" data-block>Take a photo</button>
 </div>
 <details><summary>Markup</summary>
 <pre><code>&lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; data-block&gt;Take a photo&lt;/button&gt;</code></pre>

@@ -20,13 +20,13 @@ sitting alone — `variant`/`size` mean different things for each — so
 <figure class="example">
 <figcaption>Variants</figcaption>
 <div>
-<button type="button" class="icon-button" aria-label="Delete">
+<button class="icon-button" aria-label="Delete">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" /></svg>
 </button>
-<button type="button" class="icon-button" data-variant="outline" aria-label="Settings">
+<button class="icon-button" data-variant="outline" aria-label="Settings">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3" /><path d="M12 2.5v3M12 18.5v3M3.6 7.2l2.6 1.5M17.8 15.3l2.6 1.5M3.6 16.8l2.6-1.5M17.8 8.7l2.6-1.5" /></svg>
 </button>
-<button type="button" class="icon-button" data-variant="accent" aria-label="Filter (active)">
+<button class="icon-button" data-variant="accent" aria-label="Filter (active)">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16l-6 8v5l-4 2v-7z" /></svg>
 </button>
 </div>
@@ -48,9 +48,9 @@ sitting alone — `variant`/`size` mean different things for each — so
 <figure class="example">
 <figcaption>Sizes</figcaption>
 <div>
-<button type="button" class="icon-button" data-variant="outline" data-size="sm" aria-label="Back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg></button>
-<button type="button" class="icon-button" data-variant="outline" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg></button>
-<button type="button" class="icon-button" data-variant="outline" data-size="lg" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg></button>
+<button class="icon-button" data-variant="outline" data-size="sm" aria-label="Back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg></button>
+<button class="icon-button" data-variant="outline" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg></button>
+<button class="icon-button" data-variant="outline" data-size="lg" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg></button>
 </div>
 <details><summary>Markup</summary>
 <pre><code>&lt;button type=&quot;button&quot; class=&quot;icon-button&quot; data-variant=&quot;outline&quot; data-size=&quot;sm&quot; aria-label=&quot;Back&quot;&gt;&lt;svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.9&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M15 18l-6-6 6-6&quot; /&gt;&lt;/svg&gt;&lt;/button&gt;
@@ -67,7 +67,7 @@ An icon-only control almost always wants a [Tooltip](<%= relative_url('/componen
 <figcaption>With a tooltip</figcaption>
 <div>
 <span>
-  <button type="button" class="icon-button" aria-label="Delete" aria-describedby="icon-btn-tip">
+  <button class="icon-button" aria-label="Delete" aria-describedby="icon-btn-tip">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" /></svg>
   </button>
   <span role="tooltip" id="icon-btn-tip">Delete</span>

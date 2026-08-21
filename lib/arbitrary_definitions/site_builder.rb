@@ -160,7 +160,11 @@ module ArbitraryDefinitions
 
       rendered = ERB.new(page_source.body, trim_mode: "-").result(context.erb_binding)
 
-      html_body = Kramdown::Document.new(rendered, input: "GFM", syntax_highlighter: nil).to_html
+      # hard_wrap: false — the GFM parser otherwise turns every manually
+      # word-wrapped source line into a <br>, since GitHub's own comment
+      # rendering treats a single newline as a line break. This content is
+      # wrapped for editor readability, not for literal line breaks.
+      html_body = Kramdown::Document.new(rendered, input: "GFM", syntax_highlighter: nil, hard_wrap: false).to_html
 
       html = wrap_layout(page_source.layout, html_body, context)
       write(File.join(output_dir(page_source.url), "index.html"), html)

@@ -20,7 +20,7 @@ Hover or tab to the button below.
 <figcaption>Tooltip</figcaption>
 <div>
 <span>
-  <button type="button" class="icon-button" aria-label="Delete" aria-describedby="tooltip-basic">
+  <button class="icon-button" aria-label="Delete" aria-describedby="tooltip-basic">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" /></svg>
   </button>
   <span role="tooltip" id="tooltip-basic">Delete</span>

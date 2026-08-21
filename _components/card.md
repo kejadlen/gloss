@@ -39,8 +39,8 @@ it that has no element of its own to hang a selector on.
     <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">Three people have called it "yellow" in review this month.</p>
   </div>
   <div class="card-footer">
-    <button type="button" data-variant="primary" data-size="sm">Approve</button>
-    <button type="button" data-variant="ghost" data-size="sm">Dismiss</button>
+    <button data-variant="primary" data-size="sm">Approve</button>
+    <button data-variant="ghost" data-size="sm">Dismiss</button>
   </div>
 </article>
 </div>

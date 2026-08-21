@@ -18,7 +18,7 @@ descendant selector `.tag button` — no class of its own.
 <span class="tag">category:appliance</span>
 <span class="tag">
   category:receipt
-  <button type="button" aria-label="Remove tag">×</button>
+  <button aria-label="Remove tag">×</button>
 </span>
 </div>
 <details open><summary>Markup</summary>

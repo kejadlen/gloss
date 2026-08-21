@@ -159,25 +159,36 @@
 }
 .ad-doc-footer__inner { display: flex; flex-wrap: wrap; gap: var(--ad-space-xs); justify-content: space-between; }
 
-.ad-doc-nav-toggle { display: none; }
+/* `button.ad-doc-nav-toggle` (element + class) rather than a bare class:
+   button.css's own base rule is `button:not(.icon-button)`, which is also
+   one element + one class in specificity and sets `display: inline-flex` —
+   a bare `.ad-doc-nav-toggle { display: none }` loses that fight and the
+   toggle stays visible at every width. Matching its specificity here (and
+   coming later in the concatenated stylesheet) settles it in source order. */
+button.ad-doc-nav-toggle { display: none; }
 
 @media (max-width: 60rem) {
   .ad-doc-layout { grid-template-columns: minmax(0, 1fr); gap: var(--ad-space-s); }
   .ad-doc-sidebar {
     position: static;
     max-height: none;
+  }
+  /* The toggle is a normal Button; the panel it opens gets its own card
+     treatment. Putting the same card styling on the <aside> wrapper too
+     nested a button-shaped box inside an outer box for no reason. */
+  .ad-doc-nav {
+    margin-top: var(--ad-space-xs);
     padding: var(--ad-space-xs);
     background: var(--ad-color-surface-card);
     border: 1px solid var(--ad-color-border-default);
     border-radius: var(--ad-radius-md);
   }
   .ad-doc-sidebar[data-collapsed="true"] > .ad-doc-nav { display: none; }
-  .ad-doc-nav-toggle {
+  button.ad-doc-nav-toggle {
     display: flex;
     width: 100%;
     justify-content: space-between;
   }
-  .ad-doc-nav-toggle + .ad-doc-nav { margin-top: var(--ad-space-xs); }
 }
 
 @media (max-width: 34rem) {

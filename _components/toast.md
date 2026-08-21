@@ -21,8 +21,8 @@ anyway.
 <div>
 <div role="status">
   <span>Deleted "Call Mom"</span>
-  <button type="button">Undo</button>
-  <button type="button" aria-label="Dismiss">×</button>
+  <button>Undo</button>
+  <button aria-label="Dismiss">×</button>
 </div>
 </div>
 <details open><summary>Markup</summary>
@@ -41,7 +41,7 @@ anyway.
 <div>
 <div role="status">
   <span>Series created</span>
-  <button type="button" aria-label="Dismiss">×</button>
+  <button aria-label="Dismiss">×</button>
 </div>
 </div>
 <details><summary>Markup</summary>

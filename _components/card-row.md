@@ -40,8 +40,8 @@ a hover fill on its own; no `--clickable` modifier to remember.
 <figcaption>Clickable rows</figcaption>
 <div>
 <ul class="card" style="max-width: 22rem;">
-  <li><button type="button">Tax return 2025.pdf</button></li>
-  <li><button type="button">Warranty card.pdf</button></li>
+  <li><button>Tax return 2025.pdf</button></li>
+  <li><button>Warranty card.pdf</button></li>
 </ul>
 </div>
 <details><summary>Markup</summary>

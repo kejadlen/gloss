@@ -27,8 +27,8 @@ pseudo-element only exists for a dialog shown modally.
     <header>Delete series?</header>
     <p>This removes all of its task history. This cannot be undone.</p>
     <footer>
-      <button type="button">Cancel</button>
-      <button type="button" data-variant="danger">Delete</button>
+      <button>Cancel</button>
+      <button data-variant="danger">Delete</button>
     </footer>
   </dialog>
 </div>

@@ -19,7 +19,7 @@ beyond a couple of inline widths.
   <header style="display:flex; align-items:center; gap: var(--ad-space-s); padding: var(--ad-space-s) var(--ad-space-l); border-bottom: 1px solid var(--ad-color-border-hairline);">
     <span style="font-family: var(--ad-font-mono); font-weight:600; letter-spacing:0.02em; font-size: var(--ad-step-0);">Loop</span>
     <div style="flex:1;"></div>
-    <button type="button" data-variant="primary" data-size="sm">
+    <button data-variant="primary" data-size="sm">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
       New
     </button>
@@ -34,7 +34,7 @@ beyond a couple of inline widths.
         </div>
         <ul class="card" style="border:none; border-radius:0; background:none;">
           <li style="border-top: 1px solid var(--ad-color-border-hairline);">
-            <button type="button" aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-danger);"></button>
+            <button aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-danger);"></button>
             <div style="flex:1; min-width:0;">
               <div style="font-weight:500; color: var(--ad-color-danger);">Call Mom</div>
               <div class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">every 2 weeks</div>
@@ -42,7 +42,7 @@ beyond a couple of inline widths.
             <span class="type-mono" style="color: var(--ad-color-danger); font-size: var(--ad-step--2); white-space:nowrap;">3d overdue</span>
           </li>
           <li>
-            <button type="button" aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-danger);"></button>
+            <button aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-danger);"></button>
             <div style="flex:1; min-width:0;">
               <div style="font-weight:500; color: var(--ad-color-danger);">Water the ferns</div>
               <div class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">every 5 days</div>
@@ -55,7 +55,7 @@ beyond a couple of inline widths.
         <div class="type-label" style="margin-bottom: var(--ad-space-s);">Upcoming</div>
         <ul class="card" style="border:none; border-radius:0; background:none;">
           <li style="border-top: 1px solid var(--ad-color-border-hairline);">
-            <button type="button" aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-text-secondary);"></button>
+            <button aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-text-secondary);"></button>
             <div style="flex:1; min-width:0;">
               <div style="font-weight:500;">Renew passport</div>
               <div class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">every 10 years</div>
@@ -63,7 +63,7 @@ beyond a couple of inline widths.
             <span class="type-mono" style="color: var(--ad-color-text-secondary); font-size: var(--ad-step--2); white-space:nowrap;">in 3 months</span>
           </li>
           <li>
-            <button type="button" aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-text-secondary);"></button>
+            <button aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-text-secondary);"></button>
             <div style="flex:1; min-width:0;">
               <div style="font-weight:500;">Dentist checkup</div>
               <div class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">every 6 months</div>
@@ -71,7 +71,7 @@ beyond a couple of inline widths.
             <span class="type-mono" style="color: var(--ad-color-text-secondary); font-size: var(--ad-step--2); white-space:nowrap;">in 2 weeks</span>
           </li>
           <li>
-            <button type="button" aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-text-secondary);"></button>
+            <button aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-text-secondary);"></button>
             <div style="flex:1; min-width:0;">
               <div style="font-weight:500;">Rotate mattress</div>
               <div class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">every 6 months</div>
@@ -153,8 +153,8 @@ beyond a couple of inline widths.
       </div>
     </div>
     <footer>
-      <button type="button">Cancel</button>
-      <button type="button" data-variant="primary">Create</button>
+      <button>Cancel</button>
+      <button data-variant="primary">Create</button>
     </footer>
   </dialog>
 </div>
@@ -168,7 +168,7 @@ beyond a couple of inline widths.
 <div>
 <div role="status">
   <span>Completed "Call Mom"</span>
-  <button type="button" aria-label="Dismiss">×</button>
+  <button aria-label="Dismiss">×</button>
 </div>
 </div>
 </figure>
