@@ -1,0 +1,10 @@
+<%
+  seo_description = page.description || page.summary || site.description
+-%>
+<title><%= page.title %> | <%= site.title %></title>
+<meta name="description" content="<%= escape(seo_description) %>">
+<link rel="canonical" href="<%= site.url %><%= relative_url(page.url) %>">
+<meta property="og:title" content="<%= escape(page.title) %>">
+<meta property="og:site_name" content="<%= escape(site.title) %>">
+<meta property="og:url" content="<%= site.url %><%= relative_url(page.url) %>">
+<meta property="og:description" content="<%= escape(seo_description) %>">

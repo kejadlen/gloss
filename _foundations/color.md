@@ -22,7 +22,7 @@ at different values — which is exactly what the dark block does.
   <p style="margin:0; font-size: var(--ad-step--1);">
     The neutral ramps were authored in <code>oklch()</code> by the three
     projects this system was synthesized from (see
-    <a href="{{ '/rationale/' | relative_url }}">Why arbitrary</a>). This
+    <a href="<%= relative_url('/rationale/') %>">Why arbitrary</a>). This
     site's contrast-testing suite only understands flat hex, so every value
     below is that same colour converted to sRGB — not re-picked, not rounded.
     Contrast figures on this page are computed from those hex values during
@@ -36,36 +36,34 @@ Low-chroma warm-gray — the intersection of ketchup's plain grays, quire's
 warm cream/dark palette, and domus's warm paper. Ten steps, not twelve or
 sixteen: the source defines exactly these.
 
-{% assign neutral = site.data.tokens.color.ramps | where: "name", "neutral" | first %}
-<p class="ad-muted">{{ neutral.description }}</p>
+<% neutral = site.data.tokens.color.ramps.find { |r| r.name == "neutral" } -%>
+<p class="ad-muted"><%= neutral.description %></p>
 <ul class="ad-swatch-grid">
-  {%- assign steps = neutral.steps | sort: "order" %}
-  {%- for step in steps %}
-  {%- assign on = step.value | readable_on %}
+  <% neutral.steps.sort_by { |s| s.order }.each do |step| -%>
+  <% on = readable_on(step.value) -%>
   <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: {{ step.value }}; color: {{ on }};">n-{{ step.step }}</div>
+    <div class="ad-swatch__chip" style="background: <%= step.value %>; color: <%= on %>;">n-<%= step.step %></div>
     <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">{{ step.value }}</span>
-      <span class="ad-swatch__ratio">{{ step.value | contrast_with: '#ffffff' }} on white</span>
+      <span class="ad-swatch__hex"><%= step.value %></span>
+      <span class="ad-swatch__ratio"><%= contrast_with(step.value, '#ffffff') %> on white</span>
     </div>
   </li>
-  {%- endfor %}
+  <% end -%>
 </ul>
 
-{% assign neutral_dark = site.data.tokens.color.ramps | where: "name", "neutral_dark" | first %}
-<p class="ad-muted">{{ neutral_dark.description }}</p>
+<% neutral_dark = site.data.tokens.color.ramps.find { |r| r.name == "neutral_dark" } -%>
+<p class="ad-muted"><%= neutral_dark.description %></p>
 <ul class="ad-swatch-grid">
-  {%- assign dsteps = neutral_dark.steps | sort: "order" %}
-  {%- for step in dsteps %}
-  {%- assign on = step.value | readable_on %}
+  <% neutral_dark.steps.sort_by { |s| s.order }.each do |step| -%>
+  <% on = readable_on(step.value) -%>
   <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: {{ step.value }}; color: {{ on }};">nd-{{ step.step }}</div>
+    <div class="ad-swatch__chip" style="background: <%= step.value %>; color: <%= on %>;">nd-<%= step.step %></div>
     <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">{{ step.value }}</span>
-      <span class="ad-swatch__ratio">{{ step.value | contrast_with: '#000000' }} on black</span>
+      <span class="ad-swatch__hex"><%= step.value %></span>
+      <span class="ad-swatch__ratio"><%= contrast_with(step.value, '#000000') %> on black</span>
     </div>
   </li>
-  {%- endfor %}
+  <% end -%>
 </ul>
 
 ## Accent
@@ -73,15 +71,15 @@ sixteen: the source defines exactly these.
 One swappable accent per project — never two in the same view. Signal Teal is
 the default; the other four are the sanctioned menu a project can switch to.
 
-{% assign accent = site.data.tokens.color.ramps | where: "name", "accent" | first %}
+<% accent = site.data.tokens.color.ramps.find { |r| r.name == "accent" } -%>
 <ul class="ad-accent-grid">
-  {%- for step in accent.steps %}
+  <% accent.steps.each do |step| -%>
   <li>
-    <div class="ad-accent-demo" style="background: {{ step.value }};">{{ step.step }}{% if step.step == "teal" %} (default){% endif %}</div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">{{ step.value }}</span><span>{{ step.value | contrast_with: '#ffffff' }}:1 on white</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">{{ step.usage }}</p>
+    <div class="ad-accent-demo" style="background: <%= step.value %>;"><%= step.step %><% if step.step == "teal" %> (default)<% end %></div>
+    <div class="ad-specimen__meta"><span class="ad-token-name"><%= step.value %></span><span><%= contrast_with(step.value, '#ffffff') %>:1 on white</span></div>
+    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;"><%= step.usage %></p>
   </li>
-  {%- endfor %}
+  <% end -%>
 </ul>
 
 <div class="ad-callout">
@@ -101,11 +99,10 @@ the default; the other four are the sanctioned menu a project can switch to.
 Both themes, side by side. The left half of each chip is the light value and
 the right half is the dark one.
 
-{% assign groups = site.data.tokens.semantic.groups %}
-{% for group in groups %}
-### {{ group.name }}
+<% site.data.tokens.semantic.groups.each do |group| -%>
+### <%= group.name %>
 
-<p class="ad-muted">{{ group.description }}</p>
+<p class="ad-muted"><%= group.description %></p>
 
 <div class="ad-table-wrap">
   <table class="ad-table ad-table--compact">
@@ -118,31 +115,31 @@ the right half is the dark one.
       </tr>
     </thead>
     <tbody>
-      {%- for token in group.tokens %}
-      {%- assign flat = site.data.semantic_flat | where: "token", token.token | first %}
+      <% group.tokens.each do |token| -%>
+      <% flat = site.data.semantic_flat.find { |f| f.token == token.token } -%>
       <tr>
         <td>
           <div class="ad-alias-row">
-            {%- if flat.light contains "color-mix" %}
+            <% if flat.light.include?("color-mix") -%>
             <span class="ad-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--ad-color-surface-fill) 0 4px, var(--ad-color-surface-card) 4px 8px);"></span>
-            {%- else %}
+            <% else -%>
             <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
-              <span style="background: {{ flat.light }}"></span>
-              <span style="background: {{ flat.dark }}"></span>
+              <span style="background: <%= flat.light %>"></span>
+              <span style="background: <%= flat.dark %>"></span>
             </span>
-            {%- endif %}
-            <span class="ad-token-name">{{ flat.name }}</span>
+            <% end -%>
+            <span class="ad-token-name"><%= flat.name %></span>
           </div>
         </td>
-        <td class="ad-table__code">{{ token.light }}</td>
-        <td class="ad-table__code">{{ token.dark }}</td>
-        <td>{{ token.usage }}</td>
+        <td class="ad-table__code"><%= token.light %></td>
+        <td class="ad-table__code"><%= token.dark %></td>
+        <td><%= token.usage %></td>
       </tr>
-      {%- endfor %}
+      <% end -%>
     </tbody>
   </table>
 </div>
-{% endfor %}
+<% end -%>
 
 ## Contrast that has to hold
 
@@ -152,14 +149,13 @@ palette wants. The pairings below live in `_data/tokens/contrast.yml`,
 `test/test_token_set.rb` asserts every one of them in both themes, and this
 table is rendered from that same file.
 
-{% assign contract = site.data.tokens.contrast %}
-{% assign flat = site.data.semantic_flat %}
+<% contract = site.data.tokens.contrast -%>
+<% flat = site.data.semantic_flat -%>
 
-{% for section in contract %}
-{% assign spec = section[1] %}
-### {{ spec.label }} — {{ spec.minimum }}:1 minimum
+<% contract.each do |_key, spec| -%>
+### <%= spec.label %> — <%= spec.minimum %>:1 minimum
 
-<p class="ad-muted">{{ spec.standard }}</p>
+<p class="ad-muted"><%= spec.standard %></p>
 
 <div class="ad-table-wrap">
   <table class="ad-table ad-table--compact">
@@ -172,28 +168,28 @@ table is rendered from that same file.
       </tr>
     </thead>
     <tbody>
-      {%- for pair in spec.pairs %}
-      {%- assign fg = flat | where: "token", pair.foreground | first %}
-      {%- assign bg = flat | where: "token", pair.background | first %}
+      <% spec.pairs.each do |pair| -%>
+      <% fg = flat.find { |f| f.token == pair.foreground } -%>
+      <% bg = flat.find { |f| f.token == pair.background } -%>
       <tr>
         <td>
           <span class="ad-alias-row">
             <span class="ad-alias-chip" aria-hidden="true"
-                  style="background: {{ bg.light }}; color: {{ fg.light }}; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <span class="ad-token-name">{{ pair.foreground }}<br><span class="ad-subtle">on {{ pair.background }}</span></span>
+                  style="background: <%= bg.light %>; color: <%= fg.light %>; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <span class="ad-token-name"><%= pair.foreground %><br><span class="ad-subtle">on <%= pair.background %></span></span>
           </span>
         </td>
-        <td>{{ pair.note }}</td>
-        {%- assign light_ratio = fg.light | contrast_with: bg.light %}
-        {%- assign dark_ratio = fg.dark | contrast_with: bg.dark %}
-        <td class="ad-table__num">{{ light_ratio }}</td>
-        <td class="ad-table__num">{{ dark_ratio }}</td>
+        <td><%= pair.note %></td>
+        <% light_ratio = contrast_with(fg.light, bg.light) -%>
+        <% dark_ratio = contrast_with(fg.dark, bg.dark) -%>
+        <td class="ad-table__num"><%= light_ratio %></td>
+        <td class="ad-table__num"><%= dark_ratio %></td>
       </tr>
-      {%- endfor %}
+      <% end -%>
     </tbody>
   </table>
 </div>
-{% endfor %}
+<% end -%>
 
 Every figure above was computed during this build from the token value
 itself — none of it was typed by a person.

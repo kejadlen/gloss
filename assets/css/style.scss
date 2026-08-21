@@ -1,8 +1,7 @@
----
-# Front matter tells Jekyll to run this through the Sass converter.
-# The custom properties it consumes are generated separately by
-# _plugins/token_generator.rb into assets/css/tokens.css.
----
+// The Sass entry point compiled by lib/arbitrary_definitions/site_builder.rb
+// into assets/css/style.css. The custom properties it consumes are generated
+// separately, by lib/arbitrary_definitions/token_set.rb, into
+// assets/css/tokens.css.
 
 @use "base/reset";
 @use "base/typography";

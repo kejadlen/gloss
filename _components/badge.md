@@ -10,22 +10,22 @@ Labels are catalog-style: short, mono, uppercase — `SAVED`, `RECOMMENDED`,
 
 ## Tones
 
-{% example title="Tones" open %}
+<% example(title: "Tones", open: true) do %>
 <span class="ad-badge">Unassigned</span>
 <span class="ad-badge ad-badge--accent">Draft</span>
 <span class="ad-badge ad-badge--success">Saved</span>
 <span class="ad-badge ad-badge--danger">Overdue</span>
-{% endexample %}
+<% end %>
 
 ## In a set
 
-{% example title="Badge set" %}
+<% example(title: "Badge set") do %>
 <div class="ad-badge-set">
   <span class="ad-badge ad-badge--accent">Recommended</span>
   <span class="ad-badge">Every 2 weeks</span>
   <span class="ad-badge ad-badge--danger">3d overdue</span>
 </div>
-{% endexample %}
+<% end %>
 
 ## Rules
 

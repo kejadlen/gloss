@@ -7,7 +7,7 @@ summary: >-
 
 ## Basic
 
-{% example title="Switch" open %}
+<% example(title: "Switch", open: true) do %>
 <label class="ad-switch">
   <input type="checkbox" checked>
   <span class="ad-switch__track"></span>
@@ -18,17 +18,17 @@ summary: >-
   <span class="ad-switch__track"></span>
   Weekly digest
 </label>
-{% endexample %}
+<% end %>
 
 ## Disabled
 
-{% example title="Disabled" %}
+<% example(title: "Disabled") do %>
 <label class="ad-switch">
   <input type="checkbox" checked disabled>
   <span class="ad-switch__track"></span>
   Always on for this plan
 </label>
-{% endexample %}
+<% end %>
 
 ## API
 

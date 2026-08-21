@@ -7,23 +7,23 @@ summary: >-
 
 ## Default and removable
 
-{% example title="Tags" open %}
+<% example(title: "Tags", open: true) do %>
 <span class="ad-tag">location:garage</span>
 <span class="ad-tag">category:appliance</span>
 <span class="ad-tag">
   category:receipt
   <button type="button" class="ad-tag__remove" aria-label="Remove tag">×</button>
 </span>
-{% endexample %}
+<% end %>
 
 ## Dashed — the "add tag" affordance
 
-{% example title="Add tag" %}
+<% example(title: "Add tag") do %>
 <div class="ad-tag-set">
   <span class="ad-tag">location:garage</span>
   <span class="ad-tag ad-tag--dashed">+ add tag</span>
 </div>
-{% endexample %}
+<% end %>
 
 ## API
 

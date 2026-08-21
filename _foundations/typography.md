@@ -8,22 +8,22 @@ summary: >-
 
 ## Families
 
-{% for family in site.data.tokens.scale.typography.families %}
+<% site.data.tokens.scale.typography.families.each do |family| -%>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">{{ family.token | custom_property }}</span>
-    <span>{{ family.usage }}</span>
+    <span class="ad-token-name"><%= custom_property(family.token) %></span>
+    <span><%= family.usage %></span>
   </div>
-  <div class="ad-specimen__sample" style="font-family: var({{ family.token | custom_property }}); font-size: 1.5rem;">
+  <div class="ad-specimen__sample" style="font-family: var(<%= custom_property(family.token) %>); font-size: 1.5rem;">
     Arbitrary Definitions — 0123456789
   </div>
 </div>
-{% endfor %}
+<% end -%>
 
 Only one webfont is loaded — IBM Plex Mono, at 400/500/600:
 
 ```css
-{{ site.data.tokens.scale.typography.webfont_import }}
+<%= site.data.tokens.scale.typography.webfont_import %>
 ```
 
 Sans is a web-safe system stack; serif is Georgia-based and opt-in, for a
@@ -35,18 +35,18 @@ Eight steps, `clamp()`-based (Utopia, 320→1240px viewport). The body sits at
 `--ad-step-0` — 18px on a phone, 20px on a wide screen — with no fixed
 breakpoint in between.
 
-{% for step in site.data.tokens.scale.typography.steps %}
+<% site.data.tokens.scale.typography.steps.each do |step| -%>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">{{ step.token | custom_property }}</span>
-    <span>{{ step.px }}px</span>
-    <span>{{ step.usage }}</span>
+    <span class="ad-token-name"><%= custom_property(step.token) %></span>
+    <span><%= step.px %>px</span>
+    <span><%= step.usage %></span>
   </div>
-  <div class="ad-specimen__sample" style="font-size: var({{ step.token | custom_property }});">
+  <div class="ad-specimen__sample" style="font-size: var(<%= custom_property(step.token) %>);">
     The quick brown fox jumps over the lazy dog
   </div>
 </div>
-{% endfor %}
+<% end -%>
 
 ## The eight compound styles
 
@@ -58,21 +58,21 @@ source specifies one) letter-spacing in a single declaration.
   <table class="ad-table ad-table--compact">
     <thead><tr><th scope="col">Class</th><th scope="col">Weight</th><th scope="col">Size</th><th scope="col">Line-height</th><th scope="col">Tracking</th><th scope="col">Use for</th></tr></thead>
     <tbody>
-      {%- for style in site.data.tokens.scale.typography.styles %}
+      <% site.data.tokens.scale.typography.styles.each do |style| -%>
       <tr>
-        <td class="ad-token-name">.{{ style.class }}</td>
-        <td>{{ style.weight }}</td>
-        <td class="ad-table__code">{{ style.size | custom_property }}</td>
-        <td>{{ style.line_height }}</td>
-        <td>{{ style.tracking }}</td>
-        <td>{{ style.usage }}</td>
+        <td class="ad-token-name">.<%= style["class"] %></td>
+        <td><%= style.weight %></td>
+        <td class="ad-table__code"><%= custom_property(style.size) %></td>
+        <td><%= style.line_height %></td>
+        <td><%= style.tracking %></td>
+        <td><%= style.usage %></td>
       </tr>
-      {%- endfor %}
+      <% end -%>
     </tbody>
   </table>
 </div>
 
-{% example title="All eight, in order" layout="stack" %}
+<% example(title: "All eight, in order", layout: "stack") do %>
 <div class="type-display">Display</div>
 <h1 class="type-h1">Heading one</h1>
 <h2 class="type-h2">Heading two</h2>
@@ -81,7 +81,7 @@ source specifies one) letter-spacing in a single declaration.
 <p class="type-body-sm">Secondary copy, one step down.</p>
 <span class="type-label">Catalog label</span>
 <span class="type-mono">technical.value / 2026-08-21 / #3a6a63</span>
-{% endexample %}
+<% end %>
 
 ## Rules
 

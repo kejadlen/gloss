@@ -8,22 +8,22 @@ summary: >-
 ## Borders do the work
 
 The source's own rule: "hairline (1px) borders and dividers do most of the
-elevation work". A flat, bordered [Card]({{ '/components/card/' | relative_url }})
+elevation work". A flat, bordered [Card](<%= relative_url('/components/card/') %>)
 is the default everywhere. Shadow is the exception, not the baseline.
 
 ## The two levels
 
 <ul class="ad-elevation-grid">
-  {%- for step in site.data.tokens.scale.elevation.scale %}
+  <% site.data.tokens.scale.elevation.scale.each do |step| -%>
   <li>
-    <div class="ad-elevation-demo" style="box-shadow: {{ step.value }};"></div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">{{ step.token }}</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">{{ step.usage }}</p>
+    <div class="ad-elevation-demo" style="box-shadow: <%= step.value %>;"></div>
+    <div class="ad-specimen__meta"><span class="ad-token-name"><%= step.token %></span></div>
+    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;"><%= step.usage %></p>
   </li>
-  {%- endfor %}
+  <% end -%>
 </ul>
 
-{% example title="Flat vs. float" layout="grid" surface="sunken" %}
+<% example(title: "Flat vs. float", layout: "grid", surface: "sunken") do %>
 <article class="ad-card">
   <div class="ad-card__body">
     <h3 class="ad-card__title" style="font-size: var(--ad-step--1);">Flat</h3>
@@ -36,7 +36,7 @@ is the default everywhere. Shadow is the exception, not the baseline.
     <p class="ad-card__text">shadow-float. Reserved for one element per view — a Dialog, a Toast.</p>
   </div>
 </article>
-{% endexample %}
+<% end %>
 
 ## Elevation in the dark theme
 

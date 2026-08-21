@@ -5,7 +5,7 @@ summary: Flat checkbox, fills with the accent when checked. No bounce.
 
 ## Basic
 
-{% example title="Checkbox" open %}
+<% example(title: "Checkbox", open: true) do %>
 <label class="ad-choice ad-choice--checkbox">
   <input type="checkbox">
   <span class="ad-choice__box"></span>
@@ -18,21 +18,21 @@ summary: Flat checkbox, fills with the accent when checked. No bounce.
   </span>
   Ship on merge
 </label>
-{% endexample %}
+<% end %>
 
 ## Disabled
 
-{% example title="Disabled" %}
+<% example(title: "Disabled") do %>
 <label class="ad-choice ad-choice--checkbox" aria-disabled="true">
   <input type="checkbox" disabled>
   <span class="ad-choice__box"></span>
   Not available on this plan
 </label>
-{% endexample %}
+<% end %>
 
 ## In a fieldset
 
-{% example title="Fieldset" %}
+<% example(title: "Fieldset") do %>
 <fieldset class="ad-fieldset">
   <legend>Notify me about</legend>
   <label class="ad-choice ad-choice--checkbox">
@@ -46,7 +46,7 @@ summary: Flat checkbox, fills with the accent when checked. No bounce.
     Weekly digest
   </label>
 </fieldset>
-{% endexample %}
+<% end %>
 
 ## API
 

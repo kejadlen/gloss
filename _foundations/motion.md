@@ -15,13 +15,13 @@ easing, no page-transition choreography.
   <table class="ad-table ad-table--compact">
     <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use for</th></tr></thead>
     <tbody>
-      {%- for row in site.data.tokens.scale.motion.durations %}
+      <% site.data.tokens.scale.motion.durations.each do |row| -%>
       <tr>
-        <td class="ad-token-name">{{ row.token | custom_property }}</td>
-        <td class="ad-table__code">{{ row.value }}</td>
-        <td>{{ row.usage }}</td>
+        <td class="ad-token-name"><%= custom_property(row.token) %></td>
+        <td class="ad-table__code"><%= row.value %></td>
+        <td><%= row.usage %></td>
       </tr>
-      {%- endfor %}
+      <% end -%>
     </tbody>
   </table>
 </div>
@@ -31,15 +31,15 @@ easing, no page-transition choreography.
 There is exactly one curve in the system. Hover the tile below to run it.
 
 <ul class="ad-motion-grid">
-  {%- for row in site.data.tokens.scale.motion.easings %}
+  <% site.data.tokens.scale.motion.easings.each do |row| -%>
   <li>
     <div class="ad-motion-demo" tabindex="0">
       <span class="ad-motion-demo__dot"></span>
     </div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">{{ row.token | custom_property }}</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">{{ row.usage }}</p>
+    <div class="ad-specimen__meta"><span class="ad-token-name"><%= custom_property(row.token) %></span></div>
+    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;"><%= row.usage %></p>
   </li>
-  {%- endfor %}
+  <% end -%>
 </ul>
 
 ## Reduced motion is not a downgrade
@@ -61,7 +61,7 @@ do not have to opt in, and cannot opt out.
 The state change still happens. The Switch still moves. It simply arrives
 instead of travelling.
 
-{% example title="Motion in practice" %}
+<% example(title: "Motion in practice") do %>
 <label class="ad-switch">
   <input type="checkbox" checked>
   <span class="ad-switch__track"></span>
@@ -72,7 +72,7 @@ instead of travelling.
   <span class="ad-switch__track"></span>
   <span>Weekly digest</span>
 </label>
-{% endexample %}
+<% end %>
 
 ## Rules
 

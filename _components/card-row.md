@@ -7,25 +7,25 @@ summary: >-
 
 ## Basic
 
-{% example title="Rows" open %}
+<% example(title: "Rows", open: true) do %>
 <div class="ad-card" style="max-width: 22rem;">
   <div class="ad-card-row">Renew passport</div>
   <div class="ad-card-row">Dentist checkup</div>
   <div class="ad-card-row">Rotate mattress</div>
 </div>
-{% endexample %}
+<% end %>
 
 ## Clickable
 
 `--clickable` adds a hover fill and a pointer cursor. Use a real `<button>`
 element when the row navigates or opens something.
 
-{% example title="Clickable rows" %}
+<% example(title: "Clickable rows") do %>
 <div class="ad-card" style="max-width: 22rem;">
   <button type="button" class="ad-card-row ad-card-row--clickable">Tax return 2025.pdf</button>
   <button type="button" class="ad-card-row ad-card-row--clickable">Warranty card.pdf</button>
 </div>
-{% endexample %}
+<% end %>
 
 ## With content on both ends
 
@@ -33,7 +33,7 @@ The row is a flex container — a leading icon, a two-line middle column, and a
 trailing mono value is the most common shape (see the Loop and Archive
 patterns for it in context).
 
-{% example title="Leading icon, trailing meta" %}
+<% example(title: "Leading icon, trailing meta") do %>
 <div class="ad-card" style="max-width: 24rem;">
   <div class="ad-card-row">
     <span class="ad-avatar ad-avatar--square">
@@ -46,7 +46,7 @@ patterns for it in context).
     <span class="type-mono" style="color: var(--ad-color-text-tertiary);">2h</span>
   </div>
 </div>
-{% endexample %}
+<% end %>
 
 ## API
 

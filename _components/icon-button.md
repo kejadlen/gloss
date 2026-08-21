@@ -12,7 +12,7 @@ an icon button sitting alone rather than in a toolbar. `accent` is a soft
 accent tint, for a toggled or active state — the segmented-tabs pattern this
 system does not otherwise reach for.
 
-{% example title="Variants" open %}
+<% example(title: "Variants", open: true) do %>
 <button type="button" class="ad-icon-btn" aria-label="Delete">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>
 </button>
@@ -22,28 +22,28 @@ system does not otherwise reach for.
 <button type="button" class="ad-icon-btn ad-icon-btn--accent" aria-label="Filter (active)">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16l-6 8v5l-4 2v-7z"/></svg>
 </button>
-{% endexample %}
+<% end %>
 
 ## Sizes
 
-{% example title="Sizes" %}
+<% example(title: "Sizes") do %>
 <button type="button" class="ad-icon-btn ad-icon-btn--outline ad-icon-btn--sm" aria-label="Back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
 <button type="button" class="ad-icon-btn ad-icon-btn--outline" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
 <button type="button" class="ad-icon-btn ad-icon-btn--outline ad-icon-btn--lg" aria-label="Back"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
-{% endexample %}
+<% end %>
 
 ## Paired with Tooltip
 
-An icon-only control almost always wants a [Tooltip]({{ '/components/tooltip/' | relative_url }}) too — the `aria-label` covers accessibility, the tooltip covers a sighted mouse user glancing for a hint.
+An icon-only control almost always wants a [Tooltip](<%= relative_url('/components/tooltip/') %>) too — the `aria-label` covers accessibility, the tooltip covers a sighted mouse user glancing for a hint.
 
-{% example title="With a tooltip" %}
+<% example(title: "With a tooltip") do %>
 <span class="ad-tooltip">
   <button type="button" class="ad-icon-btn" aria-label="Delete">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>
   </button>
   <span class="ad-tooltip__bubble">Delete</span>
 </span>
-{% endexample %}
+<% end %>
 
 ## API
 

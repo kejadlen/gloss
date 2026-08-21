@@ -7,21 +7,21 @@ summary: >-
 
 ## Basic
 
-{% example title="Field" open %}
+<% example(title: "Field", open: true) do %>
 <div class="ad-field" style="max-width: 20rem;">
   <label class="ad-field__label" for="field-name">Name</label>
   <input class="ad-input" id="field-name" type="text" placeholder="Call Mom">
   <span class="ad-field__hint">First line becomes the display name.</span>
 </div>
-{% endexample %}
+<% end %>
 
 ## Holding any control
 
-Field wraps [Input]({{ '/components/input/' | relative_url }}),
-[Select]({{ '/components/select/' | relative_url }}), or anything else — it
+Field wraps [Input](<%= relative_url('/components/input/') %>),
+[Select](<%= relative_url('/components/select/') %>), or anything else — it
 only owns the label and the hint line, never the control's own styling.
 
-{% example title="Field with a select" %}
+<% example(title: "Field with a select") do %>
 <div class="ad-field" style="max-width: 20rem;">
   <label class="ad-field__label" for="field-unit">Unit</label>
   <select class="ad-select" id="field-unit">
@@ -31,11 +31,11 @@ only owns the label and the hint line, never the control's own styling.
     <option>Year</option>
   </select>
 </div>
-{% endexample %}
+<% end %>
 
 ## In a row
 
-{% example title="Two fields in a row" %}
+<% example(title: "Two fields in a row") do %>
 <div class="ad-form" style="max-width: none;">
   <div class="ad-form__row">
     <div class="ad-field">
@@ -50,7 +50,7 @@ only owns the label and the hint line, never the control's own styling.
     </div>
   </div>
 </div>
-{% endexample %}
+<% end %>
 
 ## API
 

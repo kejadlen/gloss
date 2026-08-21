@@ -11,7 +11,7 @@ mobile capture flow: the shape `kejadlen/domus` (a household inventory and
 document archive) would take if it were rebuilt on this token set, at its
 390×760 frame. Three screens, abbreviated to what each one adds.
 
-{% example title="Home — recent captures" layout="row" no-source %}
+<% example(title: "Home — recent captures", layout: "row", no_source: true) do %>
 <div style="width: 300px; height: 560px; background: var(--ad-color-surface-page); border-radius: var(--ad-radius-lg); box-shadow: var(--ad-shadow-float); overflow:hidden; display:flex; flex-direction:column; position:relative;">
   <header style="padding: 16px var(--ad-space-m) var(--ad-space-2xs);">
     <span style="font-weight:600; font-size: var(--ad-step-1); letter-spacing:-0.01em;">Archive</span>
@@ -99,7 +99,7 @@ document archive) would take if it were rebuilt on this token set, at its
     <p style="font-size: var(--ad-step--1); color: var(--ad-color-text-secondary); line-height:1.55; margin:0;">No notes yet.</p>
   </div>
 </div>
-{% endexample %}
+<% end %>
 
 ## What this screen is testing
 

@@ -12,7 +12,7 @@ tracker) would take if it were rebuilt on this token set. Every visible value
 below is a component from this system; nothing here is page-specific CSS
 beyond a couple of inline widths.
 
-{% example title="Loop" layout="stack" no-source %}
+<% example(title: "Loop", layout: "stack", no_source: true) do %>
 <div style="border: 1px solid var(--ad-color-border-hairline); border-radius: var(--ad-radius-lg); overflow: hidden; background: var(--ad-color-surface-page);">
 
   <header style="display:flex; align-items:center; gap: var(--ad-space-s); padding: var(--ad-space-s) var(--ad-space-l); border-bottom: 1px solid var(--ad-color-border-hairline);">
@@ -83,14 +83,14 @@ beyond a couple of inline widths.
     <aside style="width: 15rem; flex-shrink:0; background: var(--ad-color-surface-fill); border-left: 1px solid var(--ad-color-border-hairline); padding: var(--ad-space-l);">
       <div class="type-label" style="margin-bottom: var(--ad-space-s);">This week</div>
       <div style="display:flex; background: var(--ad-color-surface-card); border: 1px solid var(--ad-color-border-hairline); border-radius: var(--ad-radius-md); overflow:hidden; margin-bottom: var(--ad-space-l);">
-        {%- assign week = "S,M,T,W,T,F,S" | split: "," %}
-        {%- assign nums = "0,1,0,2,0,1,0" | split: "," %}
-        {%- for d in week %}
-        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0; {% if forloop.index0 == 3 %}background: var(--ad-color-accent-soft);{% endif %} {% unless forloop.last %}border-right: 1px solid var(--ad-color-border-hairline);{% endunless %}">
-          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">{{ d }}</span>
-          <span style="font-size:13px; font-weight:600; color: {% if forloop.index0 == 3 %}var(--ad-color-accent-ink){% else %}var(--ad-color-text-primary){% endif %};">{{ nums[forloop.index0] }}</span>
+        <% week = %w[S M T W T F S] -%>
+        <% nums = [0, 1, 0, 2, 0, 1, 0] -%>
+        <% week.each_with_index do |d, index0| -%>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0; <% if index0 == 3 %>background: var(--ad-color-accent-soft);<% end %> <% unless index0 == week.length - 1 %>border-right: 1px solid var(--ad-color-border-hairline);<% end %>">
+          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;"><%= d %></span>
+          <span style="font-size:13px; font-weight:600; color: <% if index0 == 3 %>var(--ad-color-accent-ink)<% else %>var(--ad-color-text-primary)<% end %>;"><%= nums[index0] %></span>
         </div>
-        {%- endfor %}
+        <% end -%>
       </div>
       <div class="type-label" style="margin-bottom: var(--ad-space-2xs);">Series</div>
       <div>
@@ -101,11 +101,11 @@ beyond a couple of inline widths.
     </aside>
   </div>
 </div>
-{% endexample %}
+<% end %>
 
 ## The New series dialog
 
-{% example title="New series" no-source %}
+<% example(title: "New series", no_source: true) do %>
 <div class="ad-dialog-demo" style="min-height: 18rem;">
   <div class="ad-dialog__overlay">
     <div class="ad-dialog" style="width: 22rem;">
@@ -136,16 +136,16 @@ beyond a couple of inline widths.
     </div>
   </div>
 </div>
-{% endexample %}
+<% end %>
 
 ## After completing a task
 
-{% example title="Toast" no-source %}
+<% example(title: "Toast", no_source: true) do %>
 <div class="ad-toast">
   <span class="ad-toast__message">Completed "Call Mom"</span>
   <button type="button" class="ad-toast__dismiss" aria-label="Dismiss">×</button>
 </div>
-{% endexample %}
+<% end %>
 
 ## What this screen is testing
 

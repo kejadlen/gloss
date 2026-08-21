@@ -3,8 +3,8 @@ layout: default
 title: Overview
 description: >-
   A personal design system for self-hosted, single-user tools — synthesized
-  from three real running projects and rendered from YAML tokens by Jekyll on
-  Ruby 4.0.
+  from three real running projects and rendered from YAML tokens by a small
+  Ruby/ERB static-site generator on Ruby 4.0.
 ---
 
 <div class="ad-hero">
@@ -17,22 +17,22 @@ description: >-
     typographic mood; this system is what they all share underneath.
   </p>
   <div class="ad-hero__actions">
-    <a class="ad-btn ad-btn--primary ad-btn--lg" href="{{ '/foundations/color/' | relative_url }}">Start with colour</a>
-    <a class="ad-btn ad-btn--lg" href="{{ '/components/button/' | relative_url }}">Jump to components</a>
+    <a class="ad-btn ad-btn--primary ad-btn--lg" href="<%= relative_url('/foundations/color/') %>">Start with colour</a>
+    <a class="ad-btn ad-btn--lg" href="<%= relative_url('/components/button/') %>">Jump to components</a>
   </div>
 </div>
 
 <div class="ad-stat-row">
   <div class="ad-stat">
-    <span class="ad-stat__value">{{ site.data.build.ramps }}</span>
+    <span class="ad-stat__value"><%= site.data.build.ramps %></span>
     <span class="ad-stat__label">Colour ramps</span>
   </div>
   <div class="ad-stat">
-    <span class="ad-stat__value">{{ site.data.build.aliases }}</span>
+    <span class="ad-stat__value"><%= site.data.build.aliases %></span>
     <span class="ad-stat__label">Semantic aliases</span>
   </div>
   <div class="ad-stat">
-    <span class="ad-stat__value">{{ site.components | size }}</span>
+    <span class="ad-stat__value"><%= site.components.size %></span>
     <span class="ad-stat__label">Components</span>
   </div>
   <div class="ad-stat">
@@ -52,16 +52,16 @@ recurring-task tracker — all-mono, plain grays, a flash-bar toast), and
 sans and mono, a full dark palette, underline tabs). The one literal constant
 across all three is an identical Utopia fluid type/space scale — adopted
 verbatim as this system's spine. Everything else is a synthesized middle
-ground. See [Why arbitrary]({{ '/rationale/' | relative_url }}) for the full
+ground. See [Why arbitrary](<%= relative_url('/rationale/') %>) for the full
 story, including where this system knowingly guesses.
 
 ## How it is put together
 
-Three YAML files under `_data/tokens/` hold every value in the system. A
-Jekyll generator written in Ruby reads them at build time and emits
-`assets/css/tokens.css` — one flat block of custom properties, plus the dark
-theme and a `prefers-reduced-motion` override. The component stylesheets read
-`var(--ad-*)` and nothing else.
+Three YAML files under `_data/tokens/` hold every value in the system. Plain
+Ruby (`lib/arbitrary_definitions/token_set.rb`) reads them at build time and
+emits `assets/css/tokens.css` — one flat block of custom properties, plus the
+dark theme and a `prefers-reduced-motion` override. The component stylesheets
+read `var(--ad-*)` and nothing else.
 
 The same YAML feeds the tables and swatches on these pages, so the
 documentation cannot drift from the stylesheet. If a hex changes in the YAML,
@@ -71,7 +71,7 @@ of them do.
 <div class="ad-card-grid">
   <article class="ad-card ad-card--link">
     <div class="ad-card__body">
-      <h3 class="ad-card__title"><a href="{{ '/foundations/color/' | relative_url }}">Foundations</a></h3>
+      <h3 class="ad-card__title"><a href="<%= relative_url('/foundations/color/') %>">Foundations</a></h3>
       <p class="ad-card__text">
         Colour, type, space, elevation, and motion — with contrast ratios
         computed from the tokens during the build rather than typed by hand.
@@ -80,7 +80,7 @@ of them do.
   </article>
   <article class="ad-card ad-card--link">
     <div class="ad-card__body">
-      <h3 class="ad-card__title"><a href="{{ '/components/button/' | relative_url }}">Components</a></h3>
+      <h3 class="ad-card__title"><a href="<%= relative_url('/components/button/') %>">Components</a></h3>
       <p class="ad-card__text">
         Sixteen components across core, forms, feedback, and navigation, each
         rendered live next to the exact markup that produced it.
@@ -89,7 +89,7 @@ of them do.
   </article>
   <article class="ad-card ad-card--link">
     <div class="ad-card__body">
-      <h3 class="ad-card__title"><a href="{{ '/patterns/loop/' | relative_url }}">Patterns</a></h3>
+      <h3 class="ad-card__title"><a href="<%= relative_url('/patterns/loop/') %>">Patterns</a></h3>
       <p class="ad-card__text">
         Loop and Archive — a task dashboard and a capture app — put every
         component family in one screen at once.
@@ -100,7 +100,7 @@ of them do.
 
 ## A taste of it
 
-{% example title="Everything on one card" layout="stack" %}
+<% example(title: "Everything on one card", layout: "stack") do %>
 <article class="ad-card ad-card--elevated" style="max-width: 26rem;">
   <div class="ad-card__body">
     <div class="ad-badge-set">
@@ -119,7 +119,7 @@ of them do.
     <button type="button" class="ad-btn ad-btn--ghost ad-btn--sm">Dismiss</button>
   </div>
 </article>
-{% endexample %}
+<% end %>
 
 ## Voice
 
@@ -138,6 +138,6 @@ JavaScript at all.
 <link rel="stylesheet" href="style.css">
 ```
 
-See [Using the CSS]({{ '/install/' | relative_url }}) for the details,
+See [Using the CSS](<%= relative_url('/install/') %>) for the details,
 including how to retheme the whole thing by overriding a dozen custom
 properties.

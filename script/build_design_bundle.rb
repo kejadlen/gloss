@@ -9,7 +9,7 @@
 # same reason the docs are — a second, hand-maintained copy of the system would
 # start disagreeing with the first one immediately.
 #
-#   bundle exec jekyll build && ruby script/build_design_bundle.rb
+#   bundle exec rake build && ruby script/build_design_bundle.rb
 #
 # Output lands in design-bundle/, which is gitignored: it is a build artifact.
 
@@ -55,7 +55,7 @@ CARDS = [
 
 def read_site(path)
   full = File.join(SITE, path)
-  abort "missing #{full} — run `bundle exec jekyll build` first" unless File.file?(full)
+  abort "missing #{full} — run `bundle exec rake build` first" unless File.file?(full)
   File.read(full, encoding: "UTF-8")
 end
 

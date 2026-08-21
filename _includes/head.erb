@@ -3,7 +3,7 @@
 <meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0e0d0b" media="(prefers-color-scheme: dark)">
 
-{% seo %}
+<%= render("seo") %>
 
 <!-- The system's one loaded webfont — see _data/tokens/scale.yml's
      typography.webfont_import. Sans is a web-safe system stack; nothing is
@@ -13,10 +13,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 
 <!-- Generated from _data/tokens/*.yml at build time. -->
-<link rel="stylesheet" href="{{ '/assets/css/tokens.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<link rel="stylesheet" href="<%= relative_url('/assets/css/tokens.css') %>">
+<link rel="stylesheet" href="<%= relative_url('/assets/css/style.css') %>">
 
-<link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="icon" href="<%= relative_url('/assets/favicon.svg') %>" type="image/svg+xml">
 
 <!-- Applied before first paint so an explicit theme choice never flashes. -->
 <script>

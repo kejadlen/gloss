@@ -10,8 +10,9 @@ summary: >-
 ## The two files
 
 The system compiles to exactly two stylesheets. `tokens.css` is generated
-from YAML by a Jekyll plugin; `style.css` is the components. The order
-matters — the components read the custom properties the tokens define.
+from YAML by `lib/arbitrary_definitions/token_set.rb`; `style.css` is the
+components. The order matters — the components read the custom properties the
+tokens define.
 
 ```html
 <link rel="stylesheet" href="tokens.css">
@@ -19,19 +20,19 @@ matters — the components read the custom properties the tokens define.
 ```
 
 Both are on this site at
-[`/assets/css/tokens.css`]({{ '/assets/css/tokens.css' | relative_url }}) and
-[`/assets/css/style.css`]({{ '/assets/css/style.css' | relative_url }}). The
-generated token file is {{ site.data.tokens_css_size }} bytes uncompressed.
+[`/assets/css/tokens.css`](<%= relative_url('/assets/css/tokens.css') %>) and
+[`/assets/css/style.css`](<%= relative_url('/assets/css/style.css') %>). The
+generated token file is <%= site.data.tokens_css_size %> bytes uncompressed.
 
 Load IBM Plex Mono separately — it is the system's one webfont, and nothing
 else is fetched:
 
 ```css
-{{ site.data.tokens.scale.typography.webfont_import }}
+<%= site.data.tokens.scale.typography.webfont_import %>
 ```
 
 Almost nothing here needs JavaScript. `assets/js/system.js` adds keyboard
-handling for [Tabs]({{ '/components/tabs/' | relative_url }}), the theme
+handling for [Tabs](<%= relative_url('/components/tabs/') %>), the theme
 toggle, and the copy buttons on this site — Tooltip, Checkbox, Radio, and
 Switch are pure CSS, and Dialog/Toast are shown as static states for
 documentation rather than wired up as production widgets.
@@ -84,9 +85,11 @@ a handful of custom properties after the token file loads — most of all,
 
 ## Building this site
 
-The plugins in `_plugins/` mean the GitHub-hosted Jekyll build will not run
-this site, so it builds on GitHub Actions and uploads the result to Pages.
-Locally:
+There is no Jekyll here — the whole site is a Rakefile driving plain ERB
+templates and Kramdown (see `lib/arbitrary_definitions/site_builder.rb`). It
+still builds on GitHub Actions and uploads the result to Pages, mainly so the
+build always runs on the pinned Ruby 4.0 rather than whatever GitHub's Pages
+runner happens to ship. Locally:
 
 ```console
 $ rbenv install 4.0.6      # or however you get Ruby 4.0
@@ -102,8 +105,8 @@ $ bundle exec rake serve   # http://127.0.0.1:4000
     <thead><tr><th scope="col">Path</th><th scope="col">What it is</th></tr></thead>
     <tbody>
       <tr><td class="ad-table__code">_data/tokens/</td><td>The four YAML files. Every value in the system.</td></tr>
-      <tr><td class="ad-table__code">lib/arbitrary_definitions/</td><td>Token compiler and WCAG colour maths. No Jekyll dependency, so it is unit tested on its own.</td></tr>
-      <tr><td class="ad-table__code">_plugins/</td><td>The Jekyll wiring: a generator, Liquid filters, and the <code>{% raw %}{% example %}{% endraw %}</code> block.</td></tr>
+      <tr><td class="ad-table__code">lib/arbitrary_definitions/</td><td>The token compiler, WCAG colour maths, and the whole site builder. No Jekyll dependency anywhere, so the first two are unit tested on their own.</td></tr>
+      <tr><td class="ad-table__code">_layouts/, _includes/</td><td>Plain ERB templates — the page chrome and the <code>example</code> helper's two-up demo/source rendering.</td></tr>
       <tr><td class="ad-table__code">_sass/components/</td><td>One stylesheet per component group. No hexes, no pixels, no durations.</td></tr>
       <tr><td class="ad-table__code">test/</td><td>Minitest. Contrast floors, ramp monotonicity, CSS well-formedness.</td></tr>
     </tbody>
@@ -112,18 +115,19 @@ $ bundle exec rake serve   # http://127.0.0.1:4000
 
 ## How the example blocks work
 
-Every demo on this site is one Liquid block. The plugin renders its body
-twice — live into the page, and Rouge-highlighted into the source panel
-underneath.
+Every demo on this site is one call to an `example` ERB helper
+(`lib/arbitrary_definitions/example_helper.rb`). It captures its block's
+rendered output and renders that captured markup twice — live into the page,
+and Rouge-highlighted into the source panel underneath.
 
-{% raw %}
-```liquid
-{% example title="Variants" open %}
+<!--verbatim-->
+```erb
+<% example(title: "Variants", open: true) do %>
 <button type="button" class="ad-btn">Cancel</button>
 <button type="button" class="ad-btn ad-btn--primary">Save</button>
-{% endexample %}
+<% end %>
 ```
-{% endraw %}
+<!--/verbatim-->
 
 There is no second copy of the markup to keep in sync, which is the usual way
 component documentation starts lying about the component.

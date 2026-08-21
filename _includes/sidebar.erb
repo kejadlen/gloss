@@ -6,15 +6,15 @@
   </button>
 
   <nav class="ad-doc-nav" id="ad-doc-nav" aria-label="Design system">
-    {%- for group in site.data.nav %}
+    <% site.data.nav.each do |group| -%>
     <div class="ad-doc-nav__group">
-      <h2 class="ad-doc-nav__heading">{{ group.title }}</h2>
-      {%- for link in group.links %}
-      {%- assign href = link.url | relative_url %}
-      <a class="ad-doc-nav__link" href="{{ href }}"
-         {% if page.url == link.url %}aria-current="page"{% endif %}>{{ link.text }}</a>
-      {%- endfor %}
+      <h2 class="ad-doc-nav__heading"><%= group.title %></h2>
+      <% group.links.each do |link| -%>
+      <% href = relative_url(link.url) -%>
+      <a class="ad-doc-nav__link" href="<%= href %>"
+         <% if page.url == link.url %>aria-current="page"<% end %>><%= link.text %></a>
+      <% end -%>
     </div>
-    {%- endfor %}
+    <% end -%>
   </nav>
 </aside>

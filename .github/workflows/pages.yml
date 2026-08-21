@@ -7,9 +7,10 @@ on:
   pull_request:
   workflow_dispatch:
 
-# The site is built here rather than by GitHub's hosted Jekyll because
-# _plugins/ only runs in an unsafe build, and because that build would pin us
-# to whatever Ruby GitHub Pages is using rather than Ruby 4.0.
+# The site is its own small Ruby/ERB build (see lib/arbitrary_definitions/
+# site_builder.rb and Rakefile) rather than Jekyll, so it has to build on
+# Actions rather than GitHub's hosted Jekyll build regardless — this also
+# pins the build to Ruby 4.0 rather than whatever Ruby GitHub Pages uses.
 permissions:
   contents: read
   pages: write
@@ -35,9 +36,7 @@ jobs:
           bundler-cache: true
 
       - name: Report the toolchain
-        run: |
-          ruby -v
-          bundle exec jekyll -v
+        run: ruby -v
 
       # The token tests are the deploy gate: they assert the contrast floors,
       # that every ramp darkens monotonically, and that no unresolved token
@@ -50,9 +49,7 @@ jobs:
       # green on branches and forks. Change it there if the site ever moves off
       # a project page.
       - name: Build
-        env:
-          JEKYLL_ENV: production
-        run: bundle exec jekyll build
+        run: bundle exec rake build
 
       - name: Check the build output
         run: |

@@ -10,14 +10,14 @@ summary: >-
 Flat is the default everywhere. `--elevated` is for the single most-elevated
 element on screen — never a whole grid of cards at once.
 
-{% example title="Flat and elevated" surface="sunken" %}
+<% example(title: "Flat and elevated", surface: "sunken") do %>
 <div class="ad-card" style="width: 14rem; padding: var(--ad-space-s);">Flat — the default.</div>
 <div class="ad-card ad-card--elevated" style="width: 14rem; padding: var(--ad-space-s);">Elevated — one per view.</div>
-{% endexample %}
+<% end %>
 
 ## As a content tile
 
-{% example title="Content tile" %}
+<% example(title: "Content tile") do %>
 <article class="ad-card" style="max-width: 18rem;">
   <div class="ad-card__body">
     <p class="type-label">Recommended</p>
@@ -29,21 +29,21 @@ element on screen — never a whole grid of cards at once.
     <button type="button" class="ad-btn ad-btn--ghost ad-btn--sm">Dismiss</button>
   </div>
 </article>
-{% endexample %}
+<% end %>
 
 ## As a list — with CardRow
 
 Card's most common job in this system is holding a list of
-[CardRow]({{ '/components/card-row/' | relative_url }})s: entry lists, task
+[CardRow](<%= relative_url('/components/card-row/') %>)s: entry lists, task
 lists, settings rows.
 
-{% example title="Card of rows" %}
+<% example(title: "Card of rows") do %>
 <div class="ad-card" style="max-width: 22rem;">
   <div class="ad-card-row">Dishwasher manual</div>
   <div class="ad-card-row">Sofa receipt</div>
   <div class="ad-card-row">Passport scan</div>
 </div>
-{% endexample %}
+<% end %>
 
 ## API
 

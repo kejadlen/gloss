@@ -11,22 +11,22 @@ summary: >-
 The example below stays in document flow so it does not cover the page;
 `.ad-toast--fixed` is what actually pins it bottom-right in a real app.
 
-{% example title="Toast" open %}
+<% example(title: "Toast", open: true) do %>
 <div class="ad-toast">
   <span class="ad-toast__message">Deleted "Call Mom"</span>
   <button type="button" class="ad-toast__action">Undo</button>
   <button type="button" class="ad-toast__dismiss" aria-label="Dismiss">×</button>
 </div>
-{% endexample %}
+<% end %>
 
 ## Without an action
 
-{% example title="No action" %}
+<% example(title: "No action") do %>
 <div class="ad-toast">
   <span class="ad-toast__message">Series created</span>
   <button type="button" class="ad-toast__dismiss" aria-label="Dismiss">×</button>
 </div>
-{% endexample %}
+<% end %>
 
 ## API
 

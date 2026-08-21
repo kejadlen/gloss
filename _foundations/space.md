@@ -8,13 +8,13 @@ summary: >-
 ## The scale
 
 <div class="ad-ruler">
-  {%- for step in site.data.tokens.scale.space.scale %}
+  <% site.data.tokens.scale.space.scale.each do |step| -%>
   <div class="ad-ruler__row">
-    <span class="ad-token-name">{{ step.token }}</span>
-    <span class="ad-ruler__num">{{ step.px }}px</span>
-    <span class="ad-ruler__bar" style="width: {{ step.value }}; min-width: 1px;"></span>
+    <span class="ad-token-name"><%= step.token %></span>
+    <span class="ad-ruler__num"><%= step.px %>px</span>
+    <span class="ad-ruler__bar" style="width: <%= step.value %>; min-width: 1px;"></span>
   </div>
-  {%- endfor %}
+  <% end -%>
 </div>
 
 ## How to pick one
@@ -30,7 +30,7 @@ summary: >-
 | Major section spacing | `--ad-space-xl` / `--ad-space-2xl` |
 | Hero and empty-state breathing room | `--ad-space-3xl` |
 
-{% example title="The same card at three densities" layout="grid" %}
+<% example(title: "The same card at three densities", layout: "grid") do %>
 <article class="ad-card">
   <div class="ad-card__body" style="gap: var(--ad-space-3xs); padding: var(--ad-space-xs);">
     <h3 class="ad-card__title" style="font-size: var(--ad-step--1);">Compact</h3>
@@ -49,7 +49,7 @@ summary: >-
     <p class="ad-card__text">space-l padding, space-s gap. For a card that is the whole screen.</p>
   </div>
 </article>
-{% endexample %}
+<% end %>
 
 ## Radius
 
@@ -58,18 +58,18 @@ rather than any one source project's specific softness. Nothing pill-shaped
 except true pills.
 
 <ul class="ad-radius-grid">
-  {%- for step in site.data.tokens.scale.radius.scale %}
-  {%- unless step.token == "border-w" %}
+  <% site.data.tokens.scale.radius.scale.each do |step| -%>
+  <% unless step.token == "border-w" -%>
   <li>
-    <div class="ad-radius-demo" style="border-radius: {{ step.value }};"></div>
+    <div class="ad-radius-demo" style="border-radius: <%= step.value %>;"></div>
     <div class="ad-specimen__meta">
-      <span class="ad-token-name">{{ step.token }}</span>
-      <span>{{ step.value }}</span>
+      <span class="ad-token-name"><%= step.token %></span>
+      <span><%= step.value %></span>
     </div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">{{ step.usage }}</p>
+    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;"><%= step.usage %></p>
   </li>
-  {%- endunless %}
-  {%- endfor %}
+  <% end -%>
+  <% end -%>
 </ul>
 
 ## Rules

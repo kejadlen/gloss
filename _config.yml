@@ -4,69 +4,13 @@ description: >-
   Arbitrary Definitions is a personal design system for self-hosted,
   single-user tools — synthesized from three real running projects, not
   written from a spec. Sixteen components and five foundations, rendered from
-  a single set of YAML token files by a Jekyll site running on Ruby 4.0.
+  a single set of YAML token files by a small Ruby/ERB site builder running
+  on Ruby 4.0.
 
 url: https://kejadlen.github.io
 baseurl: /arbitrary-definitions-design-system
 repository: kejadlen/arbitrary-definitions-design-system
 lang: en
 
-sass:
-  style: compressed
-  sass_dir: _sass
-
-markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    default_lang: html
-
 # The prefix on every custom property and class this system emits.
 token_prefix: ad
-
-collections:
-  foundations:
-    output: true
-    permalink: /foundations/:name/
-  components:
-    output: true
-    permalink: /components/:name/
-  patterns:
-    output: true
-    permalink: /patterns/:name/
-
-defaults:
-  - scope: { path: "" }
-    values:
-      layout: page
-  - scope: { path: "", type: foundations }
-    values:
-      layout: page
-      section: Foundations
-  - scope: { path: "", type: components }
-    values:
-      layout: page
-      section: Components
-  - scope: { path: "", type: patterns }
-    values:
-      layout: page
-      section: Patterns
-
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - README.md
-  - CONTRIBUTING.md
-  - Rakefile
-  - test
-  - vendor
-  - lib
-  # Build artifacts. .gitignore does not exclude these from Jekyll, and
-  # design-bundle/ is built *from* _site, so leaving it in would fold a copy
-  # of the whole site back into the next build.
-  - design-bundle
-  - .ruby-version
-  - script
-
-plugins: []

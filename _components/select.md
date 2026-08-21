@@ -5,20 +5,20 @@ summary: Native select, styled to match Input exactly.
 
 ## Basic
 
-{% example title="Select" open %}
+<% example(title: "Select", open: true) do %>
 <select class="ad-select" style="max-width: 20rem;">
   <option>Day</option>
   <option selected>Week</option>
   <option>Month</option>
   <option>Year</option>
 </select>
-{% endexample %}
+<% end %>
 
 ## Disabled
 
-{% example title="Disabled" %}
+<% example(title: "Disabled") do %>
 <select class="ad-select" disabled style="max-width: 20rem;"><option>Week</option></select>
-{% endexample %}
+<% end %>
 
 <div class="ad-callout">
   <p style="margin:0; font-size: var(--ad-step--1);">

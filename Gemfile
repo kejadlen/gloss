@@ -2,21 +2,20 @@
 
 source "https://rubygems.org"
 
-# This site is built on Ruby 4.0. The `_plugins/` directory rules out the
-# GitHub-hosted Jekyll build, so .github/workflows/pages.yml builds it on
-# Actions and uploads the result to Pages.
+# This site is built on Ruby 4.0.
 # ruby "~> 4.0" # temporarily disabled for local verification under ruby 3.3.6
 
-gem "jekyll", "~> 4.4"
+# Markdown rendering (GFM) and syntax highlighting for the ERB-rendered pages
+# — see lib/arbitrary_definitions/site_builder.rb.
+gem "kramdown", "~> 2.5"
+gem "kramdown-parser-gfm", "~> 1.1"
+gem "rouge", "~> 4.0"
 
-group :jekyll_plugins do
-  gem "jekyll-seo-tag", "~> 2.8"
-  gem "jekyll-sitemap", "~> 1.4"
-end
+# Compiles _sass/**/*.scss into assets/css/style.css.
+gem "sass-embedded", "~> 1.75"
 
-# Standard library that ships as a bundled gem from Ruby 3.4/4.0 onward.
-# Jekyll and its dependencies still reach for these, so they have to be
-# declared rather than assumed.
+# Standard library that ships as a bundled gem from Ruby 3.4/4.0 onward, but
+# still has to be declared explicitly rather than assumed.
 gem "base64", "~> 0.2"
 gem "benchmark", "~> 0.4"
 gem "bigdecimal", "~> 3.1"

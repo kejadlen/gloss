@@ -11,7 +11,7 @@ summary: >-
 Mono, with an accent underline. For primary section navigation — a project's
 own tabs, never a filter.
 
-{% example title="Underline" layout="stack" open %}
+<% example(title: "Underline", layout: "stack", open: true) do %>
 <div class="ad-tabs ad-tabs--underline" data-tabs>
   <div class="ad-tabs__list" role="tablist" aria-label="Repository">
     <button class="ad-tabs__tab" role="tab" id="tabs-code-tab" aria-controls="tabs-code-panel" aria-selected="true" tabindex="0">Code</button>
@@ -22,14 +22,14 @@ own tabs, never a filter.
   <div class="ad-tabs__panel" role="tabpanel" id="tabs-ci-panel" aria-labelledby="tabs-ci-tab" tabindex="0" hidden>Build history.</div>
   <div class="ad-tabs__panel" role="tabpanel" id="tabs-issues-panel" aria-labelledby="tabs-issues-tab" tabindex="0" hidden>Open issues.</div>
 </div>
-{% endexample %}
+<% end %>
 
 ## Segmented
 
 A pill track; the active segment lifts to the surface. For filters — *All ·
 Overdue · Upcoming* — never primary navigation.
 
-{% example title="Segmented" layout="stack" %}
+<% example(title: "Segmented", layout: "stack") do %>
 <div class="ad-tabs ad-tabs--segmented" data-tabs>
   <div class="ad-tabs__list" role="tablist" aria-label="Filter">
     <button class="ad-tabs__tab" role="tab" id="tabs-all-tab" aria-controls="tabs-all-panel" aria-selected="true" tabindex="0">All</button>
@@ -40,7 +40,7 @@ Overdue · Upcoming* — never primary navigation.
   <div class="ad-tabs__panel" role="tabpanel" id="tabs-overdue-panel" aria-labelledby="tabs-overdue-tab" tabindex="0" hidden>2 series.</div>
   <div class="ad-tabs__panel" role="tabpanel" id="tabs-upcoming-panel" aria-labelledby="tabs-upcoming-tab" tabindex="0" hidden>5 series.</div>
 </div>
-{% endexample %}
+<% end %>
 
 ## Rules
 

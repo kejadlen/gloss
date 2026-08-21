@@ -100,10 +100,10 @@ and it does not care what the brand guidelines say.
 
 So it is the one thing the build refuses to take on trust.
 `_data/tokens/contrast.yml` names
-{{ site.data.tokens.contrast.text.pairs | size }} pairings that have to hold;
+<%= site.data.tokens.contrast.text.pairs.size %> pairings that have to hold;
 `lib/arbitrary_definitions/color_math.rb` computes WCAG relative luminance
 from the token values, and `test/test_token_set.rb` asserts every one of them
-in both themes. The [contract table]({{ '/foundations/color/' | relative_url }}#contrast-that-has-to-hold)
+in both themes. The [contract table](<%= relative_url('/foundations/color/') %>#contrast-that-has-to-hold)
 is rendered from that same file. If a token change drops any pairing below
 its floor, `rake test` fails and the site does not deploy.
 
@@ -117,7 +117,7 @@ That contract is deliberately narrower than "every colour in the system".
 about 3.46:1 against the page in light mode, under the 4.5:1 floor for normal
 text. That is not a bug the build should paper over by darkening a real brand
 value; it is a documented, intentional property of the palette (see the
-[Colour page]({{ '/foundations/color/' | relative_url }})), so the contract
+[Colour page](<%= relative_url('/foundations/color/') %>)), so the contract
 excludes it rather than silently forcing it to pass. Borders get the same
 treatment for the same reason: the source's own rule is that hairline borders
 do the elevation work, not high contrast, so this system does not invent a

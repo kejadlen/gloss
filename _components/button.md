@@ -13,34 +13,34 @@ committing action in a screen, typically a final Save; it should be rare.
 `ghost` has no border or fill, for dismissals and tertiary actions. `danger`
 is destructive and irreversible only.
 
-{% example title="Variants" open %}
+<% example(title: "Variants", open: true) do %>
 <button type="button" class="ad-btn">Cancel</button>
 <button type="button" class="ad-btn ad-btn--primary">Save</button>
 <button type="button" class="ad-btn ad-btn--dark">Finish setup</button>
 <button type="button" class="ad-btn ad-btn--ghost">Dismiss</button>
 <button type="button" class="ad-btn ad-btn--danger">Delete</button>
-{% endexample %}
+<% end %>
 
 ## Sizes
 
 Sizes adjust padding only — the font stays on the type scale, it does not
 grow a step of its own.
 
-{% example title="Sizes" %}
+<% example(title: "Sizes") do %>
 <button type="button" class="ad-btn ad-btn--primary ad-btn--sm">Small</button>
 <button type="button" class="ad-btn ad-btn--primary">Medium</button>
 <button type="button" class="ad-btn ad-btn--primary ad-btn--lg">Large</button>
-{% endexample %}
+<% end %>
 
 ## States
 
 Disabled buttons drop to 50% opacity and keep their variant colours, so a
 disabled primary still reads as the primary.
 
-{% example title="States" %}
+<% example(title: "States") do %>
 <button type="button" class="ad-btn ad-btn--primary" disabled>Disabled</button>
 <button type="button" class="ad-btn" aria-disabled="true">Not yet available</button>
-{% endexample %}
+<% end %>
 
 <div class="ad-callout">
   <p class="type-label" style="margin-bottom: var(--ad-space-2xs); display:block;">disabled vs. aria-disabled</p>
@@ -58,38 +58,38 @@ disabled primary still reads as the primary.
 Pass an icon as the first child. The gap is `--ad-space-2xs`, set by the
 button itself.
 
-{% example title="Icon" %}
+<% example(title: "Icon") do %>
 <button type="button" class="ad-btn ad-btn--primary">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
   New
 </button>
-{% endexample %}
+<% end %>
 
 ## Groups
 
-{% example title="Button group" %}
+<% example(title: "Button group") do %>
 <div class="ad-btn-group" role="group" aria-label="View">
   <button type="button" class="ad-btn ad-btn--sm">List</button>
   <button type="button" class="ad-btn ad-btn--sm">Board</button>
   <button type="button" class="ad-btn ad-btn--sm">Calendar</button>
 </div>
-{% endexample %}
+<% end %>
 
 ## Full width
 
-{% example title="Block" layout="stack" %}
+<% example(title: "Block", layout: "stack") do %>
 <button type="button" class="ad-btn ad-btn--primary ad-btn--block">Take a photo</button>
-{% endexample %}
+<% end %>
 
 ## Links that act like buttons
 
 An `<a>` with `.ad-btn` is fine when the thing it does is navigate. A
 `<button>` is required when it changes something.
 
-{% example title="Anchor as button" %}
-<a class="ad-btn ad-btn--primary" href="{{ '/components/icon-button/' | relative_url }}">Next: IconButton</a>
-<a class="ad-btn ad-btn--ghost" href="{{ '/foundations/color/' | relative_url }}">Back to colour</a>
-{% endexample %}
+<% example(title: "Anchor as button") do %>
+<a class="ad-btn ad-btn--primary" href="<%= relative_url('/components/icon-button/') %>">Next: IconButton</a>
+<a class="ad-btn ad-btn--ghost" href="<%= relative_url('/foundations/color/') %>">Back to colour</a>
+<% end %>
 
 ## API
 

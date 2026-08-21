@@ -5,7 +5,7 @@ summary: Flat radio button, the same visual language as Checkbox.
 
 ## Basic
 
-{% example title="Radio" open %}
+<% example(title: "Radio", open: true) do %>
 <label class="ad-choice ad-choice--radio">
   <input type="radio" name="demo-radio-1" checked>
   <span class="ad-choice__box"></span>
@@ -16,11 +16,11 @@ summary: Flat radio button, the same visual language as Checkbox.
   <span class="ad-choice__box"></span>
   Monthly
 </label>
-{% endexample %}
+<% end %>
 
 ## As a group
 
-{% example title="Interval" %}
+<% example(title: "Interval") do %>
 <fieldset class="ad-fieldset">
   <legend>Repeat</legend>
   <label class="ad-choice ad-choice--radio">
@@ -39,7 +39,7 @@ summary: Flat radio button, the same visual language as Checkbox.
     Every year
   </label>
 </fieldset>
-{% endexample %}
+<% end %>
 
 ## API
 
