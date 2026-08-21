@@ -5,20 +5,37 @@ summary: Native select, styled to match Input exactly.
 
 ## Basic
 
-<% example(title: "Select", open: true) do %>
+<figure class="example">
+<figcaption>Select</figcaption>
+<div>
 <select class="ad-select" style="max-width: 20rem;">
   <option>Day</option>
-  <option selected>Week</option>
+  <option selected="">Week</option>
   <option>Month</option>
   <option>Year</option>
 </select>
-<% end %>
+</div>
+<details open><summary>Markup</summary>
+<pre><code>&lt;select class=&quot;ad-select&quot; style=&quot;max-width: 20rem;&quot;&gt;
+  &lt;option&gt;Day&lt;/option&gt;
+  &lt;option selected=&quot;&quot;&gt;Week&lt;/option&gt;
+  &lt;option&gt;Month&lt;/option&gt;
+  &lt;option&gt;Year&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</details>
+</figure>
 
 ## Disabled
 
-<% example(title: "Disabled") do %>
-<select class="ad-select" disabled style="max-width: 20rem;"><option>Week</option></select>
-<% end %>
+<figure class="example">
+<figcaption>Disabled</figcaption>
+<div>
+<select class="ad-select" disabled="" style="max-width: 20rem;"><option>Week</option></select>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;select class=&quot;ad-select&quot; disabled=&quot;&quot; style=&quot;max-width: 20rem;&quot;&gt;&lt;option&gt;Week&lt;/option&gt;&lt;/select&gt;</code></pre>
+</details>
+</figure>
 
 <div class="ad-callout">
   <p style="margin:0; font-size: var(--ad-step--1);">

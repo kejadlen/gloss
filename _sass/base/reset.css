@@ -1,17 +1,11 @@
 /* A short reset. Everything it sets is something the system would otherwise
    have to override in every component.
 
-   The four rem constants below (measure/content-width/sidebar-width/header-
-   height) belong to *this documentation site's chrome*, not to the design
-   system it documents — the source design system defines no container-width
-   tokens at all, so there is nothing under `--ad-*` to reach for here. See
-   the header comment in site/_shell.scss. */
-
-$doc-measure: 68ch;
-$doc-content-width: 50rem;
-$doc-wide-width: 72rem;
-$doc-sidebar-width: 16rem;
-$doc-header-height: 3.5rem;
+   The rem values used for this documentation site's own chrome (measure,
+   content width, sidebar width, header height) belong to this site, not to
+   the design system it documents — the source design system defines no
+   container-width tokens at all, so there is nothing under `--ad-*` to reach
+   for here. See the header comment in site/shell.css. */
 
 *,
 *::before,
@@ -20,7 +14,7 @@ $doc-header-height: 3.5rem;
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: calc(#{$doc-header-height} + var(--ad-space-s));
+  scroll-padding-top: calc(3.5rem + var(--ad-space-s));
 }
 
 @media (prefers-reduced-motion: reduce) {

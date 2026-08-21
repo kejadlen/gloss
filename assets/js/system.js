@@ -1,4 +1,4 @@
-// Behaviour for the pieces of the system that need it. Everything else is
+// Behavior for the pieces of the system that need it. Everything else is
 // CSS and semantic HTML on purpose — a design system that only works with
 // JavaScript running is a component library with extra steps.
 (function () {
@@ -109,26 +109,6 @@
     });
   }
 
-  // Copy button on every example's source panel.
-  function setUpCopy() {
-    document.addEventListener("click", function (event) {
-      var button = event.target.closest("[data-copy]");
-      if (!button) return;
-
-      var code = button.parentElement.querySelector("code");
-      if (!code || !navigator.clipboard) return;
-
-      navigator.clipboard.writeText(code.textContent).then(function () {
-        button.dataset.copied = "true";
-        button.textContent = "Copied";
-        window.setTimeout(function () {
-          delete button.dataset.copied;
-          button.textContent = "Copy";
-        }, 1600);
-      });
-    });
-  }
-
   function setUpNavToggle() {
     document.addEventListener("click", function (event) {
       var toggle = event.target.closest("[data-nav-toggle]");
@@ -156,7 +136,6 @@
 
   setUpTheme();
   setUpTabs();
-  setUpCopy();
   setUpNavToggle();
   setUpLoadingDemo();
 })();

@@ -3,8 +3,8 @@ layout: default
 title: Overview
 description: >-
   A personal design system for self-hosted, single-user tools — synthesized
-  from three real running projects and rendered from YAML tokens by a small
-  Ruby/ERB static-site generator on Ruby 4.0.
+  from three real running projects and rendered by a small Ruby/ERB
+  static-site generator on Ruby 4.0.
 ---
 
 <div class="ad-hero">
@@ -13,26 +13,26 @@ description: >-
   <p class="ad-lead">
     Arbitrary Definitions is not a company's design system — it is one person's,
     synthesized by reading three real, running personal projects rather than
-    written from a spec. Each project keeps its own accent colour and
+    written from a spec. Each project keeps its own accent color and
     typographic mood; this system is what they all share underneath.
   </p>
   <div class="ad-hero__actions">
-    <a class="ad-btn ad-btn--primary ad-btn--lg" href="<%= relative_url('/foundations/color/') %>">Start with colour</a>
+    <a class="ad-btn ad-btn--primary ad-btn--lg" href="<%= relative_url('/foundations/color/') %>">Start with color</a>
     <a class="ad-btn ad-btn--lg" href="<%= relative_url('/components/button/') %>">Jump to components</a>
   </div>
 </div>
 
 <div class="ad-stat-row">
   <div class="ad-stat">
-    <span class="ad-stat__value"><%= site.data.build.ramps %></span>
-    <span class="ad-stat__label">Colour ramps</span>
+    <span class="ad-stat__value">3</span>
+    <span class="ad-stat__label">Color ramps</span>
   </div>
   <div class="ad-stat">
-    <span class="ad-stat__value"><%= site.data.build.aliases %></span>
+    <span class="ad-stat__value">17</span>
     <span class="ad-stat__label">Semantic aliases</span>
   </div>
   <div class="ad-stat">
-    <span class="ad-stat__value"><%= site.components.size %></span>
+    <span class="ad-stat__value">16</span>
     <span class="ad-stat__label">Components</span>
   </div>
   <div class="ad-stat">
@@ -57,24 +57,23 @@ story, including where this system knowingly guesses.
 
 ## How it is put together
 
-Three YAML files under `_data/tokens/` hold every value in the system. Plain
-Ruby (`lib/arbitrary_definitions/token_set.rb`) reads them at build time and
-emits `assets/css/tokens.css` — one flat block of custom properties, plus the
-dark theme and a `prefers-reduced-motion` override. The component stylesheets
-read `var(--ad-*)` and nothing else.
+`assets/css/tokens.css` is one hand-maintained, hand-readable file of CSS
+custom properties — the palette ramps, the semantic aliases, the dark theme,
+and a `prefers-reduced-motion` override. The component stylesheets read
+`var(--ad-*)` and nothing else.
 
-The same YAML feeds the tables and swatches on these pages, so the
-documentation cannot drift from the stylesheet. If a hex changes in the YAML,
-the swatch, the contrast figure, and the button all change together or none
-of them do.
+The tables and swatches on these pages are static too — transcribed once
+from the token values, not recomputed on every build. If a hex changes in
+`tokens.css`, the swatch and the button are updated by hand together, the
+same afternoon.
 
 <div class="ad-card-grid">
   <article class="ad-card ad-card--link">
     <div class="ad-card__body">
       <h3 class="ad-card__title"><a href="<%= relative_url('/foundations/color/') %>">Foundations</a></h3>
       <p class="ad-card__text">
-        Colour, type, space, elevation, and motion — with contrast ratios
-        computed from the tokens during the build rather than typed by hand.
+        Color, type, space, elevation, and motion — with contrast ratios
+        computed from the tokens and checked by hand, not typed by guess.
       </p>
     </div>
   </article>
@@ -100,14 +99,16 @@ of them do.
 
 ## A taste of it
 
-<% example(title: "Everything on one card", layout: "stack") do %>
+<figure class="example">
+<figcaption>Everything on one card</figcaption>
+<div data-layout="stack">
 <article class="ad-card ad-card--elevated" style="max-width: 26rem;">
   <div class="ad-card__body">
     <div class="ad-badge-set">
       <span class="ad-badge ad-badge--accent">Recommended</span>
       <span class="ad-badge">Unassigned</span>
     </div>
-    <h3 class="ad-card__title">Rename the caution colour</h3>
+    <h3 class="ad-card__title">Rename the caution color</h3>
     <p class="ad-card__text">
       Three people have called it "yellow" in review this month. There is no
       caution token in this system — only <code>--ad-color-success</code> and
@@ -119,7 +120,28 @@ of them do.
     <button type="button" class="ad-btn ad-btn--ghost ad-btn--sm">Dismiss</button>
   </div>
 </article>
-<% end %>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;article class=&quot;ad-card ad-card--elevated&quot; style=&quot;max-width: 26rem;&quot;&gt;
+  &lt;div class=&quot;ad-card__body&quot;&gt;
+    &lt;div class=&quot;ad-badge-set&quot;&gt;
+      &lt;span class=&quot;ad-badge ad-badge--accent&quot;&gt;Recommended&lt;/span&gt;
+      &lt;span class=&quot;ad-badge&quot;&gt;Unassigned&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;h3 class=&quot;ad-card__title&quot;&gt;Rename the caution color&lt;/h3&gt;
+    &lt;p class=&quot;ad-card__text&quot;&gt;
+      Three people have called it &quot;yellow&quot; in review this month. There is no
+      caution token in this system — only &lt;code&gt;--ad-color-success&lt;/code&gt; and
+      &lt;code&gt;--ad-color-danger&lt;/code&gt;, fixed across every project.
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;ad-card__footer&quot;&gt;
+    &lt;button type=&quot;button&quot; class=&quot;ad-btn ad-btn--primary ad-btn--sm&quot;&gt;Approve&lt;/button&gt;
+    &lt;button type=&quot;button&quot; class=&quot;ad-btn ad-btn--ghost ad-btn--sm&quot;&gt;Dismiss&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+</details>
+</figure>
 
 ## Voice
 

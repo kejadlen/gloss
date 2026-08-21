@@ -10,22 +10,41 @@ Labels are catalog-style: short, mono, uppercase — `SAVED`, `RECOMMENDED`,
 
 ## Tones
 
-<% example(title: "Tones", open: true) do %>
+<figure class="example">
+<figcaption>Tones</figcaption>
+<div>
 <span class="ad-badge">Unassigned</span>
 <span class="ad-badge ad-badge--accent">Draft</span>
 <span class="ad-badge ad-badge--success">Saved</span>
 <span class="ad-badge ad-badge--danger">Overdue</span>
-<% end %>
+</div>
+<details open><summary>Markup</summary>
+<pre><code>&lt;span class=&quot;ad-badge&quot;&gt;Unassigned&lt;/span&gt;
+&lt;span class=&quot;ad-badge ad-badge--accent&quot;&gt;Draft&lt;/span&gt;
+&lt;span class=&quot;ad-badge ad-badge--success&quot;&gt;Saved&lt;/span&gt;
+&lt;span class=&quot;ad-badge ad-badge--danger&quot;&gt;Overdue&lt;/span&gt;</code></pre>
+</details>
+</figure>
 
 ## In a set
 
-<% example(title: "Badge set") do %>
+<figure class="example">
+<figcaption>Badge set</figcaption>
+<div>
 <div class="ad-badge-set">
   <span class="ad-badge ad-badge--accent">Recommended</span>
   <span class="ad-badge">Every 2 weeks</span>
   <span class="ad-badge ad-badge--danger">3d overdue</span>
 </div>
-<% end %>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;div class=&quot;ad-badge-set&quot;&gt;
+  &lt;span class=&quot;ad-badge ad-badge--accent&quot;&gt;Recommended&lt;/span&gt;
+  &lt;span class=&quot;ad-badge&quot;&gt;Every 2 weeks&lt;/span&gt;
+  &lt;span class=&quot;ad-badge ad-badge--danger&quot;&gt;3d overdue&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+</details>
+</figure>
 
 ## Rules
 

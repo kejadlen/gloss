@@ -9,10 +9,10 @@ summary: >-
 
 ## The two files
 
-The system compiles to exactly two stylesheets. `tokens.css` is generated
-from YAML by `lib/arbitrary_definitions/token_set.rb`; `style.css` is the
-components. The order matters — the components read the custom properties the
-tokens define.
+The system compiles to exactly two stylesheets. `tokens.css` is a
+hand-maintained block of custom properties; `style.css` is the components.
+The order matters — the components read the custom properties the tokens
+define.
 
 ```html
 <link rel="stylesheet" href="tokens.css">
@@ -21,21 +21,20 @@ tokens define.
 
 Both are on this site at
 [`/assets/css/tokens.css`](<%= relative_url('/assets/css/tokens.css') %>) and
-[`/assets/css/style.css`](<%= relative_url('/assets/css/style.css') %>). The
-generated token file is <%= site.data.tokens_css_size %> bytes uncompressed.
+[`/assets/css/style.css`](<%= relative_url('/assets/css/style.css') %>).
 
 Load IBM Plex Mono separately — it is the system's one webfont, and nothing
 else is fetched:
 
 ```css
-<%= site.data.tokens.scale.typography.webfont_import %>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 ```
 
 Almost nothing here needs JavaScript. `assets/js/system.js` adds keyboard
-handling for [Tabs](<%= relative_url('/components/tabs/') %>), the theme
-toggle, and the copy buttons on this site — Tooltip, Checkbox, Radio, and
-Switch are pure CSS, and Dialog/Toast are shown as static states for
-documentation rather than wired up as production widgets.
+handling for [Tabs](<%= relative_url('/components/tabs/') %>) and the theme
+toggle — Tooltip, Checkbox, Radio, and Switch are pure CSS, and Dialog/Toast
+are shown as static states for documentation rather than wired up as
+production widgets.
 
 ## Dark theme
 
@@ -75,11 +74,11 @@ a handful of custom properties after the token file loads — most of all,
 
 <div class="ad-callout">
   <p style="margin:0; font-size: var(--ad-step--1);">
-    Re-check contrast after retheming. The system's contrast guarantees are
-    about the system's own values — swap the accent and you own the result.
-    The checker is dependency-free Ruby in
-    <code>lib/arbitrary_definitions/color_math.rb</code> if you want to run
-    the same assertions against your palette.
+    Re-check contrast after retheming. The system's contrast guarantees on
+    the <a href="<%= relative_url('/foundations/color/') %>">Color page</a>
+    are about the system's own values — swap the accent and you own the
+    result. The WCAG 2.1 relative-luminance formula is standard and easy to
+    run against your own palette if you want the same numbers.
   </p>
 </div>
 
@@ -94,7 +93,7 @@ runner happens to ship. Locally:
 ```console
 $ rbenv install 4.0.6      # or however you get Ruby 4.0
 $ bundle install
-$ bundle exec rake         # runs the token tests, then builds
+$ bundle exec rake         # builds the site into _site/
 $ bundle exec rake serve   # http://127.0.0.1:4000
 ```
 
@@ -104,30 +103,33 @@ $ bundle exec rake serve   # http://127.0.0.1:4000
   <table class="ad-table ad-table--compact">
     <thead><tr><th scope="col">Path</th><th scope="col">What it is</th></tr></thead>
     <tbody>
-      <tr><td class="ad-table__code">_data/tokens/</td><td>The four YAML files. Every value in the system.</td></tr>
-      <tr><td class="ad-table__code">lib/arbitrary_definitions/</td><td>The token compiler, WCAG colour maths, and the whole site builder. No Jekyll dependency anywhere, so the first two are unit tested on their own.</td></tr>
-      <tr><td class="ad-table__code">_layouts/, _includes/</td><td>Plain ERB templates — the page chrome and the <code>example</code> helper's two-up demo/source rendering.</td></tr>
-      <tr><td class="ad-table__code">_sass/components/</td><td>One stylesheet per component group. No hexes, no pixels, no durations.</td></tr>
-      <tr><td class="ad-table__code">test/</td><td>Minitest. Contrast floors, ramp monotonicity, CSS well-formedness.</td></tr>
+      <tr><td class="ad-table__code">assets/css/tokens.css</td><td>Every value in the system, hand-maintained.</td></tr>
+      <tr><td class="ad-table__code">_sass/</td><td>One plain CSS file per component group, concatenated into <code>style.css</code> at build time. No hexes, no pixels, no durations.</td></tr>
+      <tr><td class="ad-table__code">lib/arbitrary_definitions/</td><td>The whole site builder — front matter, ERB, and Kramdown, wrapped in a layout.</td></tr>
+      <tr><td class="ad-table__code">_layouts/, _includes/</td><td>Plain ERB templates for the page chrome.</td></tr>
+      <tr><td class="ad-table__code">_components/, _foundations/, _patterns/</td><td>Static Markdown and HTML — the content itself, hand-written.</td></tr>
     </tbody>
   </table>
 </div>
 
-## How the example blocks work
+## How the example demos work
 
-Every demo on this site is one call to an `example` ERB helper
-(`lib/arbitrary_definitions/example_helper.rb`). It captures its block's
-rendered output and renders that captured markup twice — live into the page,
-and Rouge-highlighted into the source panel underneath.
+Every demo on this site is plain, static markup: a `<figure>` with the live
+preview in one `<div>` and, underneath it, a `<details>` holding the exact
+same markup as literal, escaped text in a `<pre><code>`. There is no
+generator keeping the two in sync — copying the demo's markup by hand into
+the page is how the source panel gets written, so there is nothing to drift.
 
-<!--verbatim-->
-```erb
-<% example(title: "Variants", open: true) do %>
-<button type="button" class="ad-btn">Cancel</button>
-<button type="button" class="ad-btn ad-btn--primary">Save</button>
-<% end %>
+```html
+<figure class="example">
+  <figcaption>Variants</figcaption>
+  <div>
+    <button type="button" class="ad-btn">Cancel</button>
+    <button type="button" class="ad-btn ad-btn--primary">Save</button>
+  </div>
+  <details><summary>Markup</summary>
+<pre><code>&lt;button type="button" class="ad-btn"&gt;Cancel&lt;/button&gt;
+&lt;button type="button" class="ad-btn ad-btn--primary"&gt;Save&lt;/button&gt;</code></pre>
+  </details>
+</figure>
 ```
-<!--/verbatim-->
-
-There is no second copy of the markup to keep in sync, which is the usual way
-component documentation starts lying about the component.

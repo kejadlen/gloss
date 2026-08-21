@@ -2,22 +2,15 @@
 
 require "cgi/escape"
 require "erb"
-require_relative "color_math"
-require_relative "example_helper"
 
 module ArbitraryDefinitions
-  # Everything an ERB template can reach: `site`/`page` data (standing in for
-  # Liquid's `{{ site.* }}` / `{{ page.* }}`), the colour-maths helpers that
-  # used to be Liquid filters (`_plugins/color_filters.rb`), `relative_url`
-  # (Jekyll's `relative_url` filter), `render` for includes/partials, and the
-  # `example` block helper (`_plugins/example_tag.rb`).
+  # Everything an ERB template can reach: `site`/`page` data, `relative_url`
+  # for links, `escape` for attribute text, and `render` for includes.
   #
   # One instance is built per page and reused for every layout and partial
   # that page passes through, so `page`/`site` stay consistent from the
   # innermost content template out through every wrapping layout.
   class PageContext
-    include ExampleHelper
-
     attr_accessor :site, :page, :content
 
     def initialize(site:, page: nil, content: nil)
@@ -34,44 +27,11 @@ module ArbitraryDefinitions
       binding
     end
 
-    # Stands in for Jekyll's `relative_url` filter: prefixes `baseurl`,
-    # without doubling slashes.
+    # Prefixes `baseurl` onto a path, without doubling slashes.
     def relative_url(path)
       path = path.to_s
       path = "/#{path}" unless path.start_with?("/")
       "#{site.baseurl.to_s.chomp('/')}#{path}"
-    end
-
-    # -- former Liquid filters in _plugins/color_filters.rb -----------------
-
-    def contrast_with(value, other)
-      ratio = ColorMath.contrast_ratio(value, other)
-      return "—" unless ratio
-
-      format("%.2f", ratio)
-    end
-
-    def contrast_grade(value, other)
-      ColorMath.grade(ColorMath.contrast_ratio(value, other))
-    end
-
-    def readable_on(value)
-      ColorMath.readable_on(value)
-    end
-
-    def luminance_percent(value)
-      luminance = ColorMath.relative_luminance(value)
-      return "—" unless luminance
-
-      (luminance * 100).round
-    end
-
-    def hex_color?(value)
-      ColorMath.hex?(value)
-    end
-
-    def custom_property(value)
-      "--#{site.token_prefix}-#{value}"
     end
 
     def escape(value)
@@ -82,7 +42,7 @@ module ArbitraryDefinitions
 
     INCLUDES_DIR = File.expand_path("../../_includes", __dir__)
 
-    # Stands in for `{% include name.html %}`. `locals` are exposed to the
+    # Renders an ERB partial from `_includes/`. `locals` are exposed to the
     # partial as local-ish reader methods for the duration of the call.
     def render(name, locals = {})
       body = File.read(File.join(INCLUDES_DIR, "#{name}.erb"))

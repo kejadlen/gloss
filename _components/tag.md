@@ -7,23 +7,43 @@ summary: >-
 
 ## Default and removable
 
-<% example(title: "Tags", open: true) do %>
+<figure class="example">
+<figcaption>Tags</figcaption>
+<div>
 <span class="ad-tag">location:garage</span>
 <span class="ad-tag">category:appliance</span>
 <span class="ad-tag">
   category:receipt
   <button type="button" class="ad-tag__remove" aria-label="Remove tag">×</button>
 </span>
-<% end %>
+</div>
+<details open><summary>Markup</summary>
+<pre><code>&lt;span class=&quot;ad-tag&quot;&gt;location:garage&lt;/span&gt;
+&lt;span class=&quot;ad-tag&quot;&gt;category:appliance&lt;/span&gt;
+&lt;span class=&quot;ad-tag&quot;&gt;
+  category:receipt
+  &lt;button type=&quot;button&quot; class=&quot;ad-tag__remove&quot; aria-label=&quot;Remove tag&quot;&gt;×&lt;/button&gt;
+&lt;/span&gt;</code></pre>
+</details>
+</figure>
 
 ## Dashed — the "add tag" affordance
 
-<% example(title: "Add tag") do %>
+<figure class="example">
+<figcaption>Add tag</figcaption>
+<div>
 <div class="ad-tag-set">
   <span class="ad-tag">location:garage</span>
   <span class="ad-tag ad-tag--dashed">+ add tag</span>
 </div>
-<% end %>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;div class=&quot;ad-tag-set&quot;&gt;
+  &lt;span class=&quot;ad-tag&quot;&gt;location:garage&lt;/span&gt;
+  &lt;span class=&quot;ad-tag ad-tag--dashed&quot;&gt;+ add tag&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+</details>
+</figure>
 
 ## API
 

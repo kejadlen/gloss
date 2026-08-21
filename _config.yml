@@ -3,14 +3,10 @@ tagline: A personal umbrella, given a shared visual spine
 description: >-
   Arbitrary Definitions is a personal design system for self-hosted,
   single-user tools — synthesized from three real running projects, not
-  written from a spec. Sixteen components and five foundations, rendered from
-  a single set of YAML token files by a small Ruby/ERB site builder running
-  on Ruby 4.0.
+  written from a spec. Sixteen components and five foundations, built with a
+  small Ruby/ERB site builder running on Ruby 4.0.
 
 url: https://kejadlen.github.io
 baseurl: /arbitrary-definitions-design-system
 repository: kejadlen/arbitrary-definitions-design-system
 lang: en
-
-# The prefix on every custom property and class this system emits.
-token_prefix: ad

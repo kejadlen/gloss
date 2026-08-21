@@ -1,0 +1,100 @@
+/* The live-example figure used throughout the docs — see the "How the
+   example demos work" section on the Using the CSS page. One class on the
+   outer <figure>; everything inside is styled by plain element selectors,
+   since figcaption/div/details/summary/pre already say what they are.
+   `data-layout` and `data-surface` on the preview <div> distinguish the
+   handful of demos that need a non-default arrangement. */
+
+.example {
+  margin: var(--ad-space-s) 0 var(--ad-space-l);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-lg);
+  background: var(--ad-color-surface-card);
+  overflow: hidden;
+}
+
+.example figcaption {
+  padding: var(--ad-space-2xs) var(--ad-space-xs);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+  background: var(--ad-color-surface-fill);
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ad-color-text-secondary);
+}
+
+.example > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ad-space-xs);
+  padding: var(--ad-space-s);
+}
+/* nowrap is load-bearing: a column-direction flex container with wrap enabled
+   sizes its single line against the container rather than the content, which
+   left every stacked example with a few hundred pixels of dead space. */
+.example > div[data-layout="stack"] { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
+.example > div[data-layout="grid"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  align-items: start;
+}
+.example > div[data-surface="sunken"] { background: var(--ad-color-surface-fill); }
+.example > div > * { min-width: 0; }
+
+.example details {
+  border-top: 1px solid var(--ad-color-border-hairline);
+  background: var(--ad-color-surface-fill);
+}
+.example summary {
+  padding: var(--ad-space-2xs) var(--ad-space-xs);
+  font-size: var(--ad-step--2);
+  font-weight: 500;
+  color: var(--ad-color-text-secondary);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: var(--ad-space-2xs);
+}
+.example summary::-webkit-details-marker { display: none; }
+.example summary::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-inline-end: 1.5px solid currentColor;
+  border-block-end: 1.5px solid currentColor;
+  rotate: -45deg;
+  transition: rotate var(--ad-dur-fast) var(--ad-ease);
+}
+.example details[open] > summary::before { rotate: 45deg; }
+.example summary:hover { color: var(--ad-color-text-primary); }
+
+.example pre {
+  margin: 0;
+  padding: var(--ad-space-xs);
+  border-top: 1px solid var(--ad-color-border-hairline);
+  overflow-x: auto;
+  font-size: var(--ad-step--2);
+  line-height: 1.5;
+  tab-size: 2;
+}
+.example pre code { background: none; border: 0; padding: 0; white-space: pre; }
+
+/* Standalone fenced code blocks in the prose (unhighlighted — there is no
+   syntax highlighter in this build any more, just Kramdown's plain
+   <pre><code class="language-*">). */
+.ad-doc-main > pre {
+  margin-block: var(--ad-space-xs);
+  padding: var(--ad-space-xs);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-md);
+  background: var(--ad-color-surface-fill);
+  overflow-x: auto;
+  font-size: var(--ad-step--2);
+  line-height: 1.5;
+}
+.ad-doc-main > pre code { background: none; border: 0; padding: 0; white-space: pre; }

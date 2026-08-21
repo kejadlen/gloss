@@ -74,7 +74,7 @@
 }
 .ad-toast__dismiss:hover { color: var(--ad-color-text-primary); }
 
-/* Dialog — a centered modal: flat surface, no coloured header, hairline
+/* Dialog — a centered modal: flat surface, no colored header, hairline
    dividers between title/body/footer. `.ad-dialog-demo` scopes the overlay
    to its own preview container instead of the viewport, so a static,
    always-open example can sit safely inside a documentation page; wire real

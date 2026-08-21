@@ -1,14 +1,6 @@
 # frozen_string_literal: true
 
-require "rake/testtask"
-
 $LOAD_PATH.unshift(File.expand_path("lib", __dir__))
-
-Rake::TestTask.new(:test) do |t|
-  t.libs << "lib" << "test"
-  t.test_files = FileList["test/test_*.rb"]
-  t.warning = false
-end
 
 desc "Build the site into _site"
 task :build do
@@ -42,5 +34,4 @@ task design: :build do
   sh "ruby script/build_design_bundle.rb"
 end
 
-desc "Run the token and colour tests, then build"
-task default: %i[test build]
+task default: :build

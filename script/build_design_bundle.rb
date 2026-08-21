@@ -28,7 +28,7 @@ CANON  = "https://kejadlen.github.io#{BASE}"
 
 # page path in _site => [bundle path, Design System pane group, card title]
 CARDS = [
-  ["foundations/color",       "foundations/color.html",       "Foundations", "Colour"],
+  ["foundations/color",       "foundations/color.html",       "Foundations", "Color"],
   ["foundations/typography",  "foundations/typography.html",  "Foundations", "Typography"],
   ["foundations/space",       "foundations/space.html",       "Foundations", "Space"],
   ["foundations/elevation",   "foundations/elevation.html",   "Foundations", "Elevation"],
@@ -67,9 +67,6 @@ def extract_main(html, page)
   body
     # Site-relative links would dead-end inside the Design System pane.
     .gsub(%r{(href|src)="#{Regexp.escape(BASE)}/}, "\\1=\"#{CANON}/")
-    # The copy button needs the site's clipboard handler; without it the
-    # control is a lie, so the card ships without it.
-    .gsub(%r{<button[^>]*data-copy[^>]*>.*?</button>}m, "")
     .strip
 end
 

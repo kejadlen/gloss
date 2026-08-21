@@ -3,7 +3,6 @@
 require "yaml"
 require "erb"
 require "fileutils"
-require "time"
 
 # The site is UTF-8 regardless of the locale the build happens to run under;
 # a runner with LANG unset would otherwise read the Markdown as US-ASCII.
@@ -12,14 +11,14 @@ Encoding.default_internal = Encoding::UTF_8
 require "kramdown"
 require "kramdown-parser-gfm"
 
-require_relative "token_set"
 require_relative "dot"
 require_relative "page_context"
 
 module ArbitraryDefinitions
-  # The whole static site build: reads `_config.yml` and `_data/`, compiles
-  # the tokens and Sass, renders every Markdown page through ERB and then
-  # Kramdown, wraps it in its layout, and writes the result under `_site/`.
+  # The whole static site build: reads `_config.yml` and `_data/`, concatenates
+  # the plain CSS under `_sass/` and copies `assets/css/tokens.css`, renders
+  # every Markdown page through ERB and then Kramdown, wraps it in its layout,
+  # and writes the result under `_site/`.
   #
   # This replaces Jekyll itself, not just its plugins — `Rakefile`'s `build`
   # task is the only caller.
@@ -28,6 +27,22 @@ module ArbitraryDefinitions
     SITE_DIR    = File.join(ROOT, "_site")
     LAYOUTS_DIR = File.join(ROOT, "_layouts")
     SASS_DIR    = File.join(ROOT, "_sass")
+
+    # Plain CSS files, concatenated in this order into assets/css/style.css:
+    # reset/base first, then components, then this site's own chrome.
+    CSS_FILES = %w[
+      base/reset.css
+      base/typography.css
+      components/button.css
+      components/field.css
+      components/badge.css
+      components/card.css
+      components/feedback.css
+      components/tabs.css
+      site/shell.css
+      site/example.css
+      site/tokens-docs.css
+    ].freeze
 
     # dir under repository root => [permalink pattern, default section]
     COLLECTIONS = {
@@ -44,18 +59,15 @@ module ArbitraryDefinitions
     PageSource = Struct.new(:front_matter, :body, :url, :layout, :section, keyword_init: true)
 
     def initialize
-      @config    = YAML.safe_load_file(File.join(ROOT, "_config.yml"))
-      @token_set = TokenSet.new(dir: File.join(ROOT, "_data", "tokens"),
-                                 prefix: @config.fetch("token_prefix", "ad"))
-      @site      = build_site
+      @config = YAML.safe_load_file(File.join(ROOT, "_config.yml"))
+      @site   = build_site
     end
 
     def build
       FileUtils.rm_rf(SITE_DIR)
       FileUtils.mkdir_p(SITE_DIR)
 
-      write_tokens_css
-      compile_sass
+      write_css
       copy_assets
       collect_pages.each { |page_source| render_page(page_source) }
     end
@@ -63,30 +75,6 @@ module ArbitraryDefinitions
     private
 
     def build_site
-      nav  = YAML.safe_load_file(File.join(ROOT, "_data", "nav.yml"))
-      meta = YAML.safe_load_file(File.join(ROOT, "_data", "meta.yml"))
-
-      component_names = Dir.glob(File.join(ROOT, "_components", "*.md")).map { |path| File.basename(path, ".md") }
-
-      data = {
-        "meta" => meta,
-        "nav" => nav,
-        "tokens" => {
-          "color" => { "ramps" => @token_set.ramps },
-          "semantic" => { "groups" => @token_set.semantic },
-          "scale" => @token_set.scale,
-          "contrast" => @token_set.contrast,
-        },
-        "semantic_flat" => @token_set.semantic_tokens,
-        "tokens_css_size" => @token_set.to_css.bytesize,
-        "build" => {
-          "ruby" => RUBY_VERSION,
-          "ramps" => @token_set.ramps.size,
-          "aliases" => @token_set.semantic_tokens.size,
-          "generated_at" => Time.now.utc.strftime("%Y-%m-%d"),
-        },
-      }
-
       Site.new(
         title: @config.fetch("title"),
         tagline: @config["tagline"],
@@ -95,25 +83,22 @@ module ArbitraryDefinitions
         baseurl: @config.fetch("baseurl", ""),
         repository: @config["repository"],
         lang: @config.fetch("lang", "en"),
-        token_prefix: @token_set.prefix,
-        components: component_names,
-        data: Dot.wrap(data),
+        data: Dot.wrap(
+          "nav" => YAML.safe_load_file(File.join(ROOT, "_data", "nav.yml")),
+          "meta" => YAML.safe_load_file(File.join(ROOT, "_data", "meta.yml")),
+        ),
       )
     end
 
-    Site = Struct.new(:title, :tagline, :description, :url, :baseurl, :repository, :lang,
-                       :token_prefix, :components, :data, keyword_init: true)
+    Site = Struct.new(:title, :tagline, :description, :url, :baseurl, :repository, :lang, :data, keyword_init: true)
 
-    def write_tokens_css
-      write(File.join(SITE_DIR, "assets", "css", "tokens.css"), @token_set.to_css)
-    end
+    def write_css
+      css = CSS_FILES.map { |name| File.read(File.join(SASS_DIR, name)) }.join("\n")
+      write(File.join(SITE_DIR, "assets", "css", "style.css"), css)
 
-    def compile_sass
-      require "sass-embedded"
-
-      source = File.read(File.join(ROOT, "assets", "css", "style.scss"))
-      result = Sass.compile_string(source, load_paths: [SASS_DIR], style: :compressed)
-      write(File.join(SITE_DIR, "assets", "css", "style.css"), result.css)
+      tokens_out = File.join(SITE_DIR, "assets", "css", "tokens.css")
+      FileUtils.mkdir_p(File.dirname(tokens_out))
+      FileUtils.cp(File.join(ROOT, "assets", "css", "tokens.css"), tokens_out)
     end
 
     def copy_assets
@@ -158,26 +143,6 @@ module ArbitraryDefinitions
       pages
     end
 
-    # A page that wants to *show* `<%= ... %>` syntax as documentation text —
-    # `install.md` demonstrating the `example` helper — needs it kept out of
-    # ERB's own evaluation, the same job Liquid's `{% raw %}` used to do.
-    # `<!--verbatim--> ... <!--/verbatim-->` marks such a span; its contents
-    # are stashed before the ERB pass and spliced back in afterwards.
-    VERBATIM = /<!--verbatim-->(.*?)<!--\/verbatim-->/m
-
-    def extract_verbatim(body)
-      blocks = []
-      protected_body = body.gsub(VERBATIM) do
-        blocks << Regexp.last_match(1)
-        " VERBATIM#{blocks.size - 1} "
-      end
-      [protected_body, blocks]
-    end
-
-    def restore_verbatim(text, blocks)
-      text.gsub(/ VERBATIM(\d+) /) { blocks[Regexp.last_match(1).to_i] }
-    end
-
     def split_front_matter(raw)
       match = raw.match(/\A---\s*\n(.*?)\n---\s*\n(.*)\z/m)
       raise "no front matter found" unless match
@@ -193,16 +158,9 @@ module ArbitraryDefinitions
 
       context = PageContext.new(site: @site, page: page)
 
-      protected_body, verbatim_blocks = extract_verbatim(page_source.body)
-      rendered = ERB.new(protected_body, trim_mode: "-").result(context.erb_binding)
-      rendered = restore_verbatim(rendered, verbatim_blocks)
+      rendered = ERB.new(page_source.body, trim_mode: "-").result(context.erb_binding)
 
-      html_body = Kramdown::Document.new(
-        rendered,
-        input: "GFM",
-        syntax_highlighter: "rouge",
-        syntax_highlighter_opts: { default_lang: "html" },
-      ).to_html
+      html_body = Kramdown::Document.new(rendered, input: "GFM", syntax_highlighter: nil).to_html
 
       html = wrap_layout(page_source.layout, html_body, context)
       write(File.join(output_dir(page_source.url), "index.html"), html)

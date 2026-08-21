@@ -52,11 +52,6 @@
 .ad-alias-chip--pair { display: flex; }
 .ad-alias-chip--pair > span { flex: 1; }
 
-.ad-grade { font-weight: 600; }
-.ad-grade--AAA, .ad-grade--AA { color: var(--ad-color-success); }
-.ad-grade--AA-Large { color: var(--ad-color-text-secondary); }
-.ad-grade--Fail { color: var(--ad-color-danger); }
-
 /* Type specimen rows. */
 .ad-specimen {
   display: grid;

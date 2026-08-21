@@ -52,11 +52,11 @@
   cursor: default;
 }
 
-/* The chevron is the one flagged colour exception in this component set:
+/* The chevron is the one flagged color exception in this component set:
    CSS cannot point a data-URI background-image at a custom property, so its
    stroke is a literal hex rather than a var(--ad-*) reference. It is picked
    to match --ad-color-text-secondary and commented here so it is not
-   mistaken for a stray colour. */
+   mistaken for a stray color. */
 .ad-select {
   appearance: none;
   padding-inline-end: var(--ad-space-l);

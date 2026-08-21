@@ -11,7 +11,9 @@ mobile capture flow: the shape `kejadlen/domus` (a household inventory and
 document archive) would take if it were rebuilt on this token set, at its
 390×760 frame. Three screens, abbreviated to what each one adds.
 
-<% example(title: "Home — recent captures", layout: "row", no_source: true) do %>
+<figure class="example">
+<figcaption>Home — recent captures</figcaption>
+<div>
 <div style="width: 300px; height: 560px; background: var(--ad-color-surface-page); border-radius: var(--ad-radius-lg); box-shadow: var(--ad-shadow-float); overflow:hidden; display:flex; flex-direction:column; position:relative;">
   <header style="padding: 16px var(--ad-space-m) var(--ad-space-2xs);">
     <span style="font-weight:600; font-size: var(--ad-step-1); letter-spacing:-0.01em;">Archive</span>
@@ -23,7 +25,7 @@ document archive) would take if it were rebuilt on this token set, at its
     </div>
     <div class="ad-card">
       <div class="ad-card-row">
-        <span class="ad-avatar ad-avatar--square"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
+        <span class="ad-avatar ad-avatar--square"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg></span>
         <div style="flex:1; min-width:0;">
           <div style="font-weight:550; font-size: var(--ad-step--1); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Dishwasher manual</div>
           <div class="type-label" style="margin-top:2px;">PDF · 2.1MB</div>
@@ -31,7 +33,7 @@ document archive) would take if it were rebuilt on this token set, at its
         <span class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">2h</span>
       </div>
       <div class="ad-card-row">
-        <span class="ad-avatar ad-avatar--square"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
+        <span class="ad-avatar ad-avatar--square"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg></span>
         <div style="flex:1; min-width:0;">
           <div style="font-weight:550; font-size: var(--ad-step--1);">Sofa receipt</div>
           <div class="type-label" style="margin-top:2px;">JPG · 640KB</div>
@@ -39,7 +41,7 @@ document archive) would take if it were rebuilt on this token set, at its
         <span class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">1d</span>
       </div>
       <div class="ad-card-row">
-        <span class="ad-avatar ad-avatar--square"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
+        <span class="ad-avatar ad-avatar--square"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg></span>
         <div style="flex:1; min-width:0;">
           <div style="font-weight:550; font-size: var(--ad-step--1);">Passport scan</div>
           <div class="type-label" style="margin-top:2px;">PDF · 890KB</div>
@@ -50,25 +52,24 @@ document archive) would take if it were rebuilt on this token set, at its
   </div>
   <div style="position:absolute; left:0; right:0; bottom:0; display:flex; justify-content:center; padding: 14px 20px 22px; background: linear-gradient(to top, var(--ad-color-surface-page) 65%, transparent);">
     <button type="button" class="ad-btn ad-btn--primary ad-btn--lg ad-btn--block">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h1.5l1-1.5h9l1 1.5H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h1.5l1-1.5h9l1 1.5H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z" /><circle cx="12" cy="13" r="3.5" /></svg>
       Take a photo
     </button>
   </div>
 </div>
-
 <div style="width: 300px; height: 560px; background: var(--ad-color-surface-page); border-radius: var(--ad-radius-lg); box-shadow: var(--ad-shadow-float); overflow:hidden; display:flex; flex-direction:column;">
   <header style="display:flex; align-items:center; gap:8px; padding: 16px var(--ad-space-m) var(--ad-space-2xs);">
-    <button type="button" class="ad-icon-btn ad-icon-btn--sm" aria-label="Back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button type="button" class="ad-icon-btn ad-icon-btn--sm" aria-label="Back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg></button>
     <span style="font-weight:600; font-size: var(--ad-step-0);">Save</span>
   </header>
   <div style="flex:1; padding: 0 var(--ad-space-m);">
     <div style="height: 180px; border-radius: var(--ad-radius-lg); border: 1px solid var(--ad-color-border-default); background: repeating-linear-gradient(45deg, transparent 0 8px, var(--ad-color-surface-fill-2) 8px 9px), var(--ad-color-surface-fill); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; margin-top: var(--ad-space-s);">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg>
       <span class="type-label">Photo preview</span>
     </div>
     <div style="margin-top: var(--ad-space-m); display:flex; flex-direction:column; gap: var(--ad-space-2xs);">
       <span class="type-label">Name</span>
-      <input class="ad-input" placeholder="Dishwasher manual">
+      <input class="ad-input" placeholder="Dishwasher manual" />
     </div>
   </div>
   <div style="padding: var(--ad-space-m); display:flex; gap: var(--ad-space-2xs);">
@@ -76,10 +77,9 @@ document archive) would take if it were rebuilt on this token set, at its
     <button type="button" class="ad-btn ad-btn--primary" style="flex:1;">Save</button>
   </div>
 </div>
-
 <div style="width: 300px; height: 560px; background: var(--ad-color-surface-page); border-radius: var(--ad-radius-lg); box-shadow: var(--ad-shadow-float); overflow:hidden; display:flex; flex-direction:column;">
   <header style="display:flex; align-items:center; gap:8px; padding: 16px var(--ad-space-m) var(--ad-space-2xs);">
-    <button type="button" class="ad-icon-btn ad-icon-btn--sm" aria-label="Back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button type="button" class="ad-icon-btn ad-icon-btn--sm" aria-label="Back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg></button>
     <span class="type-label">Archive</span>
   </header>
   <div style="flex:1; overflow:hidden; padding: 0 var(--ad-space-m) var(--ad-space-l);">
@@ -91,7 +91,7 @@ document archive) would take if it were rebuilt on this token set, at its
     <div class="type-label" style="margin-bottom: var(--ad-space-2xs);">File</div>
     <div class="ad-card">
       <div class="ad-card-row">
-        <span class="ad-avatar ad-avatar--square"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
+        <span class="ad-avatar ad-avatar--square"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg></span>
         <div style="flex:1; font-size: var(--ad-step--1);">PDF · 2.1MB</div>
       </div>
     </div>
@@ -99,7 +99,8 @@ document archive) would take if it were rebuilt on this token set, at its
     <p style="font-size: var(--ad-step--1); color: var(--ad-color-text-secondary); line-height:1.55; margin:0;">No notes yet.</p>
   </div>
 </div>
-<% end %>
+</div>
+</figure>
 
 ## What this screen is testing
 

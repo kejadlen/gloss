@@ -50,7 +50,7 @@ module ArbitraryDefinitions
     # silently rendered blank for an undefined property, and several pages
     # rely on that for genuinely optional front matter (`page.summary`,
     # `page.section`, `page.description`), so this keeps the same forgiving
-    # behaviour rather than making every optional field a special case at
+    # behavior rather than making every optional field a special case at
     # every call site.
     def method_missing(name, *args)
       return super unless args.empty? && !name.to_s.end_with?("=")

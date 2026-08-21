@@ -12,22 +12,21 @@ tracker) would take if it were rebuilt on this token set. Every visible value
 below is a component from this system; nothing here is page-specific CSS
 beyond a couple of inline widths.
 
-<% example(title: "Loop", layout: "stack", no_source: true) do %>
+<figure class="example">
+<figcaption>Loop</figcaption>
+<div data-layout="stack">
 <div style="border: 1px solid var(--ad-color-border-hairline); border-radius: var(--ad-radius-lg); overflow: hidden; background: var(--ad-color-surface-page);">
-
   <header style="display:flex; align-items:center; gap: var(--ad-space-s); padding: var(--ad-space-s) var(--ad-space-l); border-bottom: 1px solid var(--ad-color-border-hairline);">
     <span style="font-family: var(--ad-font-mono); font-weight:600; letter-spacing:0.02em; font-size: var(--ad-step-0);">Loop</span>
     <div style="flex:1;"></div>
     <button type="button" class="ad-btn ad-btn--primary ad-btn--sm">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
       New
     </button>
     <span class="ad-avatar">km</span>
   </header>
-
   <div style="display:flex;">
     <div style="flex:1; min-width:0; max-width: 34rem; padding: var(--ad-space-l);">
-
       <section style="margin-bottom: var(--ad-space-l);">
         <div style="display:flex; align-items:baseline; gap: var(--ad-space-2xs); margin-bottom: var(--ad-space-s);">
           <span class="type-label" style="color: var(--ad-color-danger);">Overdue</span>
@@ -50,7 +49,6 @@ beyond a couple of inline widths.
           <span class="type-mono" style="color: var(--ad-color-danger); font-size: var(--ad-step--2); white-space:nowrap;">1d overdue</span>
         </div>
       </section>
-
       <section>
         <div class="type-label" style="margin-bottom: var(--ad-space-s);">Upcoming</div>
         <div class="ad-card-row">
@@ -79,19 +77,38 @@ beyond a couple of inline widths.
         </div>
       </section>
     </div>
-
     <aside style="width: 15rem; flex-shrink:0; background: var(--ad-color-surface-fill); border-left: 1px solid var(--ad-color-border-hairline); padding: var(--ad-space-l);">
       <div class="type-label" style="margin-bottom: var(--ad-space-s);">This week</div>
       <div style="display:flex; background: var(--ad-color-surface-card); border: 1px solid var(--ad-color-border-hairline); border-radius: var(--ad-radius-md); overflow:hidden; margin-bottom: var(--ad-space-l);">
-        <% week = %w[S M T W T F S] -%>
-        <% nums = [0, 1, 0, 2, 0, 1, 0] -%>
-        <% week.each_with_index do |d, index0| -%>
-        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0; <% if index0 == 3 %>background: var(--ad-color-accent-soft);<% end %> <% unless index0 == week.length - 1 %>border-right: 1px solid var(--ad-color-border-hairline);<% end %>">
-          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;"><%= d %></span>
-          <span style="font-size:13px; font-weight:600; color: <% if index0 == 3 %>var(--ad-color-accent-ink)<% else %>var(--ad-color-text-primary)<% end %>;"><%= nums[index0] %></span>
+                                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  border-right: 1px solid var(--ad-color-border-hairline);">
+          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">S</span>
+          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">0</span>
         </div>
-        <% end -%>
-      </div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  border-right: 1px solid var(--ad-color-border-hairline);">
+          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">M</span>
+          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">1</span>
+        </div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  border-right: 1px solid var(--ad-color-border-hairline);">
+          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">T</span>
+          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">0</span>
+        </div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0; background: var(--ad-color-accent-soft); border-right: 1px solid var(--ad-color-border-hairline);">
+          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">W</span>
+          <span style="font-size:13px; font-weight:600; color: var(--ad-color-accent-ink);">2</span>
+        </div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  border-right: 1px solid var(--ad-color-border-hairline);">
+          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">T</span>
+          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">0</span>
+        </div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  border-right: 1px solid var(--ad-color-border-hairline);">
+          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">F</span>
+          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">1</span>
+        </div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  ">
+          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">S</span>
+          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">0</span>
+        </div>
+              </div>
       <div class="type-label" style="margin-bottom: var(--ad-space-2xs);">Series</div>
       <div>
         <div style="padding: var(--ad-space-2xs) 0; font-size: var(--ad-step--1); color: var(--ad-color-text-secondary);">Call Mom</div>
@@ -101,11 +118,14 @@ beyond a couple of inline widths.
     </aside>
   </div>
 </div>
-<% end %>
+</div>
+</figure>
 
 ## The New series dialog
 
-<% example(title: "New series", no_source: true, layout: "stack") do %>
+<figure class="example">
+<figcaption>New series</figcaption>
+<div data-layout="stack">
 <div class="ad-dialog-demo" style="min-height: 18rem;">
   <div class="ad-dialog__overlay">
     <div class="ad-dialog" style="width: 22rem;">
@@ -114,17 +134,17 @@ beyond a couple of inline widths.
         <div style="display:flex; flex-direction:column; gap: var(--ad-space-s);">
           <div class="ad-field">
             <label class="ad-field__label" for="loop-note">Note</label>
-            <input class="ad-input" id="loop-note" placeholder="Call Mom">
+            <input class="ad-input" id="loop-note" placeholder="Call Mom" />
             <span class="ad-field__hint">First line becomes the display name.</span>
           </div>
           <div class="ad-form__row">
             <div class="ad-field">
               <label class="ad-field__label" for="loop-every">Every</label>
-              <input class="ad-input" id="loop-every" type="number" placeholder="2">
+              <input class="ad-input" id="loop-every" type="number" placeholder="2" />
             </div>
             <div class="ad-field">
               <label class="ad-field__label" for="loop-unit">Unit</label>
-              <select class="ad-select" id="loop-unit"><option>Day</option><option selected>Week</option><option>Month</option><option>Year</option></select>
+              <select class="ad-select" id="loop-unit"><option>Day</option><option selected="">Week</option><option>Month</option><option>Year</option></select>
             </div>
           </div>
         </div>
@@ -136,16 +156,20 @@ beyond a couple of inline widths.
     </div>
   </div>
 </div>
-<% end %>
+</div>
+</figure>
 
 ## After completing a task
 
-<% example(title: "Toast", no_source: true) do %>
+<figure class="example">
+<figcaption>Toast</figcaption>
+<div>
 <div class="ad-toast">
   <span class="ad-toast__message">Completed "Call Mom"</span>
   <button type="button" class="ad-toast__dismiss" aria-label="Dismiss">×</button>
 </div>
-<% end %>
+</div>
+</figure>
 
 ## What this screen is testing
 
@@ -153,7 +177,7 @@ beyond a couple of inline widths.
   fundamentally tabular even though it never touches an actual `<table>`.
 - **Overdue in `--ad-color-danger`, everywhere at once.** Row text, the
   complete-button border, and the trailing meta all pick it up from the same
-  `overdue` state — colour never drifts row to row.
+  `overdue` state — color never drifts row to row.
 - **One primary action.** `New` is the only accent-filled control on screen;
   everything else is neutral or bordered.
 - **Accent used exactly once, decoratively.** The "km" avatar and the

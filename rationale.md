@@ -59,8 +59,9 @@ Not the quality of the individual choices. The properties below:
     <div class="ad-card__body">
       <h3 class="ad-card__title">It is written down once</h3>
       <p class="ad-card__text">
-        Four YAML files. Not a Figma library that disagrees with the CSS, and
-        not a spreadsheet somebody exports by hand.
+        One hand-maintained stylesheet of custom properties. Not a Figma
+        library that disagrees with the CSS, and not a spreadsheet somebody
+        exports by hand.
       </p>
     </div>
   </article>
@@ -77,7 +78,7 @@ Not the quality of the individual choices. The properties below:
     <div class="ad-card__body">
       <h3 class="ad-card__title">It is actually used</h3>
       <p class="ad-card__text">
-        Every colour, type, spacing, radius, elevation, and motion value in
+        Every color, type, spacing, radius, elevation, and motion value in
         the components is a <code>var(--ad-*)</code>. Not one is a literal.
       </p>
     </div>
@@ -95,29 +96,22 @@ Not the quality of the individual choices. The properties below:
 
 ## The one thing that is not arbitrary
 
-Contrast. A ratio is a physical fact about two colours and a pair of eyes,
+Contrast. A ratio is a physical fact about two colors and a pair of eyes,
 and it does not care what the brand guidelines say.
 
-So it is the one thing the build refuses to take on trust.
-`_data/tokens/contrast.yml` names
-<%= site.data.tokens.contrast.text.pairs.size %> pairings that have to hold;
-`lib/arbitrary_definitions/color_math.rb` computes WCAG relative luminance
-from the token values, and `test/test_token_set.rb` asserts every one of them
-in both themes. The [contract table](<%= relative_url('/foundations/color/') %>#contrast-that-has-to-hold)
-is rendered from that same file. If a token change drops any pairing below
-its floor, `rake test` fails and the site does not deploy.
+So it is the one thing this system checks rather than eyeballs. Five
+pairings have to hold, computed once from the token values with the
+standard WCAG 2.1 relative-luminance formula and written down as fact on the
+[contract table](<%= relative_url('/foundations/color/') %>#contrast-that-has-to-hold)
+rather than re-derived on every build — a personal site does not need a test
+suite standing between an edit and a deploy to keep five numbers honest.
 
-```console
-$ bundle exec rake test
-0 failures, 0 errors, 0 skips
-```
-
-That contract is deliberately narrower than "every colour in the system".
+That contract is deliberately narrower than "every color in the system".
 `--ad-color-text-tertiary` — the source's own "muted-faint text" step — is
 about 3.46:1 against the page in light mode, under the 4.5:1 floor for normal
-text. That is not a bug the build should paper over by darkening a real brand
-value; it is a documented, intentional property of the palette (see the
-[Colour page](<%= relative_url('/foundations/color/') %>)), so the contract
+text. That is not a bug to paper over by darkening a real brand value; it is
+a documented, intentional property of the palette (see the
+[Color page](<%= relative_url('/foundations/color/') %>)), so the contract
 excludes it rather than silently forcing it to pass. Borders get the same
 treatment for the same reason: the source's own rule is that hairline borders
 do the elevation work, not high contrast, so this system does not invent a
@@ -126,7 +120,7 @@ do the elevation work, not high contrast, so this system does not invent a
 ## The four rules
 
 <div class="ad-callout">
-  <p class="type-label" style="margin-bottom: var(--ad-space-2xs); display:block;">1. No colour and no duration outside the token files</p>
+  <p class="type-label" style="margin-bottom: var(--ad-space-2xs); display:block;">1. No color and no duration outside tokens.css</p>
   <p style="margin:0; font-size: var(--ad-step--1);">
     A hex or a duration in a component stylesheet is a decision made in the
     dark, and it is the kind that breaks the moment somebody adds a theme. No
@@ -149,8 +143,9 @@ do the elevation work, not high contrast, so this system does not invent a
 <div class="ad-callout">
   <p class="type-label" style="margin-bottom: var(--ad-space-2xs); display:block;">3. Every token says what it is for</p>
   <p style="margin:0; font-size: var(--ad-step--1);">
-    A <code>usage</code> line on every semantic token, enforced by a test. A
-    token nobody can describe is a token nobody will use correctly.
+    Every semantic alias on the <a href="<%= relative_url('/foundations/color/') %>">Color page</a>
+    carries a usage note. A token nobody can describe is a token nobody will
+    use correctly.
   </p>
 </div>
 

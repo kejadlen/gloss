@@ -5,7 +5,7 @@
     - { text: Using the CSS, url: /install/ }
 - title: Foundations
   links:
-    - { text: Colour,     url: /foundations/color/ }
+    - { text: Color,      url: /foundations/color/ }
     - { text: Typography, url: /foundations/typography/ }
     - { text: Space,      url: /foundations/space/ }
     - { text: Elevation,  url: /foundations/elevation/ }

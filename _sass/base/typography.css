@@ -1,13 +1,13 @@
 /* Every rule here reads a type token for family and size. Weight, line-height,
    and letter-spacing are hardcoded to the exact numbers the source ships —
    there is no `--ad-weight-*` / `--ad-leading-*` / `--ad-tracking-*` scale in
-   the real system, only eight fixed compound styles (see scale.yml's
-   `typography.styles`, which this file implements verbatim). */
+   the real system, only eight fixed compound styles (see the Typography
+   foundation page, which this file implements verbatim). */
 
 .type-display { font: 600 var(--ad-step-4)/1.08 var(--ad-font-sans); letter-spacing: -0.015em; }
-.type-h1      { font: 600 var(--ad-step-3)/1.12 var(--ad-font-sans); letter-spacing: -0.012em; }
-.type-h2      { font: 600 var(--ad-step-2)/1.16 var(--ad-font-sans); letter-spacing: -0.01em; }
-.type-h3      { font: 600 var(--ad-step-1)/1.25 var(--ad-font-sans); }
+.type-h1, h1 { font: 600 var(--ad-step-3)/1.12 var(--ad-font-sans); letter-spacing: -0.012em; }
+.type-h2, h2 { font: 600 var(--ad-step-2)/1.16 var(--ad-font-sans); letter-spacing: -0.01em; }
+.type-h3, h3 { font: 600 var(--ad-step-1)/1.25 var(--ad-font-sans); }
 .type-body    { font: 400 var(--ad-step-0)/1.55 var(--ad-font-sans); }
 .type-body-sm { font: 400 var(--ad-step--1)/1.5 var(--ad-font-sans); }
 .type-label {
@@ -22,9 +22,6 @@
    tokens the compound classes above do; they are not a second scale. */
 h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
 
-h1 { @extend .type-h1; }
-h2 { @extend .type-h2; }
-h3 { @extend .type-h3; }
 h4 { font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans); }
 
 p, ul, ol { margin: 0 0 var(--ad-space-s); }

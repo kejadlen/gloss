@@ -1,11 +1,9 @@
 /* Documentation site chrome. Everything below the `.ad-doc-` prefix belongs
    to this site rather than to the design system it documents — including the
-   four width/height constants it reads from base/_reset.scss. The source
-   design system defines no container-width tokens at all, so there is
-   nothing under `--ad-*` for a doc shell to reach for; scale.yml's own
-   comment says to omit that group entirely rather than invent one. */
-
-@use "../base/reset" as reset;
+   width/height constants used directly below. The source design system
+   defines no container-width tokens at all, so there is nothing under
+   `--ad-*` for a doc shell to reach for; the Space foundation page's own
+   notes say to omit that group entirely rather than invent one. */
 
 .ad-doc-skip {
   position: absolute;
@@ -25,7 +23,7 @@
   position: sticky;
   inset-block-start: 0;
   z-index: 30;
-  height: reset.$doc-header-height;
+  height: 3.5rem;
   background: color-mix(in srgb, var(--ad-color-surface-page) 92%, transparent);
   border-bottom: 1px solid var(--ad-color-border-hairline);
 }
@@ -34,7 +32,7 @@
   align-items: center;
   gap: var(--ad-space-xs);
   height: 100%;
-  max-width: reset.$doc-wide-width;
+  max-width: 72rem;
   margin-inline: auto;
   padding-inline: var(--ad-space-xs);
 }
@@ -70,18 +68,18 @@
 
 .ad-doc-layout {
   display: grid;
-  grid-template-columns: reset.$doc-sidebar-width minmax(0, 1fr);
+  grid-template-columns: 16rem minmax(0, 1fr);
   gap: var(--ad-space-l);
-  max-width: reset.$doc-wide-width;
+  max-width: 72rem;
   margin-inline: auto;
   padding: var(--ad-space-m) var(--ad-space-xs) var(--ad-space-2xl);
 }
 
 .ad-doc-sidebar {
   position: sticky;
-  inset-block-start: calc(#{reset.$doc-header-height} + var(--ad-space-m));
+  inset-block-start: calc(3.5rem + var(--ad-space-m));
   align-self: start;
-  max-height: calc(100vh - #{reset.$doc-header-height} - var(--ad-space-l));
+  max-height: calc(100vh - 3.5rem - var(--ad-space-l));
   overflow-y: auto;
   padding-inline-end: var(--ad-space-2xs);
 }
@@ -115,8 +113,16 @@
   font-weight: 500;
 }
 
-.ad-doc-main { min-width: 0; }
-.ad-doc-main > * { max-width: reset.$doc-content-width; }
+.ad-doc-main {
+  min-width: 0;
+  /* The design system's own body-text token (--ad-step-0, 18–20px) is right
+     for a product screen but too large for long-form documentation prose.
+     This site's own copy gets a plain, fixed 16px instead — the token above
+     is unchanged, and specimen tables/demos below still show its real
+     value. */
+  font-size: 1rem;
+}
+.ad-doc-main > * { max-width: 50rem; }
 
 .ad-doc-title { margin-bottom: var(--ad-space-xs); }
 .ad-doc-title__section {
@@ -139,12 +145,12 @@
 .ad-doc-main h4 { margin-block: var(--ad-space-s) var(--ad-space-2xs); }
 .ad-doc-main p,
 .ad-doc-main ul,
-.ad-doc-main ol { max-width: reset.$doc-measure; }
+.ad-doc-main ol { max-width: 68ch; }
 .ad-doc-main ul:not([class]),
 .ad-doc-main ol:not([class]) { padding-inline-start: var(--ad-space-s); }
 
 .ad-doc-footer {
-  max-width: reset.$doc-wide-width;
+  max-width: 72rem;
   margin-inline: auto;
   padding: var(--ad-space-s) var(--ad-space-xs) var(--ad-space-l);
   border-top: 1px solid var(--ad-color-border-hairline);

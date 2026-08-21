@@ -2,33 +2,58 @@
 title: Switch
 summary: >-
   Toggle switch for on/off settings. The one moving part in this system —
-  everything else transitions colour or border, never position.
+  everything else transitions color or border, never position.
 ---
 
 ## Basic
 
-<% example(title: "Switch", open: true) do %>
+<figure class="example">
+<figcaption>Switch</figcaption>
+<div>
 <label class="ad-switch">
-  <input type="checkbox" checked>
+  <input type="checkbox" checked="" />
   <span class="ad-switch__track"></span>
   Dark mode
 </label>
 <label class="ad-switch">
-  <input type="checkbox">
+  <input type="checkbox" />
   <span class="ad-switch__track"></span>
   Weekly digest
 </label>
-<% end %>
+</div>
+<details open><summary>Markup</summary>
+<pre><code>&lt;label class=&quot;ad-switch&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; checked=&quot;&quot; /&gt;
+  &lt;span class=&quot;ad-switch__track&quot;&gt;&lt;/span&gt;
+  Dark mode
+&lt;/label&gt;
+&lt;label class=&quot;ad-switch&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; /&gt;
+  &lt;span class=&quot;ad-switch__track&quot;&gt;&lt;/span&gt;
+  Weekly digest
+&lt;/label&gt;</code></pre>
+</details>
+</figure>
 
 ## Disabled
 
-<% example(title: "Disabled") do %>
+<figure class="example">
+<figcaption>Disabled</figcaption>
+<div>
 <label class="ad-switch">
-  <input type="checkbox" checked disabled>
+  <input type="checkbox" checked="" disabled="" />
   <span class="ad-switch__track"></span>
   Always on for this plan
 </label>
-<% end %>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;label class=&quot;ad-switch&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; checked=&quot;&quot; disabled=&quot;&quot; /&gt;
+  &lt;span class=&quot;ad-switch__track&quot;&gt;&lt;/span&gt;
+  Always on for this plan
+&lt;/label&gt;</code></pre>
+</details>
+</figure>
 
 ## API
 
