@@ -78,8 +78,11 @@ reason.
 
 GitHub's hosted Jekyll build cannot run this site — it ignores `_plugins/` and
 pins its own Ruby — so `.github/workflows/pages.yml` builds it on Actions with
-`ruby/setup-ruby` and uploads the result with `actions/deploy-pages`. Enable it
-under **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+`ruby/setup-ruby` and uploads the result with `actions/deploy-pages`.
+
+Every branch is built and tested; only the repository's default branch deploys.
+Enable the target under **Settings → Pages → Build and deployment → Source:
+GitHub Actions**.
 
 ## Using the CSS elsewhere
 

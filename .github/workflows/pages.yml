@@ -1,8 +1,9 @@
 name: Build and deploy to Pages
 
 on:
+  # Build every branch so a change is checked before it reaches the default
+  # branch; the deploy job below is what is gated.
   push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -66,7 +67,9 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    # Deploy from whichever branch the repository calls default, rather than a
+    # hard-coded name.
+    if: github.ref_name == github.event.repository.default_branch && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
