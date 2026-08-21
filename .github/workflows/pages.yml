@@ -48,6 +48,11 @@ jobs:
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # Turn Pages on for the repository if it is not already, rather than
+          # failing the build until somebody visits the settings page. Needs
+          # the `pages: write` permission granted above.
+          enablement: true
 
       - name: Build
         env:
