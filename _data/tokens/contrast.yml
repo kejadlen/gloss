@@ -1,0 +1,36 @@
+# The contrast contract.
+#
+# Colour is the one part of a design system that is not arbitrary: a ratio is a
+# fact about two colours and a pair of eyes. So these pairings are asserted by
+# test/test_token_set.rb in both themes, and the same list renders the contract
+# table on the Colour page. Adding a pair here adds it to the deploy gate.
+text:
+  label: Text
+  minimum: 4.5
+  standard: WCAG 2.1 SC 1.4.3 (normal-size text)
+  pairs:
+    - { foreground: color-text, background: color-canvas, note: Body copy on the page. }
+    - { foreground: color-text, background: color-surface, note: Body copy on a card or table. }
+    - { foreground: color-text-muted, background: color-canvas, note: Helper text and captions. }
+    - { foreground: color-text-subtle, background: color-canvas, note: Placeholders and metadata. }
+    - { foreground: color-accent, background: color-canvas, note: Links in running text. }
+    - { foreground: color-on-accent, background: color-accent, note: The label on a primary button. }
+    - { foreground: color-positive, background: color-positive-subtle, note: Positive callouts and badges. }
+    - { foreground: color-caution, background: color-caution-subtle, note: Caution callouts and badges. }
+    - { foreground: color-critical, background: color-critical-subtle, note: Critical callouts and badges. }
+    - { foreground: color-info, background: color-info-subtle, note: Informational callouts and badges. }
+    - { foreground: color-on-critical, background: color-critical-solid, note: The label on a destructive button. }
+    - { foreground: color-text-inverse, background: color-accent, note: A solid accent badge. }
+    - { foreground: color-text-inverse, background: color-positive, note: A solid positive badge. }
+    - { foreground: color-text-inverse, background: color-caution, note: A solid caution badge. }
+    - { foreground: color-text-inverse, background: color-critical, note: A solid critical badge. }
+    - { foreground: color-text-inverse, background: color-info, note: A solid info badge. }
+    - { foreground: color-text-inverse, background: color-text-muted, note: A solid neutral badge. }
+
+non_text:
+  label: Non-text
+  minimum: 3.0
+  standard: WCAG 2.1 SC 1.4.11 (user interface components)
+  pairs:
+    - { foreground: color-border-strong, background: color-surface, note: The edge of a control a reader has to find. }
+    - { foreground: color-focus, background: color-canvas, note: The focus ring against the page. }

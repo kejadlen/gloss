@@ -71,25 +71,30 @@ Contrast. A ratio is a physical fact about two colours and a pair of eyes, and
 it does not care what the brand guidelines say.
 
 So it is the one thing the build refuses to take on trust.
-`lib/arbitrary_definitions/color_math.rb` computes WCAG relative luminance from
-the token values, and `test/test_token_set.rb` asserts a floor on ten text
-pairings and two non-text pairings, in both themes. If a token change drops any
-of them below the line, `rake test` fails and the site does not deploy.
+`_data/tokens/contrast.yml` names
+{{ site.data.tokens.contrast.text.pairs | size }} text pairings and
+{{ site.data.tokens.contrast.non_text.pairs | size }} non-text pairings that
+have to hold; `lib/arbitrary_definitions/color_math.rb` computes WCAG relative
+luminance from the token values, and `test/test_token_set.rb` asserts every one
+of them in both themes. The [contract table]({{ '/foundations/color/' | relative_url }}#contrast-that-has-to-hold)
+is rendered from that same file. If a token change drops any pairing below its
+floor, `rake test` fails and the site does not deploy.
 
 That is not a formality. The accent in this system started at persimmon 600 —
 a nicer orange — and the test caught it at 4.17:1, under the 4.5:1 floor for
 normal text. It moved to 700. The ink ramp got darker at steps 500 through 800
 for the same reason.
 
-The dark theme caught a second class of mistake that no ratio would have found:
-the destructive button was filled with `--ad-color-critical`, which is a *text*
-colour and therefore goes pale in dark mode. White label, pink button. The fix
-was a separate `--ad-color-critical-solid` token, and a pair of assertions that
-now check every filled surface in the system.
+The dark theme caught a second class of mistake that no single ratio would have
+found: the destructive button was filled with `--ad-color-critical`, which is a
+*text* colour and therefore goes pale in dark mode. White label, pink button.
+The fix was a separate `--ad-color-critical-solid` token — and, more usefully,
+a rule in the suite that no `color-text-*` or `color-on-*` token may sit outside
+the contract at all, so the next filled surface cannot be forgotten.
 
 ```console
 $ bundle exec rake test
-23 runs, 199 assertions, 0 failures, 0 errors, 0 skips
+0 failures, 0 errors, 0 skips
 ```
 
 ## The four rules

@@ -60,43 +60,54 @@ class TestTokenSet < Minitest::Test
     end
   end
 
-  # The contrast contract. Every pair here is one a reader actually has to
-  # decipher, so each owes WCAG AA in both themes. These assertions are the
-  # reason the ink ramp is as dark as it is.
-  TEXT_PAIRS = [
-    %w[color-text color-canvas],
-    %w[color-text color-surface],
-    %w[color-text-muted color-canvas],
-    %w[color-text-subtle color-canvas],
-    %w[color-accent color-canvas],
-    %w[color-on-accent color-accent],
-    %w[color-positive color-positive-subtle],
-    %w[color-caution color-caution-subtle],
-    %w[color-critical color-critical-subtle],
-    %w[color-info color-info-subtle],
-    # Filled surfaces: a label sitting directly on a status or accent fill.
-    %w[color-on-critical color-critical-solid],
-    %w[color-text-inverse color-accent],
-    %w[color-text-inverse color-positive],
-    %w[color-text-inverse color-caution],
-    %w[color-text-inverse color-critical],
-    %w[color-text-inverse color-info],
-    %w[color-text-inverse color-text-muted],
-  ].freeze
+  # The contrast contract lives in _data/tokens/contrast.yml so that this
+  # suite and the Colour page read the same list. Adding a pair there adds it
+  # to the deploy gate here, with no second copy to keep in step.
+  def test_the_contrast_contract_holds_in_both_themes
+    by_name = @tokens.semantic_tokens.to_h { |token| [token["token"], token] }
+    failures = []
 
-  # Non-text contrast (SC 1.4.11): the border a user is told to rely on to
-  # find a control needs 3:1, even though it carries no glyphs.
-  NON_TEXT_PAIRS = [
-    %w[color-border-strong color-surface],
-    %w[color-focus color-canvas],
-  ].freeze
+    @tokens.contrast_pairs.each do |pair|
+      %w[light dark].each do |theme|
+        foreground = by_name.fetch(pair.fetch("foreground"))
+        background = by_name.fetch(pair.fetch("background"))
+        ratio = ArbitraryDefinitions::ColorMath.contrast_ratio(foreground[theme], background[theme])
 
-  def test_text_pairs_clear_wcag_aa_in_both_themes
-    assert_pairs(TEXT_PAIRS, 4.5)
+        next if ratio && ratio >= pair.fetch("minimum")
+
+        failures << "#{pair['foreground']} on #{pair['background']} is " \
+                    "#{ratio ? ratio.round(2) : 'unmeasurable'}:1 in the #{theme} theme, " \
+                    "below the #{pair['minimum']}:1 floor"
+      end
+    end
+
+    assert_empty failures
   end
 
-  def test_non_text_pairs_clear_the_three_to_one_threshold
-    assert_pairs(NON_TEXT_PAIRS, 3.0)
+  def test_the_contract_only_names_tokens_that_exist
+    known = @tokens.semantic_tokens.map { |token| token["token"] }
+    named = @tokens.contrast_pairs.flat_map { |pair| pair.values_at("foreground", "background") }
+
+    assert_empty named.uniq - known, "the contrast contract names tokens the system does not define"
+  end
+
+  def test_the_contract_covers_the_pairings_that_matter
+    covered = @tokens.contrast_pairs.map { |pair| pair.fetch("foreground") }
+
+    # Every text colour and every "on-" colour is something a reader decodes,
+    # so none of them may sit outside the contract.
+    required = @tokens.semantic_tokens
+                      .map { |token| token["token"] }
+                      .select { |name| name.start_with?("color-text", "color-on-") }
+                      .reject { |name| name == "color-text-inverse" }
+
+    assert_empty required - covered, "a text token is not covered by the contrast contract"
+  end
+
+  def test_every_contract_pair_explains_itself
+    undocumented = @tokens.contrast_pairs.reject { |pair| pair["note"].to_s.strip.length.positive? }
+
+    assert_empty undocumented
   end
 
   def test_css_emits_a_root_block_and_both_dark_selectors
@@ -128,22 +139,4 @@ class TestTokenSet < Minitest::Test
     assert_equal css.count("{"), css.count("}")
   end
 
-  private
-
-  def assert_pairs(pairs, threshold)
-    by_name = @tokens.semantic_tokens.to_h { |token| [token["token"], token] }
-
-    pairs.each do |(foreground, background)|
-      %w[light dark].each do |theme|
-        ratio = ArbitraryDefinitions::ColorMath.contrast_ratio(
-          by_name.fetch(foreground)[theme],
-          by_name.fetch(background)[theme],
-        )
-
-        assert_operator ratio, :>=, threshold,
-                        "#{foreground} on #{background} is #{ratio.round(2)}:1 in the " \
-                        "#{theme} theme, below the #{threshold}:1 floor"
-      end
-    end
-  end
 end

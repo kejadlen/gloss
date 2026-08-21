@@ -59,8 +59,8 @@ shadow tokens still apply — they just stop being the primary signal.
 <div class="ad-callout ad-callout--neutral">
   <div class="ad-callout__body">
     <p style="margin:0">
-      Toggle the theme in the header and watch the row above. In light, the three
-      cards separate by shadow. In dark, they separate by surface. Same markup.
+      Switch themes and watch the row above. In light, the three cards separate
+      by shadow. In dark, they separate by surface. Same markup either way.
     </p>
   </div>
 </div>

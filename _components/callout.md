@@ -26,7 +26,7 @@ summary: >-
   </svg>
   <div class="ad-callout__body">
     <p class="ad-callout__title">Contrast contract holding</p>
-    <p style="margin:0">All ten text pairings clear WCAG AA in both themes.</p>
+    <p style="margin:0">All {{ site.data.tokens.contrast.text.pairs | size }} text pairings clear WCAG AA in both themes.</p>
   </div>
 </div>
 

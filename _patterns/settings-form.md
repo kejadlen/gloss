@@ -80,7 +80,7 @@ hold together when a real screen puts nine of them side by side.
       <div class="ad-progress" style="max-width: none;">
         <div class="ad-progress__label">
           <span id="pattern-progress">Token coverage</span>
-          <span class="ad-progress__value">32 / 32 aliases documented</span>
+          <span class="ad-progress__value">{{ site.data.build.aliases }} / {{ site.data.build.aliases }} aliases documented</span>
         </div>
         <div class="ad-progress__track" role="progressbar" aria-labelledby="pattern-progress"
              aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
@@ -112,5 +112,5 @@ hold together when a real screen puts nine of them side by side.
 - **Two tones at once.** A caution badge and an info callout coexist without the
   page turning into a traffic light, because both draw from the same restrained
   status tints.
-- **The dark theme.** Toggle it in the header. Nothing in this pattern has a
-  colour of its own.
+- **The dark theme.** Nothing in this pattern has a colour of its own — every
+  value is an alias, and the dark block repoints all of them at once.

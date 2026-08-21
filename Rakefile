@@ -18,5 +18,10 @@ task :serve do
   sh "bundle exec jekyll serve --livereload"
 end
 
+desc "Build the Claude Design upload bundle into design-bundle/"
+task design: :build do
+  sh "ruby script/build_design_bundle.rb"
+end
+
 desc "Run the token and colour tests, then build"
 task default: %i[test build]

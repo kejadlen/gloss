@@ -17,14 +17,31 @@ module ArbitraryDefinitions
     # A `ramp.step` reference, e.g. `persimmon.600`.
     REFERENCE = /\A([a-z][a-z0-9_]*)\.([a-z0-9]+)\z/
 
-    attr_reader :prefix, :ramps, :semantic, :scale
+    attr_reader :prefix, :ramps, :semantic, :scale, :contrast
 
     def initialize(dir:, prefix: "ad")
       @prefix   = prefix
       @ramps    = load_yaml(File.join(dir, "color.yml")).fetch("ramps")
       @semantic = load_yaml(File.join(dir, "semantic.yml")).fetch("groups")
       @scale    = load_yaml(File.join(dir, "scale.yml"))
+      @contrast = load_yaml(File.join(dir, "contrast.yml"))
       @index    = build_ramp_index
+    end
+
+    # The contrast contract, flattened into one list of
+    # {foreground, background, minimum, …} rows. The test suite asserts these
+    # and the Colour page renders them, so neither can quietly fall behind the
+    # other.
+    def contrast_pairs
+      contrast.flat_map do |_key, section|
+        section.fetch("pairs").map do |pair|
+          pair.merge(
+            "kind"     => section.fetch("label"),
+            "minimum"  => section.fetch("minimum"),
+            "standard" => section.fetch("standard"),
+          )
+        end
+      end
     end
 
     # "ink.900" -> "#26231f"; a literal colour passes straight through.

@@ -97,72 +97,60 @@ group usually means somebody forgot to think about dark mode.
 
 ## Contrast that has to hold
 
-Three pairings are load-bearing. The build fails if any of them drops below WCAG
-AA — `test/test_token_set.rb` asserts it on the light and dark themes both.
+Colour is the one part of this system that is not arbitrary: a ratio is a fact
+about two colours and a pair of eyes, and it does not care what the palette
+wants. So the pairings below are a contract. They live in
+`_data/tokens/contrast.yml`, `test/test_token_set.rb` asserts every one of them
+in both themes, and the table is rendered from that same file — the deploy
+fails before a regression can reach this page.
 
-{% assign text = site.data.semantic_flat | where: "token", "color-text" | first %}
-{% assign muted = site.data.semantic_flat | where: "token", "color-text-muted" | first %}
-{% assign canvas = site.data.semantic_flat | where: "token", "color-canvas" | first %}
-{% assign accent = site.data.semantic_flat | where: "token", "color-accent" | first %}
-{% assign on_accent = site.data.semantic_flat | where: "token", "color-on-accent" | first %}
+{% assign contract = site.data.tokens.contrast %}
+{% assign flat = site.data.semantic_flat %}
+
+{% for section in contract %}
+{% assign spec = section[1] %}
+### {{ spec.label }} — {{ spec.minimum }}:1 minimum
+
+<p class="ad-muted">{{ spec.standard }}</p>
 
 <div class="ad-table-wrap">
-  <table class="ad-table">
-    <caption>Ratios computed at build time from the token values themselves.</caption>
+  <table class="ad-table ad-table--compact">
     <thead>
       <tr>
-        <th scope="col">Pair</th>
-        <th scope="col">Theme</th>
-        <th scope="col" class="ad-table__num">Ratio</th>
-        <th scope="col">Grade</th>
+        <th scope="col">Pairing</th>
+        <th scope="col">Where it shows up</th>
+        <th scope="col" class="ad-table__num">Light</th>
+        <th scope="col" class="ad-table__num">Dark</th>
       </tr>
     </thead>
     <tbody>
+      {%- for pair in spec.pairs %}
+      {%- assign fg = flat | where: "token", pair.foreground | first %}
+      {%- assign bg = flat | where: "token", pair.background | first %}
       <tr>
-        <td>Body text on canvas</td>
-        <td>Light</td>
-        <td class="ad-table__num">{{ text.light | contrast_with: canvas.light }}</td>
-        {%- assign grade = text.light | contrast_grade: canvas.light %}
-        <td><span class="ad-grade ad-grade--{{ grade | replace: ' ', '-' }}">{{ grade }}</span></td>
+        <td>
+          <span class="ad-alias-row">
+            <span class="ad-alias-chip" aria-hidden="true"
+                  style="background: {{ bg.light }}; color: {{ fg.light }}; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <span class="ad-token-name">{{ pair.foreground }}<br><span class="ad-subtle">on {{ pair.background }}</span></span>
+          </span>
+        </td>
+        <td>{{ pair.note }}</td>
+        {%- assign light_ratio = fg.light | contrast_with: bg.light %}
+        {%- assign dark_ratio = fg.dark | contrast_with: bg.dark %}
+        <td class="ad-table__num">{{ light_ratio }}</td>
+        <td class="ad-table__num">{{ dark_ratio }}</td>
       </tr>
-      <tr>
-        <td>Body text on canvas</td>
-        <td>Dark</td>
-        <td class="ad-table__num">{{ text.dark | contrast_with: canvas.dark }}</td>
-        {%- assign grade = text.dark | contrast_grade: canvas.dark %}
-        <td><span class="ad-grade ad-grade--{{ grade | replace: ' ', '-' }}">{{ grade }}</span></td>
-      </tr>
-      <tr>
-        <td>Muted text on canvas</td>
-        <td>Light</td>
-        <td class="ad-table__num">{{ muted.light | contrast_with: canvas.light }}</td>
-        {%- assign grade = muted.light | contrast_grade: canvas.light %}
-        <td><span class="ad-grade ad-grade--{{ grade | replace: ' ', '-' }}">{{ grade }}</span></td>
-      </tr>
-      <tr>
-        <td>Muted text on canvas</td>
-        <td>Dark</td>
-        <td class="ad-table__num">{{ muted.dark | contrast_with: canvas.dark }}</td>
-        {%- assign grade = muted.dark | contrast_grade: canvas.dark %}
-        <td><span class="ad-grade ad-grade--{{ grade | replace: ' ', '-' }}">{{ grade }}</span></td>
-      </tr>
-      <tr>
-        <td>Label on a filled accent</td>
-        <td>Light</td>
-        <td class="ad-table__num">{{ on_accent.light | contrast_with: accent.light }}</td>
-        {%- assign grade = on_accent.light | contrast_grade: accent.light %}
-        <td><span class="ad-grade ad-grade--{{ grade | replace: ' ', '-' }}">{{ grade }}</span></td>
-      </tr>
-      <tr>
-        <td>Label on a filled accent</td>
-        <td>Dark</td>
-        <td class="ad-table__num">{{ on_accent.dark | contrast_with: accent.dark }}</td>
-        {%- assign grade = on_accent.dark | contrast_grade: accent.dark %}
-        <td><span class="ad-grade ad-grade--{{ grade | replace: ' ', '-' }}">{{ grade }}</span></td>
-      </tr>
+      {%- endfor %}
     </tbody>
   </table>
 </div>
+{% endfor %}
+
+Every figure in those two tables was computed during this build by
+`lib/arbitrary_definitions/color_math.rb`, from the token value itself. None of
+them was typed by a person, which is the only way a number in documentation
+stays true.
 
 <div class="ad-callout ad-callout--caution">
   <div class="ad-callout__body">

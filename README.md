@@ -45,8 +45,9 @@ $ bundle exec rake serve    # http://127.0.0.1:4000
 suite is the deploy gate in CI, and it asserts things that are easy to break by
 accident:
 
-- ten text pairings clear WCAG AA in **both** themes, and two non-text pairings
-  clear 3:1;
+- every pairing in `_data/tokens/contrast.yml` holds in **both** themes — text
+  at WCAG AA, interface boundaries at 3:1 — and no `color-text-*` or
+  `color-on-*` token is allowed to sit outside that contract;
 - every ramp darkens monotonically from step to step;
 - every semantic token resolves in both themes and documents its usage;
 - no unresolved `ramp.step` reference reaches the generated CSS, and its braces
@@ -54,7 +55,7 @@ accident:
 
 ```console
 $ bundle exec rake test
-23 runs, 199 assertions, 0 failures, 0 errors, 0 skips
+0 failures, 0 errors, 0 skips
 ```
 
 Those assertions are not decorative. The accent started at `persimmon.600` and
@@ -66,7 +67,7 @@ reason.
 
 | Path | What it is |
 | --- | --- |
-| `_data/tokens/` | Every value in the system: ramps, semantic aliases, scales. |
+| `_data/tokens/` | Every value in the system: ramps, semantic aliases, scales, and the contrast contract. |
 | `lib/arbitrary_definitions/` | Token compiler and WCAG colour maths. No Jekyll dependency. |
 | `_plugins/` | Jekyll wiring: the generator, Liquid filters, the `example` block. |
 | `_sass/` | Base, components, and the documentation site's own chrome. |
@@ -90,6 +91,39 @@ included, runs regardless.
 The site's `baseurl` lives in `_config.yml` rather than coming from
 `actions/configure-pages`, which keeps the build independent of the Pages API.
 Change it there if the site ever moves off a project page.
+
+## Claude Design
+
+`rake design` renders the bundle that Claude Design's Design System pane wants,
+into `design-bundle/`:
+
+```console
+$ bundle exec rake design
+design-bundle: 15 cards, 17 files, 966 KiB
+```
+
+One card per documentation page — five foundations, eight components, two
+patterns — each a standalone HTML file with the compiled tokens and component
+CSS inlined and a first-line `<!-- @dsCard group="…" -->` marker for the pane's
+card index. `design-bundle/css/` carries the two compiled stylesheets as well,
+so the project holds the artifact a consumer would link and not only the
+previews.
+
+The cards are generated from `_site` by `script/build_design_bundle.rb` rather
+than written by hand, for the same reason the docs are: a second copy of the
+system maintained separately starts disagreeing with the first one immediately.
+Rebuild them whenever a token changes.
+
+Pushing the bundle needs `DesignSync`, which requires design-system
+authorization via `/design-login` — an interactive terminal, so it cannot run in
+Claude Code on the web. From a local Claude Code session:
+
+```console
+$ bundle exec rake design
+$ claude   # then: /design-login, and ask it to sync design-bundle/
+```
+
+`design-bundle/` is gitignored; it is a build artifact.
 
 ## Using the CSS elsewhere
 
