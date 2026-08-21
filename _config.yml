@@ -61,6 +61,10 @@ exclude:
   - test
   - vendor
   - lib
+  # Build artifacts. .gitignore does not exclude these from Jekyll, and
+  # design-bundle/ is built *from* _site, so leaving it in would fold a copy
+  # of the whole site back into the next build.
+  - design-bundle
   - .ruby-version
   - script
 
