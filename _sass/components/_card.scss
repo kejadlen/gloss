@@ -1,0 +1,80 @@
+/* Card
+   A bordered sheet by default. Elevation is opt-in, because a page of
+   floating cards has no hierarchy at all. */
+
+.ad-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ad-color-surface);
+  border: 1px solid var(--ad-color-border);
+  border-radius: var(--ad-radius-md);
+  overflow: hidden;
+}
+
+.ad-card--raised { box-shadow: var(--ad-elevation-1); }
+.ad-card--floating { box-shadow: var(--ad-elevation-2); border-color: transparent; }
+
+.ad-card__media { background: var(--ad-color-surface-sunken); aspect-ratio: 16 / 9; }
+
+.ad-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ad-space-2);
+  padding: var(--ad-space-4);
+}
+
+.ad-card__title {
+  font-size: var(--ad-text-lg);
+  font-weight: var(--ad-weight-semibold);
+  line-height: var(--ad-leading-snug);
+}
+.ad-card__text {
+  margin: 0;
+  color: var(--ad-color-text-muted);
+  font-size: var(--ad-text-sm);
+}
+
+.ad-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ad-space-3);
+  margin-top: auto;
+  padding: var(--ad-space-3) var(--ad-space-4);
+  border-top: 1px solid var(--ad-color-border-subtle);
+  background: var(--ad-color-surface-sunken);
+}
+
+/* A whole card that behaves as one link target. */
+.ad-card--link { transition: border-color var(--ad-duration-fast) var(--ad-ease-standard), box-shadow var(--ad-duration-fast) var(--ad-ease-standard); }
+.ad-card--link:hover { border-color: var(--ad-color-border-strong); box-shadow: var(--ad-elevation-1); }
+.ad-card--link:focus-within { outline: 2px solid var(--ad-color-focus); outline-offset: 2px; }
+
+.ad-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--ad-space-4);
+}
+
+/* Avatar lives here because it almost never appears outside a card or a row. */
+.ad-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border-radius: var(--ad-radius-full);
+  background: var(--ad-color-accent-subtle);
+  color: var(--ad-color-accent);
+  font-size: var(--ad-text-xs);
+  font-weight: var(--ad-weight-semibold);
+  letter-spacing: var(--ad-tracking-wide);
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.ad-avatar--sm { width: 1.5rem; height: 1.5rem; font-size: var(--ad-text-2xs); }
+.ad-avatar--lg { width: 3rem; height: 3rem; font-size: var(--ad-text-md); }
+
+.ad-avatar-stack { display: flex; }
+.ad-avatar-stack > .ad-avatar + .ad-avatar { margin-inline-start: -0.5rem; box-shadow: 0 0 0 2px var(--ad-color-surface); }

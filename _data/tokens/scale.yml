@@ -1,0 +1,121 @@
+# Non-colour tokens. Same deal: `_plugins/token_generator.rb` turns each
+# group into a block of CSS custom properties under `:root`.
+
+typography:
+  label: Typography
+  families:
+    - token: font-display
+      value: "\"Fraunces\", \"Iowan Old Style\", Georgia, serif"
+      usage: Wordmark and page titles. Optical sizing does the heavy lifting.
+    - token: font-sans
+      value: "\"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      usage: Everything else. Body copy, UI labels, tables.
+    - token: font-mono
+      value: "\"JetBrains Mono\", ui-monospace, SFMono-Regular, \"SF Mono\", Menlo, monospace"
+      usage: Code, token names, and any value the reader might need to copy.
+  sizes:
+    - { token: text-2xs, value: "0.6875rem", px: 11, usage: Overlines and table micro-labels. Uppercase only. }
+    - { token: text-xs,  value: "0.75rem",   px: 12, usage: Badges, captions, keyboard hints. }
+    - { token: text-sm,  value: "0.875rem",  px: 14, usage: Dense UI — small buttons, helper text, table cells. }
+    - { token: text-md,  value: "1rem",      px: 16, usage: The default. Body copy and standard controls. }
+    - { token: text-lg,  value: "1.125rem",  px: 18, usage: Lead paragraphs and large controls. }
+    - { token: text-xl,  value: "1.375rem",  px: 22, usage: Section headings (h3). }
+    - { token: text-2xl, value: "1.75rem",   px: 28, usage: Subsection headings (h2). }
+    - { token: text-3xl, value: "2.25rem",   px: 36, usage: Page titles (h1). }
+    - { token: text-4xl, value: "3rem",      px: 48, usage: Hero headline. }
+    - { token: text-5xl, value: "3.75rem",   px: 60, usage: One per site, at most. }
+  line_heights:
+    - { token: leading-tight,   value: "1.15", usage: Display sizes, 28px and up. }
+    - { token: leading-snug,    value: "1.3",  usage: Headings and multi-line labels. }
+    - { token: leading-normal,  value: "1.55", usage: Body copy. }
+    - { token: leading-relaxed, value: "1.75", usage: Long-form prose columns. }
+  weights:
+    - { token: weight-regular,  value: "400", usage: Body copy. }
+    - { token: weight-medium,   value: "500", usage: UI labels and table headers. }
+    - { token: weight-semibold, value: "600", usage: Buttons and headings. }
+    - { token: weight-bold,     value: "700", usage: Emphasis inside running text. }
+  tracking:
+    - { token: tracking-tight,  value: "-0.02em", usage: Sizes 28px and up, where default spacing looks loose. }
+    - { token: tracking-normal, value: "0",       usage: Everything from 12px to 22px. }
+    - { token: tracking-wide,   value: "0.08em",  usage: Uppercase overlines only. }
+
+space:
+  label: Space
+  description: >-
+    A 4px base with a ramp that thins out as it grows. Small increments matter
+    inside a control; nobody can see the difference between 76px and 80px.
+  scale:
+    - { token: space-0,  value: "0",       px: 0 }
+    - { token: space-1,  value: "0.25rem", px: 4 }
+    - { token: space-2,  value: "0.5rem",  px: 8 }
+    - { token: space-3,  value: "0.75rem", px: 12 }
+    - { token: space-4,  value: "1rem",    px: 16 }
+    - { token: space-5,  value: "1.5rem",  px: 24 }
+    - { token: space-6,  value: "2rem",    px: 32 }
+    - { token: space-7,  value: "2.5rem",  px: 40 }
+    - { token: space-8,  value: "3rem",    px: 48 }
+    - { token: space-9,  value: "4rem",    px: 64 }
+    - { token: space-10, value: "6rem",    px: 96 }
+    - { token: space-11, value: "8rem",    px: 128 }
+
+radius:
+  label: Radius
+  description: Corner rounding. The system tops out at 16px; anything softer reads as a toy.
+  scale:
+    - { token: radius-none, value: "0",      usage: Tables, full-bleed bands. }
+    - { token: radius-xs,   value: "3px",    usage: Badges and inline code. }
+    - { token: radius-sm,   value: "5px",    usage: Inputs, buttons, checkboxes. }
+    - { token: radius-md,   value: "8px",    usage: Cards and callouts. }
+    - { token: radius-lg,   value: "12px",   usage: Panels and modals. }
+    - { token: radius-xl,   value: "16px",   usage: Hero surfaces. }
+    - { token: radius-full, value: "999px",  usage: Pills, avatars, switches. }
+
+elevation:
+  label: Elevation
+  description: >-
+    Five levels, each a two-shadow stack: a tight contact shadow plus a wider
+    ambient one. Levels are about hierarchy, not distance.
+  scale:
+    - token: elevation-0
+      value: "none"
+      usage: Flush with the canvas. Bordered cards live here.
+    - token: elevation-1
+      value: "0 1px 2px rgba(23, 21, 18, 0.06), 0 1px 3px rgba(23, 21, 18, 0.08)"
+      usage: Resting cards that need to separate from a busy background.
+    - token: elevation-2
+      value: "0 2px 4px rgba(23, 21, 18, 0.06), 0 4px 12px rgba(23, 21, 18, 0.08)"
+      usage: Dropdowns, popovers, sticky headers once they detach.
+    - token: elevation-3
+      value: "0 4px 8px rgba(23, 21, 18, 0.07), 0 12px 28px rgba(23, 21, 18, 0.12)"
+      usage: Dialogs and side sheets.
+    - token: elevation-4
+      value: "0 8px 16px rgba(23, 21, 18, 0.08), 0 24px 56px rgba(23, 21, 18, 0.16)"
+      usage: Full-screen overlays. One per view.
+
+motion:
+  label: Motion
+  description: >-
+    Durations are short because this is an interface, not a title sequence.
+    Every one of these is muted to 0ms under `prefers-reduced-motion`.
+  durations:
+    - { token: duration-instant, value: "0ms",   usage: State changes that must feel like they already happened. }
+    - { token: duration-fast,    value: "120ms", usage: Hover, focus, and colour transitions. }
+    - { token: duration-base,    value: "200ms", usage: Expanding, revealing, switching. }
+    - { token: duration-slow,    value: "320ms", usage: Anything that crosses more than half the viewport. }
+    - { token: duration-spin,    value: "700ms", usage: One rotation of the button spinner. }
+    - { token: duration-loop,    value: "1400ms", usage: One pass of an indeterminate indicator. }
+  easings:
+    - { token: ease-standard, value: "cubic-bezier(0.2, 0, 0, 1)",    usage: The default. Fast out, settles gently. }
+    - { token: ease-entrance, value: "cubic-bezier(0, 0, 0.2, 1)",    usage: Elements arriving on screen. }
+    - { token: ease-exit,     value: "cubic-bezier(0.4, 0, 1, 1)",    usage: Elements leaving. Quicker than arriving. }
+    - { token: ease-spring,   value: "cubic-bezier(0.34, 1.4, 0.64, 1)", usage: Toggles and switches. The only overshoot in the system. }
+
+layout:
+  label: Layout
+  description: Container widths and the one breakpoint that actually changes the page.
+  scale:
+    - { token: measure-prose,  value: "68ch",   usage: Max width for running text. Roughly 75 characters. }
+    - { token: width-content,  value: "50rem",  usage: Documentation column. }
+    - { token: width-wide,     value: "72rem",  usage: Full site shell including the sidebar. }
+    - { token: sidebar-width,  value: "16rem",  usage: Persistent navigation rail. }
+    - { token: header-height,  value: "3.5rem", usage: Sticky masthead. }

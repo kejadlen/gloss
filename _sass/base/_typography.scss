@@ -1,0 +1,97 @@
+/* Every rule here reads from a type token. If a size appears in this file as
+   a raw value, it is a bug. */
+
+h1, h2, h3, h4 {
+  font-weight: var(--ad-weight-semibold);
+  line-height: var(--ad-leading-snug);
+  text-wrap: balance;
+}
+
+h1 {
+  font-family: var(--ad-font-display);
+  font-size: var(--ad-text-3xl);
+  font-weight: var(--ad-weight-semibold);
+  line-height: var(--ad-leading-tight);
+  letter-spacing: var(--ad-tracking-tight);
+  font-optical-sizing: auto;
+}
+
+h2 {
+  font-size: var(--ad-text-2xl);
+  letter-spacing: var(--ad-tracking-tight);
+}
+
+h3 { font-size: var(--ad-text-xl); }
+h4 { font-size: var(--ad-text-lg); }
+
+p, ul, ol { margin: 0 0 var(--ad-space-4); }
+li + li { margin-top: var(--ad-space-1); }
+
+a {
+  color: var(--ad-color-accent);
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color var(--ad-duration-fast) var(--ad-ease-standard),
+              text-decoration-color var(--ad-duration-fast) var(--ad-ease-standard);
+}
+a:hover {
+  color: var(--ad-color-accent-hover);
+  text-decoration-color: currentColor;
+}
+
+strong, b { font-weight: var(--ad-weight-semibold); }
+
+small { font-size: var(--ad-text-sm); }
+
+.ad-overline {
+  font-size: var(--ad-text-2xs);
+  font-weight: var(--ad-weight-semibold);
+  letter-spacing: var(--ad-tracking-wide);
+  text-transform: uppercase;
+  color: var(--ad-color-text-muted);
+}
+
+.ad-lead {
+  font-size: var(--ad-text-lg);
+  line-height: var(--ad-leading-relaxed);
+  color: var(--ad-color-text-muted);
+  max-width: var(--ad-measure-prose);
+  text-wrap: pretty;
+}
+
+.ad-muted { color: var(--ad-color-text-muted); }
+.ad-subtle { color: var(--ad-color-text-subtle); }
+
+code, kbd, samp, pre {
+  font-family: var(--ad-font-mono);
+  font-feature-settings: "liga" 0;
+}
+
+:not(pre) > code {
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+  background: var(--ad-color-surface-sunken);
+  border: 1px solid var(--ad-color-border-subtle);
+  border-radius: var(--ad-radius-xs);
+  white-space: nowrap;
+}
+
+kbd {
+  display: inline-block;
+  padding: 0.1em 0.45em;
+  font-size: var(--ad-text-xs);
+  line-height: 1.6;
+  background: var(--ad-color-surface);
+  border: 1px solid var(--ad-color-border);
+  border-bottom-width: 2px;
+  border-radius: var(--ad-radius-xs);
+  color: var(--ad-color-text-muted);
+}
+
+blockquote {
+  margin-block: var(--ad-space-4);
+  padding-left: var(--ad-space-4);
+  border-left: 2px solid var(--ad-color-accent-border);
+  color: var(--ad-color-text-muted);
+}

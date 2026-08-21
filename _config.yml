@@ -1,0 +1,67 @@
+title: Arbitrary Definitions
+tagline: A small design system that admits what it is
+description: >-
+  Arbitrary Definitions is a documented design system — colour, type, space,
+  motion, and a dozen components — rendered from a single set of YAML token
+  files by a Jekyll site running on Ruby 4.0.
+
+url: https://kejadlen.github.io
+baseurl: /arbitrary-definitions-design-system
+repository: kejadlen/arbitrary-definitions-design-system
+lang: en
+
+sass:
+  style: compressed
+  sass_dir: _sass
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: html
+
+# The prefix on every custom property and class this system emits.
+token_prefix: ad
+
+collections:
+  foundations:
+    output: true
+    permalink: /foundations/:name/
+  components:
+    output: true
+    permalink: /components/:name/
+  patterns:
+    output: true
+    permalink: /patterns/:name/
+
+defaults:
+  - scope: { path: "" }
+    values:
+      layout: page
+  - scope: { path: "", type: foundations }
+    values:
+      layout: page
+      section: Foundations
+  - scope: { path: "", type: components }
+    values:
+      layout: page
+      section: Components
+  - scope: { path: "", type: patterns }
+    values:
+      layout: page
+      section: Patterns
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CONTRIBUTING.md
+  - Rakefile
+  - test
+  - vendor
+  - lib
+  - .ruby-version
+  - script
+
+plugins: []

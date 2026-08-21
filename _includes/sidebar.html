@@ -1,0 +1,20 @@
+<aside class="ad-doc-sidebar" data-sidebar data-collapsed="true">
+  <button type="button" class="ad-btn ad-btn--secondary ad-btn--sm ad-doc-nav-toggle"
+          data-nav-toggle aria-expanded="false" aria-controls="ad-doc-nav">
+    <span>Browse the system</span>
+    <span aria-hidden="true">☰</span>
+  </button>
+
+  <nav class="ad-doc-nav" id="ad-doc-nav" aria-label="Design system">
+    {%- for group in site.data.nav %}
+    <div class="ad-doc-nav__group">
+      <h2 class="ad-doc-nav__heading">{{ group.title }}</h2>
+      {%- for link in group.links %}
+      {%- assign href = link.url | relative_url %}
+      <a class="ad-doc-nav__link" href="{{ href }}"
+         {% if page.url == link.url %}aria-current="page"{% endif %}>{{ link.text }}</a>
+      {%- endfor %}
+    </div>
+    {%- endfor %}
+  </nav>
+</aside>

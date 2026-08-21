@@ -1,0 +1,180 @@
+/* Field
+   The label / control / description / error quartet. The wrapper owns the
+   spacing so that every control type lines up in a form regardless of height. */
+
+.ad-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ad-space-2);
+  min-width: 0;
+}
+
+.ad-field__label {
+  font-size: var(--ad-text-sm);
+  font-weight: var(--ad-weight-medium);
+  color: var(--ad-color-text);
+}
+
+.ad-field__required {
+  color: var(--ad-color-critical);
+  margin-inline-start: 0.15em;
+}
+
+.ad-field__hint,
+.ad-field__error {
+  font-size: var(--ad-text-sm);
+  line-height: var(--ad-leading-snug);
+}
+.ad-field__hint { color: var(--ad-color-text-muted); }
+.ad-field__error { color: var(--ad-color-critical); font-weight: var(--ad-weight-medium); }
+
+.ad-input,
+.ad-textarea,
+.ad-select {
+  width: 100%;
+  min-height: 2.25rem;
+  padding: var(--ad-space-2) var(--ad-space-3);
+  background: var(--ad-color-surface);
+  border: 1px solid var(--ad-color-border);
+  border-radius: var(--ad-radius-sm);
+  color: var(--ad-color-text);
+  font-size: var(--ad-text-sm);
+  transition: border-color var(--ad-duration-fast) var(--ad-ease-standard),
+              background-color var(--ad-duration-fast) var(--ad-ease-standard);
+}
+
+.ad-input::placeholder,
+.ad-textarea::placeholder { color: var(--ad-color-text-subtle); }
+
+.ad-input:hover:not(:disabled),
+.ad-textarea:hover:not(:disabled),
+.ad-select:hover:not(:disabled) { border-color: var(--ad-color-border-strong); }
+
+.ad-input:disabled,
+.ad-textarea:disabled,
+.ad-select:disabled {
+  background: var(--ad-color-surface-sunken);
+  color: var(--ad-color-text-subtle);
+  cursor: not-allowed;
+}
+
+.ad-textarea { min-height: 5.5rem; resize: vertical; line-height: var(--ad-leading-normal); }
+
+.ad-select {
+  appearance: none;
+  padding-inline-end: var(--ad-space-7);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%2378705f' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--ad-space-3) center;
+}
+
+/* Invalid is expressed on the control, so it works with native validation. */
+.ad-input[aria-invalid="true"],
+.ad-textarea[aria-invalid="true"],
+.ad-select[aria-invalid="true"] {
+  border-color: var(--ad-color-critical);
+  background: var(--ad-color-critical-subtle);
+}
+
+/* Checkbox and radio share a box; only the radius differs. */
+.ad-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ad-space-2);
+  font-size: var(--ad-text-sm);
+  cursor: pointer;
+}
+.ad-choice input[type="checkbox"],
+.ad-choice input[type="radio"] {
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  margin: 0.2rem 0 0;
+  accent-color: var(--ad-color-accent);
+  cursor: pointer;
+}
+.ad-choice__text { display: block; }
+.ad-choice__hint {
+  display: block;
+  color: var(--ad-color-text-muted);
+  font-size: var(--ad-text-xs);
+}
+.ad-choice input:disabled,
+.ad-choice:has(input:disabled) { cursor: not-allowed; color: var(--ad-color-text-subtle); }
+
+/* Switch — the one place in the system that overshoots on the way out. */
+.ad-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ad-space-3);
+  cursor: pointer;
+  font-size: var(--ad-text-sm);
+}
+.ad-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 2.25rem;
+  height: 1.25rem;
+  margin: 0;
+  cursor: pointer;
+}
+.ad-switch__track {
+  position: relative;
+  flex: none;
+  width: 2.25rem;
+  height: 1.25rem;
+  background: var(--ad-color-border-strong);
+  border-radius: var(--ad-radius-full);
+  transition: background-color var(--ad-duration-base) var(--ad-ease-standard);
+}
+.ad-switch__track::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 2px;
+  inset-inline-start: 2px;
+  width: 1rem;
+  height: 1rem;
+  background: var(--ad-color-surface);
+  border-radius: var(--ad-radius-full);
+  box-shadow: var(--ad-elevation-1);
+  transition: translate var(--ad-duration-base) var(--ad-ease-spring);
+}
+.ad-switch input:checked + .ad-switch__track { background: var(--ad-color-accent); }
+.ad-switch input:checked + .ad-switch__track::after { translate: 1rem 0; }
+.ad-switch input:focus-visible + .ad-switch__track {
+  outline: 2px solid var(--ad-color-focus);
+  outline-offset: 2px;
+}
+.ad-switch input:disabled + .ad-switch__track { opacity: 0.45; }
+
+/* Rows of fields. Collapses to one column on narrow viewports. */
+.ad-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ad-space-5);
+  max-width: 32rem;
+}
+.ad-form__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: var(--ad-space-4);
+}
+.ad-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ad-space-3);
+  padding-top: var(--ad-space-2);
+}
+.ad-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ad-space-3);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.ad-fieldset > legend {
+  padding: 0 0 var(--ad-space-2);
+  font-size: var(--ad-text-sm);
+  font-weight: var(--ad-weight-medium);
+}

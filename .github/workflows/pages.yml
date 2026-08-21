@@ -1,0 +1,77 @@
+name: Build and deploy to Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# The site is built here rather than by GitHub's hosted Jekyll because
+# _plugins/ only runs in an unsafe build, and because that build would pin us
+# to whatever Ruby GitHub Pages is using rather than Ruby 4.0.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never cancel a deploy midway; queue the next one instead.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby 4.0
+        uses: ruby/setup-ruby@v1
+        with:
+          # Resolves to the latest 4.0.x the runner has, so a patch release
+          # does not need a commit here.
+          ruby-version: "4.0"
+          bundler-cache: true
+
+      - name: Report the toolchain
+        run: |
+          ruby -v
+          bundle exec jekyll -v
+
+      # The token tests are the deploy gate: they assert the contrast floors,
+      # that every ramp darkens monotonically, and that no unresolved token
+      # reference reaches the stylesheet.
+      - name: Test the token compiler
+        run: bundle exec rake test
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+
+      - name: Check the build output
+        run: |
+          test -s _site/index.html
+          test -s _site/assets/css/tokens.css
+          grep -q -- '--ad-color-accent:' _site/assets/css/tokens.css
+          # A reference that failed to resolve would appear verbatim in the CSS.
+          ! grep -Eq ':[[:space:]]*[a-z]+\.[a-z0-9]+;' _site/assets/css/tokens.css
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

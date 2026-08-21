@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#171512" media="(prefers-color-scheme: dark)">
+
+{% seo %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<!-- Generated from _data/tokens/*.yml at build time. -->
+<link rel="stylesheet" href="{{ '/assets/css/tokens.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+<link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
+
+<!-- Applied before first paint so an explicit theme choice never flashes. -->
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem("ad-theme");
+      if (stored === "dark" || stored === "light") {
+        document.documentElement.setAttribute("data-theme", stored);
+      }
+    } catch (error) {
+      /* Private windows and blocked storage are fine; the media query covers us. */
+    }
+  })();
+</script>

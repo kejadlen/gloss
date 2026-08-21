@@ -1,0 +1,111 @@
+# Raw palette ramps. These are the arbitrary part: hand-picked hexes that,
+# once written down, stop being arbitrary and start being the rule.
+#
+# Nothing in the site references a ramp step directly. Components only ever
+# reach for the semantic aliases defined in `semantic.yml`, which is what
+# makes retheming a one-file change.
+ramps:
+  - name: ink
+    label: Ink
+    description: >-
+      A warm neutral ramp with a faint olive cast. Used for text, borders,
+      and every surface that is not trying to say anything.
+    steps:
+      - { step: "50",  value: "#faf9f7" }
+      - { step: "100", value: "#f2f0ec" }
+      - { step: "150", value: "#e8e5df" }
+      - { step: "200", value: "#dcd8d0" }
+      - { step: "300", value: "#c3bdb2" }
+      - { step: "400", value: "#a29a8c" }
+      - { step: "500", value: "#78705f" }
+      - { step: "600", value: "#625b50" }
+      - { step: "700", value: "#4b463d" }
+      - { step: "800", value: "#35312b" }
+      - { step: "900", value: "#26231f" }
+      - { step: "950", value: "#171512" }
+
+  - name: persimmon
+    label: Persimmon
+    description: >-
+      The one loud hue in the system. Reserved for primary actions, the
+      current page marker, and links. If everything is persimmon, nothing is.
+    steps:
+      - { step: "50",  value: "#fff4ed" }
+      - { step: "100", value: "#ffe6d5" }
+      - { step: "200", value: "#fec9aa" }
+      - { step: "300", value: "#fda474" }
+      - { step: "400", value: "#fb743c" }
+      - { step: "500", value: "#f95116" }
+      - { step: "600", value: "#ea360c" }
+      - { step: "700", value: "#c2260c" }
+      - { step: "800", value: "#9a2012" }
+      - { step: "900", value: "#7c1d12" }
+      - { step: "950", value: "#430b07" }
+
+  - name: verdant
+    label: Verdant
+    description: A mossy green, desaturated enough to sit next to persimmon without arguing.
+    steps:
+      - { step: "50",  value: "#f1faf2" }
+      - { step: "100", value: "#ddf2e0" }
+      - { step: "150", value: "#cdebd2" }
+      - { step: "200", value: "#bce4c3" }
+      - { step: "300", value: "#8ecf9c" }
+      - { step: "400", value: "#5bb16f" }
+      - { step: "500", value: "#389350" }
+      - { step: "600", value: "#27763f" }
+      - { step: "700", value: "#205e34" }
+      - { step: "800", value: "#1c4b2c" }
+      - { step: "900", value: "#183e26" }
+      - { step: "950", value: "#0a2313" }
+
+  - name: amber
+    label: Amber
+    description: Caution. Warm enough to read as a warning, dark enough to hold white text from 600 up.
+    steps:
+      - { step: "50",  value: "#fef8ec" }
+      - { step: "100", value: "#fbecc9" }
+      - { step: "150", value: "#f9e2ac" }
+      - { step: "200", value: "#f7d78e" }
+      - { step: "300", value: "#f2bc52" }
+      - { step: "400", value: "#eea32b" }
+      - { step: "500", value: "#e08211" }
+      - { step: "600", value: "#c45f0c" }
+      - { step: "700", value: "#a3410e" }
+      - { step: "800", value: "#853312" }
+      - { step: "900", value: "#6f2b12" }
+      - { step: "950", value: "#401405" }
+
+  - name: crimson
+    label: Crimson
+    description: Destructive and error states. Deliberately cooler than persimmon so the two never blur.
+    steps:
+      - { step: "50",  value: "#fef2f3" }
+      - { step: "100", value: "#fde3e5" }
+      - { step: "150", value: "#fcd7db" }
+      - { step: "200", value: "#fbccd1" }
+      - { step: "300", value: "#f7a5ae" }
+      - { step: "400", value: "#f17385" }
+      - { step: "500", value: "#e6455f" }
+      - { step: "600", value: "#d22548" }
+      - { step: "700", value: "#b01a3c" }
+      - { step: "800", value: "#931939" }
+      - { step: "900", value: "#7e1936" }
+      - { step: "950", value: "#470819" }
+
+  - name: azure
+    label: Azure
+    description: Informational states and the focus ring. The only blue in the building.
+    steps:
+      - { step: "50",  value: "#eff7ff" }
+      - { step: "100", value: "#dbecfe" }
+      - { step: "150", value: "#cde5fe" }
+      - { step: "200", value: "#bfdffe" }
+      - { step: "300", value: "#93cbfd" }
+      - { step: "400", value: "#60affa" }
+      - { step: "500", value: "#3b8ef6" }
+      - { step: "600", value: "#2571eb" }
+      - { step: "700", value: "#1d5bd8" }
+      - { step: "800", value: "#1e4baf" }
+      - { step: "900", value: "#1e428a" }
+      - { step: "950", value: "#172a54" }

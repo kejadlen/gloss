@@ -1,0 +1,26 @@
+- title: Start here
+  links:
+    - { text: Overview,      url: / }
+    - { text: Why arbitrary, url: /rationale/ }
+    - { text: Using the CSS, url: /install/ }
+- title: Foundations
+  links:
+    - { text: Colour,     url: /foundations/color/ }
+    - { text: Typography, url: /foundations/typography/ }
+    - { text: Space,      url: /foundations/space/ }
+    - { text: Elevation,  url: /foundations/elevation/ }
+    - { text: Motion,     url: /foundations/motion/ }
+- title: Components
+  links:
+    - { text: Button,     url: /components/button/ }
+    - { text: Field,      url: /components/field/ }
+    - { text: Badge,      url: /components/badge/ }
+    - { text: Callout,    url: /components/callout/ }
+    - { text: Card,       url: /components/card/ }
+    - { text: Table,      url: /components/table/ }
+    - { text: Tabs,       url: /components/tabs/ }
+    - { text: Progress,   url: /components/progress/ }
+- title: Patterns
+  links:
+    - { text: Settings form, url: /patterns/settings-form/ }
+    - { text: Kitchen sink,  url: /patterns/kitchen-sink/ }

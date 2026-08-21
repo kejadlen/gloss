@@ -1,0 +1,176 @@
+# Semantic colour aliases. Every component reads from this file and never
+# from a raw ramp. Values are either a `ramp.step` reference or a literal
+# CSS colour; `_plugins/token_generator.rb` resolves references at build time.
+#
+# `light` and `dark` are emitted as `:root` and `[data-theme="dark"]` blocks.
+groups:
+  - name: Surfaces
+    id: surface
+    description: Backgrounds, from the page itself up to the topmost floating layer.
+    tokens:
+      - token: color-canvas
+        light: ink.50
+        dark: ink.950
+        usage: The page. Nothing sits behind it.
+      - token: color-surface
+        light: "#ffffff"
+        dark: ink.900
+        usage: Cards, panels, table bodies — anything that reads as a sheet on the canvas.
+      - token: color-surface-sunken
+        light: ink.100
+        dark: "#100e0c"
+        usage: Wells, code blocks, inset examples. Recessed relative to the canvas.
+      - token: color-surface-raised
+        light: "#ffffff"
+        dark: ink.800
+        usage: Menus, popovers, tooltips. Pairs with elevation 2 or higher.
+      - token: color-surface-hover
+        light: ink.100
+        dark: ink.800
+        usage: The wash under a hovered row or list item.
+
+  - name: Borders
+    id: border
+    description: Three weights, because two was never enough and four was too many.
+    tokens:
+      - token: color-border-subtle
+        light: ink.150
+        dark: ink.800
+        usage: Hairlines between rows and inside dense tables.
+      - token: color-border
+        light: ink.200
+        dark: ink.700
+        usage: The default. Card edges, input outlines, dividers.
+      - token: color-border-strong
+        light: ink.500
+        dark: ink.400
+        usage: Hovered inputs and anything that needs to look grabbable.
+
+  - name: Text
+    id: text
+    description: Four levels of emphasis. Past four, readers stop perceiving a hierarchy.
+    tokens:
+      - token: color-text
+        light: ink.900
+        dark: ink.100
+        usage: Body copy and headings.
+      - token: color-text-muted
+        light: ink.600
+        dark: ink.300
+        usage: Supporting copy, table captions, helper text.
+      - token: color-text-subtle
+        light: ink.500
+        dark: ink.400
+        usage: Placeholders, disabled labels, metadata nobody reads on purpose.
+      - token: color-text-inverse
+        light: ink.50
+        dark: ink.950
+        usage: Text on a filled accent or inverted surface.
+
+  - name: Accent
+    id: accent
+    description: Persimmon, rationed.
+    tokens:
+      - token: color-accent
+        light: persimmon.700
+        dark: persimmon.400
+        usage: Primary buttons, links, the active nav marker.
+      - token: color-accent-hover
+        light: persimmon.800
+        dark: persimmon.300
+        usage: Hover and active states for accent surfaces.
+      - token: color-accent-subtle
+        light: persimmon.50
+        dark: persimmon.950
+        usage: Tinted backgrounds — selected rows, accent callouts.
+      - token: color-accent-border
+        light: persimmon.200
+        dark: persimmon.800
+        usage: Edges on accent-tinted surfaces.
+      - token: color-on-accent
+        light: "#ffffff"
+        dark: persimmon.950
+        usage: Text and icons sitting on a filled accent.
+
+  - name: Status
+    id: status
+    description: >-
+      Four states, each with a foreground, a tint, and an edge. Components take
+      the whole triple so a callout and a badge can never drift apart.
+    tokens:
+      - token: color-positive
+        light: verdant.700
+        dark: verdant.300
+        usage: Success messaging and healthy indicators.
+      - token: color-positive-subtle
+        light: verdant.50
+        dark: verdant.950
+        usage: Tint behind positive content.
+      - token: color-positive-border
+        light: verdant.200
+        dark: verdant.800
+        usage: Edge on positive surfaces.
+      - token: color-caution
+        light: amber.700
+        dark: amber.300
+        usage: Warnings that do not block the user.
+      - token: color-caution-subtle
+        light: amber.50
+        dark: amber.950
+        usage: Tint behind caution content.
+      - token: color-caution-border
+        light: amber.200
+        dark: amber.800
+        usage: Edge on caution surfaces.
+      - token: color-critical
+        light: crimson.700
+        dark: crimson.300
+        usage: Errors, validation failures, destructive actions.
+      - token: color-critical-subtle
+        light: crimson.50
+        dark: crimson.950
+        usage: Tint behind critical content.
+      - token: color-critical-border
+        light: crimson.200
+        dark: crimson.800
+        usage: Edge on critical surfaces.
+      - token: color-critical-solid
+        light: crimson.700
+        dark: crimson.600
+        usage: >-
+          Fill for a destructive button. Distinct from `color-critical`, which is
+          a text colour and goes light in the dark theme — filling a button with
+          it would put white on pink.
+      - token: color-on-critical
+        light: "#ffffff"
+        dark: "#ffffff"
+        usage: Label on a filled destructive button.
+      - token: color-info
+        light: azure.700
+        dark: azure.300
+        usage: Neutral notices and tips.
+      - token: color-info-subtle
+        light: azure.50
+        dark: azure.950
+        usage: Tint behind informational content.
+      - token: color-info-border
+        light: azure.200
+        dark: azure.800
+        usage: Edge on informational surfaces.
+
+  - name: Interaction
+    id: interaction
+    description: The bits that only exist while a finger or a caret is involved.
+    tokens:
+      - token: color-focus
+        light: azure.500
+        dark: azure.400
+        usage: The focus ring. One colour, system-wide, never restyled per component.
+      - token: color-selection
+        light: persimmon.100
+        dark: persimmon.900
+        usage: Text selection highlight.
+      - token: color-overlay
+        light: "rgba(38, 35, 31, 0.5)"
+        dark: "rgba(0, 0, 0, 0.65)"
+        usage: Scrim behind modal surfaces.

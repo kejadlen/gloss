@@ -1,0 +1,111 @@
+/* Button
+   Variants: primary, secondary, ghost, danger.
+   Sizes: sm, md (default), lg.
+   Every variant shares one geometry so a row of mixed buttons still lines up. */
+
+.ad-btn {
+  --_bg: transparent;
+  --_fg: var(--ad-color-text);
+  --_border: transparent;
+  --_bg-hover: var(--ad-color-surface-hover);
+  --_height: 2.25rem;
+  --_padding: var(--ad-space-4);
+  --_font: var(--ad-text-sm);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ad-space-2);
+  min-height: var(--_height);
+  padding-inline: var(--_padding);
+  border: 1px solid var(--_border);
+  border-radius: var(--ad-radius-sm);
+  background: var(--_bg);
+  color: var(--_fg);
+  font-size: var(--_font);
+  font-weight: var(--ad-weight-semibold);
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--ad-duration-fast) var(--ad-ease-standard),
+              border-color var(--ad-duration-fast) var(--ad-ease-standard),
+              color var(--ad-duration-fast) var(--ad-ease-standard);
+}
+
+.ad-btn:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--_bg-hover); }
+.ad-btn:active:not(:disabled):not([aria-disabled="true"]) { transform: translateY(0.5px); }
+
+.ad-btn:disabled,
+.ad-btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ad-btn--primary {
+  --_bg: var(--ad-color-accent);
+  --_fg: var(--ad-color-on-accent);
+  --_border: var(--ad-color-accent);
+  --_bg-hover: var(--ad-color-accent-hover);
+}
+.ad-btn--primary:hover:not(:disabled) { border-color: var(--ad-color-accent-hover); }
+
+.ad-btn--secondary {
+  --_bg: var(--ad-color-surface);
+  --_fg: var(--ad-color-text);
+  --_border: var(--ad-color-border);
+  --_bg-hover: var(--ad-color-surface-hover);
+}
+.ad-btn--secondary:hover:not(:disabled) { border-color: var(--ad-color-border-strong); }
+
+.ad-btn--ghost {
+  --_fg: var(--ad-color-text-muted);
+}
+.ad-btn--ghost:hover:not(:disabled) { --_fg: var(--ad-color-text); }
+
+/* Filled danger reads from the solid critical fill, not from
+   --ad-color-critical: that one is a text colour and goes light in the dark
+   theme, which would leave a white label on a pink button. */
+.ad-btn--danger {
+  --_bg: var(--ad-color-critical-solid);
+  --_fg: var(--ad-color-on-critical);
+  --_border: var(--ad-color-critical-solid);
+  --_bg-hover: color-mix(in srgb, var(--ad-color-critical-solid) 82%, black);
+}
+
+.ad-btn--sm { --_height: 1.75rem; --_padding: var(--ad-space-3); --_font: var(--ad-text-xs); }
+.ad-btn--lg { --_height: 2.75rem; --_padding: var(--ad-space-5); --_font: var(--ad-text-md); }
+
+/* Square footprint for a lone glyph. */
+.ad-btn--icon { --_padding: 0; width: var(--_height); }
+
+.ad-btn--block { width: 100%; }
+
+/* Grouped buttons collapse into one control with shared edges. */
+.ad-btn-group {
+  display: inline-flex;
+  isolation: isolate;
+}
+.ad-btn-group > .ad-btn { border-radius: 0; }
+.ad-btn-group > .ad-btn:first-child { border-start-start-radius: var(--ad-radius-sm); border-end-start-radius: var(--ad-radius-sm); }
+.ad-btn-group > .ad-btn:last-child { border-start-end-radius: var(--ad-radius-sm); border-end-end-radius: var(--ad-radius-sm); }
+.ad-btn-group > .ad-btn + .ad-btn { margin-inline-start: -1px; }
+.ad-btn-group > .ad-btn:hover,
+.ad-btn-group > .ad-btn:focus-visible { z-index: 1; }
+
+/* A spinner that replaces the label without changing the button's width. */
+.ad-btn[data-loading="true"] { color: transparent; pointer-events: none; position: relative; }
+.ad-btn[data-loading="true"]::after {
+  content: "";
+  position: absolute;
+  width: 0.875em;
+  height: 0.875em;
+  border: 2px solid color-mix(in srgb, var(--_fg) 30%, transparent);
+  border-top-color: var(--_fg);
+  border-radius: var(--ad-radius-full);
+  animation: ad-spin var(--ad-duration-spin) linear infinite;
+}
+
+@keyframes ad-spin { to { transform: rotate(360deg); } }
