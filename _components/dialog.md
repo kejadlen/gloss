@@ -11,7 +11,7 @@ documentation page. Wire real open/close state — and a `position: fixed`
 overlay — in the consuming app; this is a pixel recreation for documentation,
 not a functioning modal.
 
-<% example(title: "Dialog", open: true) do %>
+<% example(title: "Dialog", open: true, layout: "stack") do %>
 <div class="ad-dialog-demo">
   <div class="ad-dialog__overlay">
     <div class="ad-dialog">
@@ -30,7 +30,7 @@ not a functioning modal.
 
 A body-only dialog for a notice rather than a decision.
 
-<% example(title: "No footer") do %>
+<% example(title: "No footer", layout: "stack") do %>
 <div class="ad-dialog-demo" style="min-height: 14rem;">
   <div class="ad-dialog__overlay">
     <div class="ad-dialog" style="width: 20rem;">

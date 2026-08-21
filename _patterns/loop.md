@@ -105,7 +105,7 @@ beyond a couple of inline widths.
 
 ## The New series dialog
 
-<% example(title: "New series", no_source: true) do %>
+<% example(title: "New series", no_source: true, layout: "stack") do %>
 <div class="ad-dialog-demo" style="min-height: 18rem;">
   <div class="ad-dialog__overlay">
     <div class="ad-dialog" style="width: 22rem;">
