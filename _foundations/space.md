@@ -9,47 +9,47 @@ summary: >-
 
 <div class="ad-ruler">
   <div class="ad-ruler__row">
-    <span class="ad-token-name">space-3xs</span>
+    <code>space-3xs</code>
     <span class="ad-ruler__num">5px</span>
     <span class="ad-ruler__bar" style="width: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem); min-width: 1px;"></span>
   </div>
   <div class="ad-ruler__row">
-    <span class="ad-token-name">space-2xs</span>
+    <code>space-2xs</code>
     <span class="ad-ruler__num">9 → 10px</span>
     <span class="ad-ruler__bar" style="width: clamp(0.5625rem, 0.5369rem + 0.1136vw, 0.625rem); min-width: 1px;"></span>
   </div>
   <div class="ad-ruler__row">
-    <span class="ad-token-name">space-xs</span>
+    <code>space-xs</code>
     <span class="ad-ruler__num">14 → 15px</span>
     <span class="ad-ruler__bar" style="width: clamp(0.875rem, 0.8494rem + 0.1136vw, 0.9375rem); min-width: 1px;"></span>
   </div>
   <div class="ad-ruler__row">
-    <span class="ad-token-name">space-s</span>
+    <code>space-s</code>
     <span class="ad-ruler__num">18 → 20px</span>
     <span class="ad-ruler__bar" style="width: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem); min-width: 1px;"></span>
   </div>
   <div class="ad-ruler__row">
-    <span class="ad-token-name">space-m</span>
+    <code>space-m</code>
     <span class="ad-ruler__num">27 → 30px</span>
     <span class="ad-ruler__bar" style="width: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem); min-width: 1px;"></span>
   </div>
   <div class="ad-ruler__row">
-    <span class="ad-token-name">space-l</span>
+    <code>space-l</code>
     <span class="ad-ruler__num">36 → 40px</span>
     <span class="ad-ruler__bar" style="width: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem); min-width: 1px;"></span>
   </div>
   <div class="ad-ruler__row">
-    <span class="ad-token-name">space-xl</span>
+    <code>space-xl</code>
     <span class="ad-ruler__num">54 → 60px</span>
     <span class="ad-ruler__bar" style="width: clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem); min-width: 1px;"></span>
   </div>
   <div class="ad-ruler__row">
-    <span class="ad-token-name">space-2xl</span>
+    <code>space-2xl</code>
     <span class="ad-ruler__num">72 → 80px</span>
     <span class="ad-ruler__bar" style="width: clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem); min-width: 1px;"></span>
   </div>
   <div class="ad-ruler__row">
-    <span class="ad-token-name">space-3xl</span>
+    <code>space-3xl</code>
     <span class="ad-ruler__num">108 → 120px</span>
     <span class="ad-ruler__bar" style="width: clamp(6.75rem, 6.4432rem + 1.3636vw, 7.5rem); min-width: 1px;"></span>
   </div>
@@ -71,42 +71,42 @@ summary: >-
 <figure class="example">
 <figcaption>The same card at three densities</figcaption>
 <div data-layout="grid">
-<article class="ad-card">
-  <div class="ad-card__body" style="gap: var(--ad-space-3xs); padding: var(--ad-space-xs);">
-    <h3 class="ad-card__title" style="font-size: var(--ad-step--1);">Compact</h3>
-    <p class="ad-card__text">space-xs padding, space-3xs gap. For dense lists.</p>
+<article class="card">
+  <div class="card-body" style="gap: var(--ad-space-3xs); padding: var(--ad-space-xs);">
+    <h3 style="margin:0; font: 600 var(--ad-step--1)/1.3 var(--ad-font-sans);">Compact</h3>
+    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">space-xs padding, space-3xs gap. For dense lists.</p>
   </div>
 </article>
-<article class="ad-card">
-  <div class="ad-card__body">
-    <h3 class="ad-card__title" style="font-size: var(--ad-step--1);">Default</h3>
-    <p class="ad-card__text">space-m padding, space-2xs gap. What Card ships with.</p>
+<article class="card">
+  <div class="card-body">
+    <h3 style="margin:0; font: 600 var(--ad-step--1)/1.3 var(--ad-font-sans);">Default</h3>
+    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">space-m padding, space-2xs gap. What Card ships with.</p>
   </div>
 </article>
-<article class="ad-card">
-  <div class="ad-card__body" style="gap: var(--ad-space-s); padding: var(--ad-space-l);">
-    <h3 class="ad-card__title" style="font-size: var(--ad-step--1);">Roomy</h3>
-    <p class="ad-card__text">space-l padding, space-s gap. For a card that is the whole screen.</p>
+<article class="card">
+  <div class="card-body" style="gap: var(--ad-space-s); padding: var(--ad-space-l);">
+    <h3 style="margin:0; font: 600 var(--ad-step--1)/1.3 var(--ad-font-sans);">Roomy</h3>
+    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">space-l padding, space-s gap. For a card that is the whole screen.</p>
   </div>
 </article>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;article class="ad-card"&gt;
-  &lt;div class="ad-card__body" style="gap: var(--ad-space-3xs); padding: var(--ad-space-xs);"&gt;
-    &lt;h3 class="ad-card__title" style="font-size: var(--ad-step--1);"&gt;Compact&lt;/h3&gt;
-    &lt;p class="ad-card__text"&gt;space-xs padding, space-3xs gap. For dense lists.&lt;/p&gt;
+<pre><code>&lt;article class="card"&gt;
+  &lt;div class="card-body" style="gap: var(--ad-space-3xs); padding: var(--ad-space-xs);"&gt;
+    &lt;h3&gt;Compact&lt;/h3&gt;
+    &lt;p&gt;space-xs padding, space-3xs gap. For dense lists.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/article&gt;
-&lt;article class="ad-card"&gt;
-  &lt;div class="ad-card__body"&gt;
-    &lt;h3 class="ad-card__title" style="font-size: var(--ad-step--1);"&gt;Default&lt;/h3&gt;
-    &lt;p class="ad-card__text"&gt;space-m padding, space-2xs gap. What Card ships with.&lt;/p&gt;
+&lt;article class="card"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h3&gt;Default&lt;/h3&gt;
+    &lt;p&gt;space-m padding, space-2xs gap. What Card ships with.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/article&gt;
-&lt;article class="ad-card"&gt;
-  &lt;div class="ad-card__body" style="gap: var(--ad-space-s); padding: var(--ad-space-l);"&gt;
-    &lt;h3 class="ad-card__title" style="font-size: var(--ad-step--1);"&gt;Roomy&lt;/h3&gt;
-    &lt;p class="ad-card__text"&gt;space-l padding, space-s gap. For a card that is the whole screen.&lt;/p&gt;
+&lt;article class="card"&gt;
+  &lt;div class="card-body" style="gap: var(--ad-space-s); padding: var(--ad-space-l);"&gt;
+    &lt;h3&gt;Roomy&lt;/h3&gt;
+    &lt;p&gt;space-l padding, space-s gap. For a card that is the whole screen.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/article&gt;</code></pre>
 </details>
@@ -122,7 +122,7 @@ except true pills.
   <li>
     <div class="ad-radius-demo" style="border-radius: 4px;"></div>
     <div class="ad-specimen__meta">
-      <span class="ad-token-name">radius-sm</span>
+      <code>radius-sm</code>
       <span>4px</span>
     </div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Buttons, inputs, badges, tags.</p>
@@ -130,7 +130,7 @@ except true pills.
   <li>
     <div class="ad-radius-demo" style="border-radius: 6px;"></div>
     <div class="ad-specimen__meta">
-      <span class="ad-token-name">radius-md</span>
+      <code>radius-md</code>
       <span>6px</span>
     </div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">IconButton, the segmented-tabs track, avatar chips.</p>
@@ -138,7 +138,7 @@ except true pills.
   <li>
     <div class="ad-radius-demo" style="border-radius: 10px;"></div>
     <div class="ad-specimen__meta">
-      <span class="ad-token-name">radius-lg</span>
+      <code>radius-lg</code>
       <span>10px</span>
     </div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Cards, dialogs, toasts, photo slots — the system's "surface" radius.</p>
@@ -146,7 +146,7 @@ except true pills.
   <li>
     <div class="ad-radius-demo" style="border-radius: 999px;"></div>
     <div class="ad-specimen__meta">
-      <span class="ad-token-name">radius-full</span>
+      <code>radius-full</code>
       <span>999px</span>
     </div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">True pills only — Badge, Tag, Switch, round avatars.</p>

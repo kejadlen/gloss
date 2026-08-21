@@ -11,23 +11,21 @@ summary: >-
 Short ease transitions on hover and focus only — no bounce, no springy
 easing, no page-transition choreography.
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
+  <table>
     <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use for</th></tr></thead>
     <tbody>
       <tr>
-        <td class="ad-token-name">--ad-dur-fast</td>
-        <td class="ad-table__code">0.12s</td>
+        <td><code>--ad-dur-fast</code></td>
+        <td><code>0.12s</code></td>
         <td>Hover and focus color/border transitions — the default.</td>
       </tr>
       <tr>
-        <td class="ad-token-name">--ad-dur-base</td>
-        <td class="ad-table__code">0.16s</td>
+        <td><code>--ad-dur-base</code></td>
+        <td><code>0.16s</code></td>
         <td>Switch track and thumb — the one moving part in the system.</td>
       </tr>
     </tbody>
   </table>
-</div>
 
 ## One easing
 
@@ -38,7 +36,7 @@ There is exactly one curve in the system. Hover the tile below to run it.
     <div class="ad-motion-demo" tabindex="0">
       <span class="ad-motion-demo__dot"></span>
     </div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">--ad-ease</span></div>
+    <div class="ad-specimen__meta"><code>--ad-ease</code></div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">The only easing curve in the system. Fast out, settles gently, applied to every transition.</p>
   </li>
 </ul>
@@ -65,27 +63,27 @@ instead of traveling.
 <figure class="example">
 <figcaption>Motion in practice</figcaption>
 <div>
-<label class="ad-switch">
-  <input type="checkbox" checked>
-  <span class="ad-switch__track"></span>
-  <span>Dark mode</span>
+<label class="switch">
+  <input type="checkbox" role="switch" checked>
+  <span></span>
+  Dark mode
 </label>
-<label class="ad-switch">
-  <input type="checkbox">
-  <span class="ad-switch__track"></span>
-  <span>Weekly digest</span>
+<label class="switch">
+  <input type="checkbox" role="switch">
+  <span></span>
+  Weekly digest
 </label>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;label class="ad-switch"&gt;
-  &lt;input type="checkbox" checked&gt;
-  &lt;span class="ad-switch__track"&gt;&lt;/span&gt;
-  &lt;span&gt;Dark mode&lt;/span&gt;
+<pre><code>&lt;label class="switch"&gt;
+  &lt;input type="checkbox" role="switch" checked&gt;
+  &lt;span&gt;&lt;/span&gt;
+  Dark mode
 &lt;/label&gt;
-&lt;label class="ad-switch"&gt;
-  &lt;input type="checkbox"&gt;
-  &lt;span class="ad-switch__track"&gt;&lt;/span&gt;
-  &lt;span&gt;Weekly digest&lt;/span&gt;
+&lt;label class="switch"&gt;
+  &lt;input type="checkbox" role="switch"&gt;
+  &lt;span&gt;&lt;/span&gt;
+  Weekly digest
 &lt;/label&gt;</code></pre>
 </details>
 </figure>

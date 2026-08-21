@@ -1,8 +1,12 @@
 /* Badge
    Mono, uppercase, tracked — the catalog-label convention for status and
-   meta values (SAVED, OVERDUE, RECOMMENDED). A label, never a button. */
+   meta values (SAVED, OVERDUE, RECOMMENDED). A label, never a button.
 
-.ad-badge {
+   A <span> is too generic to style globally — it is used all over running
+   prose for unrelated reasons — so Badge gets the one sanctioned class this
+   shape needs. Tone is an attribute, not a modifier class. */
+
+.badge {
   --_bg: var(--ad-color-surface-fill);
   --_fg: var(--ad-color-text-secondary);
   --_border: var(--ad-color-border-hairline);
@@ -23,11 +27,11 @@
   white-space: nowrap;
 }
 
-.ad-badge--accent  { --_bg: var(--ad-color-accent-soft);  --_fg: var(--ad-color-accent-ink);  --_border: transparent; }
-.ad-badge--success { --_bg: var(--ad-color-success-bg);   --_fg: var(--ad-color-success);      --_border: transparent; }
-.ad-badge--danger  { --_bg: var(--ad-color-danger-bg);    --_fg: var(--ad-color-danger);       --_border: transparent; }
+.badge[data-tone="accent"]  { --_bg: var(--ad-color-accent-soft);  --_fg: var(--ad-color-accent-ink);  --_border: transparent; }
+.badge[data-tone="success"] { --_bg: var(--ad-color-success-bg);   --_fg: var(--ad-color-success);      --_border: transparent; }
+.badge[data-tone="danger"]  { --_bg: var(--ad-color-danger-bg);    --_fg: var(--ad-color-danger);       --_border: transparent; }
 
-.ad-badge-set {
+.badge-set {
   display: flex;
   flex-wrap: wrap;
   gap: var(--ad-space-2xs);
@@ -35,9 +39,12 @@
 
 /* Tag
    A removable mono chip for freeform tags — locations, categories.
-   `--dashed` renders an "add tag" affordance instead of a value. */
+   `[data-dashed]` renders an "add tag" affordance instead of a value. Same
+   reasoning as Badge: <span> is too generic to select bare, so Tag gets one
+   class. The remove control is a real <button>, styled through the
+   descendant selector rather than a class of its own. */
 
-.ad-tag {
+.tag {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
@@ -51,23 +58,23 @@
   line-height: 1;
 }
 
-.ad-tag--dashed {
+.tag[data-dashed] {
   background: transparent;
   border-style: dashed;
   color: var(--ad-color-text-tertiary);
   cursor: pointer;
 }
 
-.ad-tag__remove {
+.tag button {
   all: unset;
   cursor: pointer;
   color: var(--ad-color-text-tertiary);
   line-height: 1;
   font-size: 0.75rem;
 }
-.ad-tag__remove:hover { color: var(--ad-color-text-primary); }
+.tag button:hover { color: var(--ad-color-text-primary); }
 
-.ad-tag-set {
+.tag-set {
   display: flex;
   flex-wrap: wrap;
   gap: 0.375rem;

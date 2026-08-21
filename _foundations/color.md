@@ -192,27 +192,27 @@ the default; the other four are the sanctioned menu a project can switch to.
 <ul class="ad-accent-grid">
   <li>
     <div class="ad-accent-demo" style="background: #3a6a63;">teal (default)</div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">#3a6a63</span><span>6.14:1 on white</span></div>
+    <div class="ad-specimen__meta"><code>#3a6a63</code><span>6.14:1 on white</span></div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Default. Neutral, technical.</p>
   </li>
   <li>
     <div class="ad-accent-demo" style="background: #9a5a3c;">clay</div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">#9a5a3c</span><span>5.38:1 on white</span></div>
+    <div class="ad-specimen__meta"><code>#9a5a3c</code><span>5.38:1 on white</span></div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Warm, archival — domus's flavor.</p>
   </li>
   <li>
     <div class="ad-accent-demo" style="background: #2b4a78;">ink-blue</div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">#2b4a78</span><span>8.92:1 on white</span></div>
+    <div class="ad-specimen__meta"><code>#2b4a78</code><span>8.92:1 on white</span></div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Sober, utilitarian.</p>
   </li>
   <li>
     <div class="ad-accent-demo" style="background: #93701f;">ochre</div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">#93701f</span><span>4.59:1 on white</span></div>
+    <div class="ad-specimen__meta"><code>#93701f</code><span>4.59:1 on white</span></div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Dry, papery.</p>
   </li>
   <li>
     <div class="ad-accent-demo" style="background: #6a3a5c;">plum</div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">#6a3a5c</span><span>8.85:1 on white</span></div>
+    <div class="ad-specimen__meta"><code>#6a3a5c</code><span>8.85:1 on white</span></div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Quiet, personal.</p>
   </li>
 </ul>
@@ -238,8 +238,7 @@ the right half is the dark one.
 
 <p class="ad-muted">Backgrounds, from the page itself up to a card sitting on it.</p>
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
+  <table>
     <thead>
       <tr>
         <th scope="col">Token</th>
@@ -256,11 +255,11 @@ the right half is the dark one.
               <span style="background: #faf9f7"></span>
               <span style="background: #0e0d0b"></span>
             </span>
-            <span class="ad-token-name">--ad-color-surface-page</span>
+            <code>--ad-color-surface-page</code>
           </div>
         </td>
-        <td class="ad-table__code">neutral.0</td>
-        <td class="ad-table__code">neutral_dark.0</td>
+        <td><code>neutral.0</code></td>
+        <td><code>neutral_dark.0</code></td>
         <td>The page itself. Nothing sits behind it.</td>
       </tr>
       <tr>
@@ -270,11 +269,11 @@ the right half is the dark one.
               <span style="background: #fdfdfb"></span>
               <span style="background: #151412"></span>
             </span>
-            <span class="ad-token-name">--ad-color-surface-card</span>
+            <code>--ad-color-surface-card</code>
           </div>
         </td>
-        <td class="ad-table__code">neutral.50</td>
-        <td class="ad-table__code">neutral_dark.50</td>
+        <td><code>neutral.50</code></td>
+        <td><code>neutral_dark.50</code></td>
         <td>Cards, dialogs, toasts — anything that reads as a sheet on the page.</td>
       </tr>
       <tr>
@@ -284,11 +283,11 @@ the right half is the dark one.
               <span style="background: #f1f0ed"></span>
               <span style="background: #1e1d1a"></span>
             </span>
-            <span class="ad-token-name">--ad-color-surface-fill</span>
+            <code>--ad-color-surface-fill</code>
           </div>
         </td>
-        <td class="ad-table__code">neutral.100</td>
-        <td class="ad-table__code">neutral_dark.100</td>
+        <td><code>neutral.100</code></td>
+        <td><code>neutral_dark.100</code></td>
         <td>Recessed fill — a hovered row, a segmented-tab track, a photo placeholder.</td>
       </tr>
       <tr>
@@ -298,23 +297,21 @@ the right half is the dark one.
               <span style="background: #e8e6e2"></span>
               <span style="background: #252421"></span>
             </span>
-            <span class="ad-token-name">--ad-color-surface-fill-2</span>
+            <code>--ad-color-surface-fill-2</code>
           </div>
         </td>
-        <td class="ad-table__code">neutral.150</td>
-        <td class="ad-table__code">neutral_dark.150</td>
+        <td><code>neutral.150</code></td>
+        <td><code>neutral_dark.150</code></td>
         <td>A second, deeper fill step — the diagonal-grain stripe inside an empty photo slot.</td>
       </tr>
     </tbody>
   </table>
-</div>
 
 ### Borders
 
 <p class="ad-muted">Two weights. Hairlines do most of the elevation work in this system, so there was never a reason for a third.</p>
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
+  <table>
     <thead>
       <tr>
         <th scope="col">Token</th>
@@ -331,11 +328,11 @@ the right half is the dark one.
               <span style="background: #dcdad7"></span>
               <span style="background: #2c2b29"></span>
             </span>
-            <span class="ad-token-name">--ad-color-border-hairline</span>
+            <code>--ad-color-border-hairline</code>
           </div>
         </td>
-        <td class="ad-table__code">neutral.200</td>
-        <td class="ad-table__code">neutral_dark.200</td>
+        <td><code>neutral.200</code></td>
+        <td><code>neutral_dark.200</code></td>
         <td>Card edges, row dividers, dialog dividers. The default edge everywhere.</td>
       </tr>
       <tr>
@@ -345,23 +342,21 @@ the right half is the dark one.
               <span style="background: #c0bdb9"></span>
               <span style="background: #44423f"></span>
             </span>
-            <span class="ad-token-name">--ad-color-border-default</span>
+            <code>--ad-color-border-default</code>
           </div>
         </td>
-        <td class="ad-table__code">neutral.300</td>
-        <td class="ad-table__code">neutral_dark.300</td>
+        <td><code>neutral.300</code></td>
+        <td><code>neutral_dark.300</code></td>
         <td>Input and button borders — anything a reader has to recognize as a control.</td>
       </tr>
     </tbody>
   </table>
-</div>
 
 ### Text
 
 <p class="ad-muted">Three levels of emphasis, deliberately not four. Past three, a reader stops perceiving a hierarchy and starts perceiving noise.</p>
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
+  <table>
     <thead>
       <tr>
         <th scope="col">Token</th>
@@ -378,11 +373,11 @@ the right half is the dark one.
               <span style="background: #100f0d"></span>
               <span style="background: #e9e8e6"></span>
             </span>
-            <span class="ad-token-name">--ad-color-text-primary</span>
+            <code>--ad-color-text-primary</code>
           </div>
         </td>
-        <td class="ad-table__code">neutral.900</td>
-        <td class="ad-table__code">neutral_dark.900</td>
+        <td><code>neutral.900</code></td>
+        <td><code>neutral_dark.900</code></td>
         <td>Body copy, headings, and every control label.</td>
       </tr>
       <tr>
@@ -392,11 +387,11 @@ the right half is the dark one.
               <span style="background: #5f5d59"></span>
               <span style="background: #a09e9a"></span>
             </span>
-            <span class="ad-token-name">--ad-color-text-secondary</span>
+            <code>--ad-color-text-secondary</code>
           </div>
         </td>
-        <td class="ad-table__code">neutral.600</td>
-        <td class="ad-table__code">neutral_dark.600</td>
+        <td><code>neutral.600</code></td>
+        <td><code>neutral_dark.600</code></td>
         <td>Supporting copy, hints, mono meta values, type-label's color.</td>
       </tr>
       <tr>
@@ -406,23 +401,21 @@ the right half is the dark one.
               <span style="background: #888681"></span>
               <span style="background: #7c7a76"></span>
             </span>
-            <span class="ad-token-name">--ad-color-text-tertiary</span>
+            <code>--ad-color-text-tertiary</code>
           </div>
         </td>
-        <td class="ad-table__code">neutral.500</td>
-        <td class="ad-table__code">neutral_dark.500</td>
+        <td><code>neutral.500</code></td>
+        <td><code>neutral_dark.500</code></td>
         <td>Placeholders and de-emphasized metadata only — never body text. This step is intentionally sub-AA against the page; see the caveat on the Color page.</td>
       </tr>
     </tbody>
   </table>
-</div>
 
 ### Accent
 
 <p class="ad-muted">One swappable accent per project, held constant across a whole view. `-ink` and `-soft` re-derive from `--ad-color-accent` via `color-mix()` exactly as the source computes them, so retheming the accent retones both automatically.</p>
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
+  <table>
     <thead>
       <tr>
         <th scope="col">Token</th>
@@ -439,11 +432,11 @@ the right half is the dark one.
               <span style="background: #3a6a63"></span>
               <span style="background: #3a6a63"></span>
             </span>
-            <span class="ad-token-name">--ad-color-accent</span>
+            <code>--ad-color-accent</code>
           </div>
         </td>
-        <td class="ad-table__code">accent.teal</td>
-        <td class="ad-table__code">accent.teal</td>
+        <td><code>accent.teal</code></td>
+        <td><code>accent.teal</code></td>
         <td>Primary buttons, links, focus affordance, the active tab underline. Never two accents in one view.</td>
       </tr>
       <tr>
@@ -453,45 +446,43 @@ the right half is the dark one.
               <span style="background: #ffffff"></span>
               <span style="background: #ffffff"></span>
             </span>
-            <span class="ad-token-name">--ad-color-accent-fg</span>
+            <code>--ad-color-accent-fg</code>
           </div>
         </td>
-        <td class="ad-table__code">#ffffff</td>
-        <td class="ad-table__code">#ffffff</td>
+        <td><code>#ffffff</code></td>
+        <td><code>#ffffff</code></td>
         <td>Label and icon color on a filled accent surface. Fixed white, not a ramp reference.</td>
       </tr>
       <tr>
         <td>
           <div class="ad-alias-row">
             <span class="ad-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--ad-color-surface-fill) 0 4px, var(--ad-color-surface-card) 4px 8px);"></span>
-            <span class="ad-token-name">--ad-color-accent-ink</span>
+            <code>--ad-color-accent-ink</code>
           </div>
         </td>
-        <td class="ad-table__code">color-mix(in oklch, var(--ad-color-accent) 78%, black)</td>
-        <td class="ad-table__code">color-mix(in oklch, var(--ad-color-accent) 78%, black)</td>
+        <td><code>color-mix(in oklch, var(--ad-color-accent) 78%, black)</code></td>
+        <td><code>color-mix(in oklch, var(--ad-color-accent) 78%, black)</code></td>
         <td>Text sitting on an `-soft` accent tint — an IconButton's active state, an accent avatar's initials.</td>
       </tr>
       <tr>
         <td>
           <div class="ad-alias-row">
             <span class="ad-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--ad-color-surface-fill) 0 4px, var(--ad-color-surface-card) 4px 8px);"></span>
-            <span class="ad-token-name">--ad-color-accent-soft</span>
+            <code>--ad-color-accent-soft</code>
           </div>
         </td>
-        <td class="ad-table__code">color-mix(in oklch, var(--ad-color-accent) 12%, white)</td>
-        <td class="ad-table__code">color-mix(in oklch, var(--ad-color-accent) 12%, white)</td>
+        <td><code>color-mix(in oklch, var(--ad-color-accent) 12%, white)</code></td>
+        <td><code>color-mix(in oklch, var(--ad-color-accent) 12%, white)</code></td>
         <td>The tint behind an accent Badge, a toggled IconButton, an accent avatar chip.</td>
       </tr>
     </tbody>
   </table>
-</div>
 
 ### Status
 
 <p class="ad-muted">Exactly two states, both fixed — they read the same in every project and are never swapped the way the accent is.</p>
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
+  <table>
     <thead>
       <tr>
         <th scope="col">Token</th>
@@ -508,22 +499,22 @@ the right half is the dark one.
               <span style="background: #3f7a4a"></span>
               <span style="background: #3f7a4a"></span>
             </span>
-            <span class="ad-token-name">--ad-color-success</span>
+            <code>--ad-color-success</code>
           </div>
         </td>
-        <td class="ad-table__code">#3f7a4a</td>
-        <td class="ad-table__code">#3f7a4a</td>
+        <td><code>#3f7a4a</code></td>
+        <td><code>#3f7a4a</code></td>
         <td>Success text and icons — a completed task's check, a saved-state badge.</td>
       </tr>
       <tr>
         <td>
           <div class="ad-alias-row">
             <span class="ad-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--ad-color-surface-fill) 0 4px, var(--ad-color-surface-card) 4px 8px);"></span>
-            <span class="ad-token-name">--ad-color-success-bg</span>
+            <code>--ad-color-success-bg</code>
           </div>
         </td>
-        <td class="ad-table__code">color-mix(in oklch, var(--ad-color-success) 12%, white)</td>
-        <td class="ad-table__code">color-mix(in oklch, var(--ad-color-success) 12%, white)</td>
+        <td><code>color-mix(in oklch, var(--ad-color-success) 12%, white)</code></td>
+        <td><code>color-mix(in oklch, var(--ad-color-success) 12%, white)</code></td>
         <td>Tint behind a success Badge. Mixed against literal white, so it stays constant across themes.</td>
       </tr>
       <tr>
@@ -533,27 +524,26 @@ the right half is the dark one.
               <span style="background: #ad3a2c"></span>
               <span style="background: #ad3a2c"></span>
             </span>
-            <span class="ad-token-name">--ad-color-danger</span>
+            <code>--ad-color-danger</code>
           </div>
         </td>
-        <td class="ad-table__code">#ad3a2c</td>
-        <td class="ad-table__code">#ad3a2c</td>
+        <td><code>#ad3a2c</code></td>
+        <td><code>#ad3a2c</code></td>
         <td>Overdue/destructive text, the Toast undo action, a danger Button's fill.</td>
       </tr>
       <tr>
         <td>
           <div class="ad-alias-row">
             <span class="ad-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--ad-color-surface-fill) 0 4px, var(--ad-color-surface-card) 4px 8px);"></span>
-            <span class="ad-token-name">--ad-color-danger-bg</span>
+            <code>--ad-color-danger-bg</code>
           </div>
         </td>
-        <td class="ad-table__code">color-mix(in oklch, var(--ad-color-danger) 10%, white)</td>
-        <td class="ad-table__code">color-mix(in oklch, var(--ad-color-danger) 10%, white)</td>
+        <td><code>color-mix(in oklch, var(--ad-color-danger) 10%, white)</code></td>
+        <td><code>color-mix(in oklch, var(--ad-color-danger) 10%, white)</code></td>
         <td>Tint behind a danger Badge. Mixed against literal white, so it stays constant across themes.</td>
       </tr>
     </tbody>
   </table>
-</div>
 
 ## Contrast that has to hold
 
@@ -567,14 +557,13 @@ and checked by hand rather than by a build-time test.
 
 <p class="ad-muted">WCAG 2.1 SC 1.4.3 (normal-size text)</p>
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
+  <table>
     <thead>
       <tr>
         <th scope="col">Pairing</th>
         <th scope="col">Where it shows up</th>
-        <th scope="col" class="ad-table__num">Light</th>
-        <th scope="col" class="ad-table__num">Dark</th>
+        <th scope="col" class="num">Light</th>
+        <th scope="col" class="num">Dark</th>
       </tr>
     </thead>
     <tbody>
@@ -582,60 +571,59 @@ and checked by hand rather than by a build-time test.
         <td>
           <span class="ad-alias-row">
             <span class="ad-alias-chip" aria-hidden="true" style="background: #faf9f7; color: #100f0d; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <span class="ad-token-name">color-text-primary<br><span class="ad-subtle">on color-surface-page</span></span>
+            <code>color-text-primary<br><span class="ad-subtle">on color-surface-page</span></code>
           </span>
         </td>
         <td>Body copy</td>
-        <td class="ad-table__num">18.21</td>
-        <td class="ad-table__num">15.86</td>
+        <td class="num">18.21</td>
+        <td class="num">15.86</td>
       </tr>
       <tr>
         <td>
           <span class="ad-alias-row">
             <span class="ad-alias-chip" aria-hidden="true" style="background: #faf9f7; color: #5f5d59; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <span class="ad-token-name">color-text-secondary<br><span class="ad-subtle">on color-surface-page</span></span>
+            <code>color-text-secondary<br><span class="ad-subtle">on color-surface-page</span></code>
           </span>
         </td>
         <td>Supporting copy</td>
-        <td class="ad-table__num">6.24</td>
-        <td class="ad-table__num">7.26</td>
+        <td class="num">6.24</td>
+        <td class="num">7.26</td>
       </tr>
       <tr>
         <td>
           <span class="ad-alias-row">
             <span class="ad-alias-chip" aria-hidden="true" style="background: #3a6a63; color: #ffffff; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <span class="ad-token-name">color-accent-fg<br><span class="ad-subtle">on color-accent</span></span>
+            <code>color-accent-fg<br><span class="ad-subtle">on color-accent</span></code>
           </span>
         </td>
         <td>The label on a primary or dark-variant Button.</td>
-        <td class="ad-table__num">6.14</td>
-        <td class="ad-table__num">6.14</td>
+        <td class="num">6.14</td>
+        <td class="num">6.14</td>
       </tr>
       <tr>
         <td>
           <span class="ad-alias-row">
             <span class="ad-alias-chip" aria-hidden="true" style="background: #ffffff; color: #3f7a4a; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <span class="ad-token-name">color-success<br><span class="ad-subtle">on color-accent-fg</span></span>
+            <code>color-success<br><span class="ad-subtle">on color-accent-fg</span></code>
           </span>
         </td>
         <td>Success text on a light backdrop — proxied by color-accent-fg</td>
-        <td class="ad-table__num">5.13</td>
-        <td class="ad-table__num">5.13</td>
+        <td class="num">5.13</td>
+        <td class="num">5.13</td>
       </tr>
       <tr>
         <td>
           <span class="ad-alias-row">
             <span class="ad-alias-chip" aria-hidden="true" style="background: #ffffff; color: #ad3a2c; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <span class="ad-token-name">color-danger<br><span class="ad-subtle">on color-accent-fg</span></span>
+            <code>color-danger<br><span class="ad-subtle">on color-accent-fg</span></code>
           </span>
         </td>
         <td>Overdue/destructive text on a light backdrop</td>
-        <td class="ad-table__num">6.14</td>
-        <td class="ad-table__num">6.14</td>
+        <td class="num">6.14</td>
+        <td class="num">6.14</td>
       </tr>
     </tbody>
   </table>
-</div>
 
 <div class="ad-callout">
   <p style="margin:0; font-size: var(--ad-step--1);">

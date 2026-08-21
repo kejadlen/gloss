@@ -8,23 +8,28 @@ summary: >-
 
 ## Basic
 
-The example below stays in document flow so it does not cover the page;
-`.ad-toast--fixed` is what actually pins it bottom-right in a real app.
+`role="status"` is the correct live-region role for a transient status
+message, so it doubles as the entire styling hook — no base class. The
+example below stays in document flow so it does not cover the page;
+`[data-fixed]` is what actually pins it bottom-right in a real app. The
+action and dismiss buttons are plain `<button>`s told apart by
+`aria-label="Dismiss"`, an attribute the icon-only close control needs
+anyway.
 
 <figure class="example">
 <figcaption>Toast</figcaption>
 <div>
-<div class="ad-toast">
-  <span class="ad-toast__message">Deleted "Call Mom"</span>
-  <button type="button" class="ad-toast__action">Undo</button>
-  <button type="button" class="ad-toast__dismiss" aria-label="Dismiss">×</button>
+<div role="status">
+  <span>Deleted "Call Mom"</span>
+  <button type="button">Undo</button>
+  <button type="button" aria-label="Dismiss">×</button>
 </div>
 </div>
 <details open><summary>Markup</summary>
-<pre><code>&lt;div class=&quot;ad-toast&quot;&gt;
-  &lt;span class=&quot;ad-toast__message&quot;&gt;Deleted &quot;Call Mom&quot;&lt;/span&gt;
-  &lt;button type=&quot;button&quot; class=&quot;ad-toast__action&quot;&gt;Undo&lt;/button&gt;
-  &lt;button type=&quot;button&quot; class=&quot;ad-toast__dismiss&quot; aria-label=&quot;Dismiss&quot;&gt;×&lt;/button&gt;
+<pre><code>&lt;div role=&quot;status&quot;&gt;
+  &lt;span&gt;Deleted &quot;Call Mom&quot;&lt;/span&gt;
+  &lt;button type=&quot;button&quot;&gt;Undo&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Dismiss&quot;&gt;×&lt;/button&gt;
 &lt;/div&gt;</code></pre>
 </details>
 </figure>
@@ -34,28 +39,28 @@ The example below stays in document flow so it does not cover the page;
 <figure class="example">
 <figcaption>No action</figcaption>
 <div>
-<div class="ad-toast">
-  <span class="ad-toast__message">Series created</span>
-  <button type="button" class="ad-toast__dismiss" aria-label="Dismiss">×</button>
+<div role="status">
+  <span>Series created</span>
+  <button type="button" aria-label="Dismiss">×</button>
 </div>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;div class=&quot;ad-toast&quot;&gt;
-  &lt;span class=&quot;ad-toast__message&quot;&gt;Series created&lt;/span&gt;
-  &lt;button type=&quot;button&quot; class=&quot;ad-toast__dismiss&quot; aria-label=&quot;Dismiss&quot;&gt;×&lt;/button&gt;
+<pre><code>&lt;div role=&quot;status&quot;&gt;
+  &lt;span&gt;Series created&lt;/span&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Dismiss&quot;&gt;×&lt;/button&gt;
 &lt;/div&gt;</code></pre>
 </details>
 </figure>
 
 ## API
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
-    <thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Notes</th></tr></thead>
-    <tbody>
-      <tr><td class="ad-token-name">message</td><td class="ad-table__code">string</td><td>Required.</td></tr>
-      <tr><td class="ad-token-name">actionLabel</td><td class="ad-table__code">string</td><td>Renders a destructive-colored action, typically "Undo".</td></tr>
-      <tr><td class="ad-token-name">onDismiss</td><td class="ad-table__code">function</td><td></td></tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead><tr><th scope="col">Element / attribute</th><th scope="col">Values</th><th scope="col">Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>[role="status"]</code></td><td></td><td>Required base, on a <code>&lt;div&gt;</code>.</td></tr>
+    <tr><td><code>&gt; span</code></td><td>string</td><td>The message. Required.</td></tr>
+    <tr><td><code>&gt; button</code></td><td></td><td>Renders a destructive-colored action, typically "Undo".</td></tr>
+    <tr><td><code>&gt; button[aria-label="Dismiss"]</code></td><td></td><td>The × control — the label is what tells it apart from the action button.</td></tr>
+    <tr><td><code>data-fixed</code></td><td>boolean</td><td>Pins the toast bottom-right of the viewport. Omit to stay in document flow.</td></tr>
+  </tbody>
+</table>

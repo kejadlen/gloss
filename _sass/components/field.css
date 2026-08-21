@@ -1,15 +1,19 @@
 /* Field
-   The label / control / hint trio. The label is always mono, uppercase, and
-   tracked — the same catalog-label convention as Badge and type-label. */
+   The labeled field wrapper — a <label> that wraps its own caption text
+   together with the control, so the association is native and needs no
+   `for`/`id` pair. The caption is mono, uppercase, tracked — the same
+   catalog-label convention as Badge and type-label.
 
-.ad-field {
+   A <label> is reused for three different shapes across this system (this
+   wrapper, Checkbox/Radio's row, Switch's row), so it cannot be styled bare
+   without one shape leaking into another. Field is the one of the three with
+   no distinguishing attribute of its own, so it gets the sanctioned class;
+   Checkbox/Radio tell themselves apart structurally instead (see below). */
+.field {
   display: flex;
   flex-direction: column;
   gap: var(--ad-space-2xs);
   min-width: 0;
-}
-
-.ad-field__label {
   font-family: var(--ad-font-mono);
   font-size: var(--ad-step--2);
   font-weight: 500;
@@ -18,14 +22,24 @@
   color: var(--ad-color-text-secondary);
 }
 
-.ad-field__hint {
+/* Hint and error read the native fine-print element. `role="alert"` is a
+   real live-region role for validation text, so it doubles as the selector
+   that turns a hint red. */
+.field > small {
+  font-family: var(--ad-font-sans);
   font-size: var(--ad-step--2);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
   color: var(--ad-color-text-tertiary);
 }
+.field > small[role="alert"] { color: var(--ad-color-danger); }
 
-/* Input / Select — bordered, matched to each other exactly. */
-.ad-input,
-.ad-select {
+/* Input / Select — bordered, matched to each other exactly. Both tags ARE
+   the component, so they are styled bare; nothing else on this site uses a
+   text input or a select. */
+input:not([type="checkbox"]):not([type="radio"]),
+select {
   width: 100%;
   padding: var(--ad-space-xs) var(--ad-space-s);
   background: var(--ad-color-surface-card);
@@ -34,20 +48,23 @@
   color: var(--ad-color-text-primary);
   font-family: var(--ad-font-sans);
   font-size: var(--ad-step--1);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
   outline: none;
   transition: border-color var(--ad-dur-fast) var(--ad-ease),
               box-shadow var(--ad-dur-fast) var(--ad-ease);
 }
-.ad-input::placeholder { color: var(--ad-color-text-tertiary); }
+input::placeholder { color: var(--ad-color-text-tertiary); }
 
-.ad-input:focus,
-.ad-select:focus {
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus {
   border-color: var(--ad-color-accent);
   box-shadow: 0 0 0 2px var(--ad-color-accent-soft);
 }
 
-.ad-input:disabled,
-.ad-select:disabled {
+input:not([type="checkbox"]):not([type="radio"]):disabled,
+select:disabled {
   opacity: 0.5;
   cursor: default;
 }
@@ -57,7 +74,7 @@
    stroke is a literal hex rather than a var(--ad-*) reference. It is picked
    to match --ad-color-text-secondary and commented here so it is not
    mistaken for a stray color. */
-.ad-select {
+select {
   appearance: none;
   padding-inline-end: var(--ad-space-l);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%235f5d59' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -65,68 +82,57 @@
   background-position: right var(--ad-space-xs) center;
 }
 
-.ad-input[aria-invalid="true"],
-.ad-select[aria-invalid="true"] {
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
   border-color: var(--ad-color-danger);
   background-color: var(--ad-color-danger-bg);
 }
-.ad-field__error {
-  font-size: var(--ad-step--2);
-  color: var(--ad-color-danger);
-}
 
-/* Checkbox / Radio — one shared visual language; only the radius differs. */
-.ad-choice {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--ad-space-2xs);
-  cursor: pointer;
-  font-family: var(--ad-font-sans);
-  font-size: var(--ad-step--1);
-  color: var(--ad-color-text-primary);
-}
-.ad-choice input { position: absolute; opacity: 0; width: 1.125rem; height: 1.125rem; margin: 0; }
-
-.ad-choice__box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Checkbox / Radio — the real native controls, tinted with accent-color
+   instead of a hand-drawn box. This is not just a rename: it deletes the
+   custom SVG-checkmark markup entirely and lets the browser draw its own
+   (platform-appropriate) check and dot. `role="switch"` is excluded here so
+   Switch — a checkbox playing a different role — can style itself below
+   without this rule fighting it. A <label> wrapping a checkbox/radio is told
+   apart from Field's <label> structurally: it :has() one as a direct child,
+   no class required. */
+input[type="checkbox"]:not([role="switch"]),
+input[type="radio"] {
   width: 1.125rem;
   height: 1.125rem;
-  flex: none;
-  border: 1.5px solid var(--ad-color-border-default);
-  background: var(--ad-color-surface-card);
-  color: transparent;
-  transition: background-color var(--ad-dur-fast) var(--ad-ease),
-              border-color var(--ad-dur-fast) var(--ad-ease);
+  margin: 0;
+  accent-color: var(--ad-color-accent);
+  cursor: pointer;
 }
-.ad-choice--checkbox .ad-choice__box { border-radius: var(--ad-radius-sm); }
-.ad-choice--radio .ad-choice__box { border-radius: var(--ad-radius-full); }
-
-.ad-choice input:checked + .ad-choice__box {
-  border-color: var(--ad-color-accent);
-}
-.ad-choice--checkbox input:checked + .ad-choice__box {
-  background: var(--ad-color-accent);
-  color: var(--ad-color-accent-fg);
-}
-.ad-choice--radio input:checked + .ad-choice__box::after {
-  content: "";
-  width: 0.5625rem;
-  height: 0.5625rem;
-  border-radius: var(--ad-radius-full);
-  background: var(--ad-color-accent);
-}
-.ad-choice__box svg { width: 0.6875rem; height: 0.6875rem; }
-
-.ad-choice input:focus-visible + .ad-choice__box {
+input[type="checkbox"]:not([role="switch"]):focus-visible,
+input[type="radio"]:focus-visible {
   outline: 2px solid var(--ad-color-accent);
   outline-offset: 2px;
 }
-.ad-choice:has(input:disabled) { cursor: default; opacity: 0.5; }
 
-/* Switch — for on/off settings only, never a substitute for Checkbox. */
-.ad-switch {
+label:has(> input[type="checkbox"]:not([role="switch"])),
+label:has(> input[type="radio"]) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ad-space-2xs);
+  cursor: pointer;
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step--1);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--ad-color-text-primary);
+}
+label:has(> input:disabled) { cursor: default; opacity: 0.5; }
+
+/* Switch — for on/off settings only, never a substitute for Checkbox.
+   `input[type="checkbox"][role="switch"]` is real ARIA (the correct role for
+   a toggle), not an invented hook, but the visual track+thumb needs a second
+   element for the thumb's independent position and transition — more than
+   `appearance: none` plus pseudo-elements on the input itself can cleanly
+   carry — so `.switch` is a deliberate, documented fallback class rather
+   than a first choice. */
+.switch {
   display: inline-flex;
   align-items: center;
   gap: var(--ad-space-2xs);
@@ -135,9 +141,9 @@
   font-size: var(--ad-step--1);
   color: var(--ad-color-text-primary);
 }
-.ad-switch input { position: absolute; opacity: 0; width: 2.25rem; height: 1.25rem; margin: 0; }
+.switch input[role="switch"] { position: absolute; opacity: 0; width: 2.25rem; height: 1.25rem; margin: 0; }
 
-.ad-switch__track {
+.switch span {
   position: relative;
   flex: none;
   width: 2.25rem;
@@ -146,7 +152,7 @@
   background: var(--ad-color-border-default);
   transition: background-color var(--ad-dur-base) var(--ad-ease);
 }
-.ad-switch__track::after {
+.switch span::after {
   content: "";
   position: absolute;
   inset-block-start: 2px;
@@ -158,24 +164,27 @@
   box-shadow: var(--ad-shadow-sm);
   transition: translate var(--ad-dur-base) var(--ad-ease);
 }
-.ad-switch input:checked + .ad-switch__track { background: var(--ad-color-accent); }
-.ad-switch input:checked + .ad-switch__track::after { translate: 1rem 0; }
-.ad-switch input:focus-visible + .ad-switch__track { outline: 2px solid var(--ad-color-accent); outline-offset: 2px; }
-.ad-switch:has(input:disabled) { cursor: default; opacity: 0.5; }
+.switch input[role="switch"]:checked + span { background: var(--ad-color-accent); }
+.switch input[role="switch"]:checked + span::after { translate: 1rem 0; }
+.switch input[role="switch"]:focus-visible + span { outline: 2px solid var(--ad-color-accent); outline-offset: 2px; }
+.switch:has(input:disabled) { cursor: default; opacity: 0.5; }
 
-/* Rows of fields — used by the settings-form pattern. */
-.ad-form {
+/* Rows of fields — used by the settings-form pattern. `<form>`/`<fieldset>`
+   are the elements that already mean this, so they are styled bare. A row
+   grouping two fields side by side has no element of its own, so it keeps
+   one plain class. */
+form {
   display: flex;
   flex-direction: column;
   gap: var(--ad-space-s);
   max-width: 28rem;
 }
-.ad-form__row {
+.form-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   gap: var(--ad-space-xs);
 }
-.ad-fieldset {
+fieldset {
   display: flex;
   flex-direction: column;
   gap: var(--ad-space-2xs);
@@ -183,7 +192,7 @@
   padding: 0;
   border: 0;
 }
-.ad-fieldset > legend {
+fieldset > legend {
   padding: 0 0 var(--ad-space-2xs);
   font-family: var(--ad-font-mono);
   font-size: var(--ad-step--2);

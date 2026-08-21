@@ -8,21 +8,25 @@ summary: >-
 Labels are catalog-style: short, mono, uppercase — `SAVED`, `RECOMMENDED`,
 `OVERDUE`. Never a click handler on one; a Badge is a label, not a button.
 
+A `<span>` is too generic to style bare — it shows up all over running prose
+for unrelated reasons — so Badge keeps one class. Tone is an attribute, not a
+modifier class.
+
 ## Tones
 
 <figure class="example">
 <figcaption>Tones</figcaption>
 <div>
-<span class="ad-badge">Unassigned</span>
-<span class="ad-badge ad-badge--accent">Draft</span>
-<span class="ad-badge ad-badge--success">Saved</span>
-<span class="ad-badge ad-badge--danger">Overdue</span>
+<span class="badge">Unassigned</span>
+<span class="badge" data-tone="accent">Draft</span>
+<span class="badge" data-tone="success">Saved</span>
+<span class="badge" data-tone="danger">Overdue</span>
 </div>
 <details open><summary>Markup</summary>
-<pre><code>&lt;span class=&quot;ad-badge&quot;&gt;Unassigned&lt;/span&gt;
-&lt;span class=&quot;ad-badge ad-badge--accent&quot;&gt;Draft&lt;/span&gt;
-&lt;span class=&quot;ad-badge ad-badge--success&quot;&gt;Saved&lt;/span&gt;
-&lt;span class=&quot;ad-badge ad-badge--danger&quot;&gt;Overdue&lt;/span&gt;</code></pre>
+<pre><code>&lt;span class=&quot;badge&quot;&gt;Unassigned&lt;/span&gt;
+&lt;span class=&quot;badge&quot; data-tone=&quot;accent&quot;&gt;Draft&lt;/span&gt;
+&lt;span class=&quot;badge&quot; data-tone=&quot;success&quot;&gt;Saved&lt;/span&gt;
+&lt;span class=&quot;badge&quot; data-tone=&quot;danger&quot;&gt;Overdue&lt;/span&gt;</code></pre>
 </details>
 </figure>
 
@@ -31,17 +35,17 @@ Labels are catalog-style: short, mono, uppercase — `SAVED`, `RECOMMENDED`,
 <figure class="example">
 <figcaption>Badge set</figcaption>
 <div>
-<div class="ad-badge-set">
-  <span class="ad-badge ad-badge--accent">Recommended</span>
-  <span class="ad-badge">Every 2 weeks</span>
-  <span class="ad-badge ad-badge--danger">3d overdue</span>
+<div class="badge-set">
+  <span class="badge" data-tone="accent">Recommended</span>
+  <span class="badge">Every 2 weeks</span>
+  <span class="badge" data-tone="danger">3d overdue</span>
 </div>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;div class=&quot;ad-badge-set&quot;&gt;
-  &lt;span class=&quot;ad-badge ad-badge--accent&quot;&gt;Recommended&lt;/span&gt;
-  &lt;span class=&quot;ad-badge&quot;&gt;Every 2 weeks&lt;/span&gt;
-  &lt;span class=&quot;ad-badge ad-badge--danger&quot;&gt;3d overdue&lt;/span&gt;
+<pre><code>&lt;div class=&quot;badge-set&quot;&gt;
+  &lt;span class=&quot;badge&quot; data-tone=&quot;accent&quot;&gt;Recommended&lt;/span&gt;
+  &lt;span class=&quot;badge&quot;&gt;Every 2 weeks&lt;/span&gt;
+  &lt;span class=&quot;badge&quot; data-tone=&quot;danger&quot;&gt;3d overdue&lt;/span&gt;
 &lt;/div&gt;</code></pre>
 </details>
 </figure>
@@ -56,11 +60,10 @@ Labels are catalog-style: short, mono, uppercase — `SAVED`, `RECOMMENDED`,
 
 ## API
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
-    <thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Notes</th></tr></thead>
-    <tbody>
-      <tr><td class="ad-token-name">tone</td><td class="ad-table__code">neutral | accent | success | danger</td><td>Default <code>neutral</code>.</td></tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead><tr><th scope="col">Element / attribute</th><th scope="col">Values</th><th scope="col">Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>span.badge</code></td><td></td><td>Required base.</td></tr>
+    <tr><td><code>data-tone</code></td><td><code>accent | success | danger</code></td><td>Omit for the default neutral tone.</td></tr>
+  </tbody>
+</table>

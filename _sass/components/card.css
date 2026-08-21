@@ -1,11 +1,22 @@
 /* Card
-   Flat surface, hairline border, radius-lg. `--elevated` is opt-in and
+   Flat surface, hairline border, radius-lg. `[data-elevated]` is opt-in and
    reserved for the one focused/primary card in a view — a dialog, the
-   primary capture card — flat is the default everywhere else. */
+   primary capture card — flat is the default everywhere else.
 
-.ad-card {
+   A <div>/<article> is too generic to select bare, so Card keeps one
+   sanctioned class. When Card's job is holding a list of rows — the common
+   case, entry lists, task lists, settings rows — it is a real <ul class="
+   card">, and CardRow is a bare <li> underneath it: no second class needed,
+   the row look comes from the `.card > li` descendant selector alone. The
+   first row's top border is removed automatically so callers never have to
+   override it by hand. */
+
+.card {
   display: flex;
   flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
   background: var(--ad-color-surface-card);
   border: 1px solid var(--ad-color-border-hairline);
   border-radius: var(--ad-radius-lg);
@@ -13,12 +24,9 @@
   overflow: hidden;
 }
 
-.ad-card--elevated { box-shadow: var(--ad-shadow-float); }
+.card[data-elevated] { box-shadow: var(--ad-shadow-float); }
 
-/* CardRow — a hairline-divided list row for use inside Card: entry lists,
-   task lists, settings rows. The first row's top border is removed
-   automatically so callers never have to override it by hand. */
-.ad-card-row {
+.card > li {
   display: flex;
   align-items: center;
   gap: var(--ad-space-xs);
@@ -27,38 +35,49 @@
   color: var(--ad-color-text-primary);
   font-family: var(--ad-font-sans);
   font-size: var(--ad-step--1);
+}
+.card > li:first-child { border-top: none; }
+
+/* A row whose ENTIRE content is wrapped in a real <button> or <a> — the
+   accessible way to make a row clickable — fills the row edge-to-edge and
+   picks up a hover fill and pointer cursor. `:only-child` is what tells this
+   apart from a row that merely contains a small button among other content
+   (a leading checkbox next to a title and a trailing value, say): only a
+   button/anchor that IS the row's one and only child means "the whole row
+   is the control." */
+.card > li:has(> button:only-child),
+.card > li:has(> a:only-child) {
+  padding: 0;
+}
+.card > li > button:only-child,
+.card > li > a:only-child {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: var(--ad-space-xs);
+  width: 100%;
+  padding: var(--ad-space-xs) var(--ad-space-s);
+  box-sizing: border-box;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
   transition: background-color var(--ad-dur-fast) var(--ad-ease);
 }
-.ad-card > .ad-card-row:first-child { border-top: none; }
+.card > li > button:only-child:hover,
+.card > li > a:only-child:hover { background: var(--ad-color-surface-fill); }
 
-.ad-card-row--clickable {
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-  border-left: 0;
-  border-right: 0;
-  background: none;
-}
-.ad-card-row--clickable:hover { background: var(--ad-color-surface-fill); }
-
-/* Documentation-only extras: a body/title/text/footer quartet and a
-   responsive grid, used by the prose pages (rationale.md, index.md) to show
-   a Card as a plain content tile rather than a data row. */
-.ad-card__body {
+/* Documentation-only extras: a body/footer pair and a responsive grid, used
+   by the prose pages (rationale.md, index.md) to show a Card as a plain
+   content tile rather than a data row. Neither is part of Card's props —
+   they exist because a content tile's inner layout has no element of its
+   own to hang a selector on. */
+.card-body {
   display: flex;
   flex-direction: column;
   gap: var(--ad-space-2xs);
   padding: var(--ad-space-m);
 }
-.ad-card__title {
-  font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);
-}
-.ad-card__text {
-  margin: 0;
-  color: var(--ad-color-text-secondary);
-  font-size: var(--ad-step--1);
-}
-.ad-card__footer {
+.card-footer {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -69,24 +88,27 @@
   background: var(--ad-color-surface-fill);
 }
 
-.ad-card--link { transition: border-color var(--ad-dur-fast) var(--ad-ease), box-shadow var(--ad-dur-fast) var(--ad-ease); }
-.ad-card--link:hover { border-color: var(--ad-color-border-default); box-shadow: var(--ad-shadow-sm); }
-.ad-card--link:focus-within { outline: 2px solid var(--ad-color-accent); outline-offset: 2px; }
+.card[data-link] { transition: border-color var(--ad-dur-fast) var(--ad-ease), box-shadow var(--ad-dur-fast) var(--ad-ease); }
+.card[data-link]:hover { border-color: var(--ad-color-border-default); box-shadow: var(--ad-shadow-sm); }
+.card[data-link]:focus-within { outline: 2px solid var(--ad-color-accent); outline-offset: 2px; }
 
-.ad-card-grid {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: var(--ad-space-s);
 }
 
 /* Avatar — lives here because it almost never appears outside a card or a
-   row (the Loop dashboard's initials chip, Archive's file-type chip). */
-.ad-avatar {
+   row (the Loop dashboard's initials chip, Archive's file-type chip). A
+   <span> is too generic for a bare selector, so it keeps one class. */
+.avatar {
+  --_size: 1.875rem;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.875rem;
-  height: 1.875rem;
+  width: var(--_size);
+  height: var(--_size);
   flex: none;
   border-radius: var(--ad-radius-full);
   background: var(--ad-color-accent-soft);
@@ -96,6 +118,6 @@
   font-weight: 600;
   overflow: hidden;
 }
-.ad-avatar--square { border-radius: var(--ad-radius-md); background: var(--ad-color-surface-fill); color: var(--ad-color-text-secondary); border: 1px solid var(--ad-color-border-hairline); }
-.ad-avatar--sm { width: 1.5rem; height: 1.5rem; }
-.ad-avatar--lg { width: 2.25rem; height: 2.25rem; }
+.avatar[data-square] { border-radius: var(--ad-radius-md); background: var(--ad-color-surface-fill); color: var(--ad-color-text-secondary); border: 1px solid var(--ad-color-border-hairline); }
+.avatar[data-size="sm"] { --_size: 1.5rem; }
+.avatar[data-size="lg"] { --_size: 2.25rem; }

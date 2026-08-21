@@ -99,18 +99,16 @@ $ bundle exec rake serve   # http://127.0.0.1:4000
 
 ## What is where
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
+  <table>
     <thead><tr><th scope="col">Path</th><th scope="col">What it is</th></tr></thead>
     <tbody>
-      <tr><td class="ad-table__code">assets/css/tokens.css</td><td>Every value in the system, hand-maintained.</td></tr>
-      <tr><td class="ad-table__code">_sass/</td><td>One plain CSS file per component group, concatenated into <code>style.css</code> at build time. No hexes, no pixels, no durations.</td></tr>
-      <tr><td class="ad-table__code">lib/arbitrary_definitions/</td><td>The whole site builder — front matter, ERB, and Kramdown, wrapped in a layout.</td></tr>
-      <tr><td class="ad-table__code">_layouts/, _includes/</td><td>Plain ERB templates for the page chrome.</td></tr>
-      <tr><td class="ad-table__code">_components/, _foundations/, _patterns/</td><td>Static Markdown and HTML — the content itself, hand-written.</td></tr>
+      <tr><td><code>assets/css/tokens.css</code></td><td>Every value in the system, hand-maintained.</td></tr>
+      <tr><td><code>_sass/</code></td><td>One plain CSS file per component group, concatenated into <code>style.css</code> at build time. No hexes, no pixels, no durations.</td></tr>
+      <tr><td><code>lib/arbitrary_definitions/</code></td><td>The whole site builder — front matter, ERB, and Kramdown, wrapped in a layout.</td></tr>
+      <tr><td><code>_layouts/, _includes/</code></td><td>Plain ERB templates for the page chrome.</td></tr>
+      <tr><td><code>_components/, _foundations/, _patterns/</code></td><td>Static Markdown and HTML — the content itself, hand-written.</td></tr>
     </tbody>
   </table>
-</div>
 
 ## How the example demos work
 
@@ -124,12 +122,12 @@ the page is how the source panel gets written, so there is nothing to drift.
 <figure class="example">
   <figcaption>Variants</figcaption>
   <div>
-    <button type="button" class="ad-btn">Cancel</button>
-    <button type="button" class="ad-btn ad-btn--primary">Save</button>
+    <button type="button">Cancel</button>
+    <button type="button" data-variant="primary">Save</button>
   </div>
   <details><summary>Markup</summary>
-<pre><code>&lt;button type="button" class="ad-btn"&gt;Cancel&lt;/button&gt;
-&lt;button type="button" class="ad-btn ad-btn--primary"&gt;Save&lt;/button&gt;</code></pre>
+<pre><code>&lt;button type="button"&gt;Cancel&lt;/button&gt;
+&lt;button type="button" data-variant="primary"&gt;Save&lt;/button&gt;</code></pre>
   </details>
 </figure>
 ```

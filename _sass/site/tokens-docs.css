@@ -138,14 +138,21 @@
   margin-bottom: var(--ad-space-2xs);
 }
 
-.ad-token-name {
-  font-family: var(--ad-font-mono);
+/* Token names read `<code>` sitewide, which already carries a mono chip
+   look for running prose (see :not(pre) > code in base/typography.css).
+   Inside these specimen/swatch/ruler rows the old `.ad-token-name` class was
+   plain mono text with no chip, so `<code>` is flattened back to that look
+   here the same way table cells are. */
+.ad-swatch code, .ad-specimen code, .ad-ruler code, .ad-alias-row code {
+  background: none;
+  border: 0;
+  padding: 0;
   font-size: var(--ad-step--2);
   color: var(--ad-color-text-primary);
   white-space: nowrap;
 }
 
-/* A documentation aside. Like `.ad-table`, this is site chrome for the prose
+/* A documentation aside. Like `<table>`, this is site chrome for the prose
    itself, not a system component — the real system has no Callout. */
 .ad-callout {
   margin-block: var(--ad-space-s);
@@ -158,21 +165,28 @@
 .ad-callout--danger { border-left-color: var(--ad-color-danger); }
 .ad-callout--success { border-left-color: var(--ad-color-success); }
 
-/* Generic data-table utility for reference tables (component APIs, alias
-   tables, the contrast contract). Site chrome, not a system component. */
-.ad-table-wrap { overflow-x: auto; margin-block: var(--ad-space-xs); }
-.ad-table { width: 100%; border-collapse: collapse; font-size: var(--ad-step--1); }
-.ad-table th, .ad-table td {
-  padding: var(--ad-space-2xs) var(--ad-space-xs);
+/* Generic reference tables (component APIs, alias tables, the contrast
+   contract). `<table>` IS a table — no class needed to say so. Every table
+   on this site uses the one compact density, so there is no separate
+   modifier for it. `display: block` plus `overflow-x: auto` gives the table
+   its own horizontal scrollbar on narrow viewports without a wrapper div;
+   the anonymous table box the browser generates around `<thead>`/`<tbody>`
+   still does the row/column layout. `<code>` replaces the old
+   `.ad-token-name` / `.ad-table__code` cells — it is already styled
+   sitewide, just re-flattened here to a plain mono run instead of the
+   chip-with-border look prose code gets, to match this table's original
+   look. `.num` is the one sanctioned class left, for right-aligned numeric
+   columns — there is no attribute that means "this column is a number". */
+table { width: 100%; border-collapse: collapse; font-size: var(--ad-step--1); display: block; overflow-x: auto; }
+table th, table td {
+  padding: var(--ad-space-3xs) var(--ad-space-xs);
   border-bottom: 1px solid var(--ad-color-border-hairline);
   text-align: left;
   vertical-align: top;
 }
-.ad-table th { font-family: var(--ad-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ad-color-text-secondary); font-weight: 500; }
-.ad-table--compact th, .ad-table--compact td { padding: var(--ad-space-3xs) var(--ad-space-xs); }
-.ad-table--hover tbody tr:hover { background: var(--ad-color-surface-fill); }
-.ad-table__code { font-family: var(--ad-font-mono); font-size: var(--ad-step--2); white-space: nowrap; }
-.ad-table__num { text-align: right; font-variant-numeric: tabular-nums; }
+table th { font-family: var(--ad-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ad-color-text-secondary); font-weight: 500; }
+table code { background: none; border: 0; padding: 0; font-size: var(--ad-step--2); white-space: nowrap; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
 
 /* Home page. */
 .ad-hero { padding-block: var(--ad-space-m) var(--ad-space-l); }

@@ -23,23 +23,23 @@ are therefore changeable.
 This system was not designed from a blank page. It was built by reading three
 real, running personal projects and finding what they actually share:
 
-<div class="ad-card-grid">
-  <article class="ad-card">
-    <div class="ad-card__body">
-      <h3 class="ad-card__title"><a href="https://github.com/kejadlen/domus">domus</a></h3>
-      <p class="ad-card__text">Household inventory & document archive. Warm paper surfaces, a Georgia/Helvetica/mono mix, a swappable "Clay" accent, a bottom capture dock.</p>
+<div class="card-grid">
+  <article class="card">
+    <div class="card-body">
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="https://github.com/kejadlen/domus">domus</a></h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">Household inventory & document archive. Warm paper surfaces, a Georgia/Helvetica/mono mix, a swappable "Clay" accent, a bottom capture dock.</p>
     </div>
   </article>
-  <article class="ad-card">
-    <div class="ad-card__body">
-      <h3 class="ad-card__title"><a href="https://github.com/kejadlen/ketchup">ketchup</a></h3>
-      <p class="ad-card__text">Recurring-task tracker. All-mono interface, plain grays, red/green semantics, a flash-bar toast.</p>
+  <article class="card">
+    <div class="card-body">
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="https://github.com/kejadlen/ketchup">ketchup</a></h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">Recurring-task tracker. All-mono interface, plain grays, red/green semantics, a flash-bar toast.</p>
     </div>
   </article>
-  <article class="ad-card">
-    <div class="ad-card__body">
-      <h3 class="ad-card__title"><a href="https://github.com/kejadlen/quire">quire</a></h3>
-      <p class="ad-card__text">Personal git forge / CI server. Humanist sans + mono, a warm cream surface, a full dark palette, underline tabs.</p>
+  <article class="card">
+    <div class="card-body">
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="https://github.com/kejadlen/quire">quire</a></h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">Personal git forge / CI server. Humanist sans + mono, a warm cream surface, a full dark palette, underline tabs.</p>
     </div>
   </article>
 </div>
@@ -54,39 +54,39 @@ ground, deliberately not lifted wholesale from any one of the three.
 
 Not the quality of the individual choices. The properties below:
 
-<div class="ad-card-grid">
-  <article class="ad-card">
-    <div class="ad-card__body">
-      <h3 class="ad-card__title">It is written down once</h3>
-      <p class="ad-card__text">
+<div class="card-grid">
+  <article class="card">
+    <div class="card-body">
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">It is written down once</h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
         One hand-maintained stylesheet of custom properties. Not a Figma
         library that disagrees with the CSS, and not a spreadsheet somebody
         exports by hand.
       </p>
     </div>
   </article>
-  <article class="ad-card">
-    <div class="ad-card__body">
-      <h3 class="ad-card__title">It has names</h3>
-      <p class="ad-card__text">
+  <article class="card">
+    <div class="card-body">
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">It has names</h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
         <code>--ad-color-danger</code> survives a change of mind about which
         red. <code>#ad3a2c</code> does not.
       </p>
     </div>
   </article>
-  <article class="ad-card">
-    <div class="ad-card__body">
-      <h3 class="ad-card__title">It is actually used</h3>
-      <p class="ad-card__text">
+  <article class="card">
+    <div class="card-body">
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">It is actually used</h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
         Every color, type, spacing, radius, elevation, and motion value in
         the components is a <code>var(--ad-*)</code>. Not one is a literal.
       </p>
     </div>
   </article>
-  <article class="ad-card">
-    <div class="ad-card__body">
-      <h3 class="ad-card__title">It can be changed</h3>
-      <p class="ad-card__text">
+  <article class="card">
+    <div class="card-body">
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">It can be changed</h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
         Because of the three above, swapping the accent for Clay, Ochre, Ink
         Blue, or Plum is a one-line diff.
       </p>

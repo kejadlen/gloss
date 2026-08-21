@@ -1,19 +1,29 @@
 /* Tabs
-   Markup follows the WAI-ARIA tabs pattern: a `tablist` of `tab` buttons
-   controlling `tabpanel`s. The keyboard wiring lives in assets/js/system.js
-   and is variant-agnostic — it only cares about `[data-tabs]` / `[role=tab]`.
+   Follows the real WAI-ARIA tabs pattern: a `[role="tablist"]` of
+   `[role="tab"]` buttons controlling `[role="tabpanel"]`s. Those roles are
+   required for the pattern to be accessible in the first place, so they
+   double as the entire styling contract — no classes at all for the base
+   shape. The keyboard wiring lives in assets/js/system.js and is
+   variant-agnostic — it only cares about `[data-tabs]` / `[role=tab]`.
 
    Two real variants: `underline` (mono, accent underline — primary section
-   nav) and `segmented` (pill track, active segment lifts to the surface —
-   filters like All · Overdue · Upcoming, never primary navigation). */
+   nav, the default) and `segmented` (pill track, active segment lifts to the
+   surface — filters like All · Overdue · Upcoming, never primary
+   navigation), chosen with `data-variant="segmented"` on the tablist since
+   neither has a natural attribute of its own. */
 
-.ad-tabs__list { display: flex; }
+/* Every rule below the list container pairs [role="tablist"] with
+   [role="tab"] rather than styling [role="tab"] alone — Tab buttons are
+   still literal <button> elements, so the compound selector's extra
+   specificity is what keeps Button's base styling (button.css) from
+   winning the cascade on shared properties like padding and background. */
 
-.ad-tabs--underline .ad-tabs__list {
+[role="tablist"] {
+  display: flex;
   gap: var(--ad-space-m);
   border-bottom: 1px solid var(--ad-color-border-hairline);
 }
-.ad-tabs--underline .ad-tabs__tab {
+[role="tablist"] [role="tab"] {
   padding: 0.5rem 0;
   margin-bottom: -1px;
   background: none;
@@ -26,20 +36,21 @@
   cursor: pointer;
   transition: color var(--ad-dur-fast) var(--ad-ease), border-color var(--ad-dur-fast) var(--ad-ease);
 }
-.ad-tabs--underline .ad-tabs__tab:hover { color: var(--ad-color-text-primary); }
-.ad-tabs--underline .ad-tabs__tab[aria-selected="true"] {
+[role="tablist"] [role="tab"]:hover { color: var(--ad-color-text-primary); }
+[role="tablist"] [role="tab"][aria-selected="true"] {
   color: var(--ad-color-text-primary);
   border-bottom-color: var(--ad-color-accent);
 }
 
-.ad-tabs--segmented .ad-tabs__list {
+[role="tablist"][data-variant="segmented"] {
   display: inline-flex;
   gap: 0.125rem;
   padding: 0.1875rem;
+  border-bottom: 0;
   background: var(--ad-color-surface-fill);
   border-radius: var(--ad-radius-md);
 }
-.ad-tabs--segmented .ad-tabs__tab {
+[role="tablist"][data-variant="segmented"] [role="tab"] {
   all: unset;
   cursor: pointer;
   padding: 0.375rem 0.875rem;
@@ -50,12 +61,12 @@
   color: var(--ad-color-text-secondary);
   transition: background-color var(--ad-dur-fast) var(--ad-ease), color var(--ad-dur-fast) var(--ad-ease);
 }
-.ad-tabs--segmented .ad-tabs__tab[aria-selected="true"] {
+[role="tablist"][data-variant="segmented"] [role="tab"][aria-selected="true"] {
   color: var(--ad-color-text-primary);
   background: var(--ad-color-surface-card);
   box-shadow: var(--ad-shadow-sm);
 }
 
-.ad-tabs__panel { padding-top: var(--ad-space-s); }
-.ad-tabs__panel[hidden] { display: none; }
-.ad-tabs__panel:focus-visible { outline-offset: 4px; }
+[role="tabpanel"] { padding-top: var(--ad-space-s); }
+[role="tabpanel"][hidden] { display: none; }
+[role="tabpanel"]:focus-visible { outline-offset: 4px; }

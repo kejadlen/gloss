@@ -1,12 +1,18 @@
 /* Tooltip — a dark mono label on hover, positioned above the child. Pure CSS:
    the trigger and bubble are siblings inside one relatively-positioned span,
-   shown on :hover/:focus-within so it works from the keyboard too. */
-.ad-tooltip {
+   shown on :hover/:focus-within so it works from the keyboard too.
+
+   `[role="tooltip"]` is the correct ARIA role for the bubble itself, so it
+   doubles as the styling hook — zero classes there. The wrapping span has no
+   attribute of its own, but it does not need one: `:has()` picks out "a span
+   that contains a [role=tooltip] bubble" precisely, without reaching for a
+   class on an otherwise-generic element. */
+span:has(> [role="tooltip"]) {
   position: relative;
   display: inline-flex;
 }
 
-.ad-tooltip__bubble {
+[role="tooltip"] {
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -29,16 +35,21 @@
   pointer-events: none;
   transition: opacity var(--ad-dur-fast) var(--ad-ease);
 }
-.ad-tooltip:hover .ad-tooltip__bubble,
-.ad-tooltip:focus-within .ad-tooltip__bubble {
+span:has(> [role="tooltip"]):hover > [role="tooltip"],
+span:has(> [role="tooltip"]):focus-within > [role="tooltip"] {
   opacity: 1;
   visibility: visible;
 }
 
 /* Toast — the real pattern used for delete confirmations: a flat bar with an
-   optional destructive action and a dismiss. `--fixed` pins it bottom-right
-   for real use; the bare class stays in document flow for documentation. */
-.ad-toast {
+   optional destructive action and a dismiss. `[data-fixed]` pins it
+   bottom-right for real use; without it the toast stays in document flow for
+   documentation. `role="status"` is the correct live-region role for a
+   transient status message, so it is both the accessibility hook and the
+   style selector — no base class needed. The action and dismiss buttons are
+   plain <button>s told apart by `aria-label="Dismiss"`, an attribute they
+   need anyway for the icon-only close control. */
+[role="status"] {
   display: flex;
   align-items: center;
   gap: var(--ad-space-xs);
@@ -52,62 +63,68 @@
   font-family: var(--ad-font-sans);
   font-size: var(--ad-step--2);
 }
-.ad-toast--fixed {
+[role="status"][data-fixed] {
   position: fixed;
   inset-block-end: var(--ad-space-s);
   inset-inline-end: var(--ad-space-s);
   z-index: 60;
 }
-.ad-toast__message { flex: 1; }
-.ad-toast__action {
+[role="status"] > span { flex: 1; }
+[role="status"] button {
   all: unset;
   cursor: pointer;
-  color: var(--ad-color-danger);
   font-weight: 600;
+  color: var(--ad-color-danger);
 }
-.ad-toast__dismiss {
-  all: unset;
-  cursor: pointer;
+[role="status"] button[aria-label="Dismiss"] {
   color: var(--ad-color-text-tertiary);
   font-size: 1rem;
+  font-weight: 400;
   line-height: 1;
 }
-.ad-toast__dismiss:hover { color: var(--ad-color-text-primary); }
+[role="status"] button[aria-label="Dismiss"]:hover { color: var(--ad-color-text-primary); }
 
-/* Dialog — a centered modal: flat surface, no colored header, hairline
-   dividers between title/body/footer. `.ad-dialog-demo` scopes the overlay
-   to its own preview container instead of the viewport, so a static,
-   always-open example can sit safely inside a documentation page; wire real
-   open/close state (and a viewport-fixed overlay) in the consuming app. */
-.ad-dialog-demo {
+/* Dialog — the native <dialog> element: a centered modal, flat surface, no
+   colored header, hairline dividers between title/body/footer. A <header>
+   holds the title and a <footer> holds the actions, matching the elements
+   the tag already wants; everything else in between is the body, styled by
+   excluding those two rather than by a class of its own.
+
+   `.dialog-demo` scopes a static, always-open example to its own preview
+   container instead of the viewport, so it can sit safely inside a
+   documentation page — this is a doc-only affordance, not part of Dialog's
+   contract. It relies on the browser's own dialog centering: the UA
+   stylesheet already gives an open <dialog> `position: absolute; inset: 0;
+   margin: auto`, which centers it inside the nearest positioned ancestor —
+   here, `.dialog-demo` itself. A real `.showModal()` call gets the genuine
+   viewport-fixed overlay and `::backdrop` for free; a plain `open` attribute
+   (used here so the demo renders without JavaScript) does not paint a
+   backdrop at all, since `::backdrop` only exists for a dialog shown
+   modally — wire the real open/close state and call `.showModal()` in the
+   consuming app. */
+.dialog-demo {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   min-height: 20rem;
   background: var(--ad-color-surface-fill);
   border-radius: var(--ad-radius-lg);
 }
-.ad-dialog__overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--ad-space-s);
-  background: rgba(20, 18, 14, 0.35);
-  border-radius: inherit;
-}
-.ad-dialog {
+
+dialog {
   width: 26rem;
-  max-width: 100%;
+  max-width: calc(100% - (2 * var(--ad-space-s)));
+  height: fit-content;
+  padding: 0;
   background: var(--ad-color-surface-card);
   border: 1px solid var(--ad-color-border-hairline);
   border-radius: var(--ad-radius-lg);
   box-shadow: var(--ad-shadow-float);
+  color: var(--ad-color-text-primary);
   overflow: hidden;
 }
-.ad-dialog__title {
+dialog::backdrop {
+  background: rgba(20, 18, 14, 0.35);
+}
+dialog > header {
   padding: var(--ad-space-s) var(--ad-space-m);
   border-bottom: 1px solid var(--ad-color-border-hairline);
   font-family: var(--ad-font-sans);
@@ -115,15 +132,16 @@
   font-size: var(--ad-step-0);
   color: var(--ad-color-text-primary);
 }
-.ad-dialog__body {
-  padding: var(--ad-space-m);
-  color: var(--ad-color-text-primary);
-  font-size: var(--ad-step--1);
-}
-.ad-dialog__footer {
+dialog > footer {
   display: flex;
   justify-content: flex-end;
   gap: var(--ad-space-2xs);
   padding: var(--ad-space-s) var(--ad-space-m);
   border-top: 1px solid var(--ad-color-border-hairline);
+}
+dialog > *:not(header):not(footer) {
+  padding: var(--ad-space-m);
+  margin: 0;
+  color: var(--ad-color-text-primary);
+  font-size: var(--ad-step--1);
 }

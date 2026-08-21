@@ -1,37 +1,36 @@
 ---
 title: Checkbox
-summary: Flat checkbox, fills with the accent when checked. No bounce.
+summary: Native checkbox, tinted with the accent color. No hand-drawn box.
 ---
 
 ## Basic
 
+`input[type="checkbox"]` is the component — styled bare with `accent-color`
+rather than a custom box, so the browser draws its own check. This is a real
+reduction, not just a rename: it deletes the hand-drawn SVG-checkmark markup
+that a `.ad-choice__box` span used to need. The wrapping `<label>` is told
+apart from Field's label structurally — it `:has()` a checkbox as a direct
+child — so it needs no class either.
+
 <figure class="example">
 <figcaption>Checkbox</figcaption>
 <div>
-<label class="ad-choice ad-choice--checkbox">
+<label>
   <input type="checkbox" />
-  <span class="ad-choice__box"></span>
   Notify me
 </label>
-<label class="ad-choice ad-choice--checkbox">
+<label>
   <input type="checkbox" checked="" />
-  <span class="ad-choice__box">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-  </span>
   Ship on merge
 </label>
 </div>
 <details open><summary>Markup</summary>
-<pre><code>&lt;label class=&quot;ad-choice ad-choice--checkbox&quot;&gt;
+<pre><code>&lt;label&gt;
   &lt;input type=&quot;checkbox&quot; /&gt;
-  &lt;span class=&quot;ad-choice__box&quot;&gt;&lt;/span&gt;
   Notify me
 &lt;/label&gt;
-&lt;label class=&quot;ad-choice ad-choice--checkbox&quot;&gt;
+&lt;label&gt;
   &lt;input type=&quot;checkbox&quot; checked=&quot;&quot; /&gt;
-  &lt;span class=&quot;ad-choice__box&quot;&gt;
-    &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M20 6 9 17l-5-5&quot; /&gt;&lt;/svg&gt;
-  &lt;/span&gt;
   Ship on merge
 &lt;/label&gt;</code></pre>
 </details>
@@ -42,16 +41,14 @@ summary: Flat checkbox, fills with the accent when checked. No bounce.
 <figure class="example">
 <figcaption>Disabled</figcaption>
 <div>
-<label class="ad-choice ad-choice--checkbox" aria-disabled="true">
+<label>
   <input type="checkbox" disabled="" />
-  <span class="ad-choice__box"></span>
   Not available on this plan
 </label>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;label class=&quot;ad-choice ad-choice--checkbox&quot; aria-disabled=&quot;true&quot;&gt;
+<pre><code>&lt;label&gt;
   &lt;input type=&quot;checkbox&quot; disabled=&quot;&quot; /&gt;
-  &lt;span class=&quot;ad-choice__box&quot;&gt;&lt;/span&gt;
   Not available on this plan
 &lt;/label&gt;</code></pre>
 </details>
@@ -59,34 +56,32 @@ summary: Flat checkbox, fills with the accent when checked. No bounce.
 
 ## In a fieldset
 
+`<fieldset>`/`<legend>` are styled bare too — they already mean this.
+
 <figure class="example">
 <figcaption>Fieldset</figcaption>
 <div>
-<fieldset class="ad-fieldset">
+<fieldset>
   <legend>Notify me about</legend>
-  <label class="ad-choice ad-choice--checkbox">
+  <label>
     <input type="checkbox" checked="" />
-    <span class="ad-choice__box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>
     Overdue tasks
   </label>
-  <label class="ad-choice ad-choice--checkbox">
+  <label>
     <input type="checkbox" />
-    <span class="ad-choice__box"></span>
     Weekly digest
   </label>
 </fieldset>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;fieldset class=&quot;ad-fieldset&quot;&gt;
+<pre><code>&lt;fieldset&gt;
   &lt;legend&gt;Notify me about&lt;/legend&gt;
-  &lt;label class=&quot;ad-choice ad-choice--checkbox&quot;&gt;
+  &lt;label&gt;
     &lt;input type=&quot;checkbox&quot; checked=&quot;&quot; /&gt;
-    &lt;span class=&quot;ad-choice__box&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;3&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M20 6 9 17l-5-5&quot; /&gt;&lt;/svg&gt;&lt;/span&gt;
     Overdue tasks
   &lt;/label&gt;
-  &lt;label class=&quot;ad-choice ad-choice--checkbox&quot;&gt;
+  &lt;label&gt;
     &lt;input type=&quot;checkbox&quot; /&gt;
-    &lt;span class=&quot;ad-choice__box&quot;&gt;&lt;/span&gt;
     Weekly digest
   &lt;/label&gt;
 &lt;/fieldset&gt;</code></pre>
@@ -95,13 +90,12 @@ summary: Flat checkbox, fills with the accent when checked. No bounce.
 
 ## API
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
-    <thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Notes</th></tr></thead>
-    <tbody>
-      <tr><td class="ad-token-name">checked</td><td class="ad-table__code">boolean</td><td>Required.</td></tr>
-      <tr><td class="ad-token-name">label</td><td class="ad-table__code">node</td><td></td></tr>
-      <tr><td class="ad-token-name">disabled</td><td class="ad-table__code">boolean</td><td></td></tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead><tr><th scope="col">Element / attribute</th><th scope="col">Values</th><th scope="col">Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>input[type="checkbox"]</code></td><td></td><td>Required base — no class. Tinted with <code>accent-color</code>.</td></tr>
+    <tr><td><code>checked</code></td><td>boolean</td><td></td></tr>
+    <tr><td><code>disabled</code></td><td>boolean</td><td></td></tr>
+    <tr><td><code>label</code></td><td>text content</td><td>Wrap the input directly — <code>label:has(&gt; input[type="checkbox"])</code> is what applies the row layout.</td></tr>
+  </tbody>
+</table>

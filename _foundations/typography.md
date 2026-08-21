@@ -10,7 +10,7 @@ summary: >-
 
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-font-sans</span>
+    <code>--ad-font-sans</code>
     <span>Interface text — every component, every screen. Web-safe; nothing is loaded for it.</span>
   </div>
   <div class="ad-specimen__sample" style="font-family: var(--ad-font-sans); font-size: 1.5rem;">
@@ -19,7 +19,7 @@ summary: >-
 </div>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-font-mono</span>
+    <code>--ad-font-mono</code>
     <span>Every label, meta value, technical/catalog value, and code sample. The system's one loaded webfont.</span>
   </div>
   <div class="ad-specimen__sample" style="font-family: var(--ad-font-mono); font-size: 1.5rem;">
@@ -28,7 +28,7 @@ summary: >-
 </div>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-font-serif</span>
+    <code>--ad-font-serif</code>
     <span>Opt-in reading variant for a project that wants an editorial, archival feel (domus-style). Not loaded by default; web-safe only.</span>
   </div>
   <div class="ad-specimen__sample" style="font-family: var(--ad-font-serif); font-size: 1.5rem;">
@@ -53,7 +53,7 @@ breakpoint in between.
 
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-step--2</span>
+    <code>--ad-step--2</code>
     <span>12.5 → 12.8px</span>
     <span>type-label — eyebrows, catalog labels, meta.</span>
   </div>
@@ -63,7 +63,7 @@ breakpoint in between.
 </div>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-step--1</span>
+    <code>--ad-step--1</code>
     <span>15 → 16px</span>
     <span>type-body-sm and type-mono — secondary copy, technical values.</span>
   </div>
@@ -73,7 +73,7 @@ breakpoint in between.
 </div>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-step-0</span>
+    <code>--ad-step-0</code>
     <span>18 → 20px</span>
     <span>type-body — the base size, and the body element's own size.</span>
   </div>
@@ -83,7 +83,7 @@ breakpoint in between.
 </div>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-step-1</span>
+    <code>--ad-step-1</code>
     <span>22 → 25px</span>
     <span>type-h3 — card and subsection headings.</span>
   </div>
@@ -93,7 +93,7 @@ breakpoint in between.
 </div>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-step-2</span>
+    <code>--ad-step-2</code>
     <span>26 → 31px</span>
     <span>type-h2 — section headings.</span>
   </div>
@@ -103,7 +103,7 @@ breakpoint in between.
 </div>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-step-3</span>
+    <code>--ad-step-3</code>
     <span>31 → 39px</span>
     <span>type-h1 — screen titles.</span>
   </div>
@@ -113,7 +113,7 @@ breakpoint in between.
 </div>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-step-4</span>
+    <code>--ad-step-4</code>
     <span>37 → 49px</span>
     <span>type-display — one hero title per screen, at most.</span>
   </div>
@@ -123,7 +123,7 @@ breakpoint in between.
 </div>
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
-    <span class="ad-token-name">--ad-step-5</span>
+    <code>--ad-step-5</code>
     <span>45 → 61px</span>
     <span>Reserved headroom. No compound style claims it yet.</span>
   </div>
@@ -138,77 +138,75 @@ Real, specific numbers from the source — not a generic ramp compressed to
 fit. Each class sets family, size, weight, line-height, and (where the
 source specifies one) letter-spacing in a single declaration.
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
+  <table>
     <thead><tr><th scope="col">Class</th><th scope="col">Weight</th><th scope="col">Size</th><th scope="col">Line-height</th><th scope="col">Tracking</th><th scope="col">Use for</th></tr></thead>
     <tbody>
       <tr>
-        <td class="ad-token-name">.type-display</td>
+        <td><code>.type-display</code></td>
         <td>600</td>
-        <td class="ad-table__code">--ad-step-4</td>
+        <td><code>--ad-step-4</code></td>
         <td>1.08</td>
         <td>-0.015em</td>
         <td>Page-level hero title, once per screen.</td>
       </tr>
       <tr>
-        <td class="ad-token-name">.type-h1</td>
+        <td><code>.type-h1</code></td>
         <td>600</td>
-        <td class="ad-table__code">--ad-step-3</td>
+        <td><code>--ad-step-3</code></td>
         <td>1.12</td>
         <td>-0.012em</td>
         <td>Screen title.</td>
       </tr>
       <tr>
-        <td class="ad-token-name">.type-h2</td>
+        <td><code>.type-h2</code></td>
         <td>600</td>
-        <td class="ad-table__code">--ad-step-2</td>
+        <td><code>--ad-step-2</code></td>
         <td>1.16</td>
         <td>-0.01em</td>
         <td>Section heading.</td>
       </tr>
       <tr>
-        <td class="ad-token-name">.type-h3</td>
+        <td><code>.type-h3</code></td>
         <td>600</td>
-        <td class="ad-table__code">--ad-step-1</td>
+        <td><code>--ad-step-1</code></td>
         <td>1.25</td>
         <td>normal</td>
         <td>Card / subsection heading.</td>
       </tr>
       <tr>
-        <td class="ad-token-name">.type-body</td>
+        <td><code>.type-body</code></td>
         <td>400</td>
-        <td class="ad-table__code">--ad-step-0</td>
+        <td><code>--ad-step-0</code></td>
         <td>1.55</td>
         <td>normal</td>
         <td>Body copy.</td>
       </tr>
       <tr>
-        <td class="ad-token-name">.type-body-sm</td>
+        <td><code>.type-body-sm</code></td>
         <td>400</td>
-        <td class="ad-table__code">--ad-step--1</td>
+        <td><code>--ad-step--1</code></td>
         <td>1.5</td>
         <td>normal</td>
         <td>Secondary copy, hints.</td>
       </tr>
       <tr>
-        <td class="ad-token-name">.type-label</td>
+        <td><code>.type-label</code></td>
         <td>500</td>
-        <td class="ad-table__code">--ad-step--2</td>
+        <td><code>--ad-step--2</code></td>
         <td>1</td>
         <td>0.08em</td>
         <td>Eyebrows, catalog labels, meta — SAVED, RECOMMENDED, OVERDUE.</td>
       </tr>
       <tr>
-        <td class="ad-token-name">.type-mono</td>
+        <td><code>.type-mono</code></td>
         <td>400</td>
-        <td class="ad-table__code">--ad-step--1</td>
+        <td><code>--ad-step--1</code></td>
         <td>1.5</td>
         <td>normal</td>
         <td>Technical values, IDs, dates, code.</td>
       </tr>
     </tbody>
   </table>
-</div>
 
 <figure class="example">
 <figcaption>All eight, in order</figcaption>

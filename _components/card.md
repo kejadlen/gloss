@@ -5,50 +5,55 @@ summary: >-
   the one focused card in a view — a dialog, the primary capture card.
 ---
 
-## Flat vs. elevated
+A `<div>`/`<article>` is too generic to style bare, so Card keeps one
+sanctioned class. `[data-elevated]` is for the single most-elevated element on
+screen — never a whole grid of cards at once.
 
-Flat is the default everywhere. `--elevated` is for the single most-elevated
-element on screen — never a whole grid of cards at once.
+## Flat vs. elevated
 
 <figure class="example">
 <figcaption>Flat and elevated</figcaption>
 <div data-surface="sunken">
-<div class="ad-card" style="width: 14rem; padding: var(--ad-space-s);">Flat — the default.</div>
-<div class="ad-card ad-card--elevated" style="width: 14rem; padding: var(--ad-space-s);">Elevated — one per view.</div>
+<div class="card" style="width: 14rem; padding: var(--ad-space-s);">Flat — the default.</div>
+<div class="card" data-elevated style="width: 14rem; padding: var(--ad-space-s);">Elevated — one per view.</div>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;div class=&quot;ad-card&quot; style=&quot;width: 14rem; padding: var(--ad-space-s);&quot;&gt;Flat — the default.&lt;/div&gt;
-&lt;div class=&quot;ad-card ad-card--elevated&quot; style=&quot;width: 14rem; padding: var(--ad-space-s);&quot;&gt;Elevated — one per view.&lt;/div&gt;</code></pre>
+<pre><code>&lt;div class=&quot;card&quot; style=&quot;width: 14rem; padding: var(--ad-space-s);&quot;&gt;Flat — the default.&lt;/div&gt;
+&lt;div class=&quot;card&quot; data-elevated style=&quot;width: 14rem; padding: var(--ad-space-s);&quot;&gt;Elevated — one per view.&lt;/div&gt;</code></pre>
 </details>
 </figure>
 
 ## As a content tile
 
+Used standalone (not as a row-list), `.card` is fine on its own — `.card-body`
+and `.card-footer` are two more sanctioned classes, for the one shape inside
+it that has no element of its own to hang a selector on.
+
 <figure class="example">
 <figcaption>Content tile</figcaption>
 <div>
-<article class="ad-card" style="max-width: 18rem;">
-  <div class="ad-card__body">
-    <p class="type-label">Recommended</p>
-    <h3 class="ad-card__title">Rename the caution color</h3>
-    <p class="ad-card__text">Three people have called it "yellow" in review this month.</p>
+<article class="card" style="max-width: 18rem;">
+  <div class="card-body">
+    <p class="type-label" style="margin:0;">Recommended</p>
+    <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">Rename the caution color</h3>
+    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">Three people have called it "yellow" in review this month.</p>
   </div>
-  <div class="ad-card__footer">
-    <button type="button" class="ad-btn ad-btn--primary ad-btn--sm">Approve</button>
-    <button type="button" class="ad-btn ad-btn--ghost ad-btn--sm">Dismiss</button>
+  <div class="card-footer">
+    <button type="button" data-variant="primary" data-size="sm">Approve</button>
+    <button type="button" data-variant="ghost" data-size="sm">Dismiss</button>
   </div>
 </article>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;article class=&quot;ad-card&quot; style=&quot;max-width: 18rem;&quot;&gt;
-  &lt;div class=&quot;ad-card__body&quot;&gt;
-    &lt;p class=&quot;type-label&quot;&gt;Recommended&lt;/p&gt;
-    &lt;h3 class=&quot;ad-card__title&quot;&gt;Rename the caution color&lt;/h3&gt;
-    &lt;p class=&quot;ad-card__text&quot;&gt;Three people have called it &quot;yellow&quot; in review this month.&lt;/p&gt;
+<pre><code>&lt;article class=&quot;card&quot; style=&quot;max-width: 18rem;&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;p class=&quot;type-label&quot; style=&quot;margin:0;&quot;&gt;Recommended&lt;/p&gt;
+    &lt;h3 style=&quot;margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);&quot;&gt;Rename the caution color&lt;/h3&gt;
+    &lt;p style=&quot;margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);&quot;&gt;Three people have called it &quot;yellow&quot; in review this month.&lt;/p&gt;
   &lt;/div&gt;
-  &lt;div class=&quot;ad-card__footer&quot;&gt;
-    &lt;button type=&quot;button&quot; class=&quot;ad-btn ad-btn--primary ad-btn--sm&quot;&gt;Approve&lt;/button&gt;
-    &lt;button type=&quot;button&quot; class=&quot;ad-btn ad-btn--ghost ad-btn--sm&quot;&gt;Dismiss&lt;/button&gt;
+  &lt;div class=&quot;card-footer&quot;&gt;
+    &lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Approve&lt;/button&gt;
+    &lt;button type=&quot;button&quot; data-variant=&quot;ghost&quot; data-size=&quot;sm&quot;&gt;Dismiss&lt;/button&gt;
   &lt;/div&gt;
 &lt;/article&gt;</code></pre>
 </details>
@@ -58,33 +63,35 @@ element on screen — never a whole grid of cards at once.
 
 Card's most common job in this system is holding a list of
 [CardRow](<%= relative_url('/components/card-row/') %>)s: entry lists, task
-lists, settings rows.
+lists, settings rows. In that shape Card is a real `<ul class="card">` and
+CardRow is a bare `<li>` — the divider between rows comes from the `.card >
+li` descendant selector, no second class needed.
 
 <figure class="example">
 <figcaption>Card of rows</figcaption>
 <div>
-<div class="ad-card" style="max-width: 22rem;">
-  <div class="ad-card-row">Dishwasher manual</div>
-  <div class="ad-card-row">Sofa receipt</div>
-  <div class="ad-card-row">Passport scan</div>
-</div>
+<ul class="card" style="max-width: 22rem;">
+  <li>Dishwasher manual</li>
+  <li>Sofa receipt</li>
+  <li>Passport scan</li>
+</ul>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;div class=&quot;ad-card&quot; style=&quot;max-width: 22rem;&quot;&gt;
-  &lt;div class=&quot;ad-card-row&quot;&gt;Dishwasher manual&lt;/div&gt;
-  &lt;div class=&quot;ad-card-row&quot;&gt;Sofa receipt&lt;/div&gt;
-  &lt;div class=&quot;ad-card-row&quot;&gt;Passport scan&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+<pre><code>&lt;ul class=&quot;card&quot; style=&quot;max-width: 22rem;&quot;&gt;
+  &lt;li&gt;Dishwasher manual&lt;/li&gt;
+  &lt;li&gt;Sofa receipt&lt;/li&gt;
+  &lt;li&gt;Passport scan&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
 </details>
 </figure>
 
 ## API
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
-    <thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Notes</th></tr></thead>
-    <tbody>
-      <tr><td class="ad-token-name">elevated</td><td class="ad-table__code">boolean</td><td>Applies <code>--ad-shadow-float</code>. One per view.</td></tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead><tr><th scope="col">Element / attribute</th><th scope="col">Values</th><th scope="col">Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>.card</code></td><td></td><td>Required base, on a <code>&lt;div&gt;</code>/<code>&lt;article&gt;</code> for a standalone tile or a <code>&lt;ul&gt;</code> for a list of rows.</td></tr>
+    <tr><td><code>data-elevated</code></td><td>boolean</td><td>Applies <code>--ad-shadow-float</code>. One per view.</td></tr>
+    <tr><td><code>&gt; li</code></td><td></td><td>A CardRow, when Card is a <code>&lt;ul&gt;</code>. See <a href="<%= relative_url('/components/card-row/') %>">CardRow</a>.</td></tr>
+  </tbody>
+</table>

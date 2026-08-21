@@ -17,8 +17,8 @@ description: >-
     typographic mood; this system is what they all share underneath.
   </p>
   <div class="ad-hero__actions">
-    <a class="ad-btn ad-btn--primary ad-btn--lg" href="<%= relative_url('/foundations/color/') %>">Start with color</a>
-    <a class="ad-btn ad-btn--lg" href="<%= relative_url('/components/button/') %>">Jump to components</a>
+    <a class="btn" data-variant="primary" data-size="lg" href="<%= relative_url('/foundations/color/') %>">Start with color</a>
+    <a class="btn" data-size="lg" href="<%= relative_url('/components/button/') %>">Jump to components</a>
   </div>
 </div>
 
@@ -67,29 +67,29 @@ from the token values, not recomputed on every build. If a hex changes in
 `tokens.css`, the swatch and the button are updated by hand together, the
 same afternoon.
 
-<div class="ad-card-grid">
-  <article class="ad-card ad-card--link">
-    <div class="ad-card__body">
-      <h3 class="ad-card__title"><a href="<%= relative_url('/foundations/color/') %>">Foundations</a></h3>
-      <p class="ad-card__text">
+<div class="card-grid">
+  <article class="card" data-link>
+    <div class="card-body">
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="<%= relative_url('/foundations/color/') %>">Foundations</a></h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
         Color, type, space, elevation, and motion — with contrast ratios
         computed from the tokens and checked by hand, not typed by guess.
       </p>
     </div>
   </article>
-  <article class="ad-card ad-card--link">
-    <div class="ad-card__body">
-      <h3 class="ad-card__title"><a href="<%= relative_url('/components/button/') %>">Components</a></h3>
-      <p class="ad-card__text">
+  <article class="card" data-link>
+    <div class="card-body">
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="<%= relative_url('/components/button/') %>">Components</a></h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
         Sixteen components across core, forms, feedback, and navigation, each
         rendered live next to the exact markup that produced it.
       </p>
     </div>
   </article>
-  <article class="ad-card ad-card--link">
-    <div class="ad-card__body">
-      <h3 class="ad-card__title"><a href="<%= relative_url('/patterns/loop/') %>">Patterns</a></h3>
-      <p class="ad-card__text">
+  <article class="card" data-link>
+    <div class="card-body">
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="<%= relative_url('/patterns/loop/') %>">Patterns</a></h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
         Loop and Archive — a task dashboard and a capture app — put every
         component family in one screen at once.
       </p>
@@ -102,42 +102,42 @@ same afternoon.
 <figure class="example">
 <figcaption>Everything on one card</figcaption>
 <div data-layout="stack">
-<article class="ad-card ad-card--elevated" style="max-width: 26rem;">
-  <div class="ad-card__body">
-    <div class="ad-badge-set">
-      <span class="ad-badge ad-badge--accent">Recommended</span>
-      <span class="ad-badge">Unassigned</span>
+<article class="card" data-elevated style="max-width: 26rem;">
+  <div class="card-body">
+    <div class="badge-set">
+      <span class="badge" data-tone="accent">Recommended</span>
+      <span class="badge">Unassigned</span>
     </div>
-    <h3 class="ad-card__title">Rename the caution color</h3>
-    <p class="ad-card__text">
+    <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">Rename the caution color</h3>
+    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
       Three people have called it "yellow" in review this month. There is no
       caution token in this system — only <code>--ad-color-success</code> and
       <code>--ad-color-danger</code>, fixed across every project.
     </p>
   </div>
-  <div class="ad-card__footer">
-    <button type="button" class="ad-btn ad-btn--primary ad-btn--sm">Approve</button>
-    <button type="button" class="ad-btn ad-btn--ghost ad-btn--sm">Dismiss</button>
+  <div class="card-footer">
+    <button type="button" data-variant="primary" data-size="sm">Approve</button>
+    <button type="button" data-variant="ghost" data-size="sm">Dismiss</button>
   </div>
 </article>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;article class=&quot;ad-card ad-card--elevated&quot; style=&quot;max-width: 26rem;&quot;&gt;
-  &lt;div class=&quot;ad-card__body&quot;&gt;
-    &lt;div class=&quot;ad-badge-set&quot;&gt;
-      &lt;span class=&quot;ad-badge ad-badge--accent&quot;&gt;Recommended&lt;/span&gt;
-      &lt;span class=&quot;ad-badge&quot;&gt;Unassigned&lt;/span&gt;
+<pre><code>&lt;article class=&quot;card&quot; data-elevated style=&quot;max-width: 26rem;&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;div class=&quot;badge-set&quot;&gt;
+      &lt;span class=&quot;badge&quot; data-tone=&quot;accent&quot;&gt;Recommended&lt;/span&gt;
+      &lt;span class=&quot;badge&quot;&gt;Unassigned&lt;/span&gt;
     &lt;/div&gt;
-    &lt;h3 class=&quot;ad-card__title&quot;&gt;Rename the caution color&lt;/h3&gt;
-    &lt;p class=&quot;ad-card__text&quot;&gt;
+    &lt;h3&gt;Rename the caution color&lt;/h3&gt;
+    &lt;p&gt;
       Three people have called it &quot;yellow&quot; in review this month. There is no
       caution token in this system — only &lt;code&gt;--ad-color-success&lt;/code&gt; and
       &lt;code&gt;--ad-color-danger&lt;/code&gt;, fixed across every project.
     &lt;/p&gt;
   &lt;/div&gt;
-  &lt;div class=&quot;ad-card__footer&quot;&gt;
-    &lt;button type=&quot;button&quot; class=&quot;ad-btn ad-btn--primary ad-btn--sm&quot;&gt;Approve&lt;/button&gt;
-    &lt;button type=&quot;button&quot; class=&quot;ad-btn ad-btn--ghost ad-btn--sm&quot;&gt;Dismiss&lt;/button&gt;
+  &lt;div class=&quot;card-footer&quot;&gt;
+    &lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Approve&lt;/button&gt;
+    &lt;button type=&quot;button&quot; data-variant=&quot;ghost&quot; data-size=&quot;sm&quot;&gt;Dismiss&lt;/button&gt;
   &lt;/div&gt;
 &lt;/article&gt;</code></pre>
 </details>

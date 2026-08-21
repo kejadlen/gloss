@@ -1,28 +1,32 @@
 ---
 title: Tag
 summary: >-
-  A removable mono chip for freeform tags — locations, categories. `--dashed`
+  A removable mono chip for freeform tags — locations, categories. `[data-dashed]`
   renders an "add tag" affordance instead of a value.
 ---
 
 ## Default and removable
 
+Same reasoning as Badge: a `<span>` is too generic to select bare, so Tag
+keeps one class. The remove control is a real `<button>`, styled through the
+descendant selector `.tag button` — no class of its own.
+
 <figure class="example">
 <figcaption>Tags</figcaption>
 <div>
-<span class="ad-tag">location:garage</span>
-<span class="ad-tag">category:appliance</span>
-<span class="ad-tag">
+<span class="tag">location:garage</span>
+<span class="tag">category:appliance</span>
+<span class="tag">
   category:receipt
-  <button type="button" class="ad-tag__remove" aria-label="Remove tag">×</button>
+  <button type="button" aria-label="Remove tag">×</button>
 </span>
 </div>
 <details open><summary>Markup</summary>
-<pre><code>&lt;span class=&quot;ad-tag&quot;&gt;location:garage&lt;/span&gt;
-&lt;span class=&quot;ad-tag&quot;&gt;category:appliance&lt;/span&gt;
-&lt;span class=&quot;ad-tag&quot;&gt;
+<pre><code>&lt;span class=&quot;tag&quot;&gt;location:garage&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;category:appliance&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;
   category:receipt
-  &lt;button type=&quot;button&quot; class=&quot;ad-tag__remove&quot; aria-label=&quot;Remove tag&quot;&gt;×&lt;/button&gt;
+  &lt;button type=&quot;button&quot; aria-label=&quot;Remove tag&quot;&gt;×&lt;/button&gt;
 &lt;/span&gt;</code></pre>
 </details>
 </figure>
@@ -32,27 +36,26 @@ summary: >-
 <figure class="example">
 <figcaption>Add tag</figcaption>
 <div>
-<div class="ad-tag-set">
-  <span class="ad-tag">location:garage</span>
-  <span class="ad-tag ad-tag--dashed">+ add tag</span>
+<div class="tag-set">
+  <span class="tag">location:garage</span>
+  <span class="tag" data-dashed>+ add tag</span>
 </div>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;div class=&quot;ad-tag-set&quot;&gt;
-  &lt;span class=&quot;ad-tag&quot;&gt;location:garage&lt;/span&gt;
-  &lt;span class=&quot;ad-tag ad-tag--dashed&quot;&gt;+ add tag&lt;/span&gt;
+<pre><code>&lt;div class=&quot;tag-set&quot;&gt;
+  &lt;span class=&quot;tag&quot;&gt;location:garage&lt;/span&gt;
+  &lt;span class=&quot;tag&quot; data-dashed&gt;+ add tag&lt;/span&gt;
 &lt;/div&gt;</code></pre>
 </details>
 </figure>
 
 ## API
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
-    <thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Notes</th></tr></thead>
-    <tbody>
-      <tr><td class="ad-token-name">onRemove</td><td class="ad-table__code">function</td><td>Renders the × button when present.</td></tr>
-      <tr><td class="ad-token-name">dashed</td><td class="ad-table__code">boolean</td><td>Renders an "add tag" affordance instead of a value.</td></tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead><tr><th scope="col">Element / attribute</th><th scope="col">Values</th><th scope="col">Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>span.tag</code></td><td></td><td>Required base.</td></tr>
+    <tr><td><code>button</code></td><td></td><td>Nest a real <code>&lt;button aria-label="Remove tag"&gt;</code> to render the × affordance — styled via <code>.tag button</code>, no class needed.</td></tr>
+    <tr><td><code>data-dashed</code></td><td>boolean</td><td>Renders an "add tag" affordance instead of a value.</td></tr>
+  </tbody>
+</table>

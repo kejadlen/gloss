@@ -16,12 +16,12 @@ is the default everywhere. Shadow is the exception, not the baseline.
 <ul class="ad-elevation-grid">
   <li>
     <div class="ad-elevation-demo" style="box-shadow: 0 1px 2px rgba(20, 18, 14, 0.05);"></div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">shadow-sm</span></div>
+    <div class="ad-specimen__meta"><code>shadow-sm</code></div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Barely-there separation — a Switch thumb, a focused Input.</p>
   </li>
   <li>
     <div class="ad-elevation-demo" style="box-shadow: 0 2px 6px rgba(20, 18, 14, 0.06), 0 10px 24px -12px rgba(20, 18, 14, 0.18);"></div>
-    <div class="ad-specimen__meta"><span class="ad-token-name">shadow-float</span></div>
+    <div class="ad-specimen__meta"><code>shadow-float</code></div>
     <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">The one floating layer in a view. Apply it to at most one element on screen at a time.</p>
   </li>
 </ul>
@@ -29,30 +29,30 @@ is the default everywhere. Shadow is the exception, not the baseline.
 <figure class="example">
 <figcaption>Flat vs. float</figcaption>
 <div data-layout="grid" data-surface="sunken">
-<article class="ad-card">
-  <div class="ad-card__body">
-    <h3 class="ad-card__title" style="font-size: var(--ad-step--1);">Flat</h3>
-    <p class="ad-card__text">The default. A hairline border, no shadow.</p>
+<article class="card">
+  <div class="card-body">
+    <h3 style="margin:0; font: 600 var(--ad-step--1)/1.3 var(--ad-font-sans);">Flat</h3>
+    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">The default. A hairline border, no shadow.</p>
   </div>
 </article>
-<article class="ad-card ad-card--elevated">
-  <div class="ad-card__body">
-    <h3 class="ad-card__title" style="font-size: var(--ad-step--1);">Elevated</h3>
-    <p class="ad-card__text">shadow-float. Reserved for one element per view — a Dialog, a Toast.</p>
+<article class="card" data-elevated>
+  <div class="card-body">
+    <h3 style="margin:0; font: 600 var(--ad-step--1)/1.3 var(--ad-font-sans);">Elevated</h3>
+    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">shadow-float. Reserved for one element per view — a Dialog, a Toast.</p>
   </div>
 </article>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;article class="ad-card"&gt;
-  &lt;div class="ad-card__body"&gt;
-    &lt;h3 class="ad-card__title" style="font-size: var(--ad-step--1);"&gt;Flat&lt;/h3&gt;
-    &lt;p class="ad-card__text"&gt;The default. A hairline border, no shadow.&lt;/p&gt;
+<pre><code>&lt;article class="card"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h3&gt;Flat&lt;/h3&gt;
+    &lt;p&gt;The default. A hairline border, no shadow.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/article&gt;
-&lt;article class="ad-card ad-card--elevated"&gt;
-  &lt;div class="ad-card__body"&gt;
-    &lt;h3 class="ad-card__title" style="font-size: var(--ad-step--1);"&gt;Elevated&lt;/h3&gt;
-    &lt;p class="ad-card__text"&gt;shadow-float. Reserved for one element per view — a Dialog, a Toast.&lt;/p&gt;
+&lt;article class="card" data-elevated&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h3&gt;Elevated&lt;/h3&gt;
+    &lt;p&gt;shadow-float. Reserved for one element per view — a Dialog, a Toast.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/article&gt;</code></pre>
 </details>

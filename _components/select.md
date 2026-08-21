@@ -5,10 +5,12 @@ summary: Native select, styled to match Input exactly.
 
 ## Basic
 
+`<select>` is the component — styled bare, no class.
+
 <figure class="example">
 <figcaption>Select</figcaption>
 <div>
-<select class="ad-select" style="max-width: 20rem;">
+<select style="max-width: 20rem;">
   <option>Day</option>
   <option selected="">Week</option>
   <option>Month</option>
@@ -16,7 +18,7 @@ summary: Native select, styled to match Input exactly.
 </select>
 </div>
 <details open><summary>Markup</summary>
-<pre><code>&lt;select class=&quot;ad-select&quot; style=&quot;max-width: 20rem;&quot;&gt;
+<pre><code>&lt;select style=&quot;max-width: 20rem;&quot;&gt;
   &lt;option&gt;Day&lt;/option&gt;
   &lt;option selected=&quot;&quot;&gt;Week&lt;/option&gt;
   &lt;option&gt;Month&lt;/option&gt;
@@ -30,10 +32,10 @@ summary: Native select, styled to match Input exactly.
 <figure class="example">
 <figcaption>Disabled</figcaption>
 <div>
-<select class="ad-select" disabled="" style="max-width: 20rem;"><option>Week</option></select>
+<select disabled="" style="max-width: 20rem;"><option>Week</option></select>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;select class=&quot;ad-select&quot; disabled=&quot;&quot; style=&quot;max-width: 20rem;&quot;&gt;&lt;option&gt;Week&lt;/option&gt;&lt;/select&gt;</code></pre>
+<pre><code>&lt;select disabled=&quot;&quot; style=&quot;max-width: 20rem;&quot;&gt;&lt;option&gt;Week&lt;/option&gt;&lt;/select&gt;</code></pre>
 </details>
 </figure>
 
@@ -48,12 +50,11 @@ summary: Native select, styled to match Input exactly.
 
 ## API
 
-<div class="ad-table-wrap">
-  <table class="ad-table ad-table--compact">
-    <thead><tr><th scope="col">Prop</th><th scope="col">Type</th><th scope="col">Notes</th></tr></thead>
-    <tbody>
-      <tr><td class="ad-token-name">options</td><td class="ad-table__code">{value, label}[]</td><td></td></tr>
-      <tr><td class="ad-token-name">disabled</td><td class="ad-table__code">boolean</td><td></td></tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead><tr><th scope="col">Element / attribute</th><th scope="col">Values</th><th scope="col">Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>select</code></td><td></td><td>Required base — no class.</td></tr>
+    <tr><td><code>option</code></td><td></td><td></td></tr>
+    <tr><td><code>disabled</code></td><td>boolean</td><td></td></tr>
+  </tbody>
+</table>
