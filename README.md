@@ -81,8 +81,15 @@ pins its own Ruby — so `.github/workflows/pages.yml` builds it on Actions with
 `ruby/setup-ruby` and uploads the result with `actions/deploy-pages`.
 
 Every branch is built and tested; only the repository's default branch deploys.
-Enable the target under **Settings → Pages → Build and deployment → Source:
-GitHub Actions**.
+
+**One-time setup:** set **Settings → Pages → Build and deployment → Source** to
+**GitHub Actions**. The workflow token is not permitted to turn Pages on by
+itself, so the `deploy` job fails until this is done — the `build` job, tests
+included, runs regardless.
+
+The site's `baseurl` lives in `_config.yml` rather than coming from
+`actions/configure-pages`, which keeps the build independent of the Pages API.
+Change it there if the site ever moves off a project page.
 
 ## Using the CSS elsewhere
 
