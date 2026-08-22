@@ -28,8 +28,8 @@ anyway.
 <details open><summary>Markup</summary>
 <pre><code>&lt;div role=&quot;status&quot;&gt;
   &lt;span&gt;Deleted &quot;Call Mom&quot;&lt;/span&gt;
-  &lt;button type=&quot;button&quot;&gt;Undo&lt;/button&gt;
-  &lt;button type=&quot;button&quot; aria-label=&quot;Dismiss&quot;&gt;×&lt;/button&gt;
+  &lt;button&gt;Undo&lt;/button&gt;
+  &lt;button aria-label=&quot;Dismiss&quot;&gt;×&lt;/button&gt;
 &lt;/div&gt;</code></pre>
 </details>
 </figure>
@@ -47,7 +47,7 @@ anyway.
 <details><summary>Markup</summary>
 <pre><code>&lt;div role=&quot;status&quot;&gt;
   &lt;span&gt;Series created&lt;/span&gt;
-  &lt;button type=&quot;button&quot; aria-label=&quot;Dismiss&quot;&gt;×&lt;/button&gt;
+  &lt;button aria-label=&quot;Dismiss&quot;&gt;×&lt;/button&gt;
 &lt;/div&gt;</code></pre>
 </details>
 </figure>

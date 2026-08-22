@@ -28,7 +28,7 @@ Hover or tab to the button below.
 </div>
 <details open><summary>Markup</summary>
 <pre><code>&lt;span&gt;
-  &lt;button type=&quot;button&quot; class=&quot;icon-button&quot; aria-label=&quot;Delete&quot; aria-describedby=&quot;tooltip-basic&quot;&gt;
+  &lt;button class=&quot;icon-button&quot; aria-label=&quot;Delete&quot; aria-describedby=&quot;tooltip-basic&quot;&gt;
     &lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.75&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13&quot; /&gt;&lt;/svg&gt;
   &lt;/button&gt;
   &lt;span role=&quot;tooltip&quot; id=&quot;tooltip-basic&quot;&gt;Delete&lt;/span&gt;

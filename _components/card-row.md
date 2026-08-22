@@ -46,8 +46,8 @@ a hover fill on its own; no `--clickable` modifier to remember.
 </div>
 <details><summary>Markup</summary>
 <pre><code>&lt;ul class=&quot;card&quot; style=&quot;max-width: 22rem;&quot;&gt;
-  &lt;li&gt;&lt;button type=&quot;button&quot;&gt;Tax return 2025.pdf&lt;/button&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;button type=&quot;button&quot;&gt;Warranty card.pdf&lt;/button&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;button&gt;Tax return 2025.pdf&lt;/button&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;button&gt;Warranty card.pdf&lt;/button&gt;&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 </details>
 </figure>

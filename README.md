@@ -58,15 +58,15 @@ $ bundle exec rake serve    # http://127.0.0.1:4000
 | --- | --- |
 | `assets/css/tokens.css` | Every color, type, space, radius, elevation, and motion value in the system, hand-maintained. |
 | `_sass/` | Plain CSS: base/reset, components (core/forms/feedback/navigation), and this documentation site's own chrome. Concatenated into `style.css` at build time. |
-| `lib/arbitrary_definitions/` | The whole site builder: front matter, ERB, and Kramdown, wrapped in a layout. No Jekyll anywhere. |
-| `_layouts/`, `_includes/` | Plain ERB templates for the page chrome. |
+| `lib/build.rb` | The whole site builder in one file: a literal list of pages, front matter, ERB, and Kramdown. No collections config, no layout inheritance, no generic includes system — this is one specific site, not a framework. |
+| `_layouts/page.erb` | The one page shell (head, header, sidebar, footer). |
 | `_foundations/`, `_components/`, `_patterns/` | The documentation pages — static Markdown and HTML with a little ERB for links and nav. |
 | `.github/workflows/pages.yml` | Build on Ruby 4.0, deploy to Pages. |
 
 ## Deployment
 
 There is no Jekyll to run here — `Rakefile`'s `build` task drives
-`lib/arbitrary_definitions/site_builder.rb` directly — but the build still
+`lib/build.rb` directly — but the build still
 runs on GitHub Actions rather than relying on GitHub's hosted build, mainly
 so it runs on the pinned Ruby 4.0 rather than whatever Ruby the Pages runner
 ships. `.github/workflows/pages.yml` builds it with `ruby/setup-ruby` and

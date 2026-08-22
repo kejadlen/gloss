@@ -4,8 +4,8 @@ $LOAD_PATH.unshift(File.expand_path("lib", __dir__))
 
 desc "Build the site into _site"
 task :build do
-  require "arbitrary_definitions/site_builder"
-  ArbitraryDefinitions::SiteBuilder.new.build
+  require "build"
+  build
 end
 
 desc "Serve the already-built site at http://127.0.0.1:4000"
@@ -17,8 +17,8 @@ task :serve do
   abort "_site is empty — run `bundle exec rake build` first" unless Dir.exist?(site_dir)
 
   # Every link the build emits is prefixed with `baseurl` (see relative_url
-  # in lib/arbitrary_definitions/page_context.rb), so the site has to be
-  # mounted under that same path locally, the way `jekyll serve` used to.
+  # in lib/build.rb), so the site has to be mounted under that same path
+  # locally, the way `jekyll serve` used to.
   baseurl = YAML.safe_load_file(File.expand_path("_config.yml", __dir__)).fetch("baseurl", "")
 
   server = WEBrick::HTTPServer.new(Port: 4000, BindAddress: "127.0.0.1", DocumentRoot: site_dir)

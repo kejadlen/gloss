@@ -26,7 +26,7 @@ descendant selector `.tag button` — no class of its own.
 &lt;span class=&quot;tag&quot;&gt;category:appliance&lt;/span&gt;
 &lt;span class=&quot;tag&quot;&gt;
   category:receipt
-  &lt;button type=&quot;button&quot; aria-label=&quot;Remove tag&quot;&gt;×&lt;/button&gt;
+  &lt;button aria-label=&quot;Remove tag&quot;&gt;×&lt;/button&gt;
 &lt;/span&gt;</code></pre>
 </details>
 </figure>

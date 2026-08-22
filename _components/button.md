@@ -23,11 +23,11 @@ is destructive and irreversible only.
 <button data-variant="danger">Delete</button>
 </div>
 <details open><summary>Markup</summary>
-<pre><code>&lt;button type=&quot;button&quot;&gt;Cancel&lt;/button&gt;
-&lt;button type=&quot;button&quot; data-variant=&quot;primary&quot;&gt;Save&lt;/button&gt;
-&lt;button type=&quot;button&quot; data-variant=&quot;dark&quot;&gt;Finish setup&lt;/button&gt;
-&lt;button type=&quot;button&quot; data-variant=&quot;ghost&quot;&gt;Dismiss&lt;/button&gt;
-&lt;button type=&quot;button&quot; data-variant=&quot;danger&quot;&gt;Delete&lt;/button&gt;</code></pre>
+<pre><code>&lt;button&gt;Cancel&lt;/button&gt;
+&lt;button data-variant=&quot;primary&quot;&gt;Save&lt;/button&gt;
+&lt;button data-variant=&quot;dark&quot;&gt;Finish setup&lt;/button&gt;
+&lt;button data-variant=&quot;ghost&quot;&gt;Dismiss&lt;/button&gt;
+&lt;button data-variant=&quot;danger&quot;&gt;Delete&lt;/button&gt;</code></pre>
 </details>
 </figure>
 
@@ -44,9 +44,9 @@ grow a step of its own.
 <button data-variant="primary" data-size="lg">Large</button>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Small&lt;/button&gt;
-&lt;button type=&quot;button&quot; data-variant=&quot;primary&quot;&gt;Medium&lt;/button&gt;
-&lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; data-size=&quot;lg&quot;&gt;Large&lt;/button&gt;</code></pre>
+<pre><code>&lt;button data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Small&lt;/button&gt;
+&lt;button data-variant=&quot;primary&quot;&gt;Medium&lt;/button&gt;
+&lt;button data-variant=&quot;primary&quot; data-size=&quot;lg&quot;&gt;Large&lt;/button&gt;</code></pre>
 </details>
 </figure>
 
@@ -62,8 +62,8 @@ disabled primary still reads as the primary.
 <button aria-disabled="true">Not yet available</button>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; disabled=&quot;&quot;&gt;Disabled&lt;/button&gt;
-&lt;button type=&quot;button&quot; aria-disabled=&quot;true&quot;&gt;Not yet available&lt;/button&gt;</code></pre>
+<pre><code>&lt;button data-variant=&quot;primary&quot; disabled=&quot;&quot;&gt;Disabled&lt;/button&gt;
+&lt;button aria-disabled=&quot;true&quot;&gt;Not yet available&lt;/button&gt;</code></pre>
 </details>
 </figure>
 
@@ -92,7 +92,7 @@ button itself.
 </button>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;button type=&quot;button&quot; data-variant=&quot;primary&quot;&gt;
+<pre><code>&lt;button data-variant=&quot;primary&quot;&gt;
   &lt;svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.9&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M12 5v14M5 12h14&quot; /&gt;&lt;/svg&gt;
   New
 &lt;/button&gt;</code></pre>
@@ -115,9 +115,9 @@ buttons, so it doubles as the styling hook — no wrapper class.
 </div>
 <details><summary>Markup</summary>
 <pre><code>&lt;div role=&quot;group&quot; aria-label=&quot;View&quot;&gt;
-  &lt;button type=&quot;button&quot; data-size=&quot;sm&quot;&gt;List&lt;/button&gt;
-  &lt;button type=&quot;button&quot; data-size=&quot;sm&quot;&gt;Board&lt;/button&gt;
-  &lt;button type=&quot;button&quot; data-size=&quot;sm&quot;&gt;Calendar&lt;/button&gt;
+  &lt;button data-size=&quot;sm&quot;&gt;List&lt;/button&gt;
+  &lt;button data-size=&quot;sm&quot;&gt;Board&lt;/button&gt;
+  &lt;button data-size=&quot;sm&quot;&gt;Calendar&lt;/button&gt;
 &lt;/div&gt;</code></pre>
 </details>
 </figure>
@@ -130,7 +130,7 @@ buttons, so it doubles as the styling hook — no wrapper class.
 <button data-variant="primary" data-block>Take a photo</button>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; data-block&gt;Take a photo&lt;/button&gt;</code></pre>
+<pre><code>&lt;button data-variant=&quot;primary&quot; data-block&gt;Take a photo&lt;/button&gt;</code></pre>
 </details>
 </figure>
 

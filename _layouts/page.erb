@@ -1,12 +1,114 @@
----
-layout: default
----
-<header class="ad-doc-title"><% if page.section %><span class="ad-doc-title__section"><%= page.section %></span><% end %>
-  <h1><%= page.title %></h1>
-</header>
+<%# The whole page shell — head, header, sidebar, footer. One file, because
+    there is exactly one shell and it is not going to grow a second one.
+    Rendered by lib/build.rb#render_shell, which sets local variables
+    title/description/url/body before evaluating this template; NAV and
+    VERSION are constants from lib/build.rb, and relative_url/escape are
+    plain top-level methods. %>
+<!DOCTYPE html>
+<html lang="<%= CONFIG.fetch("lang", "en") %>">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0d0b" media="(prefers-color-scheme: dark)">
 
-<% if page.summary -%>
-<p class="ad-lead"><%= page.summary %></p>
-<% end -%>
+<title><%= title %> | <%= CONFIG.fetch("title") %></title>
+<meta name="description" content="<%= escape(description) %>">
+<link rel="canonical" href="<%= CONFIG.fetch("url") %><%= relative_url(url) %>">
+<meta property="og:title" content="<%= escape(title) %>">
+<meta property="og:site_name" content="<%= escape(CONFIG.fetch("title")) %>">
+<meta property="og:url" content="<%= CONFIG.fetch("url") %><%= relative_url(url) %>">
+<meta property="og:description" content="<%= escape(description) %>">
 
-<%= content %>
+<!-- The system's one loaded webfont — see assets/css/tokens.css. Sans is a
+     web-safe system stack; nothing is fetched for it. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="<%= relative_url('/assets/css/tokens.css') %>">
+<link rel="stylesheet" href="<%= relative_url('/assets/css/style.css') %>">
+<link rel="icon" href="<%= relative_url('/assets/favicon.svg') %>" type="image/svg+xml">
+
+<!-- Applied before first paint so an explicit theme choice never flashes. -->
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem("ad-theme");
+      if (stored === "dark" || stored === "light") {
+        document.documentElement.setAttribute("data-theme", stored);
+      }
+    } catch (error) {
+      /* Private windows and blocked storage are fine; the media query covers us. */
+    }
+  })();
+</script>
+</head>
+<body>
+  <a class="ad-doc-skip" href="#main">Skip to content</a>
+
+  <header class="ad-doc-header">
+    <div class="ad-doc-header__inner">
+      <a class="ad-doc-wordmark" href="<%= relative_url('/') %>">
+        <svg class="ad-doc-wordmark__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="21" height="21" rx="5" stroke="currentColor" stroke-width="2"/>
+          <path d="M7 16.5 12 7l5 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9.2 13.4h5.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Arbitrary Definitions</span>
+        <span class="ad-doc-wordmark__version">v<%= VERSION %></span>
+      </a>
+      <div class="ad-doc-header__actions">
+        <button data-variant="ghost" data-size="sm" data-theme-toggle
+                aria-label="Switch color theme" title="Switch color theme">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" data-theme-icon="light">
+            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 1.8v2.4M12 19.8v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" data-theme-icon="dark" hidden>
+            <path d="M20 14.2A8.4 8.4 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          <span class="ad-visually-hidden" data-theme-label>Theme</span>
+        </button>
+        <a class="btn" data-size="sm" href="https://github.com/<%= CONFIG.fetch("repository") %>">Source</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="ad-doc-layout">
+    <aside class="ad-doc-sidebar" data-sidebar data-collapsed="true">
+      <button class="ad-doc-nav-toggle" data-size="sm"
+              data-nav-toggle aria-expanded="false" aria-controls="ad-doc-nav">
+        <span>Browse the system</span>
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <nav class="ad-doc-nav" id="ad-doc-nav" aria-label="Design system">
+        <% NAV.each do |group| -%>
+        <div class="ad-doc-nav__group">
+          <h2 class="ad-doc-nav__heading"><%= group["title"] %></h2>
+          <% group["links"].each do |link| -%>
+          <a class="ad-doc-nav__link" href="<%= relative_url(link["url"]) %>"
+             <% if url == link["url"] %>aria-current="page"<% end %>><%= link["text"] %></a>
+          <% end -%>
+        </div>
+        <% end -%>
+      </nav>
+    </aside>
+
+    <main class="ad-doc-main" id="main">
+      <%= body %>
+    </main>
+  </div>
+
+  <footer class="ad-doc-footer">
+    <div class="ad-doc-footer__inner">
+      <p><%= CONFIG.fetch("title") %> v<%= VERSION %> — built with Ruby <%= RUBY_VERSION %>.</p>
+      <p><a href="https://github.com/<%= CONFIG.fetch("repository") %>">View the source</a></p>
+    </div>
+  </footer>
+
+  <script src="<%= relative_url('/assets/js/system.js') %>" defer></script>
+</body>
+</html>

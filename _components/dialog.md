@@ -38,8 +38,8 @@ pseudo-element only exists for a dialog shown modally.
   &lt;header&gt;Delete series?&lt;/header&gt;
   &lt;p&gt;This removes all of its task history. This cannot be undone.&lt;/p&gt;
   &lt;footer&gt;
-    &lt;button type=&quot;button&quot;&gt;Cancel&lt;/button&gt;
-    &lt;button type=&quot;button&quot; data-variant=&quot;danger&quot;&gt;Delete&lt;/button&gt;
+    &lt;button&gt;Cancel&lt;/button&gt;
+    &lt;button data-variant=&quot;danger&quot;&gt;Delete&lt;/button&gt;
   &lt;/footer&gt;
 &lt;/dialog&gt;</code></pre>
 </details>

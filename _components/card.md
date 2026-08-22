@@ -52,8 +52,8 @@ it that has no element of its own to hang a selector on.
     &lt;p style=&quot;margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);&quot;&gt;Three people have called it &quot;yellow&quot; in review this month.&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class=&quot;card-footer&quot;&gt;
-    &lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Approve&lt;/button&gt;
-    &lt;button type=&quot;button&quot; data-variant=&quot;ghost&quot; data-size=&quot;sm&quot;&gt;Dismiss&lt;/button&gt;
+    &lt;button data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Approve&lt;/button&gt;
+    &lt;button data-variant=&quot;ghost&quot; data-size=&quot;sm&quot;&gt;Dismiss&lt;/button&gt;
   &lt;/div&gt;
 &lt;/article&gt;</code></pre>
 </details>
