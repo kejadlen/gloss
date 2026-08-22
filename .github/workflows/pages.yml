@@ -7,10 +7,10 @@ on:
   pull_request:
   workflow_dispatch:
 
-# The site is its own small Ruby/ERB build (see lib/arbitrary_definitions/
-# site_builder.rb and Rakefile) rather than Jekyll, so it has to build on
-# Actions rather than GitHub's hosted Jekyll build regardless — this also
-# pins the build to Ruby 4.0 rather than whatever Ruby GitHub Pages uses.
+# The site is its own small Ruby/ERB build (see lib/build.rb and Rakefile)
+# rather than Jekyll, so it has to build on Actions rather than GitHub's
+# hosted Jekyll build regardless — this also pins the build to Ruby 4.0
+# rather than whatever Ruby GitHub Pages uses.
 permissions:
   contents: read
   pages: write
@@ -38,10 +38,10 @@ jobs:
       - name: Report the toolchain
         run: ruby -v
 
-      # The baseurl comes from _config.yml rather than actions/configure-pages,
-      # so the build does not depend on the Pages API being reachable and stays
-      # green on branches and forks. Change it there if the site ever moves off
-      # a project page.
+      # BASEURL is a constant in lib/build.rb rather than coming from
+      # actions/configure-pages, so the build does not depend on the Pages API
+      # being reachable and stays green on branches and forks. Change it
+      # there if the site ever moves off a project page.
       - name: Build
         run: bundle exec rake build
 

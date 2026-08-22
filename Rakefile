@@ -11,19 +11,17 @@ end
 desc "Serve the already-built site at http://127.0.0.1:4000"
 task :serve do
   require "webrick"
-  require "yaml"
+  require "build"
 
   site_dir = File.expand_path("_site", __dir__)
   abort "_site is empty — run `bundle exec rake build` first" unless Dir.exist?(site_dir)
 
-  # Every link the build emits is prefixed with `baseurl` (see relative_url
-  # in lib/build.rb), so the site has to be mounted under that same path
+  # Every link the build emits is prefixed with BASEURL (see relative_url in
+  # lib/build.rb), so the site has to be mounted under that same path
   # locally, the way `jekyll serve` used to.
-  baseurl = YAML.safe_load_file(File.expand_path("_config.yml", __dir__)).fetch("baseurl", "")
-
   server = WEBrick::HTTPServer.new(Port: 4000, BindAddress: "127.0.0.1", DocumentRoot: site_dir)
-  server.mount(baseurl.empty? ? "/" : baseurl, WEBrick::HTTPServlet::FileHandler, site_dir)
-  puts "http://127.0.0.1:4000#{baseurl}/"
+  server.mount(BASEURL.empty? ? "/" : BASEURL, WEBrick::HTTPServlet::FileHandler, site_dir)
+  puts "http://127.0.0.1:4000#{BASEURL}/"
 
   trap("INT") { server.shutdown }
   server.start

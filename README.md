@@ -79,7 +79,7 @@ to **GitHub Actions**. The workflow token is not permitted to turn Pages on
 by itself, so the `deploy` job fails until this is done — the `build` job
 runs regardless.
 
-The site's `baseurl` lives in `_config.yml` rather than coming from
+The site's `BASEURL` is a constant in `lib/build.rb` rather than coming from
 `actions/configure-pages`, which keeps the build independent of the Pages
 API. Change it there if the site ever moves off a project page.
 

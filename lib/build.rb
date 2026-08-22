@@ -22,9 +22,23 @@ require "kramdown-parser-gfm"
 
 ROOT    = File.expand_path("..", __dir__)
 SITE    = File.join(ROOT, "_site")
-CONFIG  = YAML.safe_load_file(File.join(ROOT, "_config.yml"))
 NAV     = YAML.safe_load_file(File.join(ROOT, "_data", "nav.yml"))
 VERSION = "2.0.0"
+
+# This is one specific site, deployed to one specific place — these aren't
+# going to vary per environment, so they're constants rather than a config
+# file to load. (The previous _config.yml also carried a `tagline` key
+# nothing ever rendered — a small config file with a dead entry is exactly
+# the kind of thing that's easy to miss when it's not just a constant.)
+TITLE       = "Arbitrary Definitions"
+DESCRIPTION = "Arbitrary Definitions is a personal design system for self-hosted, " \
+              "single-user tools — synthesized from three real running projects, not " \
+              "written from a spec. Sixteen components and five foundations, built with a " \
+              "small Ruby/ERB site builder running on Ruby 4.0."
+SITE_URL    = "https://kejadlen.github.io"
+BASEURL     = "/arbitrary-definitions-design-system"
+REPOSITORY  = "kejadlen/arbitrary-definitions-design-system"
+LANG        = "en"
 
 # Plain CSS files, concatenated in this order into assets/css/style.css:
 # reset/base first, then components, then this site's own chrome.
@@ -58,7 +72,7 @@ PAGES = [
 # page bodies (a handful link to other pages) and the layout.
 def relative_url(path)
   path = "/#{path}" unless path.start_with?("/")
-  "#{CONFIG.fetch("baseurl", "").chomp("/")}#{path}"
+  "#{BASEURL.chomp("/")}#{path}"
 end
 
 def escape(value) = CGI.escapeHTML(value.to_s)
@@ -101,7 +115,7 @@ def render_page(source_path, url, section)
 
   html = render_shell(
     title: front.fetch("title"),
-    description: front["description"] || front["summary"] || CONFIG["description"],
+    description: front["description"] || front["summary"] || DESCRIPTION,
     url: url,
     body: body,
   )

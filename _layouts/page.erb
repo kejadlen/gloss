@@ -5,19 +5,19 @@
     VERSION are constants from lib/build.rb, and relative_url/escape are
     plain top-level methods. %>
 <!DOCTYPE html>
-<html lang="<%= CONFIG.fetch("lang", "en") %>">
+<html lang="<%= LANG %>">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0e0d0b" media="(prefers-color-scheme: dark)">
 
-<title><%= title %> | <%= CONFIG.fetch("title") %></title>
+<title><%= title %> | <%= TITLE %></title>
 <meta name="description" content="<%= escape(description) %>">
-<link rel="canonical" href="<%= CONFIG.fetch("url") %><%= relative_url(url) %>">
+<link rel="canonical" href="<%= SITE_URL %><%= relative_url(url) %>">
 <meta property="og:title" content="<%= escape(title) %>">
-<meta property="og:site_name" content="<%= escape(CONFIG.fetch("title")) %>">
-<meta property="og:url" content="<%= CONFIG.fetch("url") %><%= relative_url(url) %>">
+<meta property="og:site_name" content="<%= escape(TITLE) %>">
+<meta property="og:url" content="<%= SITE_URL %><%= relative_url(url) %>">
 <meta property="og:description" content="<%= escape(description) %>">
 
 <!-- The system's one loaded webfont — see assets/css/tokens.css. Sans is a
@@ -71,7 +71,7 @@
           </svg>
           <span class="ad-visually-hidden" data-theme-label>Theme</span>
         </button>
-        <a class="btn" data-size="sm" href="https://github.com/<%= CONFIG.fetch("repository") %>">Source</a>
+        <a class="btn" data-size="sm" href="https://github.com/<%= REPOSITORY %>">Source</a>
       </div>
     </div>
   </header>
@@ -104,8 +104,8 @@
 
   <footer class="ad-doc-footer">
     <div class="ad-doc-footer__inner">
-      <p><%= CONFIG.fetch("title") %> v<%= VERSION %> — built with Ruby <%= RUBY_VERSION %>.</p>
-      <p><a href="https://github.com/<%= CONFIG.fetch("repository") %>">View the source</a></p>
+      <p><%= TITLE %> v<%= VERSION %> — built with Ruby <%= RUBY_VERSION %>.</p>
+      <p><a href="https://github.com/<%= REPOSITORY %>">View the source</a></p>
     </div>
   </footer>
 
