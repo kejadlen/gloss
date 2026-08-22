@@ -162,9 +162,6 @@
   border-radius: var(--ad-radius-md);
   background: var(--ad-color-surface-fill);
 }
-.ad-callout--danger { border-left-color: var(--ad-color-danger); }
-.ad-callout--success { border-left-color: var(--ad-color-success); }
-
 /* Generic reference tables (component APIs, alias tables, the contrast
    contract). `<table>` IS a table — no class needed to say so. Every table
    on this site uses the one compact density, so there is no separate

@@ -1,16 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    base64 (0.3.0)
-    benchmark (0.5.0)
-    bigdecimal (3.3.1)
-    csv (3.3.6)
     kramdown (2.5.2)
       rexml (>= 3.4.4)
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    logger (1.7.0)
-    ostruct (0.6.3)
     rake (13.4.2)
     rexml (3.4.4)
     webrick (1.9.2)
@@ -35,27 +29,15 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  base64 (~> 0.2)
-  benchmark (~> 0.4)
-  bigdecimal (~> 3.1)
-  csv (~> 3.3)
   kramdown (~> 2.5)
   kramdown-parser-gfm (~> 1.1)
-  logger (~> 1.6)
-  ostruct (~> 0.6)
   rake (~> 13.2)
   webrick (~> 1.9)
 
 CHECKSUMS
-  base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
-  benchmark (0.5.0) sha256=465df122341aedcb81a2a24b4d3bd19b6c67c1530713fd533f3ff034e419236c
-  bigdecimal (3.3.1) sha256=eaa01e228be54c4f9f53bf3cc34fe3d5e845c31963e7fcc5bedb05a4e7d52218
   bundler (4.0.16) sha256=d6ca5dd440c24f9abce9844cf44cc8e18c6a553de65a47efb4544137af92c47d
-  csv (3.3.6) sha256=aba61e7e507a66f03d45cb1f3c4b6359861c3504038b422962875dce099e4456
   kramdown (2.5.2) sha256=1ba542204c66b6f9111ff00dcc26075b95b220b07f2905d8261740c82f7f02fa
   kramdown-parser-gfm (1.1.0) sha256=fb39745516427d2988543bf01fc4cf0ab1149476382393e0e9c48592f6581729
-  logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
-  ostruct (0.6.3) sha256=95a2ed4a4bd1d190784e666b47b2d3f078e4a9efda2fccf18f84ddc6538ed912
   rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
   webrick (1.9.2) sha256=beb4a15fc474defed24a3bda4ffd88a490d517c9e4e6118c3edce59e45864131

@@ -121,21 +121,7 @@
     });
   }
 
-  // Demo-only: the buttons page shows a loading state that resolves itself.
-  function setUpLoadingDemo() {
-    document.addEventListener("click", function (event) {
-      var button = event.target.closest("[data-demo-loading]");
-      if (!button || button.dataset.loading === "true") return;
-
-      button.dataset.loading = "true";
-      window.setTimeout(function () {
-        button.dataset.loading = "false";
-      }, 1800);
-    });
-  }
-
   setUpTheme();
   setUpTabs();
   setUpNavToggle();
-  setUpLoadingDemo();
 })();
