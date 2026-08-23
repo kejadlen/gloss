@@ -22,7 +22,7 @@ at different values — which is exactly what the dark block does.
   <p style="margin:0; font-size: var(--ad-step--1);">
     The neutral ramps were authored in <code>oklch()</code> by the three
     projects this system was synthesized from (see
-    <a href="<%= relative_url('/rationale/') %>">Why arbitrary</a>). Every
+    <a href="<%= relative_url('/rationale/') %>">Rationale</a>). Every
     value below is that same color converted to flat sRGB hex — not
     re-picked, not rounded. The contrast figures on this page are computed
     from those hex values with the standard WCAG 2.1 relative-luminance
@@ -32,11 +32,11 @@ at different values — which is exactly what the dark block does.
 
 ## Neutral
 
-Low-chroma warm-gray — the intersection of ketchup's plain grays, quire's
-warm cream/dark palette, and domus's warm paper. Ten steps, not twelve or
+Low-chroma warm-gray — the intersection of several source apps' plain grays,
+warm cream/dark palettes, and warm paper surfaces. Ten steps, not twelve or
 sixteen: the source defines exactly these.
 
-<p class="ad-muted">Low-chroma warm-gray — the intersection of ketchup's plain grays, quire's warm cream/dark palette, and domus's warm paper. Not stark white or black, and not any one project's specific warmth. Ten steps, not twelve: the source defines exactly 0/50/100/150/200/300/500/600/800/900 — steps 400 and 700 do not exist.</p>
+<p class="ad-muted">Low-chroma warm-gray — the intersection of several source apps' plain grays, warm cream/dark palettes, and warm paper surfaces. Not stark white or black, and not any one project's specific warmth. Ten steps, not twelve: the source defines exactly 0/50/100/150/200/300/500/600/800/900 — steps 400 and 700 do not exist.</p>
 <ul class="ad-swatch-grid">
   <li class="ad-swatch">
     <div class="ad-swatch__chip" style="background: #faf9f7; color: #171512;">n-0</div>
@@ -110,7 +110,7 @@ sixteen: the source defines exactly these.
   </li>
 </ul>
 
-<p class="ad-muted">The same low-chroma warm-gray scale, inverted, matching quire's OS-preference dark palette. Same ten step numbers as `neutral`; `0` is the darkest step here (the dark-theme page background) rather than the lightest.</p>
+<p class="ad-muted">The same low-chroma warm-gray scale, inverted, matching one source app's OS-preference dark palette. Same ten step numbers as `neutral`; `0` is the darkest step here (the dark-theme page background) rather than the lightest.</p>
 <ul class="ad-swatch-grid">
   <li class="ad-swatch">
     <div class="ad-swatch__chip" style="background: #0e0d0b; color: #ffffff;">nd-0</div>
@@ -198,7 +198,7 @@ the default; the other four are the sanctioned menu a project can switch to.
   <li>
     <div class="ad-accent-demo" style="background: #9a5a3c;">clay</div>
     <div class="ad-specimen__meta"><code>#9a5a3c</code><span>5.38:1 on white</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Warm, archival — domus's flavor.</p>
+    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Warm, archival — one source app's flavor.</p>
   </li>
   <li>
     <div class="ad-accent-demo" style="background: #2b4a78;">ink-blue</div>

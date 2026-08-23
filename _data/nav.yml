@@ -1,7 +1,7 @@
 - title: Start here
   links:
     - { text: Overview,      url: / }
-    - { text: Why arbitrary, url: /rationale/ }
+    - { text: Rationale, url: /rationale/ }
     - { text: Using the CSS, url: /install/ }
 - title: Foundations
   links:

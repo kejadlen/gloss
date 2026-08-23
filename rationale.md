@@ -1,10 +1,10 @@
 ---
-title: Why arbitrary
+title: Rationale
 permalink: /rationale/
 section: Start here
 summary: >-
-  Why this system was synthesized from three real projects instead of
-  written from a spec, and the contract its build actually enforces.
+  Why this system was synthesized from real projects instead of written
+  from a spec, and the contract its build actually enforces.
 ---
 
 ## Where the name comes from
@@ -20,35 +20,36 @@ are therefore changeable.
 
 ## Synthesized, not specified
 
-This system was not designed from a blank page. It was built by reading three
-real, running personal projects and finding what they actually share:
+This system was not designed from a blank page. It was built by reading
+several real, running personal projects and finding what they actually
+share — not copied wholesale from any single one of them:
 
 <div class="card-grid">
   <article class="card">
     <div class="card-body">
-      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="https://github.com/kejadlen/domus">domus</a></h3>
-      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">Household inventory & document archive. Warm paper surfaces, a Georgia/Helvetica/mono mix, a swappable "Clay" accent, a bottom capture dock.</p>
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">Warm, paper-like surfaces</h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">One app leaned on Georgia/Helvetica/mono, a swappable "Clay" accent, and a bottom capture dock — the source of this system's warm-neutral surface color.</p>
     </div>
   </article>
   <article class="card">
     <div class="card-body">
-      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="https://github.com/kejadlen/ketchup">ketchup</a></h3>
-      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">Recurring-task tracker. All-mono interface, plain grays, red/green semantics, a flash-bar toast.</p>
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">All-mono, plain grays</h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">Another was an all-mono interface with plain grays, red/green semantics, and a flash-bar toast — the source of this system's mono labels and semantic pair.</p>
     </div>
   </article>
   <article class="card">
     <div class="card-body">
-      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="https://github.com/kejadlen/quire">quire</a></h3>
-      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">Personal git forge / CI server. Humanist sans + mono, a warm cream surface, a full dark palette, underline tabs.</p>
+      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">Humanist sans, full dark palette</h3>
+      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">A third paired humanist sans with mono, a warm cream surface, a full dark palette, and underline tabs — the source of this system's dark-theme approach.</p>
     </div>
   </article>
 </div>
 
-The one literal constant across all three is an identical
+The one literal constant across all of them is an identical
 [Utopia](https://utopia.fyi) fluid type/space scale — 320→1240px viewport,
 18→20px body, a 1.20→1.25 ratio — adopted verbatim as this system's spine.
 Everything else (palette, radius, component set) is a synthesized middle
-ground, deliberately not lifted wholesale from any one of the three.
+ground, deliberately not lifted wholesale from any one source.
 
 ## What actually makes it a system
 
@@ -164,19 +165,19 @@ do the elevation work, not high contrast, so this system does not invent a
 
 Being honest about the synthesized parts means being honest about the gaps.
 
-- **No shared component library or Figma exists across the three source
+- **No shared component library or Figma exists across the source
   projects** — they are hand-rolled app CSS, not a design system. The
   sixteen components documented here are a from-scratch, best-guess
-  personal-tool kit, grounded in real patterns found in the three apps
-  (ketchup's flash-bar → Toast; domus's drop-up menu → Dialog's flat
-  treatment; domus's segmented control and quire's underline tabs → Tabs'
-  two variants) — not a literal recreation of any one app's screens.
+  personal-tool kit, grounded in real patterns found across those apps (a
+  flash-bar toast; a drop-up menu behind Dialog's flat treatment; a
+  segmented control and an underline-tabs pattern behind Tabs' two
+  variants) — not a literal recreation of any one app's screens.
 - **No logo or brand mark.** The source is explicit: render "Arbitrary
   Definitions" or the project's own name in type wherever a mark would go,
   and do not invent one.
 - **The icon set (Lucide) is a flagged substitution.** No source project
-  ships a shared icon library; domus hand-draws its own line icons, and
-  ketchup/quire mostly avoid icons.
+  ships a shared icon library; one hand-draws its own line icons, and the
+  others mostly avoid icons.
 - **Signal Teal, the default accent, is a synthesized pick**, not lifted from
   any one project.
 - **No Table, Callout, or Progress component.** An earlier pass at this site
@@ -184,7 +185,7 @@ Being honest about the synthesized parts means being honest about the gaps.
   rather than re-skinned. (This documentation site still uses a plain
   `<table>` and an aside box for its own reference material — those are site
   chrome, not system components, and are not documented as one.)
-- **Loop and Archive are generic demonstrations**, not recreations of
-  ketchup or domus specifically.
+- **Loop and Archive are generic demonstrations**, not recreations of any
+  specific source app.
 
 Naming these is cheaper than being caught by them.

@@ -29,7 +29,7 @@ summary: >-
 <div class="ad-specimen">
   <div class="ad-specimen__meta">
     <code>--ad-font-serif</code>
-    <span>Opt-in reading variant for a project that wants an editorial, archival feel (domus-style). Not loaded by default; web-safe only.</span>
+    <span>Opt-in reading variant for a project that wants an editorial, archival feel. Not loaded by default; web-safe only.</span>
   </div>
   <div class="ad-specimen__sample" style="font-family: var(--ad-font-serif); font-size: 1.5rem;">
     Arbitrary Definitions — 0123456789

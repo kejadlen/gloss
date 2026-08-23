@@ -43,17 +43,14 @@ description: >-
 
 ## Where it came from
 
-Synthesized by reading three real projects, not copied from any one of them:
-[domus](https://github.com/kejadlen/domus) (a household inventory and
-document archive — warm paper surfaces, a swappable "Clay" accent, a
-capture dock), [ketchup](https://github.com/kejadlen/ketchup) (a
-recurring-task tracker — all-mono, plain grays, a flash-bar toast), and
-[quire](https://github.com/kejadlen/quire) (a personal git forge — humanist
-sans and mono, a full dark palette, underline tabs). The one literal constant
-across all three is an identical Utopia fluid type/space scale — adopted
-verbatim as this system's spine. Everything else is a synthesized middle
-ground. See [Why arbitrary](<%= relative_url('/rationale/') %>) for the full
-story, including where this system knowingly guesses.
+Synthesized by reading three real personal projects, not copied from any one
+of them: one leaned on warm paper surfaces, a swappable accent, and a
+capture dock; one was all-mono with plain grays and a flash-bar toast; one
+paired a humanist sans with a full dark palette and underline tabs. The one
+literal constant across all three is an identical Utopia fluid type/space
+scale — adopted verbatim as this system's spine. Everything else is a
+synthesized middle ground. See [Rationale](<%= relative_url('/rationale/') %>)
+for the full story, including where this system knowingly guesses.
 
 ## How it is put together
 

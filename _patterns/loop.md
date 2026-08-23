@@ -7,10 +7,10 @@ summary: >-
 ---
 
 Loop is not a real product — it is the system's own reference layout for a
-dense, table-ish list screen: the shape `kejadlen/ketchup` (a recurring-task
-tracker) would take if it were rebuilt on this token set. Every visible value
-below is a component from this system; nothing here is page-specific CSS
-beyond a couple of inline widths.
+dense, table-ish list screen: the shape a recurring-task tracker would take
+if it were rebuilt on this token set. Every visible value below is a
+component from this system; nothing here is page-specific CSS beyond a
+couple of inline widths.
 
 <figure class="example">
 <figcaption>Loop</figcaption>

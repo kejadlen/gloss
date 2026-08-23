@@ -7,9 +7,9 @@ summary: >-
 ---
 
 Archive is not a real product — it is the system's own reference layout for a
-mobile capture flow: the shape `kejadlen/domus` (a household inventory and
-document archive) would take if it were rebuilt on this token set, at its
-390×760 frame. Three screens, abbreviated to what each one adds.
+mobile capture flow: the shape a household inventory and document archive
+app would take if it were rebuilt on this token set, at its 390×760 frame.
+Three screens, abbreviated to what each one adds.
 
 <figure class="example">
 <figcaption>Home — recent captures</figcaption>

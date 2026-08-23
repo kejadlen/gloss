@@ -17,11 +17,9 @@ because it is correct. What makes it a *system* is not that the choices are
 correct but that they are written down once, given names, actually used, and
 therefore changeable.
 
-It was synthesized, not specified — built by reading three real projects
-([domus](https://github.com/kejadlen/domus),
-[ketchup](https://github.com/kejadlen/ketchup),
-[quire](https://github.com/kejadlen/quire)) and finding what they actually
-share. See [Why arbitrary](https://kejadlen.github.io/arbitrary-definitions-design-system/rationale/)
+It was synthesized, not specified — built by reading three real personal
+projects and finding what they actually share. See
+[Rationale](https://kejadlen.github.io/arbitrary-definitions-design-system/rationale/)
 for the full story.
 
 This is a small, personal project, so it is built as plainly as it can be:
