@@ -25,11 +25,11 @@ site uses a text input, so there is nothing for the selector to clash with.
 <figure class="example">
 <figcaption>States</figcaption>
 <div data-layout="stack">
-<input type="text" value="Focused" style="max-width: 20rem; border-color: var(--ad-color-accent); box-shadow: 0 0 0 2px var(--ad-color-accent-soft);" />
+<input type="text" value="Focused" autofocus style="max-width: 20rem;" />
 <input type="text" value="Disabled" disabled="" style="max-width: 20rem;" />
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;input type=&quot;text&quot; value=&quot;Focused&quot; style=&quot;max-width: 20rem; border-color: var(--ad-color-accent); box-shadow: 0 0 0 2px var(--ad-color-accent-soft);&quot; /&gt;
+<pre><code>&lt;input type=&quot;text&quot; value=&quot;Focused&quot; autofocus style=&quot;max-width: 20rem;&quot; /&gt;
 &lt;input type=&quot;text&quot; value=&quot;Disabled&quot; disabled=&quot;&quot; style=&quot;max-width: 20rem;&quot; /&gt;</code></pre>
 </details>
 </figure>
