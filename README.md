@@ -1,9 +1,8 @@
 # Arbitrary Definitions
 
-A personal design system for self-hosted, single-user tools — synthesized by
-reading three real, running personal projects, not written from a spec.
-Sixteen components and five foundations, documented by a small Ruby/ERB site
-(no Jekyll) with hand-maintained CSS and hand-written content.
+A personal design system for self-hosted, single-user tools. Sixteen
+components and five foundations, documented by a small Ruby/ERB site (no
+Jekyll) with hand-maintained CSS and hand-written content.
 
 **Site:** https://kejadlen.github.io/arbitrary-definitions-design-system/
 
@@ -17,10 +16,8 @@ because it is correct. What makes it a *system* is not that the choices are
 correct but that they are written down once, given names, actually used, and
 therefore changeable.
 
-It was synthesized, not specified — built by reading three real personal
-projects and finding what they actually share. See
-[Rationale](https://kejadlen.github.io/arbitrary-definitions-design-system/rationale/)
-for the full story.
+See [Rationale](https://kejadlen.github.io/arbitrary-definitions-design-system/rationale/)
+for the four rules this system's build actually enforces.
 
 This is a small, personal project, so it is built as plainly as it can be:
 

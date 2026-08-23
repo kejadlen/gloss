@@ -20,23 +20,20 @@ at different values — which is exactly what the dark block does.
 
 <div class="ad-callout">
   <p style="margin:0; font-size: var(--ad-step--1);">
-    The neutral ramps were authored in <code>oklch()</code> by the three
-    projects this system was synthesized from (see
-    <a href="<%= relative_url('/rationale/') %>">Rationale</a>). Every
-    value below is that same color converted to flat sRGB hex — not
-    re-picked, not rounded. The contrast figures on this page are computed
-    from those hex values with the standard WCAG 2.1 relative-luminance
+    The neutral ramps were authored in <code>oklch()</code>. Every value
+    below is that same color converted to flat sRGB hex — not re-picked,
+    not rounded. The contrast figures on this page are computed from those
+    hex values with the standard WCAG 2.1 relative-luminance
     formula, then transcribed here as fact rather than typed by eye.
   </p>
 </div>
 
 ## Neutral
 
-Low-chroma warm-gray — the intersection of several source apps' plain grays,
-warm cream/dark palettes, and warm paper surfaces. Ten steps, not twelve or
-sixteen: the source defines exactly these.
+Low-chroma warm-gray, never stark white or black. Ten steps, not twelve or
+sixteen — the palette defines exactly these.
 
-<p class="ad-muted">Low-chroma warm-gray — the intersection of several source apps' plain grays, warm cream/dark palettes, and warm paper surfaces. Not stark white or black, and not any one project's specific warmth. Ten steps, not twelve: the source defines exactly 0/50/100/150/200/300/500/600/800/900 — steps 400 and 700 do not exist.</p>
+<p class="ad-muted">Low-chroma warm-gray. Not stark white or black. Ten steps, not twelve: exactly 0/50/100/150/200/300/500/600/800/900 — steps 400 and 700 do not exist.</p>
 <ul class="ad-swatch-grid">
   <li class="ad-swatch">
     <div class="ad-swatch__chip" style="background: #faf9f7; color: #171512;">n-0</div>
@@ -110,7 +107,7 @@ sixteen: the source defines exactly these.
   </li>
 </ul>
 
-<p class="ad-muted">The same low-chroma warm-gray scale, inverted, matching one source app's OS-preference dark palette. Same ten step numbers as `neutral`; `0` is the darkest step here (the dark-theme page background) rather than the lightest.</p>
+<p class="ad-muted">The same low-chroma warm-gray scale, inverted for dark mode. Same ten step numbers as `neutral`; `0` is the darkest step here (the dark-theme page background) rather than the lightest.</p>
 <ul class="ad-swatch-grid">
   <li class="ad-swatch">
     <div class="ad-swatch__chip" style="background: #0e0d0b; color: #ffffff;">nd-0</div>
@@ -198,7 +195,7 @@ the default; the other four are the sanctioned menu a project can switch to.
   <li>
     <div class="ad-accent-demo" style="background: #9a5a3c;">clay</div>
     <div class="ad-specimen__meta"><code>#9a5a3c</code><span>5.38:1 on white</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Warm, archival — one source app's flavor.</p>
+    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Warm, archival.</p>
   </li>
   <li>
     <div class="ad-accent-demo" style="background: #2b4a78;">ink-blue</div>
@@ -413,7 +410,7 @@ the right half is the dark one.
 
 ### Accent
 
-<p class="ad-muted">One swappable accent per project, held constant across a whole view. `-ink` and `-soft` re-derive from `--ad-color-accent` via `color-mix()` exactly as the source computes them, so retheming the accent retones both automatically.</p>
+<p class="ad-muted">One swappable accent per project, held constant across a whole view. `-ink` and `-soft` re-derive from `--ad-color-accent` via `color-mix()`, so retheming the accent retones both automatically.</p>
 
   <table>
     <thead>
@@ -630,16 +627,16 @@ and checked by hand rather than by a build-time test.
     Two things this contract deliberately does not assert.
     <strong>Text tertiary</strong> — <code>--ad-color-text-tertiary</code>
     (neutral.500) is roughly 3.46:1 against the page in light mode, under the
-    4.5:1 floor. The source documents that step as muted-faint text —
-    placeholders and de-emphasized metadata, never body copy — so this is a
-    real, intentional property of the palette, not a bug to patch by
-    darkening the step.
+    4.5:1 floor. That step is documented as muted-faint text — placeholders
+    and de-emphasized metadata, never body copy — so this is a real,
+    intentional property of the palette, not a bug to patch by darkening the
+    step.
     <strong>Borders</strong> — <code>--ad-color-border-hairline</code> and
     <code>--ad-color-border-default</code> sit well under the 3:1 that WCAG
-    1.4.11 asks of a meaningful boundary. The source's own words are
-    "hairline (1px) borders and dividers do most of the elevation work" —
-    borders here are deliberately quiet, and the source never claims a 3:1
-    bar for them, so this contract does not invent one.
+    1.4.11 asks of a meaningful boundary. Hairline (1px) borders and dividers
+    do most of the elevation work here — borders are deliberately quiet, and
+    this system never claims a 3:1 bar for them, so this contract does not
+    invent one.
   </p>
 </div>
 

@@ -3,7 +3,7 @@ title: "Archive — capture app"
 summary: >-
   A capture/document mobile app. Card list, bottom capture dock, photo slots
   with the diagonal-grain empty state. A generic demonstration of the system,
-  not a recreation of any one source project's actual screens.
+  not a recreation of any real product's actual screens.
 ---
 
 Archive is not a real product — it is the system's own reference layout for a

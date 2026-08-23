@@ -115,8 +115,7 @@ summary: >-
 ## Radius
 
 4/6/10px — small and quiet, kept modest so it reads as a neutral default
-rather than any one source project's specific softness. Nothing pill-shaped
-except true pills.
+rather than a decorative flourish. Nothing pill-shaped except true pills.
 
 <ul class="ad-radius-grid">
   <li>

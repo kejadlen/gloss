@@ -134,9 +134,9 @@ breakpoint in between.
 
 ## The eight compound styles
 
-Real, specific numbers from the source — not a generic ramp compressed to
-fit. Each class sets family, size, weight, line-height, and (where the
-source specifies one) letter-spacing in a single declaration.
+Real, specific numbers — not a generic ramp compressed to fit. Each class
+sets family, size, weight, line-height, and (where one applies)
+letter-spacing in a single declaration.
 
   <table>
     <thead><tr><th scope="col">Class</th><th scope="col">Weight</th><th scope="col">Size</th><th scope="col">Line-height</th><th scope="col">Tracking</th><th scope="col">Use for</th></tr></thead>
@@ -237,7 +237,8 @@ source specifies one) letter-spacing in a single declaration.
 - **Three families, and no fourth.** A new typeface needs a reason a weight
   or a size cannot supply.
 - **Mono is not decoration.** Every label, meta value, ID, date, and code
-  sample is mono — it is the one thread present in all three source projects.
+  sample is mono, consistently — not reserved for where code happens to
+  appear.
 - **`type-label` is always uppercase, mono, and tracked.** It is the one
   place uppercase belongs in this system.
 - **Never set a size in `px`.** The eight steps are fluid on purpose.

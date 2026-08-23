@@ -55,8 +55,8 @@ modifier class.
 - **A badge is never interactive.** No click handlers, no `<button>`, no cursor
   change. If it does something, it is a button that happens to be small.
 - **Two or three words at most.** A badge that wraps is a sentence in the wrong clothes.
-- **`danger` means something needs attention, not that something failed.** The
-  source uses it for overdue, not for a system error — that is what prose is for.
+- **`danger` means something needs attention, not that something failed.**
+  Use it for overdue, not for a system error — that is what prose is for.
 
 ## API
 

@@ -3,7 +3,7 @@ title: "Loop — task dashboard"
 summary: >-
   A recurring-task web dashboard. Dense rows, mono meta columns, overdue in
   danger red, one primary action. A generic demonstration of the system, not
-  a recreation of any one source project's actual screens.
+  a recreation of any real product's actual screens.
 ---
 
 Loop is not a real product — it is the system's own reference layout for a

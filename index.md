@@ -2,19 +2,19 @@
 layout: default
 title: Overview
 description: >-
-  A personal design system for self-hosted, single-user tools — synthesized
-  from three real running projects and rendered by a small Ruby/ERB
-  static-site generator on Ruby 4.0.
+  A personal design system for self-hosted, single-user tools, rendered by
+  a small Ruby/ERB static-site generator on Ruby 4.0.
 ---
 
 <div class="ad-hero">
   <p class="ad-overline">Design system</p>
   <h1 class="ad-hero__title">A personal umbrella for side projects, given a shared visual spine.</h1>
   <p class="ad-lead">
-    Arbitrary Definitions is not a company's design system — it is one person's,
-    synthesized by reading three real, running personal projects rather than
-    written from a spec. Each project keeps its own accent color and
-    typographic mood; this system is what they all share underneath.
+    Arbitrary Definitions is not a company's design system — it is one
+    person's. Nothing in it is derived from a brief; every value was chosen
+    once, named, and kept consistent since. Any project under this umbrella
+    keeps its own accent color and typographic mood; this system is what
+    they all share underneath.
   </p>
   <div class="ad-hero__actions">
     <a class="btn" data-variant="primary" data-size="lg" href="<%= relative_url('/foundations/color/') %>">Start with color</a>
@@ -35,22 +35,7 @@ description: >-
     <span class="ad-stat__value">16</span>
     <span class="ad-stat__label">Components</span>
   </div>
-  <div class="ad-stat">
-    <span class="ad-stat__value">3</span>
-    <span class="ad-stat__label">Source projects</span>
-  </div>
 </div>
-
-## Where it came from
-
-Synthesized by reading three real personal projects, not copied from any one
-of them: one leaned on warm paper surfaces, a swappable accent, and a
-capture dock; one was all-mono with plain grays and a flash-bar toast; one
-paired a humanist sans with a full dark palette and underline tabs. The one
-literal constant across all three is an identical Utopia fluid type/space
-scale — adopted verbatim as this system's spine. Everything else is a
-synthesized middle ground. See [Rationale](<%= relative_url('/rationale/') %>)
-for the full story, including where this system knowingly guesses.
 
 ## How it is put together
 
@@ -113,8 +98,8 @@ same afternoon.
     </p>
   </div>
   <div class="card-footer">
-    <button type="button" data-variant="primary" data-size="sm">Approve</button>
-    <button type="button" data-variant="ghost" data-size="sm">Dismiss</button>
+    <button data-variant="primary" data-size="sm">Approve</button>
+    <button data-variant="ghost" data-size="sm">Dismiss</button>
   </div>
 </article>
 </div>
@@ -133,8 +118,8 @@ same afternoon.
     &lt;/p&gt;
   &lt;/div&gt;
   &lt;div class=&quot;card-footer&quot;&gt;
-    &lt;button type=&quot;button&quot; data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Approve&lt;/button&gt;
-    &lt;button type=&quot;button&quot; data-variant=&quot;ghost&quot; data-size=&quot;sm&quot;&gt;Dismiss&lt;/button&gt;
+    &lt;button data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Approve&lt;/button&gt;
+    &lt;button data-variant=&quot;ghost&quot; data-size=&quot;sm&quot;&gt;Dismiss&lt;/button&gt;
   &lt;/div&gt;
 &lt;/article&gt;</code></pre>
 </details>

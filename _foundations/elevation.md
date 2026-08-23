@@ -7,8 +7,8 @@ summary: >-
 
 ## Borders do the work
 
-The source's own rule: "hairline (1px) borders and dividers do most of the
-elevation work". A flat, bordered [Card](<%= relative_url('/components/card/') %>)
+This system's own rule: hairline (1px) borders and dividers do most of the
+elevation work. A flat, bordered [Card](<%= relative_url('/components/card/') %>)
 is the default everywhere. Shadow is the exception, not the baseline.
 
 ## The two levels

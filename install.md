@@ -38,12 +38,10 @@ production widgets.
 
 ## Dark theme
 
-The source's own convention is an opt-in `.theme-dark` class, applied
-explicitly rather than inherited from the OS. This site instead keeps this
-repository's own mechanism — a `data-theme="dark"` attribute plus
-`prefers-color-scheme` — because the toggle UI on every page already depends
-on it and the two are functionally equivalent: both repoint the same
-semantic aliases at the inverted neutral ramp.
+Dark mode is opt-in via a `data-theme="dark"` attribute plus
+`prefers-color-scheme`, applied explicitly rather than inherited silently
+from the OS — the toggle UI on every page depends on this exact mechanism.
+Both repoint the same semantic aliases at the inverted neutral ramp.
 
 ```css
 :root { --ad-color-surface-page: #faf9f7; }
