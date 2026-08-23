@@ -40,7 +40,7 @@ summary: Native select, styled to match Input exactly.
 </figure>
 
 <div class="ad-callout">
-  <p style="margin:0; font-size: var(--ad-step--1);">
+  <p>
     The chevron is the one place in this component set that cannot reach a
     <code>var(--ad-*)</code> token — a data-URI <code>background-image</code>
     cannot reference a custom property, so its stroke is a literal hex, kept

@@ -73,20 +73,20 @@ summary: >-
 <div data-layout="grid">
 <article class="card">
   <div class="card-body" style="gap: var(--ad-space-3xs); padding: var(--ad-space-xs);">
-    <h3 style="margin:0; font: 600 var(--ad-step--1)/1.3 var(--ad-font-sans);">Compact</h3>
-    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">space-xs padding, space-3xs gap. For dense lists.</p>
+    <h3 style="font-size: var(--ad-step--1);">Compact</h3>
+    <p>space-xs padding, space-3xs gap. For dense lists.</p>
   </div>
 </article>
 <article class="card">
   <div class="card-body">
-    <h3 style="margin:0; font: 600 var(--ad-step--1)/1.3 var(--ad-font-sans);">Default</h3>
-    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">space-m padding, space-2xs gap. What Card ships with.</p>
+    <h3 style="font-size: var(--ad-step--1);">Default</h3>
+    <p>space-m padding, space-2xs gap. What Card ships with.</p>
   </div>
 </article>
 <article class="card">
   <div class="card-body" style="gap: var(--ad-space-s); padding: var(--ad-space-l);">
-    <h3 style="margin:0; font: 600 var(--ad-step--1)/1.3 var(--ad-font-sans);">Roomy</h3>
-    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">space-l padding, space-s gap. For a card that is the whole screen.</p>
+    <h3 style="font-size: var(--ad-step--1);">Roomy</h3>
+    <p>space-l padding, space-s gap. For a card that is the whole screen.</p>
   </div>
 </article>
 </div>

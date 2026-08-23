@@ -25,8 +25,8 @@ Not the quality of the individual choices. The properties below:
 <div class="card-grid">
   <article class="card">
     <div class="card-body">
-      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">It is written down once</h3>
-      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
+      <h3>It is written down once</h3>
+      <p>
         One hand-maintained stylesheet of custom properties. Not a Figma
         library that disagrees with the CSS, and not a spreadsheet somebody
         exports by hand.
@@ -35,8 +35,8 @@ Not the quality of the individual choices. The properties below:
   </article>
   <article class="card">
     <div class="card-body">
-      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">It has names</h3>
-      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
+      <h3>It has names</h3>
+      <p>
         <code>--ad-color-danger</code> survives a change of mind about which
         red. <code>#ad3a2c</code> does not.
       </p>
@@ -44,8 +44,8 @@ Not the quality of the individual choices. The properties below:
   </article>
   <article class="card">
     <div class="card-body">
-      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">It is actually used</h3>
-      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
+      <h3>It is actually used</h3>
+      <p>
         Every color, type, spacing, radius, elevation, and motion value in
         the components is a <code>var(--ad-*)</code>. Not one is a literal.
       </p>
@@ -53,8 +53,8 @@ Not the quality of the individual choices. The properties below:
   </article>
   <article class="card">
     <div class="card-body">
-      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">It can be changed</h3>
-      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
+      <h3>It can be changed</h3>
+      <p>
         Because of the three above, swapping the accent for Clay, Ochre, Ink
         Blue, or Plum is a one-line diff.
       </p>
@@ -88,8 +88,8 @@ borders do the elevation work, not high contrast, so it does not invent a
 ## The four rules
 
 <div class="ad-callout">
-  <p class="type-label" style="margin-bottom: var(--ad-space-2xs); display:block;">1. No color and no duration outside tokens.css</p>
-  <p style="margin:0; font-size: var(--ad-step--1);">
+  <p class="type-label">1. No color and no duration outside tokens.css</p>
+  <p>
     A hex or a duration in a component stylesheet is a decision made in the
     dark, and it is the kind that breaks the moment somebody adds a theme. No
     component stylesheet in this repository contains either; the one flagged
@@ -99,8 +99,8 @@ borders do the elevation work, not high contrast, so it does not invent a
 </div>
 
 <div class="ad-callout">
-  <p class="type-label" style="margin-bottom: var(--ad-space-2xs); display:block;">2. Components read aliases, never ramps</p>
-  <p style="margin:0; font-size: var(--ad-step--1);">
+  <p class="type-label">2. Components read aliases, never ramps</p>
+  <p>
     <code>--ad-color-text-primary</code>, not <code>--ad-neutral-900</code>.
     The ramp is raw material; the alias is the decision. This is the whole
     reason the dark theme is a block of repointed aliases rather than a
@@ -109,8 +109,8 @@ borders do the elevation work, not high contrast, so it does not invent a
 </div>
 
 <div class="ad-callout">
-  <p class="type-label" style="margin-bottom: var(--ad-space-2xs); display:block;">3. Every token says what it is for</p>
-  <p style="margin:0; font-size: var(--ad-step--1);">
+  <p class="type-label">3. Every token says what it is for</p>
+  <p>
     Every semantic alias on the <a href="<%= relative_url('/foundations/color/') %>">Color page</a>
     carries a usage note. A token nobody can describe is a token nobody will
     use correctly.
@@ -118,8 +118,8 @@ borders do the elevation work, not high contrast, so it does not invent a
 </div>
 
 <div class="ad-callout">
-  <p class="type-label" style="margin-bottom: var(--ad-space-2xs); display:block;">4. One accent, one dark-mode convention</p>
-  <p style="margin:0; font-size: var(--ad-step--1);">
+  <p class="type-label">4. One accent, one dark-mode convention</p>
+  <p>
     Never two accents in one view. Dark mode is opt-in — a
     <code>data-theme</code> toggle plus <code>prefers-color-scheme</code>,
     never inherited silently from the OS alone.

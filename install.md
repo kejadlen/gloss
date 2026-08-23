@@ -71,7 +71,7 @@ a handful of custom properties after the token file loads — most of all,
 ```
 
 <div class="ad-callout">
-  <p style="margin:0; font-size: var(--ad-step--1);">
+  <p>
     Re-check contrast after retheming. The system's contrast guarantees on
     the <a href="<%= relative_url('/foundations/color/') %>">Color page</a>
     are about the system's own values — swap the accent and you own the

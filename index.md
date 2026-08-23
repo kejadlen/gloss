@@ -52,8 +52,8 @@ same afternoon.
 <div class="card-grid">
   <article class="card" data-link>
     <div class="card-body">
-      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="<%= relative_url('/foundations/color/') %>">Foundations</a></h3>
-      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
+      <h3><a href="<%= relative_url('/foundations/color/') %>">Foundations</a></h3>
+      <p>
         Color, type, space, elevation, and motion — with contrast ratios
         computed from the tokens and checked by hand, not typed by guess.
       </p>
@@ -61,8 +61,8 @@ same afternoon.
   </article>
   <article class="card" data-link>
     <div class="card-body">
-      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="<%= relative_url('/components/button/') %>">Components</a></h3>
-      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
+      <h3><a href="<%= relative_url('/components/button/') %>">Components</a></h3>
+      <p>
         Sixteen components across core, forms, feedback, and navigation, each
         rendered live next to the exact markup that produced it.
       </p>
@@ -70,8 +70,8 @@ same afternoon.
   </article>
   <article class="card" data-link>
     <div class="card-body">
-      <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);"><a href="<%= relative_url('/patterns/loop/') %>">Patterns</a></h3>
-      <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
+      <h3><a href="<%= relative_url('/patterns/loop/') %>">Patterns</a></h3>
+      <p>
         Loop and Archive — a task dashboard and a capture app — put every
         component family in one screen at once.
       </p>
@@ -90,8 +90,8 @@ same afternoon.
       <span class="badge" data-tone="accent">Recommended</span>
       <span class="badge">Unassigned</span>
     </div>
-    <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">Rename the caution color</h3>
-    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">
+    <h3>Rename the caution color</h3>
+    <p>
       Three people have called it "yellow" in review this month. There is no
       caution token in this system — only <code>--ad-color-success</code> and
       <code>--ad-color-danger</code>, fixed across every project.

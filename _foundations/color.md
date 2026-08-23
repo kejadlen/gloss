@@ -19,7 +19,7 @@ reads from these. Retheming, or switching to dark, means repointing aliases
 at different values — which is exactly what the dark block does.
 
 <div class="ad-callout">
-  <p style="margin:0; font-size: var(--ad-step--1);">
+  <p>
     The neutral ramps were authored in <code>oklch()</code>. Every value
     below is that same color converted to flat sRGB hex — not re-picked,
     not rounded. The contrast figures on this page are computed from those
@@ -215,7 +215,7 @@ the default; the other four are the sanctioned menu a project can switch to.
 </ul>
 
 <div class="ad-callout">
-  <p style="margin:0; font-size: var(--ad-step--1);">
+  <p>
     All five clear AA (4.5:1) for white text at their own value, but Ochre is
     the tightest of the five at roughly 4.6:1 — closer to the floor than the
     others (Ink Blue and Plum both clear 8.5:1). That is a real property of a
@@ -623,7 +623,7 @@ and checked by hand rather than by a build-time test.
   </table>
 
 <div class="ad-callout">
-  <p style="margin:0; font-size: var(--ad-step--1);">
+  <p>
     Two things this contract deliberately does not assert.
     <strong>Text tertiary</strong> — <code>--ad-color-text-tertiary</code>
     (neutral.500) is roughly 3.46:1 against the page in light mode, under the

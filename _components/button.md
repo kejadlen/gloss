@@ -68,8 +68,8 @@ disabled primary still reads as the primary.
 </figure>
 
 <div class="ad-callout">
-  <p class="type-label" style="margin-bottom: var(--ad-space-2xs); display:block;">disabled vs. aria-disabled</p>
-  <p style="margin:0; font-size: var(--ad-step--1);">
+  <p class="type-label">disabled vs. aria-disabled</p>
+  <p>
     A <code>disabled</code> button is removed from the tab order, so a reader
     navigating by keyboard never learns it is there. When a button is
     temporarily unavailable and the reason matters, use

@@ -35,8 +35,8 @@ it that has no element of its own to hang a selector on.
 <article class="card" style="max-width: 18rem;">
   <div class="card-body">
     <p class="type-label" style="margin:0;">Recommended</p>
-    <h3 style="margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);">Rename the caution color</h3>
-    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">Three people have called it "yellow" in review this month.</p>
+    <h3>Rename the caution color</h3>
+    <p>Three people have called it "yellow" in review this month.</p>
   </div>
   <div class="card-footer">
     <button data-variant="primary" data-size="sm">Approve</button>
@@ -48,8 +48,8 @@ it that has no element of its own to hang a selector on.
 <pre><code>&lt;article class=&quot;card&quot; style=&quot;max-width: 18rem;&quot;&gt;
   &lt;div class=&quot;card-body&quot;&gt;
     &lt;p class=&quot;type-label&quot; style=&quot;margin:0;&quot;&gt;Recommended&lt;/p&gt;
-    &lt;h3 style=&quot;margin:0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans);&quot;&gt;Rename the caution color&lt;/h3&gt;
-    &lt;p style=&quot;margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);&quot;&gt;Three people have called it &quot;yellow&quot; in review this month.&lt;/p&gt;
+    &lt;h3&gt;Rename the caution color&lt;/h3&gt;
+    &lt;p&gt;Three people have called it &quot;yellow&quot; in review this month.&lt;/p&gt;
   &lt;/div&gt;
   &lt;div class=&quot;card-footer&quot;&gt;
     &lt;button data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Approve&lt;/button&gt;

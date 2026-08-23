@@ -31,14 +31,14 @@ is the default everywhere. Shadow is the exception, not the baseline.
 <div data-layout="grid" data-surface="sunken">
 <article class="card">
   <div class="card-body">
-    <h3 style="margin:0; font: 600 var(--ad-step--1)/1.3 var(--ad-font-sans);">Flat</h3>
-    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">The default. A hairline border, no shadow.</p>
+    <h3 style="font-size: var(--ad-step--1);">Flat</h3>
+    <p>The default. A hairline border, no shadow.</p>
   </div>
 </article>
 <article class="card" data-elevated>
   <div class="card-body">
-    <h3 style="margin:0; font: 600 var(--ad-step--1)/1.3 var(--ad-font-sans);">Elevated</h3>
-    <p style="margin:0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1);">shadow-float. Reserved for one element per view — a Dialog, a Toast.</p>
+    <h3 style="font-size: var(--ad-step--1);">Elevated</h3>
+    <p>shadow-float. Reserved for one element per view — a Dialog, a Toast.</p>
   </div>
 </article>
 </div>
