@@ -85,10 +85,10 @@ a handful of custom properties after the token file loads — most of all,
 ## Building this site
 
 There is no Jekyll here — the whole site is a Rakefile driving plain ERB
-templates and Kramdown (see `lib/arbitrary_definitions/site_builder.rb`). It
-still builds on GitHub Actions and uploads the result to Pages, mainly so the
-build always runs on the pinned Ruby 4.0 rather than whatever GitHub's Pages
-runner happens to ship. Locally:
+templates and Kramdown (see `lib/build.rb`). It still builds on GitHub
+Actions and uploads the result to Pages, mainly so the build always runs on
+the pinned Ruby 4.0 rather than whatever GitHub's Pages runner happens to
+ship. Locally:
 
 ```console
 $ rbenv install 4.0.6      # or however you get Ruby 4.0
@@ -104,8 +104,8 @@ $ bundle exec rake serve   # http://127.0.0.1:4000
     <tbody>
       <tr><td><code>assets/css/tokens.css</code></td><td>Every value in the system, hand-maintained.</td></tr>
       <tr><td><code>_sass/</code></td><td>One plain CSS file per component group, concatenated into <code>style.css</code> at build time. No hexes, no pixels, no durations.</td></tr>
-      <tr><td><code>lib/arbitrary_definitions/</code></td><td>The whole site builder — front matter, ERB, and Kramdown, wrapped in a layout.</td></tr>
-      <tr><td><code>_layouts/, _includes/</code></td><td>Plain ERB templates for the page chrome.</td></tr>
+      <tr><td><code>lib/build.rb</code></td><td>The whole site builder in one file — a literal list of pages, front matter, ERB, and Kramdown.</td></tr>
+      <tr><td><code>_layouts/page.erb</code></td><td>The one page shell (head, header, sidebar, footer).</td></tr>
       <tr><td><code>_components/, _foundations/, _patterns/</code></td><td>Static Markdown and HTML — the content itself, hand-written.</td></tr>
     </tbody>
   </table>
@@ -122,12 +122,12 @@ the page is how the source panel gets written, so there is nothing to drift.
 <figure class="example">
   <figcaption>Variants</figcaption>
   <div>
-    <button type="button">Cancel</button>
-    <button type="button" data-variant="primary">Save</button>
+    <button>Cancel</button>
+    <button data-variant="primary">Save</button>
   </div>
   <details><summary>Markup</summary>
-<pre><code>&lt;button type="button"&gt;Cancel&lt;/button&gt;
-&lt;button type="button" data-variant="primary"&gt;Save&lt;/button&gt;</code></pre>
+<pre><code>&lt;button&gt;Cancel&lt;/button&gt;
+&lt;button data-variant="primary"&gt;Save&lt;/button&gt;</code></pre>
   </details>
 </figure>
 ```
