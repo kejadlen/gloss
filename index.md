@@ -134,12 +134,13 @@ empty state just states the fact: "Nothing tracked yet."
 
 ## Using it elsewhere
 
-Everything the system needs is two stylesheets and, for most components, no
+Everything the system needs is three stylesheets and, for most components, no
 JavaScript at all.
 
 ```html
 <link rel="stylesheet" href="tokens.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="components.css">
 ```
 
 See [Using the CSS](<%= relative_url('/install/') %>) for the details,

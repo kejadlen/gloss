@@ -13,23 +13,22 @@ file repeats.
 
 ## Getting the CSS into another project
 
-Two files, in this order, no build step:
+Three files, in this order, no build step:
 
 ```html
 <link rel="stylesheet" href="tokens.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="components.css">
 ```
 
-`tokens.css` is already exactly that file:
-[`assets/css/tokens.css`](assets/css/tokens.css). `style.css` is **not**
-this site's deployed `style.css` — that also bundles this documentation
-site's own chrome (`_sass/site/*.css`: the sidebar, the example-demo boxes,
-doc tables), which has nothing to do with the design system itself. Build
-the real one from just base + components:
-
-```console
-$ cat _sass/base/reset.css _sass/base/typography.css _sass/components/*.css > style.css
-```
+All three are already the exact files this site deploys:
+[`assets/css/tokens.css`](assets/css/tokens.css),
+[`assets/css/base.css`](assets/css/base.css),
+[`assets/css/components.css`](assets/css/components.css). This site also
+deploys `docs.css` and `patterns.css` — its own chrome (the sidebar, the
+example-demo boxes, doc tables) and the Loop/Archive pattern-page CSS — but
+neither has anything to do with the design system itself, so don't link
+them elsewhere.
 
 Load IBM Plex Mono separately — the system's one webfont:
 

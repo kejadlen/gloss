@@ -3,25 +3,30 @@ title: Using the CSS
 permalink: /install/
 section: Start here
 summary: >-
-  Two stylesheets, almost no JavaScript, no build step. Then a dozen custom
+  Three stylesheets, almost no JavaScript, no build step. Then a dozen custom
   properties if you want it to stop looking like this site.
 ---
 
-## The two files
+## The three files
 
-The system compiles to exactly two stylesheets. `tokens.css` is a
-hand-maintained block of custom properties; `style.css` is the components.
-The order matters — the components read the custom properties the tokens
-define.
+The system compiles to three stylesheets you'd actually reuse elsewhere.
+`tokens.css` is a hand-maintained block of custom properties; `base.css` is
+reset and typography; `components.css` is the components. The order
+matters — each file reads custom properties the one before it defines.
 
 ```html
 <link rel="stylesheet" href="tokens.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="components.css">
 ```
 
-Both are on this site at
-[`/assets/css/tokens.css`](<%= relative_url('/assets/css/tokens.css') %>) and
-[`/assets/css/style.css`](<%= relative_url('/assets/css/style.css') %>).
+All three are on this site at
+[`/assets/css/tokens.css`](<%= relative_url('/assets/css/tokens.css') %>),
+[`/assets/css/base.css`](<%= relative_url('/assets/css/base.css') %>), and
+[`/assets/css/components.css`](<%= relative_url('/assets/css/components.css') %>).
+This site also loads `docs.css` and `patterns.css` — its own sidebar/header
+chrome and the Loop/Archive pattern-page CSS — but neither is part of the
+design system, so don't link them elsewhere.
 
 Load IBM Plex Mono separately — it is the system's one webfont, and nothing
 else is fetched:
@@ -101,7 +106,7 @@ $ bundle exec rake serve   # http://127.0.0.1:4000
     <thead><tr><th scope="col">Path</th><th scope="col">What it is</th></tr></thead>
     <tbody>
       <tr><td><code>assets/css/tokens.css</code></td><td>Every value in the system, hand-maintained.</td></tr>
-      <tr><td><code>_sass/</code></td><td>One plain CSS file per component group, concatenated into <code>style.css</code> at build time. No hexes, no pixels, no durations.</td></tr>
+      <tr><td><code>_sass/</code></td><td>One plain CSS file per component group, concatenated into <code>base.css</code>, <code>components.css</code>, <code>docs.css</code>, and <code>patterns.css</code> at build time (see <code>CSS_BUNDLES</code> in <code>lib/build.rb</code>). No hexes, no pixels, no durations.</td></tr>
       <tr><td><code>lib/build.rb</code></td><td>The whole site builder in one file — a literal list of pages, front matter, ERB, and Kramdown.</td></tr>
       <tr><td><code>_layouts/page.erb</code></td><td>The one page shell (head, header, sidebar, footer).</td></tr>
       <tr><td><code>_components/, _foundations/, _patterns/</code></td><td>Static Markdown and HTML — the content itself, hand-written.</td></tr>

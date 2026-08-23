@@ -27,7 +27,9 @@ This is a small, personal project, so it is built as plainly as it can be:
   the values directly; there is no compiler in front of it.
 - `_sass/` holds the component and site-chrome CSS as plain, already-flat
   files (one per component group). `rake build` concatenates them in a fixed
-  order into `assets/css/style.css` — no Sass compiler involved.
+  order into four bundles — `base.css`, `components.css`, `docs.css`,
+  `patterns.css` — so a consumer can load just the design system without this
+  site's own chrome. No Sass compiler involved.
 - The documentation tables, swatches, and contrast figures are static
   markup, transcribed once from the token values rather than recomputed on
   every build.
@@ -52,7 +54,7 @@ $ bundle exec rake serve    # http://127.0.0.1:4000
 | Path | What it is |
 | --- | --- |
 | `assets/css/tokens.css` | Every color, type, space, radius, elevation, and motion value in the system, hand-maintained. |
-| `_sass/` | Plain CSS: base/reset, components (core/forms/feedback/navigation), and this documentation site's own chrome. Concatenated into `style.css` at build time. |
+| `_sass/` | Plain CSS: base/reset, components (core/forms/feedback/navigation), and this documentation site's own chrome. Concatenated into `base.css`, `components.css`, `docs.css`, and `patterns.css` at build time. |
 | `lib/build.rb` | The whole site builder in one file: a literal list of pages, front matter, ERB, and Kramdown. No collections config, no layout inheritance, no generic includes system — this is one specific site, not a framework. |
 | `_layouts/page.erb` | The one page shell (head, header, sidebar, footer). |
 | `_foundations/`, `_components/`, `_patterns/` | The documentation pages — static Markdown and HTML with a little ERB for links and nav. |
@@ -80,11 +82,12 @@ API. Change it there if the site ever moves off a project page.
 
 ## Using the CSS elsewhere
 
-Two files, in this order, and almost no JavaScript:
+Three files, in this order, and almost no JavaScript:
 
 ```html
 <link rel="stylesheet" href="tokens.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="components.css">
 ```
 
 Retheming means overriding a handful of custom properties after `tokens.css`

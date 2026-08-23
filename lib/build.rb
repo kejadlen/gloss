@@ -40,22 +40,26 @@ BASEURL     = "/arbitrary-definitions-design-system"
 REPOSITORY  = "kejadlen/arbitrary-definitions-design-system"
 LANG        = "en"
 
-# Plain CSS files, concatenated in this order into assets/css/style.css:
-# reset/base first, then components, then this site's own chrome.
-CSS_FILES = %w[
-  base/reset.css
-  base/typography.css
-  components/button.css
-  components/field.css
-  components/badge.css
-  components/card.css
-  components/feedback.css
-  components/tabs.css
-  site/shell.css
-  site/example.css
-  site/tokens-docs.css
-  site/patterns.css
-].freeze
+# Plain CSS files, concatenated into one output bundle per named group
+# (assets/css/<name>.css) rather than one monolithic style.css — a
+# consumer using this system elsewhere links tokens.css + base.css +
+# components.css and gets none of docs.css (this documentation site's own
+# chrome) or patterns.css (Loop/Archive's page-specific CSS, useful only
+# as a worked example). This site itself links all four, in this order.
+CSS_BUNDLES = {
+  "base" => %w[base/reset.css base/typography.css],
+  "components" => %w[
+    components/button.css
+    components/field.css
+    components/badge.css
+    components/card.css
+    components/feedback.css
+    components/tabs.css
+  ],
+  "docs" => %w[site/shell.css site/example.css site/tokens-docs.css],
+  "patterns" => %w[site/patterns.css],
+}.freeze
+CSS_BUNDLE_ORDER = %w[base components docs patterns].freeze
 
 # [source file (absolute or relative to ROOT), url, section label for the
 # doc-title header (nil to omit it entirely — index.md builds its own hero
@@ -127,10 +131,15 @@ def render_page(source_path, url, section)
 end
 
 def write_css
-  css = CSS_FILES.map { |name| File.read(File.join(ROOT, "_sass", name)) }.join("\n")
-  FileUtils.mkdir_p(File.join(SITE, "assets", "css"))
-  File.write(File.join(SITE, "assets", "css", "style.css"), css)
-  FileUtils.cp(File.join(ROOT, "assets", "css", "tokens.css"), File.join(SITE, "assets", "css", "tokens.css"))
+  out_dir = File.join(SITE, "assets", "css")
+  FileUtils.mkdir_p(out_dir)
+
+  CSS_BUNDLES.each do |bundle_name, files|
+    css = files.map { |name| File.read(File.join(ROOT, "_sass", name)) }.join("\n")
+    File.write(File.join(out_dir, "#{bundle_name}.css"), css)
+  end
+
+  FileUtils.cp(File.join(ROOT, "assets", "css", "tokens.css"), File.join(out_dir, "tokens.css"))
 end
 
 def copy_assets
