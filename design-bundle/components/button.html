@@ -1,0 +1,1913 @@
+<!-- @dsCard group="Core" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Button</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Arbitrary Definitions — design tokens. Hand-maintained; edit values directly. */
+
+:root {
+  /* Palette ramps — reference only. Components use the aliases below. */
+  --ad-neutral-0: #faf9f7;
+  --ad-neutral-50: #fdfdfb;
+  --ad-neutral-100: #f1f0ed;
+  --ad-neutral-150: #e8e6e2;
+  --ad-neutral-200: #dcdad7;
+  --ad-neutral-300: #c0bdb9;
+  --ad-neutral-500: #888681;
+  --ad-neutral-600: #5f5d59;
+  --ad-neutral-800: #2a2926;
+  --ad-neutral-900: #100f0d;
+  --ad-neutral-dark-0: #0e0d0b;
+  --ad-neutral-dark-50: #151412;
+  --ad-neutral-dark-100: #1e1d1a;
+  --ad-neutral-dark-150: #252421;
+  --ad-neutral-dark-200: #2c2b29;
+  --ad-neutral-dark-300: #44423f;
+  --ad-neutral-dark-500: #7c7a76;
+  --ad-neutral-dark-600: #a09e9a;
+  --ad-neutral-dark-800: #d9d7d4;
+  --ad-neutral-dark-900: #e9e8e6;
+  --ad-accent-teal: #3a6a63;
+  --ad-accent-clay: #9a5a3c;
+  --ad-accent-ink-blue: #2b4a78;
+  --ad-accent-ochre: #93701f;
+  --ad-accent-plum: #6a3a5c;
+
+  /* Surfaces */
+  --ad-color-surface-page: #faf9f7;
+  --ad-color-surface-card: #fdfdfb;
+  --ad-color-surface-fill: #f1f0ed;
+  --ad-color-surface-fill-2: #e8e6e2;
+
+  /* Borders */
+  --ad-color-border-hairline: #dcdad7;
+  --ad-color-border-default: #c0bdb9;
+
+  /* Text */
+  --ad-color-text-primary: #100f0d;
+  --ad-color-text-secondary: #5f5d59;
+  --ad-color-text-tertiary: #888681;
+
+  /* Accent */
+  --ad-color-accent: #3a6a63;
+  --ad-color-accent-fg: #ffffff;
+  --ad-color-accent-ink: color-mix(in oklch, var(--ad-color-accent) 78%, black);
+  --ad-color-accent-soft: color-mix(in oklch, var(--ad-color-accent) 12%, white);
+
+  /* Status (fixed — never swapped like the accent) */
+  --ad-color-success: #3f7a4a;
+  --ad-color-success-bg: color-mix(in oklch, var(--ad-color-success) 12%, white);
+  --ad-color-danger: #ad3a2c;
+  --ad-color-danger-bg: color-mix(in oklch, var(--ad-color-danger) 10%, white);
+
+  /* Type families */
+  --ad-font-sans: -apple-system, "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --ad-font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  --ad-font-serif: Georgia, "Times New Roman", "Iowan Old Style", serif;
+
+  /* Type steps — fluid (Utopia scale), the design system's own body-text size */
+  --ad-step--2: clamp(0.7813rem, 0.7736rem + 0.0341vw, 0.8rem);
+  --ad-step--1: clamp(0.9375rem, 0.9119rem + 0.1136vw, 1rem);
+  --ad-step-0: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --ad-step-1: clamp(1.35rem, 1.2631rem + 0.3864vw, 1.5625rem);
+  --ad-step-2: clamp(1.62rem, 1.4837rem + 0.6057vw, 1.9531rem);
+  --ad-step-3: clamp(1.944rem, 1.7405rem + 0.9044vw, 2.4414rem);
+  --ad-step-4: clamp(2.3328rem, 2.0387rem + 1.3072vw, 3.0518rem);
+  --ad-step-5: clamp(2.7994rem, 2.384rem + 1.8461vw, 3.8147rem);
+
+  /* Space */
+  --ad-space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+  --ad-space-2xs: clamp(0.5625rem, 0.5369rem + 0.1136vw, 0.625rem);
+  --ad-space-xs: clamp(0.875rem, 0.8494rem + 0.1136vw, 0.9375rem);
+  --ad-space-s: clamp(1.125rem, 1.0739rem + 0.2273vw, 1.25rem);
+  --ad-space-m: clamp(1.6875rem, 1.6108rem + 0.3409vw, 1.875rem);
+  --ad-space-l: clamp(2.25rem, 2.1477rem + 0.4545vw, 2.5rem);
+  --ad-space-xl: clamp(3.375rem, 3.2216rem + 0.6818vw, 3.75rem);
+  --ad-space-2xl: clamp(4.5rem, 4.2955rem + 0.9091vw, 5rem);
+  --ad-space-3xl: clamp(6.75rem, 6.4432rem + 1.3636vw, 7.5rem);
+
+  /* Radius */
+  --ad-radius-sm: 4px;
+  --ad-radius-md: 6px;
+  --ad-radius-lg: 10px;
+  --ad-radius-full: 999px;
+  --ad-border-w: 1px;
+
+  /* Elevation */
+  --ad-shadow-sm: 0 1px 2px rgba(20, 18, 14, 0.05);
+  --ad-shadow-float: 0 2px 6px rgba(20, 18, 14, 0.06), 0 10px 24px -12px rgba(20, 18, 14, 0.18);
+
+  /* Motion */
+  --ad-dur-fast: 0.12s;
+  --ad-dur-base: 0.16s;
+  --ad-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ad-color-surface-page: #0e0d0b;
+    --ad-color-surface-card: #151412;
+    --ad-color-surface-fill: #1e1d1a;
+    --ad-color-surface-fill-2: #252421;
+    --ad-color-border-hairline: #2c2b29;
+    --ad-color-border-default: #44423f;
+    --ad-color-text-primary: #e9e8e6;
+    --ad-color-text-secondary: #a09e9a;
+    --ad-color-text-tertiary: #7c7a76;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ad-color-surface-page: #0e0d0b;
+  --ad-color-surface-card: #151412;
+  --ad-color-surface-fill: #1e1d1a;
+  --ad-color-surface-fill-2: #252421;
+  --ad-color-border-hairline: #2c2b29;
+  --ad-color-border-default: #44423f;
+  --ad-color-text-primary: #e9e8e6;
+  --ad-color-text-secondary: #a09e9a;
+  --ad-color-text-tertiary: #7c7a76;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ad-dur-fast: 0ms;
+    --ad-dur-base: 0ms;
+  }
+}
+
+/* A short reset. Everything it sets is something the system would otherwise
+   have to override in every component.
+
+   The rem values used for this documentation site's own chrome (measure,
+   content width, sidebar width, header height) belong to this site, not to
+   the design system it documents — the source design system defines no
+   container-width tokens at all, so there is nothing under `--ad-*` to reach
+   for here. See the header comment in site/shell.css. */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(3.5rem + var(--ad-space-s));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--ad-color-surface-page);
+  color: var(--ad-color-text-primary);
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step-0);
+  line-height: 1.55;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--ad-color-accent-soft);
+  color: var(--ad-color-accent-ink);
+}
+
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd { margin: 0; }
+ul[class], ol[class] { list-style: none; margin: 0; padding: 0; }
+
+img, svg, video { display: block; max-width: 100%; height: auto; }
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+hr {
+  height: 1px;
+  margin: var(--ad-space-l) 0;
+  border: 0;
+  background: var(--ad-color-border-hairline);
+}
+
+/* One focus ring, defined once. No component is allowed its own. */
+:focus-visible {
+  outline: 2px solid var(--ad-color-accent);
+  outline-offset: 2px;
+  border-radius: var(--ad-radius-sm);
+}
+:focus:not(:focus-visible) { outline: none; }
+
+[hidden] { display: none !important; }
+
+.ad-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Every rule here reads a type token for family and size. Weight, line-height,
+   and letter-spacing are hardcoded to the exact numbers the source ships —
+   there is no `--ad-weight-*` / `--ad-leading-*` / `--ad-tracking-*` scale in
+   the real system, only eight fixed compound styles (see the Typography
+   foundation page, which this file implements verbatim). */
+
+.type-display { font: 600 var(--ad-step-4)/1.08 var(--ad-font-sans); letter-spacing: -0.015em; }
+.type-h1, h1 { font: 600 var(--ad-step-3)/1.12 var(--ad-font-sans); letter-spacing: -0.012em; }
+.type-h2, h2 { font: 600 var(--ad-step-2)/1.16 var(--ad-font-sans); letter-spacing: -0.01em; }
+.type-h3, h3 { font: 600 var(--ad-step-1)/1.25 var(--ad-font-sans); }
+.type-body    { font: 400 var(--ad-step-0)/1.55 var(--ad-font-sans); }
+.type-body-sm { font: 400 var(--ad-step--1)/1.5 var(--ad-font-sans); }
+.type-label {
+  font: 500 var(--ad-step--2)/1 var(--ad-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ad-color-text-secondary);
+}
+.type-mono { font: 400 var(--ad-step--1)/1.5 var(--ad-font-mono); }
+
+/* Prose defaults for the documentation body copy. These read the same
+   tokens the compound classes above do; they are not a second scale. */
+h1, h2, h3, h4 { font-weight: 600; text-wrap: balance; }
+
+h4 { font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans); }
+
+p, ul, ol { margin: 0 0 var(--ad-space-s); }
+li + li { margin-top: var(--ad-space-3xs); }
+
+a {
+  color: var(--ad-color-accent);
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  transition: color var(--ad-dur-fast) var(--ad-ease),
+              text-decoration-color var(--ad-dur-fast) var(--ad-ease);
+}
+a:hover {
+  color: var(--ad-color-accent-ink);
+  text-decoration-color: currentColor;
+}
+
+strong, b { font-weight: 600; }
+
+small { font-size: var(--ad-step--1); }
+
+.ad-lead {
+  font-size: var(--ad-step-1);
+  line-height: 1.5;
+  color: var(--ad-color-text-secondary);
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+.ad-muted { color: var(--ad-color-text-secondary); }
+.ad-subtle { color: var(--ad-color-text-tertiary); }
+
+code, kbd, samp, pre {
+  font-family: var(--ad-font-mono);
+  font-feature-settings: "liga" 0;
+}
+
+:not(pre) > code {
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+  background: var(--ad-color-surface-fill);
+  border: 1px solid var(--ad-color-border-hairline);
+  border-radius: var(--ad-radius-sm);
+  white-space: nowrap;
+}
+
+kbd {
+  display: inline-block;
+  padding: 0.1em 0.45em;
+  font-size: var(--ad-step--2);
+  line-height: 1.6;
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-default);
+  border-bottom-width: 2px;
+  border-radius: var(--ad-radius-sm);
+  color: var(--ad-color-text-secondary);
+}
+
+blockquote {
+  margin-block: var(--ad-space-s);
+  padding-left: var(--ad-space-s);
+  border-left: 2px solid var(--ad-color-accent);
+  color: var(--ad-color-text-secondary);
+}
+
+/* Button
+   A flat, quiet button that recedes rather than performs — no gradients, no
+   shine. Variants: default, primary, dark, ghost, danger. Sizes: sm, md
+   (default), lg — padding and font step only, weight and radius stay put.
+
+   The contract is the element itself: a bare <button> is styled directly, no
+   class required. An <a> that acts like a button (navigates rather than
+   changes something — see the Button page's "Links that act like buttons")
+   opts in with a single `.btn` class, since a bare `a` selector would catch
+   every ordinary prose link on the site. `:not(.icon-button)` keeps this
+   block from leaking onto IconButton, which shares the <button> tag but is
+   an entirely different shape. */
+
+button:not(.icon-button),
+a.btn {
+  --_bg: var(--ad-color-surface-card);
+  --_fg: var(--ad-color-text-primary);
+  --_border: var(--ad-color-border-default);
+  --_pad: var(--ad-space-xs) var(--ad-space-s);
+  --_font: var(--ad-step--1);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ad-space-2xs);
+  padding: var(--_pad);
+  border: 1px solid var(--_border);
+  border-radius: var(--ad-radius-md);
+  background: var(--_bg);
+  color: var(--_fg);
+  font-family: var(--ad-font-sans);
+  font-size: var(--_font);
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: filter var(--ad-dur-fast) var(--ad-ease),
+              border-color var(--ad-dur-fast) var(--ad-ease);
+}
+
+:is(button:not(.icon-button), a.btn):hover:not(:disabled):not([aria-disabled="true"]) { filter: brightness(0.96); }
+:is(button:not(.icon-button), a.btn):active:not(:disabled):not([aria-disabled="true"]) { filter: brightness(0.92); }
+
+button:not(.icon-button):disabled,
+:is(button:not(.icon-button), a.btn)[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: default;
+}
+
+:is(button:not(.icon-button), a.btn)[data-variant="primary"] {
+  --_bg: var(--ad-color-accent);
+  --_fg: var(--ad-color-accent-fg);
+  --_border: var(--ad-color-accent);
+}
+
+/* Reserved for the single most-committing action in a view — a final Save,
+   never a whole row of them. */
+:is(button:not(.icon-button), a.btn)[data-variant="dark"] {
+  --_bg: var(--ad-color-text-primary);
+  --_fg: var(--ad-color-surface-page);
+  --_border: var(--ad-color-text-primary);
+}
+
+:is(button:not(.icon-button), a.btn)[data-variant="ghost"] {
+  --_bg: transparent;
+  --_fg: var(--ad-color-text-primary);
+  --_border: transparent;
+}
+
+/* The source hardcodes this label white rather than deriving it — danger
+   is not "on a filled accent surface", so --ad-color-accent-fg is reused
+   here only because its resolved value is the same literal white, not
+   because the two roles are the same thing. */
+:is(button:not(.icon-button), a.btn)[data-variant="danger"] {
+  --_bg: var(--ad-color-danger);
+  --_fg: var(--ad-color-accent-fg);
+  --_border: var(--ad-color-danger);
+}
+
+:is(button:not(.icon-button), a.btn)[data-size="sm"] { --_pad: 0.375rem 0.75rem; --_font: 0.8125rem; }
+:is(button:not(.icon-button), a.btn)[data-size="lg"] { --_pad: 0.75rem 1.375rem; --_font: var(--ad-step-0); }
+
+:is(button:not(.icon-button), a.btn)[data-block] { width: 100%; }
+
+/* Button group — [role="group"] is already the correct ARIA role for a
+   toolbar of related buttons, so it doubles as the styling hook for free. */
+[role="group"] {
+  display: inline-flex;
+  isolation: isolate;
+}
+[role="group"] > button { border-radius: 0; }
+[role="group"] > button:first-child { border-start-start-radius: var(--ad-radius-md); border-end-start-radius: var(--ad-radius-md); }
+[role="group"] > button:last-child { border-start-end-radius: var(--ad-radius-md); border-end-end-radius: var(--ad-radius-md); }
+[role="group"] > button + button { margin-inline-start: -1px; }
+[role="group"] > button:hover,
+[role="group"] > button:focus-visible { z-index: 1; }
+
+/* IconButton — a square icon-only button. Always needs an aria-label; it
+   becomes both the accessible name and the native tooltip. There is no
+   attribute that distinguishes "a button that is only an icon" from a plain
+   Button, so this is the one sanctioned class in this file. */
+.icon-button {
+  --_size: 2.125rem;
+  --_bg: transparent;
+  --_border: transparent;
+  --_fg: var(--ad-color-text-secondary);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_size);
+  height: var(--_size);
+  padding: 0;
+  flex: none;
+  border: 1px solid var(--_border);
+  border-radius: var(--ad-radius-md);
+  background: var(--_bg);
+  color: var(--_fg);
+  cursor: pointer;
+  transition: background-color var(--ad-dur-fast) var(--ad-ease),
+              color var(--ad-dur-fast) var(--ad-ease);
+}
+.icon-button:hover:not(:disabled) { background: var(--ad-color-surface-fill-2); }
+.icon-button:disabled { opacity: 0.5; cursor: default; }
+
+.icon-button[data-size="sm"] { --_size: 1.75rem; }
+.icon-button[data-size="lg"] { --_size: 2.5rem; }
+
+.icon-button[data-variant="outline"] { --_bg: var(--ad-color-surface-card); --_border: var(--ad-color-border-default); --_fg: var(--ad-color-text-primary); }
+.icon-button[data-variant="accent"]  { --_bg: var(--ad-color-accent-soft); --_fg: var(--ad-color-accent-ink); }
+
+/* Field
+   The labeled field wrapper — a <label> that wraps its own caption text
+   together with the control, so the association is native and needs no
+   `for`/`id` pair. The caption is mono, uppercase, tracked — the same
+   catalog-label convention as Badge and type-label.
+
+   A <label> is reused for three different shapes across this system (this
+   wrapper, Checkbox/Radio's row, Switch's row), so it cannot be styled bare
+   without one shape leaking into another. Field is the one of the three with
+   no distinguishing attribute of its own, so it gets the sanctioned class;
+   Checkbox/Radio tell themselves apart structurally instead (see below). */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ad-space-2xs);
+  min-width: 0;
+  font-family: var(--ad-font-mono);
+  font-size: var(--ad-step--2);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ad-color-text-secondary);
+}
+
+/* Hint and error read the native fine-print element. `role="alert"` is a
+   real live-region role for validation text, so it doubles as the selector
+   that turns a hint red. */
+.field > small {
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step--2);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+  color: var(--ad-color-text-tertiary);
+}
+.field > small[role="alert"] { color: var(--ad-color-danger); }
+
+/* Input / Select — bordered, matched to each other exactly. Both tags ARE
+   the component, so they are styled bare; nothing else on this site uses a
+   text input or a select. */
+input:not([type="checkbox"]):not([type="radio"]),
+select {
+  width: 100%;
+  padding: var(--ad-space-xs) var(--ad-space-s);
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-sm);
+  color: var(--ad-color-text-primary);
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step--1);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+  outline: none;
+  transition: border-color var(--ad-dur-fast) var(--ad-ease),
+              box-shadow var(--ad-dur-fast) var(--ad-ease);
+}
+input::placeholder { color: var(--ad-color-text-tertiary); }
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus {
+  border-color: var(--ad-color-accent);
+  box-shadow: 0 0 0 2px var(--ad-color-accent-soft);
+}
+
+input:not([type="checkbox"]):not([type="radio"]):disabled,
+select:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* The chevron is the one flagged color exception in this component set:
+   CSS cannot point a data-URI background-image at a custom property, so its
+   stroke is a literal hex rather than a var(--ad-*) reference. It is picked
+   to match --ad-color-text-secondary and commented here so it is not
+   mistaken for a stray color. */
+select {
+  appearance: none;
+  padding-inline-end: var(--ad-space-l);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%235f5d59' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--ad-space-xs) center;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: var(--ad-color-danger);
+  background-color: var(--ad-color-danger-bg);
+}
+
+/* Checkbox / Radio — the real native controls, tinted with accent-color
+   instead of a hand-drawn box. This is not just a rename: it deletes the
+   custom SVG-checkmark markup entirely and lets the browser draw its own
+   (platform-appropriate) check and dot. `role="switch"` is excluded here so
+   Switch — a checkbox playing a different role — can style itself below
+   without this rule fighting it. A <label> wrapping a checkbox/radio is told
+   apart from Field's <label> structurally: it :has() one as a direct child,
+   no class required. */
+input[type="checkbox"]:not([role="switch"]),
+input[type="radio"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0;
+  accent-color: var(--ad-color-accent);
+  cursor: pointer;
+}
+input[type="checkbox"]:not([role="switch"]):focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px solid var(--ad-color-accent);
+  outline-offset: 2px;
+}
+
+label:has(> input[type="checkbox"]:not([role="switch"])),
+label:has(> input[type="radio"]) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ad-space-2xs);
+  cursor: pointer;
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step--1);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--ad-color-text-primary);
+}
+label:has(> input:disabled) { cursor: default; opacity: 0.5; }
+
+/* Switch — for on/off settings only, never a substitute for Checkbox.
+   `input[type="checkbox"][role="switch"]` is real ARIA (the correct role for
+   a toggle), not an invented hook, but the visual track+thumb needs a second
+   element for the thumb's independent position and transition — more than
+   `appearance: none` plus pseudo-elements on the input itself can cleanly
+   carry — so `.switch` is a deliberate, documented fallback class rather
+   than a first choice. */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ad-space-2xs);
+  cursor: pointer;
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step--1);
+  color: var(--ad-color-text-primary);
+}
+.switch input[role="switch"] { position: absolute; opacity: 0; width: 2.25rem; height: 1.25rem; margin: 0; }
+
+.switch span {
+  position: relative;
+  flex: none;
+  width: 2.25rem;
+  height: 1.25rem;
+  border-radius: var(--ad-radius-full);
+  background: var(--ad-color-border-default);
+  transition: background-color var(--ad-dur-base) var(--ad-ease);
+}
+.switch span::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 2px;
+  inset-inline-start: 2px;
+  width: 1rem;
+  height: 1rem;
+  border-radius: var(--ad-radius-full);
+  background: var(--ad-color-accent-fg);
+  box-shadow: var(--ad-shadow-sm);
+  transition: translate var(--ad-dur-base) var(--ad-ease);
+}
+.switch input[role="switch"]:checked + span { background: var(--ad-color-accent); }
+.switch input[role="switch"]:checked + span::after { translate: 1rem 0; }
+.switch input[role="switch"]:focus-visible + span { outline: 2px solid var(--ad-color-accent); outline-offset: 2px; }
+.switch:has(input:disabled) { cursor: default; opacity: 0.5; }
+
+/* Rows of fields — used by the settings-form pattern. `<form>`/`<fieldset>`
+   are the elements that already mean this, so they are styled bare. A row
+   grouping two fields side by side has no element of its own, so it keeps
+   one plain class. */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ad-space-s);
+  max-width: 28rem;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--ad-space-xs);
+}
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ad-space-2xs);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+fieldset > legend {
+  padding: 0 0 var(--ad-space-2xs);
+  font-family: var(--ad-font-mono);
+  font-size: var(--ad-step--2);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ad-color-text-secondary);
+}
+
+/* Badge
+   Mono, uppercase, tracked — the catalog-label convention for status and
+   meta values (SAVED, OVERDUE, RECOMMENDED). A label, never a button.
+
+   A <span> is too generic to style globally — it is used all over running
+   prose for unrelated reasons — so Badge gets the one sanctioned class this
+   shape needs. Tone is an attribute, not a modifier class. */
+
+.badge {
+  --_bg: var(--ad-color-surface-fill);
+  --_fg: var(--ad-color-text-secondary);
+  --_border: var(--ad-color-border-hairline);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1875rem 0.5rem;
+  border: 1px solid var(--_border);
+  border-radius: var(--ad-radius-sm);
+  background: var(--_bg);
+  color: var(--_fg);
+  font-family: var(--ad-font-mono);
+  font-size: var(--ad-step--2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.badge[data-tone="accent"]  { --_bg: var(--ad-color-accent-soft);  --_fg: var(--ad-color-accent-ink);  --_border: transparent; }
+.badge[data-tone="success"] { --_bg: var(--ad-color-success-bg);   --_fg: var(--ad-color-success);      --_border: transparent; }
+.badge[data-tone="danger"]  { --_bg: var(--ad-color-danger-bg);    --_fg: var(--ad-color-danger);       --_border: transparent; }
+
+.badge-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ad-space-2xs);
+}
+
+/* Tag
+   A removable mono chip for freeform tags — locations, categories.
+   `[data-dashed]` renders an "add tag" affordance instead of a value. Same
+   reasoning as Badge: <span> is too generic to select bare, so Tag gets one
+   class. The remove control is a real <button>, styled through the
+   descendant selector rather than a class of its own. */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--ad-radius-sm);
+  background: var(--ad-color-surface-fill);
+  border: 1px solid var(--ad-color-border-default);
+  color: var(--ad-color-text-secondary);
+  font-family: var(--ad-font-mono);
+  font-size: var(--ad-step--2);
+  line-height: 1;
+}
+
+.tag[data-dashed] {
+  background: transparent;
+  border-style: dashed;
+  color: var(--ad-color-text-tertiary);
+  cursor: pointer;
+}
+
+.tag button {
+  all: unset;
+  cursor: pointer;
+  color: var(--ad-color-text-tertiary);
+  line-height: 1;
+  font-size: 0.75rem;
+}
+.tag button:hover { color: var(--ad-color-text-primary); }
+
+.tag-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+/* Card
+   Flat surface, hairline border, radius-lg. `[data-elevated]` is opt-in and
+   reserved for the one focused/primary card in a view — a dialog, the
+   primary capture card — flat is the default everywhere else.
+
+   A <div>/<article> is too generic to select bare, so Card keeps one
+   sanctioned class. When Card's job is holding a list of rows — the common
+   case, entry lists, task lists, settings rows — it is a real <ul class="
+   card">, and CardRow is a bare <li> underneath it: no second class needed,
+   the row look comes from the `.card > li` descendant selector alone. The
+   first row's top border is removed automatically so callers never have to
+   override it by hand. */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-hairline);
+  border-radius: var(--ad-radius-lg);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.card[data-elevated] { box-shadow: var(--ad-shadow-float); }
+
+.card > li {
+  display: flex;
+  align-items: center;
+  gap: var(--ad-space-xs);
+  padding: var(--ad-space-xs) var(--ad-space-s);
+  border-top: 1px solid var(--ad-color-border-hairline);
+  color: var(--ad-color-text-primary);
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step--1);
+}
+.card > li:first-child { border-top: none; }
+
+/* A row whose ENTIRE content is wrapped in a real <button> or <a> — the
+   accessible way to make a row clickable — fills the row edge-to-edge and
+   picks up a hover fill and pointer cursor. `:only-child` is what tells this
+   apart from a row that merely contains a small button among other content
+   (a leading checkbox next to a title and a trailing value, say): only a
+   button/anchor that IS the row's one and only child means "the whole row
+   is the control." */
+.card > li:has(> button:only-child),
+.card > li:has(> a:only-child) {
+  padding: 0;
+}
+.card > li > button:only-child,
+.card > li > a:only-child {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: var(--ad-space-xs);
+  width: 100%;
+  padding: var(--ad-space-xs) var(--ad-space-s);
+  box-sizing: border-box;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color var(--ad-dur-fast) var(--ad-ease);
+}
+.card > li > button:only-child:hover,
+.card > li > a:only-child:hover { background: var(--ad-color-surface-fill); }
+
+/* Documentation-only extras: a body/footer pair and a responsive grid, used
+   by the prose pages (rationale.md, index.md) to show a Card as a plain
+   content tile rather than a data row. Neither is part of Card's props —
+   they exist because a content tile's inner layout has no element of its
+   own to hang a selector on. */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ad-space-2xs);
+  padding: var(--ad-space-m);
+}
+.card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ad-space-xs);
+  margin-top: auto;
+  padding: var(--ad-space-xs) var(--ad-space-m);
+  border-top: 1px solid var(--ad-color-border-hairline);
+  background: var(--ad-color-surface-fill);
+}
+
+.card[data-link] { transition: border-color var(--ad-dur-fast) var(--ad-ease), box-shadow var(--ad-dur-fast) var(--ad-ease); }
+.card[data-link]:hover { border-color: var(--ad-color-border-default); box-shadow: var(--ad-shadow-sm); }
+.card[data-link]:focus-within { outline: 2px solid var(--ad-color-accent); outline-offset: 2px; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--ad-space-s);
+}
+
+/* Avatar — lives here because it almost never appears outside a card or a
+   row (the Loop dashboard's initials chip, Archive's file-type chip). A
+   <span> is too generic for a bare selector, so it keeps one class. */
+.avatar {
+  --_size: 1.875rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_size);
+  height: var(--_size);
+  flex: none;
+  border-radius: var(--ad-radius-full);
+  background: var(--ad-color-accent-soft);
+  color: var(--ad-color-accent-ink);
+  font-family: var(--ad-font-mono);
+  font-size: var(--ad-step--2);
+  font-weight: 600;
+  overflow: hidden;
+}
+.avatar[data-square] { border-radius: var(--ad-radius-md); background: var(--ad-color-surface-fill); color: var(--ad-color-text-secondary); border: 1px solid var(--ad-color-border-hairline); }
+.avatar[data-size="sm"] { --_size: 1.5rem; }
+.avatar[data-size="lg"] { --_size: 2.25rem; }
+
+/* Tooltip — a dark mono label on hover, positioned above the child. Pure CSS:
+   the trigger and bubble are siblings inside one relatively-positioned span,
+   shown on :hover/:focus-within so it works from the keyboard too.
+
+   `[role="tooltip"]` is the correct ARIA role for the bubble itself, so it
+   doubles as the styling hook — zero classes there. The wrapping span has no
+   attribute of its own, but it does not need one: `:has()` picks out "a span
+   that contains a [role=tooltip] bubble" precisely, without reaching for a
+   class on an otherwise-generic element. */
+span:has(> [role="tooltip"]) {
+  position: relative;
+  display: inline-flex;
+}
+
+[role="tooltip"] {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--ad-radius-sm);
+  background: var(--ad-color-text-primary);
+  color: var(--ad-color-surface-page);
+  font-family: var(--ad-font-mono);
+  /* 11px is the source's own literal choice — smaller than --ad-step--2, the
+     smallest step on the scale, because a tooltip is meant to read as a
+     glance-only aside rather than body text. */
+  font-size: 11px;
+  white-space: nowrap;
+  line-height: 1.4;
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--ad-dur-fast) var(--ad-ease);
+}
+span:has(> [role="tooltip"]):hover > [role="tooltip"],
+span:has(> [role="tooltip"]):focus-within > [role="tooltip"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Toast — the real pattern used for delete confirmations: a flat bar with an
+   optional destructive action and a dismiss. `[data-fixed]` pins it
+   bottom-right for real use; without it the toast stays in document flow for
+   documentation. `role="status"` is the correct live-region role for a
+   transient status message, so it is both the accessibility hook and the
+   style selector — no base class needed. The action and dismiss buttons are
+   plain <button>s told apart by `aria-label="Dismiss"`, an attribute they
+   need anyway for the icon-only close control. */
+[role="status"] {
+  display: flex;
+  align-items: center;
+  gap: var(--ad-space-xs);
+  min-width: 20rem;
+  padding: var(--ad-space-xs) var(--ad-space-s);
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-md);
+  box-shadow: var(--ad-shadow-float);
+  color: var(--ad-color-text-primary);
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step--2);
+}
+[role="status"][data-fixed] {
+  position: fixed;
+  inset-block-end: var(--ad-space-s);
+  inset-inline-end: var(--ad-space-s);
+  z-index: 60;
+}
+[role="status"] > span { flex: 1; }
+[role="status"] button {
+  all: unset;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ad-color-danger);
+}
+[role="status"] button[aria-label="Dismiss"] {
+  color: var(--ad-color-text-tertiary);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+}
+[role="status"] button[aria-label="Dismiss"]:hover { color: var(--ad-color-text-primary); }
+
+/* Dialog — the native <dialog> element: a centered modal, flat surface, no
+   colored header, hairline dividers between title/body/footer. A <header>
+   holds the title and a <footer> holds the actions, matching the elements
+   the tag already wants; everything else in between is the body, styled by
+   excluding those two rather than by a class of its own.
+
+   `.dialog-demo` scopes a static, always-open example to its own preview
+   container instead of the viewport, so it can sit safely inside a
+   documentation page — this is a doc-only affordance, not part of Dialog's
+   contract. It relies on the browser's own dialog centering: the UA
+   stylesheet already gives an open <dialog> `position: absolute; inset: 0;
+   margin: auto`, which centers it inside the nearest positioned ancestor —
+   here, `.dialog-demo` itself. A real `.showModal()` call gets the genuine
+   viewport-fixed overlay and `::backdrop` for free; a plain `open` attribute
+   (used here so the demo renders without JavaScript) does not paint a
+   backdrop at all, since `::backdrop` only exists for a dialog shown
+   modally — wire the real open/close state and call `.showModal()` in the
+   consuming app. */
+.dialog-demo {
+  position: relative;
+  min-height: 20rem;
+  background: var(--ad-color-surface-fill);
+  border-radius: var(--ad-radius-lg);
+}
+
+dialog {
+  width: 26rem;
+  max-width: calc(100% - (2 * var(--ad-space-s)));
+  height: fit-content;
+  padding: 0;
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-hairline);
+  border-radius: var(--ad-radius-lg);
+  box-shadow: var(--ad-shadow-float);
+  color: var(--ad-color-text-primary);
+  overflow: hidden;
+}
+dialog::backdrop {
+  background: rgba(20, 18, 14, 0.35);
+}
+dialog > header {
+  padding: var(--ad-space-s) var(--ad-space-m);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+  font-family: var(--ad-font-sans);
+  font-weight: 600;
+  font-size: var(--ad-step-0);
+  color: var(--ad-color-text-primary);
+}
+dialog > footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ad-space-2xs);
+  padding: var(--ad-space-s) var(--ad-space-m);
+  border-top: 1px solid var(--ad-color-border-hairline);
+}
+dialog > *:not(header):not(footer) {
+  padding: var(--ad-space-m);
+  margin: 0;
+  color: var(--ad-color-text-primary);
+  font-size: var(--ad-step--1);
+}
+
+/* Tabs
+   Follows the real WAI-ARIA tabs pattern: a `[role="tablist"]` of
+   `[role="tab"]` buttons controlling `[role="tabpanel"]`s. Those roles are
+   required for the pattern to be accessible in the first place, so they
+   double as the entire styling contract — no classes at all for the base
+   shape. The keyboard wiring lives in assets/js/system.js and is
+   variant-agnostic — it only cares about `[data-tabs]` / `[role=tab]`.
+
+   Two real variants: `underline` (mono, accent underline — primary section
+   nav, the default) and `segmented` (pill track, active segment lifts to the
+   surface — filters like All · Overdue · Upcoming, never primary
+   navigation), chosen with `data-variant="segmented"` on the tablist since
+   neither has a natural attribute of its own. */
+
+/* Every rule below the list container pairs [role="tablist"] with
+   [role="tab"] rather than styling [role="tab"] alone — Tab buttons are
+   still literal <button> elements, so the compound selector's extra
+   specificity is what keeps Button's base styling (button.css) from
+   winning the cascade on shared properties like padding and background. */
+
+[role="tablist"] {
+  display: flex;
+  gap: var(--ad-space-m);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+}
+[role="tablist"] [role="tab"] {
+  padding: 0.5rem 0;
+  margin-bottom: -1px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--ad-color-text-secondary);
+  font-family: var(--ad-font-mono);
+  font-size: var(--ad-step--1);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color var(--ad-dur-fast) var(--ad-ease), border-color var(--ad-dur-fast) var(--ad-ease);
+}
+[role="tablist"] [role="tab"]:hover { color: var(--ad-color-text-primary); }
+[role="tablist"] [role="tab"][aria-selected="true"] {
+  color: var(--ad-color-text-primary);
+  border-bottom-color: var(--ad-color-accent);
+}
+
+[role="tablist"][data-variant="segmented"] {
+  display: inline-flex;
+  gap: 0.125rem;
+  padding: 0.1875rem;
+  border-bottom: 0;
+  background: var(--ad-color-surface-fill);
+  border-radius: var(--ad-radius-md);
+}
+[role="tablist"][data-variant="segmented"] [role="tab"] {
+  all: unset;
+  cursor: pointer;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--ad-radius-sm);
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step--1);
+  font-weight: 550;
+  color: var(--ad-color-text-secondary);
+  transition: background-color var(--ad-dur-fast) var(--ad-ease), color var(--ad-dur-fast) var(--ad-ease);
+}
+[role="tablist"][data-variant="segmented"] [role="tab"][aria-selected="true"] {
+  color: var(--ad-color-text-primary);
+  background: var(--ad-color-surface-card);
+  box-shadow: var(--ad-shadow-sm);
+}
+
+[role="tabpanel"] { padding-top: var(--ad-space-s); }
+[role="tabpanel"][hidden] { display: none; }
+[role="tabpanel"]:focus-visible { outline-offset: 4px; }
+
+/* Documentation site chrome. Everything below the `.ad-doc-` prefix belongs
+   to this site rather than to the design system it documents — including the
+   width/height constants used directly below. The source design system
+   defines no container-width tokens at all, so there is nothing under
+   `--ad-*` for a doc shell to reach for; the Space foundation page's own
+   notes say to omit that group entirely rather than invent one. */
+
+.ad-doc-skip {
+  position: absolute;
+  inset-inline-start: var(--ad-space-xs);
+  inset-block-start: -4rem;
+  z-index: 40;
+  padding: var(--ad-space-2xs) var(--ad-space-xs);
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-sm);
+  box-shadow: var(--ad-shadow-float);
+  transition: inset-block-start var(--ad-dur-fast) var(--ad-ease);
+}
+.ad-doc-skip:focus { inset-block-start: var(--ad-space-2xs); }
+
+.ad-doc-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 30;
+  height: 3.5rem;
+  background: color-mix(in srgb, var(--ad-color-surface-page) 92%, transparent);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+}
+.ad-doc-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--ad-space-xs);
+  height: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: var(--ad-space-xs);
+}
+
+.ad-doc-wordmark {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ad-space-2xs);
+  color: var(--ad-color-text-primary);
+  text-decoration: none;
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step-0);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.ad-doc-wordmark:hover { color: var(--ad-color-text-primary); }
+.ad-doc-wordmark__mark {
+  width: 1.375rem;
+  height: 1.375rem;
+  flex: none;
+  align-self: center;
+  color: var(--ad-color-accent);
+}
+.ad-doc-wordmark__version {
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ad-color-text-tertiary);
+}
+
+.ad-doc-header__actions { margin-inline-start: auto; display: flex; align-items: center; gap: var(--ad-space-2xs); }
+
+.ad-doc-layout {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  gap: var(--ad-space-l);
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: var(--ad-space-m) var(--ad-space-xs) var(--ad-space-2xl);
+}
+
+.ad-doc-sidebar {
+  position: sticky;
+  inset-block-start: calc(3.5rem + var(--ad-space-m));
+  align-self: start;
+  max-height: calc(100vh - 3.5rem - var(--ad-space-l));
+  overflow-y: auto;
+  padding-inline-end: var(--ad-space-2xs);
+}
+.ad-doc-nav__group + .ad-doc-nav__group { margin-top: var(--ad-space-s); }
+.ad-doc-nav__heading {
+  margin-bottom: var(--ad-space-2xs);
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ad-color-text-tertiary);
+}
+.ad-doc-nav__link {
+  display: block;
+  padding: var(--ad-space-3xs) var(--ad-space-xs);
+  margin-inline-start: calc(var(--ad-space-xs) * -1);
+  border-inline-start: 2px solid transparent;
+  border-radius: 0 var(--ad-radius-sm) var(--ad-radius-sm) 0;
+  color: var(--ad-color-text-secondary);
+  font-size: var(--ad-step--1);
+  text-decoration: none;
+  transition: color var(--ad-dur-fast) var(--ad-ease),
+              background-color var(--ad-dur-fast) var(--ad-ease);
+}
+.ad-doc-nav__link:hover { color: var(--ad-color-text-primary); background: var(--ad-color-surface-fill); }
+.ad-doc-nav__link[aria-current="page"] {
+  color: var(--ad-color-accent-ink);
+  border-inline-start-color: var(--ad-color-accent);
+  background: var(--ad-color-accent-soft);
+  font-weight: 500;
+}
+
+.ad-doc-main {
+  min-width: 0;
+  /* The design system's own body-text token (--ad-step-0, 18–20px) is right
+     for a product screen but too large for long-form documentation prose.
+     This site's own copy gets a plain, fixed 16px instead — the token above
+     is unchanged, and specimen tables/demos below still show its real
+     value. */
+  font-size: 1rem;
+}
+.ad-doc-main > * { max-width: 50rem; }
+
+.ad-doc-title { margin-bottom: var(--ad-space-xs); }
+.ad-doc-title__section {
+  display: block;
+  margin-bottom: var(--ad-space-2xs);
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ad-color-accent);
+}
+
+.ad-doc-main h2 {
+  margin-block: var(--ad-space-2xl) var(--ad-space-xs);
+  padding-bottom: var(--ad-space-2xs);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+}
+.ad-doc-main h3 { margin-block: var(--ad-space-l) var(--ad-space-2xs); }
+.ad-doc-main h4 { margin-block: var(--ad-space-s) var(--ad-space-2xs); }
+.ad-doc-main p,
+.ad-doc-main ul,
+.ad-doc-main ol { max-width: 68ch; }
+.ad-doc-main ul:not([class]),
+.ad-doc-main ol:not([class]) { padding-inline-start: var(--ad-space-s); }
+
+.ad-doc-footer {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding: var(--ad-space-s) var(--ad-space-xs) var(--ad-space-l);
+  border-top: 1px solid var(--ad-color-border-hairline);
+  color: var(--ad-color-text-tertiary);
+  font-size: var(--ad-step--1);
+}
+.ad-doc-footer__inner { display: flex; flex-wrap: wrap; gap: var(--ad-space-xs); justify-content: space-between; }
+
+/* `button.ad-doc-nav-toggle` (element + class) rather than a bare class:
+   button.css's own base rule is `button:not(.icon-button)`, which is also
+   one element + one class in specificity and sets `display: inline-flex` —
+   a bare `.ad-doc-nav-toggle { display: none }` loses that fight and the
+   toggle stays visible at every width. Matching its specificity here (and
+   coming later in the concatenated stylesheet) settles it in source order. */
+button.ad-doc-nav-toggle { display: none; }
+
+@media (max-width: 60rem) {
+  .ad-doc-layout { grid-template-columns: minmax(0, 1fr); gap: var(--ad-space-s); }
+  .ad-doc-sidebar {
+    position: static;
+    max-height: none;
+  }
+  /* The toggle is a normal Button; the panel it opens gets its own card
+     treatment. Putting the same card styling on the <aside> wrapper too
+     nested a button-shaped box inside an outer box for no reason. */
+  .ad-doc-nav {
+    margin-top: var(--ad-space-xs);
+    padding: var(--ad-space-xs);
+    background: var(--ad-color-surface-card);
+    border: 1px solid var(--ad-color-border-default);
+    border-radius: var(--ad-radius-md);
+  }
+  .ad-doc-sidebar[data-collapsed="true"] > .ad-doc-nav { display: none; }
+  button.ad-doc-nav-toggle {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 34rem) {
+  .ad-doc-wordmark__version { display: none; }
+  .ad-doc-layout { padding-inline: var(--ad-space-2xs); }
+}
+
+/* The live-example figure used throughout the docs — see the "How the
+   example demos work" section on the Using the CSS page. One class on the
+   outer <figure>; everything inside is styled by plain element selectors,
+   since figcaption/div/details/summary/pre already say what they are.
+   `data-layout` and `data-surface` on the preview <div> distinguish the
+   handful of demos that need a non-default arrangement. */
+
+.example {
+  margin: var(--ad-space-s) 0 var(--ad-space-l);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-lg);
+  background: var(--ad-color-surface-card);
+  overflow: hidden;
+}
+
+.example figcaption {
+  padding: var(--ad-space-2xs) var(--ad-space-xs);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+  background: var(--ad-color-surface-fill);
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ad-color-text-secondary);
+}
+
+.example > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ad-space-xs);
+  padding: var(--ad-space-s);
+}
+/* nowrap is load-bearing: a column-direction flex container with wrap enabled
+   sizes its single line against the container rather than the content, which
+   left every stacked example with a few hundred pixels of dead space. */
+.example > div[data-layout="stack"] { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
+.example > div[data-layout="grid"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  align-items: start;
+}
+.example > div[data-surface="sunken"] { background: var(--ad-color-surface-fill); }
+.example > div > * { min-width: 0; }
+
+.example details {
+  border-top: 1px solid var(--ad-color-border-hairline);
+  background: var(--ad-color-surface-fill);
+}
+.example summary {
+  padding: var(--ad-space-2xs) var(--ad-space-xs);
+  font-size: var(--ad-step--2);
+  font-weight: 500;
+  color: var(--ad-color-text-secondary);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: var(--ad-space-2xs);
+}
+.example summary::-webkit-details-marker { display: none; }
+.example summary::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-inline-end: 1.5px solid currentColor;
+  border-block-end: 1.5px solid currentColor;
+  rotate: -45deg;
+  transition: rotate var(--ad-dur-fast) var(--ad-ease);
+}
+.example details[open] > summary::before { rotate: 45deg; }
+.example summary:hover { color: var(--ad-color-text-primary); }
+
+.example pre {
+  margin: 0;
+  padding: var(--ad-space-xs);
+  border-top: 1px solid var(--ad-color-border-hairline);
+  overflow-x: auto;
+  font-size: var(--ad-step--2);
+  line-height: 1.5;
+  tab-size: 2;
+}
+.example pre code { background: none; border: 0; padding: 0; white-space: pre; }
+
+/* Standalone fenced code blocks in the prose (unhighlighted — there is no
+   syntax highlighter in this build any more, just Kramdown's plain
+   <pre><code class="language-*">). */
+.ad-doc-main > pre {
+  margin-block: var(--ad-space-xs);
+  padding: var(--ad-space-xs);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-md);
+  background: var(--ad-color-surface-fill);
+  overflow-x: auto;
+  font-size: var(--ad-step--2);
+  line-height: 1.5;
+}
+.ad-doc-main > pre code { background: none; border: 0; padding: 0; white-space: pre; }
+
+/* Presentation for the token reference tables and swatch grids, plus a
+   generic data-table utility. All of this is documentation chrome — the
+   design system itself has no Table component (see the note on the removed
+   `table`/`progress`/`callout` pages in git history). */
+
+.ad-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: var(--ad-space-xs);
+  margin-block: var(--ad-space-xs) var(--ad-space-s);
+  padding: 0;
+  list-style: none;
+}
+.ad-swatch {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-sm);
+  overflow: hidden;
+  background: var(--ad-color-surface-card);
+}
+.ad-swatch__chip {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 4rem;
+  padding: var(--ad-space-2xs);
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+.ad-swatch__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: var(--ad-space-2xs);
+  border-top: 1px solid var(--ad-color-border-hairline);
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+}
+.ad-swatch__hex { color: var(--ad-color-text-primary); text-transform: uppercase; }
+.ad-swatch__ratio { color: var(--ad-color-text-tertiary); }
+
+.ad-alias-row { display: flex; align-items: center; gap: var(--ad-space-2xs); }
+.ad-alias-chip {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-sm);
+}
+.ad-alias-chip--pair { display: flex; }
+.ad-alias-chip--pair > span { flex: 1; }
+
+/* Type specimen rows. */
+.ad-specimen {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ad-space-3xs);
+  padding-block: var(--ad-space-xs);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+}
+.ad-specimen__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ad-space-xs);
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+  color: var(--ad-color-text-tertiary);
+}
+.ad-specimen__sample {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ad-color-text-primary);
+}
+
+/* Space and radius rulers. */
+.ad-ruler { display: flex; flex-direction: column; gap: var(--ad-space-2xs); }
+.ad-ruler__row { display: grid; grid-template-columns: 6.5rem 4.5rem 1fr; align-items: center; gap: var(--ad-space-xs); font-family: var(--ad-font-mono); font-size: 11px; }
+.ad-ruler__bar { height: 0.75rem; background: var(--ad-color-accent); border-radius: var(--ad-radius-sm); }
+.ad-ruler__num { color: var(--ad-color-text-tertiary); text-align: right; }
+
+.ad-radius-grid, .ad-elevation-grid, .ad-motion-grid, .ad-accent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: var(--ad-space-xs);
+  margin-block: var(--ad-space-xs);
+  padding: 0;
+  list-style: none;
+}
+.ad-radius-demo {
+  height: 4.5rem;
+  background: var(--ad-color-accent-soft);
+  border: 1px solid var(--ad-color-accent);
+  margin-bottom: var(--ad-space-2xs);
+}
+.ad-elevation-demo {
+  height: 4.5rem;
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-hairline);
+  border-radius: var(--ad-radius-lg);
+  margin-bottom: var(--ad-space-2xs);
+}
+.ad-motion-demo {
+  height: 4.5rem;
+  display: grid;
+  place-items: center;
+  background: var(--ad-color-surface-fill);
+  border: 1px solid var(--ad-color-border-hairline);
+  border-radius: var(--ad-radius-md);
+  margin-bottom: var(--ad-space-2xs);
+  cursor: pointer;
+  overflow: hidden;
+}
+.ad-motion-demo__dot {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: var(--ad-radius-full);
+  background: var(--ad-color-accent);
+  translate: -3rem 0;
+  transition-property: translate;
+  transition-duration: var(--ad-dur-base);
+  transition-timing-function: var(--ad-ease);
+}
+.ad-motion-demo:hover .ad-motion-demo__dot,
+.ad-motion-demo:focus-visible .ad-motion-demo__dot { translate: 3rem 0; }
+
+.ad-accent-demo {
+  height: 4.5rem;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--ad-space-2xs);
+  border-radius: var(--ad-radius-md);
+  color: #fff;
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+  margin-bottom: var(--ad-space-2xs);
+}
+
+/* Token names read `<code>` sitewide, which already carries a mono chip
+   look for running prose (see :not(pre) > code in base/typography.css).
+   Inside these specimen/swatch/ruler rows the old `.ad-token-name` class was
+   plain mono text with no chip, so `<code>` is flattened back to that look
+   here the same way table cells are. */
+.ad-swatch code, .ad-specimen code, .ad-ruler code, .ad-alias-row code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: var(--ad-step--2);
+  color: var(--ad-color-text-primary);
+  white-space: nowrap;
+}
+
+/* A documentation aside. Like `<table>`, this is site chrome for the prose
+   itself, not a system component — the real system has no Callout. */
+.ad-callout {
+  margin-block: var(--ad-space-s);
+  padding: var(--ad-space-xs) var(--ad-space-s);
+  border: 1px solid var(--ad-color-border-hairline);
+  border-left: 3px solid var(--ad-color-accent);
+  border-radius: var(--ad-radius-md);
+  background: var(--ad-color-surface-fill);
+}
+/* Generic reference tables (component APIs, alias tables, the contrast
+   contract). `<table>` IS a table — no class needed to say so. Every table
+   on this site uses the one compact density, so there is no separate
+   modifier for it. `display: block` plus `overflow-x: auto` gives the table
+   its own horizontal scrollbar on narrow viewports without a wrapper div;
+   the anonymous table box the browser generates around `<thead>`/`<tbody>`
+   still does the row/column layout. `<code>` replaces the old
+   `.ad-token-name` / `.ad-table__code` cells — it is already styled
+   sitewide, just re-flattened here to a plain mono run instead of the
+   chip-with-border look prose code gets, to match this table's original
+   look. `.num` is the one sanctioned class left, for right-aligned numeric
+   columns — there is no attribute that means "this column is a number". */
+table { width: 100%; border-collapse: collapse; font-size: var(--ad-step--1); display: block; overflow-x: auto; }
+table th, table td {
+  padding: var(--ad-space-3xs) var(--ad-space-xs);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+  text-align: left;
+  vertical-align: top;
+}
+table th { font-family: var(--ad-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ad-color-text-secondary); font-weight: 500; }
+table code { background: none; border: 0; padding: 0; font-size: var(--ad-step--2); white-space: nowrap; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Home page. */
+.ad-hero { padding-block: var(--ad-space-m) var(--ad-space-l); }
+.ad-hero__title {
+  font-size: var(--ad-step-4);
+  margin-bottom: var(--ad-space-xs);
+}
+.ad-hero__actions { display: flex; flex-wrap: wrap; gap: var(--ad-space-xs); margin-top: var(--ad-space-s); }
+.ad-stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: var(--ad-space-xs);
+  margin-block: var(--ad-space-l);
+  padding: var(--ad-space-xs);
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-default);
+  border-radius: var(--ad-radius-lg);
+}
+.ad-stat__value {
+  display: block;
+  font-family: var(--ad-font-sans);
+  font-size: var(--ad-step-2);
+  font-weight: 600;
+  line-height: 1.16;
+  font-variant-numeric: tabular-nums;
+}
+.ad-stat__label {
+  font-family: var(--ad-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ad-color-text-tertiary);
+}
+
+/* Card chrome. The pane supplies the frame; this just insets the page. */
+body { padding: var(--ad-space-l) var(--ad-space-m); }
+.ad-doc-main { max-width: 50rem; margin-inline: auto; }
+.ad-doc-main > * { max-width: none; }
+</style>
+</head>
+<body>
+<main class="ad-doc-main">
+<header class="ad-doc-title"><span class="ad-doc-title__section">Components</span>
+  <h1>Button</h1>
+</header>
+<p class="ad-lead">A flat, quiet button that recedes rather than performs — no gradients, no shine. Five variants, three sizes, one geometry.</p>
+<h2 id="variants">Variants</h2>
+
+<p><code>default</code> is bordered and neutral. <code>primary</code> is the accent fill — one
+committing action per view, at most. <code>dark</code> is reserved for the single most
+committing action in a screen, typically a final Save; it should be rare.
+<code>ghost</code> has no border or fill, for dismissals and tertiary actions. <code>danger</code>
+is destructive and irreversible only.</p>
+
+<figure class="example">
+<figcaption>Variants</figcaption>
+<div>
+<button>Cancel</button>
+<button data-variant="primary">Save</button>
+<button data-variant="dark">Finish setup</button>
+<button data-variant="ghost">Dismiss</button>
+<button data-variant="danger">Delete</button>
+</div>
+<details open=""><summary>Markup</summary>
+<pre><code>&lt;button&gt;Cancel&lt;/button&gt;
+&lt;button data-variant=&quot;primary&quot;&gt;Save&lt;/button&gt;
+&lt;button data-variant=&quot;dark&quot;&gt;Finish setup&lt;/button&gt;
+&lt;button data-variant=&quot;ghost&quot;&gt;Dismiss&lt;/button&gt;
+&lt;button data-variant=&quot;danger&quot;&gt;Delete&lt;/button&gt;</code></pre>
+</details>
+</figure>
+
+<h2 id="sizes">Sizes</h2>
+
+<p>Sizes adjust padding only — the font stays on the type scale, it does not
+grow a step of its own.</p>
+
+<figure class="example">
+<figcaption>Sizes</figcaption>
+<div>
+<button data-variant="primary" data-size="sm">Small</button>
+<button data-variant="primary">Medium</button>
+<button data-variant="primary" data-size="lg">Large</button>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;button data-variant=&quot;primary&quot; data-size=&quot;sm&quot;&gt;Small&lt;/button&gt;
+&lt;button data-variant=&quot;primary&quot;&gt;Medium&lt;/button&gt;
+&lt;button data-variant=&quot;primary&quot; data-size=&quot;lg&quot;&gt;Large&lt;/button&gt;</code></pre>
+</details>
+</figure>
+
+<h2 id="states">States</h2>
+
+<p>Disabled buttons drop to 50% opacity and keep their variant colors, so a
+disabled primary still reads as the primary.</p>
+
+<figure class="example">
+<figcaption>States</figcaption>
+<div>
+<button data-variant="primary" disabled="">Disabled</button>
+<button aria-disabled="true">Not yet available</button>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;button data-variant=&quot;primary&quot; disabled=&quot;&quot;&gt;Disabled&lt;/button&gt;
+&lt;button aria-disabled=&quot;true&quot;&gt;Not yet available&lt;/button&gt;</code></pre>
+</details>
+</figure>
+
+<div class="ad-callout">
+  <p class="type-label" style="margin-bottom: var(--ad-space-2xs); display:block;">disabled vs. aria-disabled</p>
+  <p style="margin:0; font-size: var(--ad-step--1);">
+    A <code>disabled</code> button is removed from the tab order, so a reader
+    navigating by keyboard never learns it is there. When a button is
+    temporarily unavailable and the reason matters, use
+    <code>aria-disabled="true"</code> instead — it stays focusable and can
+    carry an explanation.
+  </p>
+</div>
+
+<h2 id="with-an-icon">With an icon</h2>
+
+<p>Pass an icon as the first child. The gap is <code>--ad-space-2xs</code>, set by the
+button itself.</p>
+
+<figure class="example">
+<figcaption>Icon</figcaption>
+<div>
+<button data-variant="primary">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+  New
+</button>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;button data-variant=&quot;primary&quot;&gt;
+  &lt;svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.9&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M12 5v14M5 12h14&quot; /&gt;&lt;/svg&gt;
+  New
+&lt;/button&gt;</code></pre>
+</details>
+</figure>
+
+<h2 id="groups">Groups</h2>
+
+<p><code>[role="group"]</code> is already the correct ARIA role for a toolbar of related
+buttons, so it doubles as the styling hook — no wrapper class.</p>
+
+<figure class="example">
+<figcaption>Button group</figcaption>
+<div>
+<div role="group" aria-label="View">
+  <button data-size="sm">List</button>
+  <button data-size="sm">Board</button>
+  <button data-size="sm">Calendar</button>
+</div>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;div role=&quot;group&quot; aria-label=&quot;View&quot;&gt;
+  &lt;button data-size=&quot;sm&quot;&gt;List&lt;/button&gt;
+  &lt;button data-size=&quot;sm&quot;&gt;Board&lt;/button&gt;
+  &lt;button data-size=&quot;sm&quot;&gt;Calendar&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</details>
+</figure>
+
+<h2 id="full-width">Full width</h2>
+
+<figure class="example">
+<figcaption>Block</figcaption>
+<div data-layout="stack">
+<button data-variant="primary" data-block="">Take a photo</button>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;button data-variant=&quot;primary&quot; data-block&gt;Take a photo&lt;/button&gt;</code></pre>
+</details>
+</figure>
+
+<h2 id="links-that-act-like-buttons">Links that act like buttons</h2>
+
+<p>An <code>&lt;a&gt;</code> with <code>.btn</code> is fine when the thing it does is navigate. A <code>&lt;button&gt;</code>
+is required when it changes something. <code>.btn</code> exists only because a bare <code>a</code>
+selector would catch every ordinary prose link on the site — it is the one
+class Button needs, and only anchors reach for it.</p>
+
+<figure class="example">
+<figcaption>Anchor as button</figcaption>
+<div>
+<a class="btn" data-variant="primary" href="https://kejadlen.github.io/arbitrary-definitions-design-system/components/icon-button/">Next: IconButton</a>
+<a class="btn" data-variant="ghost" href="https://kejadlen.github.io/arbitrary-definitions-design-system/foundations/color/">Back to color</a>
+</div>
+<details><summary>Markup</summary>
+<pre><code>&lt;a class=&quot;btn&quot; data-variant=&quot;primary&quot; href=&quot;/arbitrary-definitions-design-system/components/icon-button/&quot;&gt;Next: IconButton&lt;/a&gt;
+&lt;a class=&quot;btn&quot; data-variant=&quot;ghost&quot; href=&quot;/arbitrary-definitions-design-system/foundations/color/&quot;&gt;Back to color&lt;/a&gt;</code></pre>
+</details>
+</figure>
+
+<h2 id="api">API</h2>
+
+<table>
+  <thead><tr><th scope="col">Element / attribute</th><th scope="col">Values</th><th scope="col">Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>button</code></td><td></td><td>Required base. A bare <code>&lt;button&gt;</code> is styled directly — no class. Use <code>&lt;a class="btn"&gt;</code> instead when the control navigates.</td></tr>
+    <tr><td><code>data-variant</code></td><td><code>primary | dark | ghost | danger</code></td><td>Omit for the default, bordered look.</td></tr>
+    <tr><td><code>data-size</code></td><td><code>sm | lg</code></td><td>Omit for the default (medium) size. Padding only.</td></tr>
+    <tr><td><code>data-block</code></td><td>boolean</td><td>Full width of its container.</td></tr>
+    <tr><td><code>disabled</code></td><td>boolean</td><td>Removes the button from the tab order.</td></tr>
+    <tr><td><code>aria-disabled</code></td><td><code>"true"</code></td><td>Looks disabled, stays focusable.</td></tr>
+    <tr><td><code>[role="group"]</code></td><td></td><td>Wrap adjacent buttons in a group to join their borders and radii.</td></tr>
+  </tbody>
+</table>
+</main>
+<script>
+// Behavior for the pieces of the system that need it. Everything else is
+// CSS and semantic HTML on purpose — a design system that only works with
+// JavaScript running is a component library with extra steps.
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "ad-theme";
+
+  function readStored() {
+    try {
+      return localStorage.getItem(STORAGE_KEY);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function writeStored(value) {
+    try {
+      localStorage.setItem(STORAGE_KEY, value);
+    } catch (error) {
+      /* Nothing to do — the media query still gives a sensible default. */
+    }
+  }
+
+  function systemPrefersDark() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  function currentTheme() {
+    var explicit = document.documentElement.getAttribute("data-theme");
+    if (explicit) return explicit;
+    return systemPrefersDark() ? "dark" : "light";
+  }
+
+  function paintToggle(theme) {
+    document.querySelectorAll("[data-theme-toggle]").forEach(function (toggle) {
+      var next = theme === "dark" ? "light" : "dark";
+      toggle.querySelectorAll("[data-theme-icon]").forEach(function (icon) {
+        icon.hidden = icon.dataset.themeIcon !== theme;
+      });
+      toggle.setAttribute("aria-label", "Switch to the " + next + " theme");
+      toggle.setAttribute("title", "Switch to the " + next + " theme");
+      var label = toggle.querySelector("[data-theme-label]");
+      if (label) label.textContent = "Switch to the " + next + " theme";
+    });
+  }
+
+  function setUpTheme() {
+    paintToggle(currentTheme());
+
+    document.addEventListener("click", function (event) {
+      var toggle = event.target.closest("[data-theme-toggle]");
+      if (!toggle) return;
+
+      var next = currentTheme() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      writeStored(next);
+      paintToggle(next);
+    });
+
+    // Follow the OS while the reader has not made an explicit choice.
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+      if (!readStored()) paintToggle(currentTheme());
+    });
+  }
+
+  // Tabs, wired to the WAI-ARIA authoring practices: arrows move, Home/End
+  // jump, and only the selected tab stays in the tab order.
+  function setUpTabs() {
+    document.querySelectorAll("[data-tabs]").forEach(function (root) {
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+      if (!tabs.length) return;
+
+      function select(tab, focus) {
+        tabs.forEach(function (candidate) {
+          var selected = candidate === tab;
+          candidate.setAttribute("aria-selected", String(selected));
+          candidate.tabIndex = selected ? 0 : -1;
+          var panel = document.getElementById(candidate.getAttribute("aria-controls"));
+          if (panel) panel.hidden = !selected;
+        });
+        if (focus) tab.focus();
+      }
+
+      root.addEventListener("click", function (event) {
+        var tab = event.target.closest('[role="tab"]');
+        if (tab) select(tab, false);
+      });
+
+      root.addEventListener("keydown", function (event) {
+        var index = tabs.indexOf(document.activeElement);
+        if (index === -1) return;
+
+        var next = null;
+        if (event.key === "ArrowRight") next = tabs[(index + 1) % tabs.length];
+        else if (event.key === "ArrowLeft") next = tabs[(index - 1 + tabs.length) % tabs.length];
+        else if (event.key === "Home") next = tabs[0];
+        else if (event.key === "End") next = tabs[tabs.length - 1];
+
+        if (next) {
+          event.preventDefault();
+          select(next, true);
+        }
+      });
+
+      select(tabs.filter(function (tab) {
+        return tab.getAttribute("aria-selected") === "true";
+      })[0] || tabs[0], false);
+    });
+  }
+
+  function setUpNavToggle() {
+    document.addEventListener("click", function (event) {
+      var toggle = event.target.closest("[data-nav-toggle]");
+      if (!toggle) return;
+
+      var sidebar = toggle.closest("[data-sidebar]");
+      var collapsed = sidebar.dataset.collapsed !== "false";
+      sidebar.dataset.collapsed = String(!collapsed);
+      toggle.setAttribute("aria-expanded", String(collapsed));
+    });
+  }
+
+  setUpTheme();
+  setUpTabs();
+  setUpNavToggle();
+})();
+
+</script>
+</body>
+</html>

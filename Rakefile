@@ -27,9 +27,4 @@ task :serve do
   server.start
 end
 
-desc "Build the Claude Design upload bundle into design-bundle/"
-task design: :build do
-  sh "ruby script/build_design_bundle.rb"
-end
-
 task default: :build

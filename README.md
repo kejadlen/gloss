@@ -83,38 +83,6 @@ The site's `BASEURL` is a constant in `lib/build.rb` rather than coming from
 `actions/configure-pages`, which keeps the build independent of the Pages
 API. Change it there if the site ever moves off a project page.
 
-## Claude Design
-
-`rake design` renders the bundle that Claude Design's Design System pane
-wants, into `design-bundle/`:
-
-```console
-$ bundle exec rake design
-```
-
-One card per documentation page — five foundations, sixteen components,
-two patterns — each a standalone HTML file with the compiled tokens and
-component CSS inlined and a first-line `<!-- @dsCard group="…" -->` marker
-for the pane's card index. `design-bundle/css/` carries the two compiled
-stylesheets as well, so the project holds the artifact a consumer would link
-and not only the previews.
-
-The cards are generated from `_site` by `script/build_design_bundle.rb`
-rather than written by hand, for the same reason the docs are: a second copy
-of the system maintained separately starts disagreeing with the first one
-immediately. Rebuild them whenever a token changes.
-
-Pushing the bundle needs `DesignSync`, which requires design-system
-authorization via `/design-login` — an interactive terminal, so it cannot run
-in Claude Code on the web. From a local Claude Code session:
-
-```console
-$ bundle exec rake design
-$ claude   # then: /design-login, and ask it to sync design-bundle/
-```
-
-`design-bundle/` is gitignored; it is a build artifact.
-
 ## Using the CSS elsewhere
 
 Two files, in this order, and almost no JavaScript:
