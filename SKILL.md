@@ -1,5 +1,5 @@
 ---
-name: arbitrary-definitions
+name: design-system
 description: Use this skill to build interfaces, pages, or prototypes in the Arbitrary Definitions style — a personal design system for self-hosted, single-user tools. Warm low-chroma neutrals, one swappable accent, IBM Plex Mono labels, and sixteen components built as plain HTML with no CSS class API to memorize. Use whenever a project should look like it came from the same hand as the others in this umbrella.
 user-invocable: true
 ---

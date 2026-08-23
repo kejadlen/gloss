@@ -1,0 +1,14 @@
+{
+  "name": "arbitrary-definitions",
+  "owner": {
+    "name": "kejadlen"
+  },
+  "plugins": [
+    {
+      "name": "arbitrary-definitions",
+      "source": "./",
+      "description": "Design tokens, component contracts, and voice guidance for the Arbitrary Definitions personal design system.",
+      "version": "1.0.0"
+    }
+  ]
+}

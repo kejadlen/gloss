@@ -93,16 +93,19 @@ Two files, in this order, and almost no JavaScript:
 Retheming means overriding a handful of custom properties after `tokens.css`
 loads — no recompile, no fork. See [Using the CSS](https://kejadlen.github.io/arbitrary-definitions-design-system/install/).
 
-## Claude Code skill
+## Claude Code plugin
 
-This repo doubles as a Claude Code skill — `SKILL.md` at the root, in the
-standard [Agent Skills](https://code.claude.com/docs/en/skills) format.
-Clone this repo into `.claude/skills/arbitrary-definitions/` in another
-project and Claude picks it up automatically, with the exact component
-contracts, tokens, and voice guidance to build new interfaces that look like
-they came from the same hand as this one:
+This repo is also a Claude Code plugin marketplace — `.claude-plugin/marketplace.json`
+and `.claude-plugin/plugin.json` at the root, wrapping the `SKILL.md` also at
+the root (the standard [Agent Skills](https://code.claude.com/docs/en/skills)
+format). Install it from anywhere:
 
 ```console
-$ git clone https://github.com/kejadlen/arbitrary-definitions-design-system \
-    .claude/skills/arbitrary-definitions
+$ claude
+> /plugin marketplace add kejadlen/arbitrary-definitions-design-system
+> /plugin install arbitrary-definitions@arbitrary-definitions
 ```
+
+Then invoke `/arbitrary-definitions:design-system` for the exact component
+contracts, tokens, and voice guidance to build new interfaces that look like
+they came from the same hand as this one.
