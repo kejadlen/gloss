@@ -1,0 +1,193 @@
+/* Dedicated CSS for the two reference patterns (Loop, Archive) — this is
+   what an actual project built on this system would write: real classes for
+   the page-specific shapes (an app shell, a phone frame, a status-strip
+   day), composed from the same var(--ad-*) tokens every component reads,
+   rather than hand-styling every element inline. Nothing here is a system
+   component — see _sass/components/ for those — this is what sits between
+   them on a real screen. */
+
+/* -- Loop (dashboard) ----------------------------------------------------- */
+
+.pattern-dashboard {
+  border: 1px solid var(--ad-color-border-hairline);
+  border-radius: var(--ad-radius-lg);
+  overflow: hidden;
+  background: var(--ad-color-surface-page);
+}
+.pattern-dashboard__header {
+  display: flex;
+  align-items: center;
+  gap: var(--ad-space-s);
+  padding: var(--ad-space-s) var(--ad-space-l);
+  border-bottom: 1px solid var(--ad-color-border-hairline);
+}
+.pattern-dashboard__title {
+  font-family: var(--ad-font-mono);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: var(--ad-step-0);
+}
+.pattern-dashboard__body { display: flex; }
+.pattern-dashboard__main {
+  flex: 1;
+  min-width: 0;
+  max-width: 34rem;
+  padding: var(--ad-space-l);
+}
+.pattern-dashboard__aside {
+  width: 15rem;
+  flex-shrink: 0;
+  background: var(--ad-color-surface-fill);
+  border-left: 1px solid var(--ad-color-border-hairline);
+  padding: var(--ad-space-l);
+}
+.pattern-spacer { flex: 1; }
+
+.pattern-section { margin-bottom: var(--ad-space-l); }
+.pattern-section:last-child { margin-bottom: 0; }
+.pattern-section__heading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ad-space-2xs);
+  margin-bottom: var(--ad-space-s);
+}
+
+/* A section list without Card's own border/background — the divider
+   between rows still comes from `.card > li`; only the outer frame is
+   suppressed, since the dashboard's own border already contains it. */
+.pattern-list { border: none; border-radius: 0; background: none; }
+.pattern-list li:first-child { border-top: 1px solid var(--ad-color-border-hairline); }
+
+.pattern-complete {
+  all: unset;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: 1.5px solid var(--ad-color-text-secondary);
+}
+.pattern-complete[data-tone="danger"] { border-color: var(--ad-color-danger); }
+
+.pattern-row { flex: 1; min-width: 0; }
+.pattern-row__title { font-weight: 500; }
+.pattern-row__title[data-tone="danger"] { color: var(--ad-color-danger); }
+.pattern-row__meta { color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2); }
+.pattern-row__trailing { font-size: var(--ad-step--2); white-space: nowrap; }
+.pattern-row__trailing[data-tone="danger"] { color: var(--ad-color-danger); }
+.pattern-row__trailing[data-tone="secondary"] { color: var(--ad-color-text-secondary); }
+
+.pattern-week {
+  display: flex;
+  background: var(--ad-color-surface-card);
+  border: 1px solid var(--ad-color-border-hairline);
+  border-radius: var(--ad-radius-md);
+  overflow: hidden;
+  margin-bottom: var(--ad-space-l);
+}
+.pattern-week__day {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+  border-right: 1px solid var(--ad-color-border-hairline);
+}
+.pattern-week__day:last-child { border-right: none; }
+.pattern-week__day[data-active] { background: var(--ad-color-accent-soft); }
+.pattern-week__label {
+  font-size: 9px;
+  color: var(--ad-color-text-tertiary);
+  text-transform: uppercase;
+}
+.pattern-week__value { font-size: 13px; font-weight: 600; color: var(--ad-color-text-primary); }
+.pattern-week__day[data-active] .pattern-week__value { color: var(--ad-color-accent-ink); }
+
+.pattern-aside__label { margin-bottom: var(--ad-space-s); }
+.pattern-aside__label--tight { margin-bottom: var(--ad-space-2xs); }
+
+.pattern-series-item {
+  padding: var(--ad-space-2xs) 0;
+  font-size: var(--ad-step--1);
+  color: var(--ad-color-text-secondary);
+}
+.pattern-series-item:not(:first-child) { border-top: 1px solid var(--ad-color-border-hairline); }
+
+/* -- Archive (mobile) ------------------------------------------------------ */
+
+.pattern-phone {
+  width: 300px;
+  height: 560px;
+  background: var(--ad-color-surface-page);
+  border-radius: var(--ad-radius-lg);
+  box-shadow: var(--ad-shadow-float);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.pattern-phone__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px var(--ad-space-m) var(--ad-space-2xs);
+}
+/* The home screen's app-level wordmark — one step larger than a page's own
+   contextual title next to a back button. */
+.pattern-phone__brand { font-weight: 600; font-size: var(--ad-step-1); letter-spacing: -0.01em; }
+.pattern-phone__title { font-weight: 600; font-size: var(--ad-step-0); }
+.pattern-phone__body {
+  flex: 1;
+  overflow: hidden;
+  padding: 0 var(--ad-space-m) var(--ad-space-l);
+}
+/* The home screen's list runs under a floating capture dock instead of
+   ending in its own bottom padding. */
+.pattern-phone__body--dock { padding-bottom: 0; }
+
+.pattern-list-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: var(--ad-space-s) 0 var(--ad-space-xs);
+}
+.pattern-list-heading__title { font-weight: 700; font-size: var(--ad-step-0); }
+.pattern-list-heading .type-label { margin-left: auto; }
+
+.pattern-dock {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 14px 20px 22px;
+  background: linear-gradient(to top, var(--ad-color-surface-page) 65%, transparent);
+}
+
+/* The one patterned background this system permits, and only here: an
+   empty photo slot. */
+.pattern-photo-slot {
+  height: 180px;
+  border-radius: var(--ad-radius-lg);
+  border: 1px solid var(--ad-color-border-default);
+  background: repeating-linear-gradient(45deg, transparent 0 8px, var(--ad-color-surface-fill-2) 8px 9px),
+              var(--ad-color-surface-fill);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: var(--ad-space-s);
+}
+
+.pattern-detail-title { font-weight: 700; font-size: var(--ad-step-2); letter-spacing: -0.01em; margin: var(--ad-space-xs) 0 var(--ad-space-2xs); }
+.pattern-tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: var(--ad-space-m); }
+
+.pattern-file-title { font-weight: 550; font-size: var(--ad-step--1); }
+.pattern-file-title--truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pattern-file-meta { margin-top: 2px; }
+
+.pattern-phone__footer { padding: var(--ad-space-m); display: flex; gap: var(--ad-space-2xs); }
+.pattern-phone__footer button { flex: 1; }

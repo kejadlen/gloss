@@ -54,6 +54,7 @@ CSS_FILES = %w[
   site/shell.css
   site/example.css
   site/tokens-docs.css
+  site/patterns.css
 ].freeze
 
 # [source file (absolute or relative to ROOT), url, section label for the

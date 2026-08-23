@@ -9,115 +9,116 @@ summary: >-
 Loop is not a real product — it is the system's own reference layout for a
 dense, table-ish list screen: the shape a recurring-task tracker would take
 if it were rebuilt on this token set. Every visible value below is a
-component from this system; nothing here is page-specific CSS beyond a
-couple of inline widths.
+component from this system, composed with real page-specific CSS
+(`_sass/site/patterns.css`) rather than inline styles — the same thing an
+actual project built on this system would write.
 
 <figure class="example">
 <figcaption>Loop</figcaption>
 <div data-layout="stack">
-<div style="border: 1px solid var(--ad-color-border-hairline); border-radius: var(--ad-radius-lg); overflow: hidden; background: var(--ad-color-surface-page);">
-  <header style="display:flex; align-items:center; gap: var(--ad-space-s); padding: var(--ad-space-s) var(--ad-space-l); border-bottom: 1px solid var(--ad-color-border-hairline);">
-    <span style="font-family: var(--ad-font-mono); font-weight:600; letter-spacing:0.02em; font-size: var(--ad-step-0);">Loop</span>
-    <div style="flex:1;"></div>
+<div class="pattern-dashboard">
+  <header class="pattern-dashboard__header">
+    <span class="pattern-dashboard__title">Loop</span>
+    <div class="pattern-spacer"></div>
     <button data-variant="primary" data-size="sm">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
       New
     </button>
     <span class="avatar">km</span>
   </header>
-  <div style="display:flex;">
-    <div style="flex:1; min-width:0; max-width: 34rem; padding: var(--ad-space-l);">
-      <section style="margin-bottom: var(--ad-space-l);">
-        <div style="display:flex; align-items:baseline; gap: var(--ad-space-2xs); margin-bottom: var(--ad-space-s);">
+  <div class="pattern-dashboard__body">
+    <div class="pattern-dashboard__main">
+      <section class="pattern-section">
+        <div class="pattern-section__heading">
           <span class="type-label" style="color: var(--ad-color-danger);">Overdue</span>
           <span class="badge" data-tone="danger">2</span>
         </div>
-        <ul class="card" style="border:none; border-radius:0; background:none;">
-          <li style="border-top: 1px solid var(--ad-color-border-hairline);">
-            <button aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-danger);"></button>
-            <div style="flex:1; min-width:0;">
-              <div style="font-weight:500; color: var(--ad-color-danger);">Call Mom</div>
-              <div class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">every 2 weeks</div>
+        <ul class="card pattern-list">
+          <li>
+            <button class="pattern-complete" data-tone="danger" aria-label="Complete"></button>
+            <div class="pattern-row">
+              <div class="pattern-row__title" data-tone="danger">Call Mom</div>
+              <div class="type-mono pattern-row__meta">every 2 weeks</div>
             </div>
-            <span class="type-mono" style="color: var(--ad-color-danger); font-size: var(--ad-step--2); white-space:nowrap;">3d overdue</span>
+            <span class="type-mono pattern-row__trailing" data-tone="danger">3d overdue</span>
           </li>
           <li>
-            <button aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-danger);"></button>
-            <div style="flex:1; min-width:0;">
-              <div style="font-weight:500; color: var(--ad-color-danger);">Water the ferns</div>
-              <div class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">every 5 days</div>
+            <button class="pattern-complete" data-tone="danger" aria-label="Complete"></button>
+            <div class="pattern-row">
+              <div class="pattern-row__title" data-tone="danger">Water the ferns</div>
+              <div class="type-mono pattern-row__meta">every 5 days</div>
             </div>
-            <span class="type-mono" style="color: var(--ad-color-danger); font-size: var(--ad-step--2); white-space:nowrap;">1d overdue</span>
+            <span class="type-mono pattern-row__trailing" data-tone="danger">1d overdue</span>
           </li>
         </ul>
       </section>
-      <section>
-        <div class="type-label" style="margin-bottom: var(--ad-space-s);">Upcoming</div>
-        <ul class="card" style="border:none; border-radius:0; background:none;">
-          <li style="border-top: 1px solid var(--ad-color-border-hairline);">
-            <button aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-text-secondary);"></button>
-            <div style="flex:1; min-width:0;">
-              <div style="font-weight:500;">Renew passport</div>
-              <div class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">every 10 years</div>
+      <section class="pattern-section">
+        <div class="type-label pattern-aside__label">Upcoming</div>
+        <ul class="card pattern-list">
+          <li>
+            <button class="pattern-complete" aria-label="Complete"></button>
+            <div class="pattern-row">
+              <div class="pattern-row__title">Renew passport</div>
+              <div class="type-mono pattern-row__meta">every 10 years</div>
             </div>
-            <span class="type-mono" style="color: var(--ad-color-text-secondary); font-size: var(--ad-step--2); white-space:nowrap;">in 3 months</span>
+            <span class="type-mono pattern-row__trailing" data-tone="secondary">in 3 months</span>
           </li>
           <li>
-            <button aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-text-secondary);"></button>
-            <div style="flex:1; min-width:0;">
-              <div style="font-weight:500;">Dentist checkup</div>
-              <div class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">every 6 months</div>
+            <button class="pattern-complete" aria-label="Complete"></button>
+            <div class="pattern-row">
+              <div class="pattern-row__title">Dentist checkup</div>
+              <div class="type-mono pattern-row__meta">every 6 months</div>
             </div>
-            <span class="type-mono" style="color: var(--ad-color-text-secondary); font-size: var(--ad-step--2); white-space:nowrap;">in 2 weeks</span>
+            <span class="type-mono pattern-row__trailing" data-tone="secondary">in 2 weeks</span>
           </li>
           <li>
-            <button aria-label="Complete" style="all:unset; width:18px; height:18px; border-radius:4px; flex-shrink:0; cursor:pointer; border: 1.5px solid var(--ad-color-text-secondary);"></button>
-            <div style="flex:1; min-width:0;">
-              <div style="font-weight:500;">Rotate mattress</div>
-              <div class="type-mono" style="color: var(--ad-color-text-tertiary); font-size: var(--ad-step--2);">every 6 months</div>
+            <button class="pattern-complete" aria-label="Complete"></button>
+            <div class="pattern-row">
+              <div class="pattern-row__title">Rotate mattress</div>
+              <div class="type-mono pattern-row__meta">every 6 months</div>
             </div>
-            <span class="type-mono" style="color: var(--ad-color-text-secondary); font-size: var(--ad-step--2); white-space:nowrap;">in 5 weeks</span>
+            <span class="type-mono pattern-row__trailing" data-tone="secondary">in 5 weeks</span>
           </li>
         </ul>
       </section>
     </div>
-    <aside style="width: 15rem; flex-shrink:0; background: var(--ad-color-surface-fill); border-left: 1px solid var(--ad-color-border-hairline); padding: var(--ad-space-l);">
-      <div class="type-label" style="margin-bottom: var(--ad-space-s);">This week</div>
-      <div style="display:flex; background: var(--ad-color-surface-card); border: 1px solid var(--ad-color-border-hairline); border-radius: var(--ad-radius-md); overflow:hidden; margin-bottom: var(--ad-space-l);">
-                                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  border-right: 1px solid var(--ad-color-border-hairline);">
-          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">S</span>
-          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">0</span>
+    <aside class="pattern-dashboard__aside">
+      <div class="type-label pattern-aside__label">This week</div>
+      <div class="pattern-week">
+        <div class="pattern-week__day">
+          <span class="type-mono pattern-week__label">S</span>
+          <span class="pattern-week__value">0</span>
         </div>
-                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  border-right: 1px solid var(--ad-color-border-hairline);">
-          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">M</span>
-          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">1</span>
+        <div class="pattern-week__day">
+          <span class="type-mono pattern-week__label">M</span>
+          <span class="pattern-week__value">1</span>
         </div>
-                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  border-right: 1px solid var(--ad-color-border-hairline);">
-          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">T</span>
-          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">0</span>
+        <div class="pattern-week__day">
+          <span class="type-mono pattern-week__label">T</span>
+          <span class="pattern-week__value">0</span>
         </div>
-                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0; background: var(--ad-color-accent-soft); border-right: 1px solid var(--ad-color-border-hairline);">
-          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">W</span>
-          <span style="font-size:13px; font-weight:600; color: var(--ad-color-accent-ink);">2</span>
+        <div class="pattern-week__day" data-active>
+          <span class="type-mono pattern-week__label">W</span>
+          <span class="pattern-week__value">2</span>
         </div>
-                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  border-right: 1px solid var(--ad-color-border-hairline);">
-          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">T</span>
-          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">0</span>
+        <div class="pattern-week__day">
+          <span class="type-mono pattern-week__label">T</span>
+          <span class="pattern-week__value">0</span>
         </div>
-                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  border-right: 1px solid var(--ad-color-border-hairline);">
-          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">F</span>
-          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">1</span>
+        <div class="pattern-week__day">
+          <span class="type-mono pattern-week__label">F</span>
+          <span class="pattern-week__value">1</span>
         </div>
-                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; padding: 8px 0;  ">
-          <span class="type-mono" style="font-size:9px; color: var(--ad-color-text-tertiary); text-transform:uppercase;">S</span>
-          <span style="font-size:13px; font-weight:600; color: var(--ad-color-text-primary);">0</span>
+        <div class="pattern-week__day">
+          <span class="type-mono pattern-week__label">S</span>
+          <span class="pattern-week__value">0</span>
         </div>
-              </div>
-      <div class="type-label" style="margin-bottom: var(--ad-space-2xs);">Series</div>
+      </div>
+      <div class="type-label pattern-aside__label--tight">Series</div>
       <div>
-        <div style="padding: var(--ad-space-2xs) 0; font-size: var(--ad-step--1); color: var(--ad-color-text-secondary);">Call Mom</div>
-        <div style="padding: var(--ad-space-2xs) 0; border-top: 1px solid var(--ad-color-border-hairline); font-size: var(--ad-step--1); color: var(--ad-color-text-secondary);">Water the ferns</div>
-        <div style="padding: var(--ad-space-2xs) 0; border-top: 1px solid var(--ad-color-border-hairline); font-size: var(--ad-step--1); color: var(--ad-color-text-secondary);">Renew passport</div>
+        <div class="pattern-series-item">Call Mom</div>
+        <div class="pattern-series-item">Water the ferns</div>
+        <div class="pattern-series-item">Renew passport</div>
       </div>
     </aside>
   </div>
@@ -134,7 +135,7 @@ couple of inline widths.
   <dialog open style="width: 22rem;">
     <header>New series</header>
     <div>
-      <div style="display:flex; flex-direction:column; gap: var(--ad-space-s);">
+      <div class="field-stack">
         <label class="field">
           Note
           <input placeholder="Call Mom" />
