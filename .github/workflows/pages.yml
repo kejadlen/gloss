@@ -11,24 +11,28 @@ on:
 # rather than Jekyll, so it has to build on Actions rather than GitHub's
 # hosted Jekyll build regardless — this also pins the build to Ruby 4.0
 # rather than whatever Ruby GitHub Pages uses.
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
-# Never cancel a deploy midway; queue the next one instead.
+# Default-deny; each job grants only what it needs below.
+permissions: {}
+
+# Cancel a superseded run within a PR; queue runs on the default branch so a
+# deploy is never cancelled midway.
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
+    permissions:
+      contents: read # checkout.
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
       - name: Set up Ruby 4.0
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
         with:
           # Resolves to the latest 4.0.x the runner has, so a patch release
           # does not need a commit here.
@@ -64,7 +68,7 @@ jobs:
           done
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
 
   # Requires Pages to be set to "GitHub Actions" once, under
   # Settings -> Pages -> Build and deployment. The workflow token is not
@@ -74,6 +78,9 @@ jobs:
     # Deploy from whichever branch the repository calls default, rather than a
     # hard-coded name.
     if: github.ref_name == github.event.repository.default_branch && github.event_name != 'pull_request'
+    permissions:
+      pages: write    # deploy to Pages.
+      id-token: write # OIDC token to authenticate the Pages deployment.
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -81,4 +88,18 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+
+  zizmor:
+    permissions:
+      contents: read         # checkout.
+      security-events: write # upload SARIF to code scanning.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: zizmorcore/zizmor-action@70fb788f84895a7701f5643d103d587e460b5c99 # v0.6.3
+        with:
+          advanced-security: true # emit SARIF for the security tab.
+          annotations: true
