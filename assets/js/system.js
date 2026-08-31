@@ -4,7 +4,7 @@
 (function () {
   "use strict";
 
-  var STORAGE_KEY = "ad-theme";
+  var STORAGE_KEY = "gl-theme";
 
   function readStored() {
     try {

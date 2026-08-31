@@ -19,11 +19,11 @@ span:has(> [role="tooltip"]) {
   transform: translateX(-50%);
   margin-bottom: 0.375rem;
   padding: 0.25rem 0.5rem;
-  border-radius: var(--ad-radius-sm);
-  background: var(--ad-color-text-primary);
-  color: var(--ad-color-surface-page);
-  font-family: var(--ad-font-mono);
-  /* 11px is the source's own literal choice — smaller than --ad-step--2, the
+  border-radius: var(--gl-radius-sm);
+  background: var(--gl-color-text-primary);
+  color: var(--gl-color-surface-page);
+  font-family: var(--gl-font-mono);
+  /* 11px is the source's own literal choice — smaller than --gl-step--2, the
      smallest step on the scale, because a tooltip is meant to read as a
      glance-only aside rather than body text. */
   font-size: 11px;
@@ -33,7 +33,7 @@ span:has(> [role="tooltip"]) {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--ad-dur-fast) var(--ad-ease);
+  transition: opacity var(--gl-dur-fast) var(--gl-ease);
 }
 span:has(> [role="tooltip"]):hover > [role="tooltip"],
 span:has(> [role="tooltip"]):focus-within > [role="tooltip"] {
@@ -52,21 +52,21 @@ span:has(> [role="tooltip"]):focus-within > [role="tooltip"] {
 [role="status"] {
   display: flex;
   align-items: center;
-  gap: var(--ad-space-xs);
+  gap: var(--gl-space-xs);
   min-width: 20rem;
-  padding: var(--ad-space-xs) var(--ad-space-s);
-  background: var(--ad-color-surface-card);
-  border: 1px solid var(--ad-color-border-default);
-  border-radius: var(--ad-radius-md);
-  box-shadow: var(--ad-shadow-float);
-  color: var(--ad-color-text-primary);
-  font-family: var(--ad-font-sans);
-  font-size: var(--ad-step--2);
+  padding: var(--gl-space-xs) var(--gl-space-s);
+  background: var(--gl-color-surface-card);
+  border: 1px solid var(--gl-color-border-default);
+  border-radius: var(--gl-radius-md);
+  box-shadow: var(--gl-shadow-float);
+  color: var(--gl-color-text-primary);
+  font-family: var(--gl-font-sans);
+  font-size: var(--gl-step--2);
 }
 [role="status"][data-fixed] {
   position: fixed;
-  inset-block-end: var(--ad-space-s);
-  inset-inline-end: var(--ad-space-s);
+  inset-block-end: var(--gl-space-s);
+  inset-inline-end: var(--gl-space-s);
   z-index: 60;
 }
 [role="status"] > span { flex: 1; }
@@ -74,15 +74,15 @@ span:has(> [role="tooltip"]):focus-within > [role="tooltip"] {
   all: unset;
   cursor: pointer;
   font-weight: 600;
-  color: var(--ad-color-danger);
+  color: var(--gl-color-danger);
 }
 [role="status"] button[aria-label="Dismiss"] {
-  color: var(--ad-color-text-tertiary);
+  color: var(--gl-color-text-tertiary);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1;
 }
-[role="status"] button[aria-label="Dismiss"]:hover { color: var(--ad-color-text-primary); }
+[role="status"] button[aria-label="Dismiss"]:hover { color: var(--gl-color-text-primary); }
 
 /* Dialog — the native <dialog> element: a centered modal, flat surface, no
    colored header, hairline dividers between title/body/footer. A <header>
@@ -105,43 +105,43 @@ span:has(> [role="tooltip"]):focus-within > [role="tooltip"] {
 .dialog-demo {
   position: relative;
   min-height: 20rem;
-  background: var(--ad-color-surface-fill);
-  border-radius: var(--ad-radius-lg);
+  background: var(--gl-color-surface-fill);
+  border-radius: var(--gl-radius-lg);
 }
 
 dialog {
   width: 26rem;
-  max-width: calc(100% - (2 * var(--ad-space-s)));
+  max-width: calc(100% - (2 * var(--gl-space-s)));
   height: fit-content;
   padding: 0;
-  background: var(--ad-color-surface-card);
-  border: 1px solid var(--ad-color-border-hairline);
-  border-radius: var(--ad-radius-lg);
-  box-shadow: var(--ad-shadow-float);
-  color: var(--ad-color-text-primary);
+  background: var(--gl-color-surface-card);
+  border: 1px solid var(--gl-color-border-hairline);
+  border-radius: var(--gl-radius-lg);
+  box-shadow: var(--gl-shadow-float);
+  color: var(--gl-color-text-primary);
   overflow: hidden;
 }
 dialog::backdrop {
   background: rgba(20, 18, 14, 0.35);
 }
 dialog > header {
-  padding: var(--ad-space-s) var(--ad-space-m);
-  border-bottom: 1px solid var(--ad-color-border-hairline);
-  font-family: var(--ad-font-sans);
+  padding: var(--gl-space-s) var(--gl-space-m);
+  border-bottom: 1px solid var(--gl-color-border-hairline);
+  font-family: var(--gl-font-sans);
   font-weight: 600;
-  font-size: var(--ad-step-0);
-  color: var(--ad-color-text-primary);
+  font-size: var(--gl-step-0);
+  color: var(--gl-color-text-primary);
 }
 dialog > footer {
   display: flex;
   justify-content: flex-end;
-  gap: var(--ad-space-2xs);
-  padding: var(--ad-space-s) var(--ad-space-m);
-  border-top: 1px solid var(--ad-color-border-hairline);
+  gap: var(--gl-space-2xs);
+  padding: var(--gl-space-s) var(--gl-space-m);
+  border-top: 1px solid var(--gl-color-border-hairline);
 }
 dialog > *:not(header):not(footer) {
-  padding: var(--ad-space-m);
+  padding: var(--gl-space-m);
   margin: 0;
-  color: var(--ad-color-text-primary);
-  font-size: var(--ad-step--1);
+  color: var(--gl-color-text-primary);
+  font-size: var(--gl-step--1);
 }

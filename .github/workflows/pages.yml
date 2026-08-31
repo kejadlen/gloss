@@ -49,7 +49,7 @@ jobs:
         run: |
           test -s _site/index.html
           test -s _site/assets/css/tokens.css
-          grep -q -- '--ad-color-accent:' _site/assets/css/tokens.css
+          grep -q -- '--gl-color-accent:' _site/assets/css/tokens.css
           # Every page in the nav should have been rendered.
           for page in rationale install foundations/color foundations/typography \
                       foundations/space foundations/elevation foundations/motion \

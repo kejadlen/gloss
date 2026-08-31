@@ -1,13 +1,13 @@
 {
-  "name": "arbitrary-definitions",
+  "name": "gloss",
   "owner": {
     "name": "kejadlen"
   },
   "plugins": [
     {
-      "name": "arbitrary-definitions",
+      "name": "gloss",
       "source": "./",
-      "description": "Design tokens, component contracts, and voice guidance for the Arbitrary Definitions personal design system.",
+      "description": "Design tokens, component contracts, and voice guidance for Gloss, the design system for Arbitrary Definitions projects.",
       "version": "1.0.0"
     }
   ]

@@ -30,14 +30,13 @@ VERSION = "2.0.0"
 # file to load. (The previous _config.yml also carried a `tagline` key
 # nothing ever rendered — a small config file with a dead entry is exactly
 # the kind of thing that's easy to miss when it's not just a constant.)
-TITLE       = "Arbitrary Definitions"
-DESCRIPTION = "Arbitrary Definitions is a personal design system for self-hosted, " \
-              "single-user tools — synthesized from three real running projects, not " \
-              "written from a spec. Sixteen components and five foundations, built with a " \
-              "small Ruby/ERB site builder running on Ruby 4.0."
+TITLE       = "Gloss"
+DESCRIPTION = "Gloss is the design system for Arbitrary Definitions, a personal " \
+              "umbrella of self-hosted, single-user tools. Sixteen components and five " \
+              "foundations, built with a small Ruby/ERB site builder running on Ruby 4.0."
 SITE_URL    = "https://kejadlen.github.io"
-BASEURL     = "/arbitrary-definitions-design-system"
-REPOSITORY  = "kejadlen/arbitrary-definitions-design-system"
+BASEURL     = "/gloss"
+REPOSITORY  = "kejadlen/gloss"
 LANG        = "en"
 
 # Plain CSS files, concatenated into one output bundle per named group
@@ -108,10 +107,10 @@ def render_page(source_path, url, section)
     if front["layout"] == "default"
       content_html
     else
-      title_header = section ? %(<span class="ad-doc-title__section">#{section}</span>) : ""
-      summary = front["summary"] ? %(<p class="ad-lead">#{front["summary"]}</p>\n) : ""
+      title_header = section ? %(<span class="gl-doc-title__section">#{section}</span>) : ""
+      summary = front["summary"] ? %(<p class="gl-lead">#{front["summary"]}</p>\n) : ""
       <<~HTML
-        <header class="ad-doc-title">#{title_header}
+        <header class="gl-doc-title">#{title_header}
           <h1>#{front.fetch("title")}</h1>
         </header>
         #{summary}#{content_html}

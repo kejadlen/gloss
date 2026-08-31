@@ -17,24 +17,24 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  background: var(--ad-color-surface-card);
-  border: 1px solid var(--ad-color-border-hairline);
-  border-radius: var(--ad-radius-lg);
+  background: var(--gl-color-surface-card);
+  border: 1px solid var(--gl-color-border-hairline);
+  border-radius: var(--gl-radius-lg);
   box-shadow: none;
   overflow: hidden;
 }
 
-.card[data-elevated] { box-shadow: var(--ad-shadow-float); }
+.card[data-elevated] { box-shadow: var(--gl-shadow-float); }
 
 .card > li {
   display: flex;
   align-items: center;
-  gap: var(--ad-space-xs);
-  padding: var(--ad-space-xs) var(--ad-space-s);
-  border-top: 1px solid var(--ad-color-border-hairline);
-  color: var(--ad-color-text-primary);
-  font-family: var(--ad-font-sans);
-  font-size: var(--ad-step--1);
+  gap: var(--gl-space-xs);
+  padding: var(--gl-space-xs) var(--gl-space-s);
+  border-top: 1px solid var(--gl-color-border-hairline);
+  color: var(--gl-color-text-primary);
+  font-family: var(--gl-font-sans);
+  font-size: var(--gl-step--1);
 }
 .card > li:first-child { border-top: none; }
 
@@ -54,17 +54,17 @@
   all: unset;
   display: flex;
   align-items: center;
-  gap: var(--ad-space-xs);
+  gap: var(--gl-space-xs);
   width: 100%;
-  padding: var(--ad-space-xs) var(--ad-space-s);
+  padding: var(--gl-space-xs) var(--gl-space-s);
   box-sizing: border-box;
   color: inherit;
   font: inherit;
   cursor: pointer;
-  transition: background-color var(--ad-dur-fast) var(--ad-ease);
+  transition: background-color var(--gl-dur-fast) var(--gl-ease);
 }
 .card > li > button:only-child:hover,
-.card > li > a:only-child:hover { background: var(--ad-color-surface-fill); }
+.card > li > a:only-child:hover { background: var(--gl-color-surface-fill); }
 
 /* Documentation-only extras: a body/footer pair and a responsive grid, used
    by the prose pages (rationale.md, index.md) to show a Card as a plain
@@ -74,30 +74,30 @@
 .card-body {
   display: flex;
   flex-direction: column;
-  gap: var(--ad-space-2xs);
-  padding: var(--ad-space-m);
+  gap: var(--gl-space-2xs);
+  padding: var(--gl-space-m);
 }
-.card-body h3 { margin: 0; font: 600 var(--ad-step-0)/1.3 var(--ad-font-sans); }
-.card-body p { margin: 0; color: var(--ad-color-text-secondary); font-size: var(--ad-step--1); }
+.card-body h3 { margin: 0; font: 600 var(--gl-step-0)/1.3 var(--gl-font-sans); }
+.card-body p { margin: 0; color: var(--gl-color-text-secondary); font-size: var(--gl-step--1); }
 .card-footer {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--ad-space-xs);
+  gap: var(--gl-space-xs);
   margin-top: auto;
-  padding: var(--ad-space-xs) var(--ad-space-m);
-  border-top: 1px solid var(--ad-color-border-hairline);
-  background: var(--ad-color-surface-fill);
+  padding: var(--gl-space-xs) var(--gl-space-m);
+  border-top: 1px solid var(--gl-color-border-hairline);
+  background: var(--gl-color-surface-fill);
 }
 
-.card[data-link] { transition: border-color var(--ad-dur-fast) var(--ad-ease), box-shadow var(--ad-dur-fast) var(--ad-ease); }
-.card[data-link]:hover { border-color: var(--ad-color-border-default); box-shadow: var(--ad-shadow-sm); }
-.card[data-link]:focus-within { outline: 2px solid var(--ad-color-accent); outline-offset: 2px; }
+.card[data-link] { transition: border-color var(--gl-dur-fast) var(--gl-ease), box-shadow var(--gl-dur-fast) var(--gl-ease); }
+.card[data-link]:hover { border-color: var(--gl-color-border-default); box-shadow: var(--gl-shadow-sm); }
+.card[data-link]:focus-within { outline: 2px solid var(--gl-color-accent); outline-offset: 2px; }
 
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: var(--ad-space-s);
+  gap: var(--gl-space-s);
 }
 
 /* Avatar — lives here because it almost never appears outside a card or a
@@ -112,14 +112,14 @@
   width: var(--_size);
   height: var(--_size);
   flex: none;
-  border-radius: var(--ad-radius-full);
-  background: var(--ad-color-accent-soft);
-  color: var(--ad-color-accent-ink);
-  font-family: var(--ad-font-mono);
-  font-size: var(--ad-step--2);
+  border-radius: var(--gl-radius-full);
+  background: var(--gl-color-accent-soft);
+  color: var(--gl-color-accent-ink);
+  font-family: var(--gl-font-mono);
+  font-size: var(--gl-step--2);
   font-weight: 600;
   overflow: hidden;
 }
-.avatar[data-square] { border-radius: var(--ad-radius-md); background: var(--ad-color-surface-fill); color: var(--ad-color-text-secondary); border: 1px solid var(--ad-color-border-hairline); }
+.avatar[data-square] { border-radius: var(--gl-radius-md); background: var(--gl-color-surface-fill); color: var(--gl-color-text-secondary); border: 1px solid var(--gl-color-border-hairline); }
 .avatar[data-size="sm"] { --_size: 1.5rem; }
 .avatar[data-size="lg"] { --_size: 2.25rem; }

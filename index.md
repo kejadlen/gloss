@@ -6,34 +6,35 @@ description: >-
   a small Ruby/ERB static-site generator on Ruby 4.0.
 ---
 
-<div class="ad-hero">
-  <p class="ad-overline">Design system</p>
-  <h1 class="ad-hero__title">A personal umbrella for side projects, given a shared visual spine.</h1>
-  <p class="ad-lead">
-    Arbitrary Definitions is not a company's design system — it is one
-    person's. Nothing in it is derived from a brief; every value was chosen
-    once, named, and kept consistent since. Any project under this umbrella
-    keeps its own accent color and typographic mood; this system is what
-    they all share underneath.
+<div class="gl-hero">
+  <p class="gl-overline">Design system</p>
+  <h1 class="gl-hero__title">One visual spine under a personal umbrella of side projects.</h1>
+  <p class="gl-lead">
+    Gloss is the design system for Arbitrary Definitions — a personal
+    umbrella for self-hosted, single-user tools, never a SaaS product. It is
+    not a company's design system; it is one person's. Nothing in it is
+    derived from a brief; every value was chosen once, named, and kept
+    consistent since. Any project under the umbrella keeps its own accent
+    color and typographic mood; Gloss is what they all share underneath.
   </p>
-  <div class="ad-hero__actions">
+  <div class="gl-hero__actions">
     <a class="btn" data-variant="primary" data-size="lg" href="<%= relative_url('/foundations/color/') %>">Start with color</a>
     <a class="btn" data-size="lg" href="<%= relative_url('/components/button/') %>">Jump to components</a>
   </div>
 </div>
 
-<div class="ad-stat-row">
-  <div class="ad-stat">
-    <span class="ad-stat__value">3</span>
-    <span class="ad-stat__label">Color ramps</span>
+<div class="gl-stat-row">
+  <div class="gl-stat">
+    <span class="gl-stat__value">3</span>
+    <span class="gl-stat__label">Color ramps</span>
   </div>
-  <div class="ad-stat">
-    <span class="ad-stat__value">17</span>
-    <span class="ad-stat__label">Semantic aliases</span>
+  <div class="gl-stat">
+    <span class="gl-stat__value">17</span>
+    <span class="gl-stat__label">Semantic aliases</span>
   </div>
-  <div class="ad-stat">
-    <span class="ad-stat__value">16</span>
-    <span class="ad-stat__label">Components</span>
+  <div class="gl-stat">
+    <span class="gl-stat__value">16</span>
+    <span class="gl-stat__label">Components</span>
   </div>
 </div>
 
@@ -42,7 +43,7 @@ description: >-
 `assets/css/tokens.css` is one hand-maintained, hand-readable file of CSS
 custom properties — the palette ramps, the semantic aliases, the dark theme,
 and a `prefers-reduced-motion` override. The component stylesheets read
-`var(--ad-*)` and nothing else.
+`var(--gl-*)` and nothing else.
 
 The tables and swatches on these pages are static too — transcribed once
 from the token values, not recomputed on every build. If a hex changes in
@@ -93,8 +94,8 @@ same afternoon.
     <h3>Rename the caution color</h3>
     <p>
       Three people have called it "yellow" in review this month. There is no
-      caution token in this system — only <code>--ad-color-success</code> and
-      <code>--ad-color-danger</code>, fixed across every project.
+      caution token in this system — only <code>--gl-color-success</code> and
+      <code>--gl-color-danger</code>, fixed across every project.
     </p>
   </div>
   <div class="card-footer">
@@ -113,8 +114,8 @@ same afternoon.
     &lt;h3&gt;Rename the caution color&lt;/h3&gt;
     &lt;p&gt;
       Three people have called it &quot;yellow&quot; in review this month. There is no
-      caution token in this system — only &lt;code&gt;--ad-color-success&lt;/code&gt; and
-      &lt;code&gt;--ad-color-danger&lt;/code&gt;, fixed across every project.
+      caution token in this system — only &lt;code&gt;--gl-color-success&lt;/code&gt; and
+      &lt;code&gt;--gl-color-danger&lt;/code&gt;, fixed across every project.
     &lt;/p&gt;
   &lt;/div&gt;
   &lt;div class=&quot;card-footer&quot;&gt;

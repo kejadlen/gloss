@@ -3,167 +3,167 @@
    design system itself has no Table component (see the note on the removed
    `table`/`progress`/`callout` pages in git history). */
 
-.ad-swatch-grid {
+.gl-swatch-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
-  gap: var(--ad-space-xs);
-  margin-block: var(--ad-space-xs) var(--ad-space-s);
+  gap: var(--gl-space-xs);
+  margin-block: var(--gl-space-xs) var(--gl-space-s);
   padding: 0;
   list-style: none;
 }
-.ad-swatch {
+.gl-swatch {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--ad-color-border-default);
-  border-radius: var(--ad-radius-sm);
+  border: 1px solid var(--gl-color-border-default);
+  border-radius: var(--gl-radius-sm);
   overflow: hidden;
-  background: var(--ad-color-surface-card);
+  background: var(--gl-color-surface-card);
 }
-.ad-swatch__chip {
+.gl-swatch__chip {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
   height: 4rem;
-  padding: var(--ad-space-2xs);
-  font-family: var(--ad-font-mono);
+  padding: var(--gl-space-2xs);
+  font-family: var(--gl-font-mono);
   font-size: 11px;
   font-weight: 600;
 }
-.ad-swatch__meta {
+.gl-swatch__meta {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-  padding: var(--ad-space-2xs);
-  border-top: 1px solid var(--ad-color-border-hairline);
-  font-family: var(--ad-font-mono);
+  padding: var(--gl-space-2xs);
+  border-top: 1px solid var(--gl-color-border-hairline);
+  font-family: var(--gl-font-mono);
   font-size: 11px;
 }
-.ad-swatch__hex { color: var(--ad-color-text-primary); text-transform: uppercase; }
-.ad-swatch__ratio { color: var(--ad-color-text-tertiary); }
+.gl-swatch__hex { color: var(--gl-color-text-primary); text-transform: uppercase; }
+.gl-swatch__ratio { color: var(--gl-color-text-tertiary); }
 
-.ad-alias-row { display: flex; align-items: center; gap: var(--ad-space-2xs); }
-.ad-alias-chip {
+.gl-alias-row { display: flex; align-items: center; gap: var(--gl-space-2xs); }
+.gl-alias-chip {
   width: 1.5rem;
   height: 1.5rem;
   flex: none;
-  border: 1px solid var(--ad-color-border-default);
-  border-radius: var(--ad-radius-sm);
+  border: 1px solid var(--gl-color-border-default);
+  border-radius: var(--gl-radius-sm);
 }
-.ad-alias-chip--pair { display: flex; }
-.ad-alias-chip--pair > span { flex: 1; }
+.gl-alias-chip--pair { display: flex; }
+.gl-alias-chip--pair > span { flex: 1; }
 
 /* Type specimen rows. */
-.ad-specimen {
+.gl-specimen {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--ad-space-3xs);
-  padding-block: var(--ad-space-xs);
-  border-bottom: 1px solid var(--ad-color-border-hairline);
+  gap: var(--gl-space-3xs);
+  padding-block: var(--gl-space-xs);
+  border-bottom: 1px solid var(--gl-color-border-hairline);
 }
-.ad-specimen__meta {
+.gl-specimen__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ad-space-xs);
-  font-family: var(--ad-font-mono);
+  gap: var(--gl-space-xs);
+  font-family: var(--gl-font-mono);
   font-size: 11px;
-  color: var(--ad-color-text-tertiary);
+  color: var(--gl-color-text-tertiary);
 }
-.ad-specimen__sample {
+.gl-specimen__sample {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--ad-color-text-primary);
+  color: var(--gl-color-text-primary);
 }
 
 /* Space and radius rulers. */
-.ad-ruler { display: flex; flex-direction: column; gap: var(--ad-space-2xs); }
-.ad-ruler__row { display: grid; grid-template-columns: 6.5rem 4.5rem 1fr; align-items: center; gap: var(--ad-space-xs); font-family: var(--ad-font-mono); font-size: 11px; }
-.ad-ruler__bar { height: 0.75rem; background: var(--ad-color-accent); border-radius: var(--ad-radius-sm); }
-.ad-ruler__num { color: var(--ad-color-text-tertiary); text-align: right; }
+.gl-ruler { display: flex; flex-direction: column; gap: var(--gl-space-2xs); }
+.gl-ruler__row { display: grid; grid-template-columns: 6.5rem 4.5rem 1fr; align-items: center; gap: var(--gl-space-xs); font-family: var(--gl-font-mono); font-size: 11px; }
+.gl-ruler__bar { height: 0.75rem; background: var(--gl-color-accent); border-radius: var(--gl-radius-sm); }
+.gl-ruler__num { color: var(--gl-color-text-tertiary); text-align: right; }
 
-.ad-radius-grid, .ad-elevation-grid, .ad-motion-grid, .ad-accent-grid {
+.gl-radius-grid, .gl-elevation-grid, .gl-motion-grid, .gl-accent-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
-  gap: var(--ad-space-xs);
-  margin-block: var(--ad-space-xs);
+  gap: var(--gl-space-xs);
+  margin-block: var(--gl-space-xs);
   padding: 0;
   list-style: none;
 }
-.ad-radius-demo {
+.gl-radius-demo {
   height: 4.5rem;
-  background: var(--ad-color-accent-soft);
-  border: 1px solid var(--ad-color-accent);
-  margin-bottom: var(--ad-space-2xs);
+  background: var(--gl-color-accent-soft);
+  border: 1px solid var(--gl-color-accent);
+  margin-bottom: var(--gl-space-2xs);
 }
-.ad-elevation-demo {
+.gl-elevation-demo {
   height: 4.5rem;
-  background: var(--ad-color-surface-card);
-  border: 1px solid var(--ad-color-border-hairline);
-  border-radius: var(--ad-radius-lg);
-  margin-bottom: var(--ad-space-2xs);
+  background: var(--gl-color-surface-card);
+  border: 1px solid var(--gl-color-border-hairline);
+  border-radius: var(--gl-radius-lg);
+  margin-bottom: var(--gl-space-2xs);
 }
-.ad-motion-demo {
+.gl-motion-demo {
   height: 4.5rem;
   display: grid;
   place-items: center;
-  background: var(--ad-color-surface-fill);
-  border: 1px solid var(--ad-color-border-hairline);
-  border-radius: var(--ad-radius-md);
-  margin-bottom: var(--ad-space-2xs);
+  background: var(--gl-color-surface-fill);
+  border: 1px solid var(--gl-color-border-hairline);
+  border-radius: var(--gl-radius-md);
+  margin-bottom: var(--gl-space-2xs);
   cursor: pointer;
   overflow: hidden;
 }
-.ad-motion-demo__dot {
+.gl-motion-demo__dot {
   width: 1.25rem;
   height: 1.25rem;
-  border-radius: var(--ad-radius-full);
-  background: var(--ad-color-accent);
+  border-radius: var(--gl-radius-full);
+  background: var(--gl-color-accent);
   translate: -3rem 0;
   transition-property: translate;
-  transition-duration: var(--ad-dur-base);
-  transition-timing-function: var(--ad-ease);
+  transition-duration: var(--gl-dur-base);
+  transition-timing-function: var(--gl-ease);
 }
-.ad-motion-demo:hover .ad-motion-demo__dot,
-.ad-motion-demo:focus-visible .ad-motion-demo__dot { translate: 3rem 0; }
+.gl-motion-demo:hover .gl-motion-demo__dot,
+.gl-motion-demo:focus-visible .gl-motion-demo__dot { translate: 3rem 0; }
 
-.ad-accent-demo {
+.gl-accent-demo {
   height: 4.5rem;
   display: flex;
   align-items: flex-end;
-  padding: var(--ad-space-2xs);
-  border-radius: var(--ad-radius-md);
+  padding: var(--gl-space-2xs);
+  border-radius: var(--gl-radius-md);
   color: #fff;
-  font-family: var(--ad-font-mono);
+  font-family: var(--gl-font-mono);
   font-size: 11px;
-  margin-bottom: var(--ad-space-2xs);
+  margin-bottom: var(--gl-space-2xs);
 }
 
 /* Token names read `<code>` sitewide, which already carries a mono chip
    look for running prose (see :not(pre) > code in base/typography.css).
-   Inside these specimen/swatch/ruler rows the old `.ad-token-name` class was
+   Inside these specimen/swatch/ruler rows the old `.gl-token-name` class was
    plain mono text with no chip, so `<code>` is flattened back to that look
    here the same way table cells are. */
-.ad-swatch code, .ad-specimen code, .ad-ruler code, .ad-alias-row code {
+.gl-swatch code, .gl-specimen code, .gl-ruler code, .gl-alias-row code {
   background: none;
   border: 0;
   padding: 0;
-  font-size: var(--ad-step--2);
-  color: var(--ad-color-text-primary);
+  font-size: var(--gl-step--2);
+  color: var(--gl-color-text-primary);
   white-space: nowrap;
 }
 
 /* A documentation aside. Like `<table>`, this is site chrome for the prose
    itself, not a system component — the real system has no Callout. */
-.ad-callout {
-  margin-block: var(--ad-space-s);
-  padding: var(--ad-space-xs) var(--ad-space-s);
-  border: 1px solid var(--ad-color-border-hairline);
-  border-left: 3px solid var(--ad-color-accent);
-  border-radius: var(--ad-radius-md);
-  background: var(--ad-color-surface-fill);
+.gl-callout {
+  margin-block: var(--gl-space-s);
+  padding: var(--gl-space-xs) var(--gl-space-s);
+  border: 1px solid var(--gl-color-border-hairline);
+  border-left: 3px solid var(--gl-color-accent);
+  border-radius: var(--gl-radius-md);
+  background: var(--gl-color-surface-fill);
 }
-.ad-callout p { margin: 0; font-size: var(--ad-step--1); }
-.ad-callout .type-label { display: block; margin-bottom: var(--ad-space-2xs); }
+.gl-callout p { margin: 0; font-size: var(--gl-step--1); }
+.gl-callout .type-label { display: block; margin-bottom: var(--gl-space-2xs); }
 /* Generic reference tables (component APIs, alias tables, the contrast
    contract). `<table>` IS a table — no class needed to say so. Every table
    on this site uses the one compact density, so there is no separate
@@ -171,51 +171,51 @@
    its own horizontal scrollbar on narrow viewports without a wrapper div;
    the anonymous table box the browser generates around `<thead>`/`<tbody>`
    still does the row/column layout. `<code>` replaces the old
-   `.ad-token-name` / `.ad-table__code` cells — it is already styled
+   `.gl-token-name` / `.gl-table__code` cells — it is already styled
    sitewide, just re-flattened here to a plain mono run instead of the
    chip-with-border look prose code gets, to match this table's original
    look. `.num` is the one sanctioned class left, for right-aligned numeric
    columns — there is no attribute that means "this column is a number". */
-table { width: 100%; border-collapse: collapse; font-size: var(--ad-step--1); display: block; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: var(--gl-step--1); display: block; overflow-x: auto; }
 table th, table td {
-  padding: var(--ad-space-3xs) var(--ad-space-xs);
-  border-bottom: 1px solid var(--ad-color-border-hairline);
+  padding: var(--gl-space-3xs) var(--gl-space-xs);
+  border-bottom: 1px solid var(--gl-color-border-hairline);
   text-align: left;
   vertical-align: top;
 }
-table th { font-family: var(--ad-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ad-color-text-secondary); font-weight: 500; }
-table code { background: none; border: 0; padding: 0; font-size: var(--ad-step--2); white-space: nowrap; }
+table th { font-family: var(--gl-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gl-color-text-secondary); font-weight: 500; }
+table code { background: none; border: 0; padding: 0; font-size: var(--gl-step--2); white-space: nowrap; }
 .num { text-align: right; font-variant-numeric: tabular-nums; }
 
 /* Home page. */
-.ad-hero { padding-block: var(--ad-space-m) var(--ad-space-l); }
-.ad-hero__title {
-  font-size: var(--ad-step-4);
-  margin-bottom: var(--ad-space-xs);
+.gl-hero { padding-block: var(--gl-space-m) var(--gl-space-l); }
+.gl-hero__title {
+  font-size: var(--gl-step-4);
+  margin-bottom: var(--gl-space-xs);
 }
-.ad-hero__actions { display: flex; flex-wrap: wrap; gap: var(--ad-space-xs); margin-top: var(--ad-space-s); }
-.ad-stat-row {
+.gl-hero__actions { display: flex; flex-wrap: wrap; gap: var(--gl-space-xs); margin-top: var(--gl-space-s); }
+.gl-stat-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-  gap: var(--ad-space-xs);
-  margin-block: var(--ad-space-l);
-  padding: var(--ad-space-xs);
-  background: var(--ad-color-surface-card);
-  border: 1px solid var(--ad-color-border-default);
-  border-radius: var(--ad-radius-lg);
+  gap: var(--gl-space-xs);
+  margin-block: var(--gl-space-l);
+  padding: var(--gl-space-xs);
+  background: var(--gl-color-surface-card);
+  border: 1px solid var(--gl-color-border-default);
+  border-radius: var(--gl-radius-lg);
 }
-.ad-stat__value {
+.gl-stat__value {
   display: block;
-  font-family: var(--ad-font-sans);
-  font-size: var(--ad-step-2);
+  font-family: var(--gl-font-sans);
+  font-size: var(--gl-step-2);
   font-weight: 600;
   line-height: 1.16;
   font-variant-numeric: tabular-nums;
 }
-.ad-stat__label {
-  font-family: var(--ad-font-mono);
+.gl-stat__label {
+  font-family: var(--gl-font-mono);
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ad-color-text-tertiary);
+  color: var(--gl-color-text-tertiary);
 }

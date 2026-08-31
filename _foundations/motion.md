@@ -15,12 +15,12 @@ easing, no page-transition choreography.
     <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use for</th></tr></thead>
     <tbody>
       <tr>
-        <td><code>--ad-dur-fast</code></td>
+        <td><code>--gl-dur-fast</code></td>
         <td><code>0.12s</code></td>
         <td>Hover and focus color/border transitions — the default.</td>
       </tr>
       <tr>
-        <td><code>--ad-dur-base</code></td>
+        <td><code>--gl-dur-base</code></td>
         <td><code>0.16s</code></td>
         <td>Switch track and thumb — the one moving part in the system.</td>
       </tr>
@@ -31,13 +31,13 @@ easing, no page-transition choreography.
 
 There is exactly one curve in the system. Hover the tile below to run it.
 
-<ul class="ad-motion-grid">
+<ul class="gl-motion-grid">
   <li>
-    <div class="ad-motion-demo" tabindex="0">
-      <span class="ad-motion-demo__dot"></span>
+    <div class="gl-motion-demo" tabindex="0">
+      <span class="gl-motion-demo__dot"></span>
     </div>
-    <div class="ad-specimen__meta"><code>--ad-ease</code></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">The only easing curve in the system. Fast out, settles gently, applied to every transition.</p>
+    <div class="gl-specimen__meta"><code>--gl-ease</code></div>
+    <p class="gl-muted" style="font-size: var(--gl-step--2); margin: var(--gl-space-3xs) 0 0;">The only easing curve in the system. Fast out, settles gently, applied to every transition.</p>
   </li>
 </ul>
 
@@ -51,8 +51,8 @@ have to opt in, and cannot opt out.
 ```css
 @media (prefers-reduced-motion: reduce) {
   :root {
-    --ad-dur-fast: 0ms;
-    --ad-dur-base: 0ms;
+    --gl-dur-fast: 0ms;
+    --gl-dur-base: 0ms;
   }
 }
 ```

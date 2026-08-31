@@ -70,7 +70,7 @@ patterns for it in context).
       <div style="font-weight: 550;">Dishwasher manual</div>
       <div class="type-label" style="margin-top: 2px;">PDF · 2.1MB</div>
     </div>
-    <span class="type-mono" style="color: var(--ad-color-text-tertiary);">2h</span>
+    <span class="type-mono" style="color: var(--gl-color-text-tertiary);">2h</span>
   </li>
 </ul>
 </div>
@@ -84,7 +84,7 @@ patterns for it in context).
       &lt;div style=&quot;font-weight: 550;&quot;&gt;Dishwasher manual&lt;/div&gt;
       &lt;div class=&quot;type-label&quot; style=&quot;margin-top: 2px;&quot;&gt;PDF · 2.1MB&lt;/div&gt;
     &lt;/div&gt;
-    &lt;span class=&quot;type-mono&quot; style=&quot;color: var(--ad-color-text-tertiary);&quot;&gt;2h&lt;/span&gt;
+    &lt;span class=&quot;type-mono&quot; style=&quot;color: var(--gl-color-text-tertiary);&quot;&gt;2h&lt;/span&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 </details>

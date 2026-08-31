@@ -30,7 +30,7 @@ actual project built on this system would write.
     <div class="pattern-dashboard__main">
       <section class="pattern-section">
         <div class="pattern-section__heading">
-          <span class="type-label" style="color: var(--ad-color-danger);">Overdue</span>
+          <span class="type-label" style="color: var(--gl-color-danger);">Overdue</span>
           <span class="badge" data-tone="danger">2</span>
         </div>
         <ul class="card pattern-list">
@@ -178,11 +178,11 @@ actual project built on this system would write.
 
 - **Dense rows next to a mono meta column.** A recurring-task list is
   fundamentally tabular even though it never touches an actual `<table>`.
-- **Overdue in `--ad-color-danger`, everywhere at once.** Row text, the
+- **Overdue in `--gl-color-danger`, everywhere at once.** Row text, the
   complete-button border, and the trailing meta all pick it up from the same
   `overdue` state — color never drifts row to row.
 - **One primary action.** `New` is the only accent-filled control on screen;
   everything else is neutral or bordered.
 - **Accent used exactly once, decoratively.** The "km" avatar and the
-  highlighted day both use `--ad-color-accent-soft` / `-ink` — never the raw
+  highlighted day both use `--gl-color-accent-soft` / `-ink` — never the raw
   accent fill outside of `New`.

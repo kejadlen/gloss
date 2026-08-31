@@ -49,13 +49,13 @@ from the OS — the toggle UI on every page depends on this exact mechanism.
 Both repoint the same semantic aliases at the inverted neutral ramp.
 
 ```css
-:root { --ad-color-surface-page: #faf9f7; }
+:root { --gl-color-surface-page: #faf9f7; }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --ad-color-surface-page: #0e0d0b; }
+  :root:not([data-theme="light"]) { --gl-color-surface-page: #0e0d0b; }
 }
 
-:root[data-theme="dark"] { --ad-color-surface-page: #0e0d0b; }
+:root[data-theme="dark"] { --gl-color-surface-page: #0e0d0b; }
 ```
 
 To wire up your own toggle, set or clear `data-theme` on `<html>` and persist
@@ -66,16 +66,16 @@ flash the wrong theme before your bundle runs.
 
 Because every component reads an alias, retheming is a matter of repointing
 a handful of custom properties after the token file loads — most of all,
-`--ad-color-accent`, which `-ink` and `-soft` re-derive from automatically via
+`--gl-color-accent`, which `-ink` and `-soft` re-derive from automatically via
 `color-mix()`.
 
 ```css
 :root {
-  --ad-color-accent: #9a5a3c; /* Clay */
+  --gl-color-accent: #9a5a3c; /* Clay */
 }
 ```
 
-<div class="ad-callout">
+<div class="gl-callout">
   <p>
     Re-check contrast after retheming. The system's contrast guarantees on
     the <a href="<%= relative_url('/foundations/color/') %>">Color page</a>

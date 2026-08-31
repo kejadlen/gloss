@@ -1,8 +1,8 @@
 {
-  "name": "arbitrary-definitions",
-  "displayName": "Arbitrary Definitions",
-  "description": "Design tokens, component contracts, and voice guidance for the Arbitrary Definitions personal design system — bare-element markup, one swappable accent, IBM Plex Mono labels, no CSS class API to memorize.",
+  "name": "gloss",
+  "displayName": "Gloss",
+  "description": "Design tokens, component contracts, and voice guidance for Gloss, the design system for Arbitrary Definitions projects — bare-element markup, one swappable accent, IBM Plex Mono labels, no CSS class API to memorize.",
   "version": "1.0.0",
-  "homepage": "https://kejadlen.github.io/arbitrary-definitions-design-system/",
-  "repository": "https://github.com/kejadlen/arbitrary-definitions-design-system"
+  "homepage": "https://kejadlen.github.io/gloss/",
+  "repository": "https://github.com/kejadlen/gloss"
 }

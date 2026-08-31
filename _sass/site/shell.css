@@ -1,190 +1,190 @@
-/* Documentation site chrome. Everything below the `.ad-doc-` prefix belongs
+/* Documentation site chrome. Everything below the `.gl-doc-` prefix belongs
    to this site rather than to the design system it documents — including the
    width/height constants used directly below. The source design system
    defines no container-width tokens at all, so there is nothing under
-   `--ad-*` for a doc shell to reach for; the Space foundation page's own
+   `--gl-*` for a doc shell to reach for; the Space foundation page's own
    notes say to omit that group entirely rather than invent one. */
 
-.ad-doc-skip {
+.gl-doc-skip {
   position: absolute;
-  inset-inline-start: var(--ad-space-xs);
+  inset-inline-start: var(--gl-space-xs);
   inset-block-start: -4rem;
   z-index: 40;
-  padding: var(--ad-space-2xs) var(--ad-space-xs);
-  background: var(--ad-color-surface-card);
-  border: 1px solid var(--ad-color-border-default);
-  border-radius: var(--ad-radius-sm);
-  box-shadow: var(--ad-shadow-float);
-  transition: inset-block-start var(--ad-dur-fast) var(--ad-ease);
+  padding: var(--gl-space-2xs) var(--gl-space-xs);
+  background: var(--gl-color-surface-card);
+  border: 1px solid var(--gl-color-border-default);
+  border-radius: var(--gl-radius-sm);
+  box-shadow: var(--gl-shadow-float);
+  transition: inset-block-start var(--gl-dur-fast) var(--gl-ease);
 }
-.ad-doc-skip:focus { inset-block-start: var(--ad-space-2xs); }
+.gl-doc-skip:focus { inset-block-start: var(--gl-space-2xs); }
 
-.ad-doc-header {
+.gl-doc-header {
   position: sticky;
   inset-block-start: 0;
   z-index: 30;
   height: 3.5rem;
-  background: color-mix(in srgb, var(--ad-color-surface-page) 92%, transparent);
-  border-bottom: 1px solid var(--ad-color-border-hairline);
+  background: color-mix(in srgb, var(--gl-color-surface-page) 92%, transparent);
+  border-bottom: 1px solid var(--gl-color-border-hairline);
 }
-.ad-doc-header__inner {
+.gl-doc-header__inner {
   display: flex;
   align-items: center;
-  gap: var(--ad-space-xs);
+  gap: var(--gl-space-xs);
   height: 100%;
   max-width: 72rem;
   margin-inline: auto;
-  padding-inline: var(--ad-space-xs);
+  padding-inline: var(--gl-space-xs);
 }
 
-.ad-doc-wordmark {
+.gl-doc-wordmark {
   display: flex;
   align-items: baseline;
-  gap: var(--ad-space-2xs);
-  color: var(--ad-color-text-primary);
+  gap: var(--gl-space-2xs);
+  color: var(--gl-color-text-primary);
   text-decoration: none;
-  font-family: var(--ad-font-sans);
-  font-size: var(--ad-step-0);
+  font-family: var(--gl-font-sans);
+  font-size: var(--gl-step-0);
   font-weight: 600;
   letter-spacing: -0.01em;
   white-space: nowrap;
 }
-.ad-doc-wordmark:hover { color: var(--ad-color-text-primary); }
-.ad-doc-wordmark__mark {
+.gl-doc-wordmark:hover { color: var(--gl-color-text-primary); }
+.gl-doc-wordmark__mark {
   width: 1.375rem;
   height: 1.375rem;
   flex: none;
   align-self: center;
-  color: var(--ad-color-accent);
+  color: var(--gl-color-accent);
 }
-.ad-doc-wordmark__version {
-  font-family: var(--ad-font-mono);
+.gl-doc-wordmark__version {
+  font-family: var(--gl-font-mono);
   font-size: 11px;
   font-weight: 400;
-  color: var(--ad-color-text-tertiary);
+  color: var(--gl-color-text-tertiary);
 }
 
-.ad-doc-header__actions { margin-inline-start: auto; display: flex; align-items: center; gap: var(--ad-space-2xs); }
+.gl-doc-header__actions { margin-inline-start: auto; display: flex; align-items: center; gap: var(--gl-space-2xs); }
 
-.ad-doc-layout {
+.gl-doc-layout {
   display: grid;
   grid-template-columns: 16rem minmax(0, 1fr);
-  gap: var(--ad-space-l);
+  gap: var(--gl-space-l);
   max-width: 72rem;
   margin-inline: auto;
-  padding: var(--ad-space-m) var(--ad-space-xs) var(--ad-space-2xl);
+  padding: var(--gl-space-m) var(--gl-space-xs) var(--gl-space-2xl);
 }
 
-.ad-doc-sidebar {
+.gl-doc-sidebar {
   position: sticky;
-  inset-block-start: calc(3.5rem + var(--ad-space-m));
+  inset-block-start: calc(3.5rem + var(--gl-space-m));
   align-self: start;
-  max-height: calc(100vh - 3.5rem - var(--ad-space-l));
+  max-height: calc(100vh - 3.5rem - var(--gl-space-l));
   overflow-y: auto;
-  padding-inline-end: var(--ad-space-2xs);
+  padding-inline-end: var(--gl-space-2xs);
 }
-.ad-doc-nav__group + .ad-doc-nav__group { margin-top: var(--ad-space-s); }
-.ad-doc-nav__heading {
-  margin-bottom: var(--ad-space-2xs);
-  font-family: var(--ad-font-mono);
+.gl-doc-nav__group + .gl-doc-nav__group { margin-top: var(--gl-space-s); }
+.gl-doc-nav__heading {
+  margin-bottom: var(--gl-space-2xs);
+  font-family: var(--gl-font-mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ad-color-text-tertiary);
+  color: var(--gl-color-text-tertiary);
 }
-.ad-doc-nav__link {
+.gl-doc-nav__link {
   display: block;
-  padding: var(--ad-space-3xs) var(--ad-space-xs);
-  margin-inline-start: calc(var(--ad-space-xs) * -1);
+  padding: var(--gl-space-3xs) var(--gl-space-xs);
+  margin-inline-start: calc(var(--gl-space-xs) * -1);
   border-inline-start: 2px solid transparent;
-  border-radius: 0 var(--ad-radius-sm) var(--ad-radius-sm) 0;
-  color: var(--ad-color-text-secondary);
-  font-size: var(--ad-step--1);
+  border-radius: 0 var(--gl-radius-sm) var(--gl-radius-sm) 0;
+  color: var(--gl-color-text-secondary);
+  font-size: var(--gl-step--1);
   text-decoration: none;
-  transition: color var(--ad-dur-fast) var(--ad-ease),
-              background-color var(--ad-dur-fast) var(--ad-ease);
+  transition: color var(--gl-dur-fast) var(--gl-ease),
+              background-color var(--gl-dur-fast) var(--gl-ease);
 }
-.ad-doc-nav__link:hover { color: var(--ad-color-text-primary); background: var(--ad-color-surface-fill); }
-.ad-doc-nav__link[aria-current="page"] {
-  color: var(--ad-color-accent-ink);
-  border-inline-start-color: var(--ad-color-accent);
-  background: var(--ad-color-accent-soft);
+.gl-doc-nav__link:hover { color: var(--gl-color-text-primary); background: var(--gl-color-surface-fill); }
+.gl-doc-nav__link[aria-current="page"] {
+  color: var(--gl-color-accent-ink);
+  border-inline-start-color: var(--gl-color-accent);
+  background: var(--gl-color-accent-soft);
   font-weight: 500;
 }
 
-.ad-doc-main {
+.gl-doc-main {
   min-width: 0;
-  /* The design system's own body-text token (--ad-step-0, 18–20px) is right
+  /* The design system's own body-text token (--gl-step-0, 18–20px) is right
      for a product screen but too large for long-form documentation prose.
      This site's own copy gets a plain, fixed 16px instead — the token above
      is unchanged, and specimen tables/demos below still show its real
      value. */
   font-size: 1rem;
 }
-.ad-doc-main > * { max-width: 50rem; }
+.gl-doc-main > * { max-width: 50rem; }
 
-.ad-doc-title { margin-bottom: var(--ad-space-xs); }
-.ad-doc-title__section {
+.gl-doc-title { margin-bottom: var(--gl-space-xs); }
+.gl-doc-title__section {
   display: block;
-  margin-bottom: var(--ad-space-2xs);
-  font-family: var(--ad-font-mono);
+  margin-bottom: var(--gl-space-2xs);
+  font-family: var(--gl-font-mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ad-color-accent);
+  color: var(--gl-color-accent);
 }
 
-.ad-doc-main h2 {
-  margin-block: var(--ad-space-2xl) var(--ad-space-xs);
-  padding-bottom: var(--ad-space-2xs);
-  border-bottom: 1px solid var(--ad-color-border-hairline);
+.gl-doc-main h2 {
+  margin-block: var(--gl-space-2xl) var(--gl-space-xs);
+  padding-bottom: var(--gl-space-2xs);
+  border-bottom: 1px solid var(--gl-color-border-hairline);
 }
-.ad-doc-main h3 { margin-block: var(--ad-space-l) var(--ad-space-2xs); }
-.ad-doc-main h4 { margin-block: var(--ad-space-s) var(--ad-space-2xs); }
-.ad-doc-main p,
-.ad-doc-main ul,
-.ad-doc-main ol { max-width: 68ch; }
-.ad-doc-main ul:not([class]),
-.ad-doc-main ol:not([class]) { padding-inline-start: var(--ad-space-s); }
+.gl-doc-main h3 { margin-block: var(--gl-space-l) var(--gl-space-2xs); }
+.gl-doc-main h4 { margin-block: var(--gl-space-s) var(--gl-space-2xs); }
+.gl-doc-main p,
+.gl-doc-main ul,
+.gl-doc-main ol { max-width: 68ch; }
+.gl-doc-main ul:not([class]),
+.gl-doc-main ol:not([class]) { padding-inline-start: var(--gl-space-s); }
 
-.ad-doc-footer {
+.gl-doc-footer {
   max-width: 72rem;
   margin-inline: auto;
-  padding: var(--ad-space-s) var(--ad-space-xs) var(--ad-space-l);
-  border-top: 1px solid var(--ad-color-border-hairline);
-  color: var(--ad-color-text-tertiary);
-  font-size: var(--ad-step--1);
+  padding: var(--gl-space-s) var(--gl-space-xs) var(--gl-space-l);
+  border-top: 1px solid var(--gl-color-border-hairline);
+  color: var(--gl-color-text-tertiary);
+  font-size: var(--gl-step--1);
 }
-.ad-doc-footer__inner { display: flex; flex-wrap: wrap; gap: var(--ad-space-xs); justify-content: space-between; }
+.gl-doc-footer__inner { display: flex; flex-wrap: wrap; gap: var(--gl-space-xs); justify-content: space-between; }
 
-/* `button.ad-doc-nav-toggle` (element + class) rather than a bare class:
+/* `button.gl-doc-nav-toggle` (element + class) rather than a bare class:
    button.css's own base rule is `button:not(.icon-button)`, which is also
    one element + one class in specificity and sets `display: inline-flex` —
-   a bare `.ad-doc-nav-toggle { display: none }` loses that fight and the
+   a bare `.gl-doc-nav-toggle { display: none }` loses that fight and the
    toggle stays visible at every width. Matching its specificity here (and
    coming later in the concatenated stylesheet) settles it in source order. */
-button.ad-doc-nav-toggle { display: none; }
+button.gl-doc-nav-toggle { display: none; }
 
 @media (max-width: 60rem) {
-  .ad-doc-layout { grid-template-columns: minmax(0, 1fr); gap: var(--ad-space-s); }
-  .ad-doc-sidebar {
+  .gl-doc-layout { grid-template-columns: minmax(0, 1fr); gap: var(--gl-space-s); }
+  .gl-doc-sidebar {
     position: static;
     max-height: none;
   }
   /* The toggle is a normal Button; the panel it opens gets its own card
      treatment. Putting the same card styling on the <aside> wrapper too
      nested a button-shaped box inside an outer box for no reason. */
-  .ad-doc-nav {
-    margin-top: var(--ad-space-xs);
-    padding: var(--ad-space-xs);
-    background: var(--ad-color-surface-card);
-    border: 1px solid var(--ad-color-border-default);
-    border-radius: var(--ad-radius-md);
+  .gl-doc-nav {
+    margin-top: var(--gl-space-xs);
+    padding: var(--gl-space-xs);
+    background: var(--gl-color-surface-card);
+    border: 1px solid var(--gl-color-border-default);
+    border-radius: var(--gl-radius-md);
   }
-  .ad-doc-sidebar[data-collapsed="true"] > .ad-doc-nav { display: none; }
-  button.ad-doc-nav-toggle {
+  .gl-doc-sidebar[data-collapsed="true"] > .gl-doc-nav { display: none; }
+  button.gl-doc-nav-toggle {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -192,6 +192,6 @@ button.ad-doc-nav-toggle { display: none; }
 }
 
 @media (max-width: 34rem) {
-  .ad-doc-wordmark__version { display: none; }
-  .ad-doc-layout { padding-inline: var(--ad-space-2xs); }
+  .gl-doc-wordmark__version { display: none; }
+  .gl-doc-layout { padding-inline: var(--gl-space-2xs); }
 }

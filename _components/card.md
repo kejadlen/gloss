@@ -14,12 +14,12 @@ screen — never a whole grid of cards at once.
 <figure class="example">
 <figcaption>Flat and elevated</figcaption>
 <div data-surface="sunken">
-<div class="card" style="width: 14rem; padding: var(--ad-space-s);">Flat — the default.</div>
-<div class="card" data-elevated style="width: 14rem; padding: var(--ad-space-s);">Elevated — one per view.</div>
+<div class="card" style="width: 14rem; padding: var(--gl-space-s);">Flat — the default.</div>
+<div class="card" data-elevated style="width: 14rem; padding: var(--gl-space-s);">Elevated — one per view.</div>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;div class=&quot;card&quot; style=&quot;width: 14rem; padding: var(--ad-space-s);&quot;&gt;Flat — the default.&lt;/div&gt;
-&lt;div class=&quot;card&quot; data-elevated style=&quot;width: 14rem; padding: var(--ad-space-s);&quot;&gt;Elevated — one per view.&lt;/div&gt;</code></pre>
+<pre><code>&lt;div class=&quot;card&quot; style=&quot;width: 14rem; padding: var(--gl-space-s);&quot;&gt;Flat — the default.&lt;/div&gt;
+&lt;div class=&quot;card&quot; data-elevated style=&quot;width: 14rem; padding: var(--gl-space-s);&quot;&gt;Elevated — one per view.&lt;/div&gt;</code></pre>
 </details>
 </figure>
 
@@ -91,7 +91,7 @@ li` descendant selector, no second class needed.
   <thead><tr><th scope="col">Element / attribute</th><th scope="col">Values</th><th scope="col">Notes</th></tr></thead>
   <tbody>
     <tr><td><code>.card</code></td><td></td><td>Required base, on a <code>&lt;div&gt;</code>/<code>&lt;article&gt;</code> for a standalone tile or a <code>&lt;ul&gt;</code> for a list of rows.</td></tr>
-    <tr><td><code>data-elevated</code></td><td>boolean</td><td>Applies <code>--ad-shadow-float</code>. One per view.</td></tr>
+    <tr><td><code>data-elevated</code></td><td>boolean</td><td>Applies <code>--gl-shadow-float</code>. One per view.</td></tr>
     <tr><td><code>&gt; li</code></td><td></td><td>A CardRow, when Card is a <code>&lt;ul&gt;</code>. See <a href="<%= relative_url('/components/card-row/') %>">CardRow</a>.</td></tr>
   </tbody>
 </table>

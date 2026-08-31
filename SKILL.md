@@ -1,6 +1,6 @@
 ---
 name: design-system
-description: Use this skill to build interfaces, pages, or prototypes in the Arbitrary Definitions style — a personal design system for self-hosted, single-user tools. Warm low-chroma neutrals, one swappable accent, IBM Plex Mono labels, and sixteen components built as plain HTML with no CSS class API to memorize. Use whenever a project should look like it came from the same hand as the others in this umbrella.
+description: Use this skill to build interfaces, pages, or prototypes in the Gloss style — the design system for Arbitrary Definitions, a personal umbrella of self-hosted, single-user tools. Warm low-chroma neutrals, one swappable accent, IBM Plex Mono labels, and sixteen components built as plain HTML with no CSS class API to memorize. Use whenever a project should look like it came from the same hand as the others in this umbrella.
 user-invocable: true
 ---
 
@@ -69,9 +69,9 @@ just state the fact ("Nothing tracked yet."). See README's "The idea" and
 
 ## Retheming
 
-One accent per project, held constant — swap `--ad-color-accent` after
+One accent per project, held constant — swap `--gl-color-accent` after
 `tokens.css` loads; `-ink` and `-soft` re-derive automatically via
-`color-mix()`. `--ad-color-success` and `--ad-color-danger` are fixed and
+`color-mix()`. `--gl-color-success` and `--gl-color-danger` are fixed and
 never swapped. Re-check contrast after retheming — the system's own
 guarantees (see the [Color foundation](foundations/color.md)) are about its
 own values, not yours.

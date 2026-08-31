@@ -1,22 +1,23 @@
-# Arbitrary Definitions
+# Gloss
 
-A personal design system for self-hosted, single-user tools. Sixteen
-components and five foundations, documented by a small Ruby/ERB site (no
-Jekyll) with hand-maintained CSS and hand-written content.
+The design system for Arbitrary Definitions, a personal umbrella of
+self-hosted, single-user tools. Sixteen components and five foundations,
+documented by a small Ruby/ERB site (no Jekyll) with hand-maintained CSS and
+hand-written content.
 
-**Site:** https://kejadlen.github.io/arbitrary-definitions-design-system/
+**Site:** https://kejadlen.github.io/gloss/
 
 ## The idea
 
 Arbitrary Definitions is an umbrella for side projects: self-hosted tools
-built for one household or one person, never a SaaS product. Almost every
-value in it is arbitrary — the accent is teal because someone liked it, the
-type scale ratio is 1.20 at the small end because that looked right, not
-because it is correct. What makes it a *system* is not that the choices are
-correct but that they are written down once, given names, actually used, and
-therefore changeable.
+built for one household or one person, never a SaaS product. Gloss is what
+those projects share underneath. Almost every value in it is arbitrary — the
+accent is teal because someone liked it, the type scale ratio is 1.20 at the
+small end because that looked right, not because it is correct. What makes
+it a *system* is not that the choices are correct but that they are written
+down once, given names, actually used, and therefore changeable.
 
-See [Rationale](https://kejadlen.github.io/arbitrary-definitions-design-system/rationale/)
+See [Rationale](https://kejadlen.github.io/gloss/rationale/)
 for the four rules this system's build actually enforces.
 
 This is a small, personal project, so it is built as plainly as it can be:
@@ -37,7 +38,7 @@ This is a small, personal project, so it is built as plainly as it can be:
   underneath it in a `<details>`, the exact same markup as literal text.
   There is no generator keeping the two in sync — there is only one copy.
 
-No component stylesheet contains a color literal or a duration — every one is a `var(--ad-*)`, with one flagged exception (Select's chevron — see `_sass/components/field.css`).
+No component stylesheet contains a color literal or a duration — every one is a `var(--gl-*)`, with one flagged exception (Select's chevron — see `_sass/components/field.css`).
 
 ## Requirements
 
@@ -91,7 +92,7 @@ Three files, in this order, and almost no JavaScript:
 ```
 
 Retheming means overriding a handful of custom properties after `tokens.css`
-loads — no recompile, no fork. See [Using the CSS](https://kejadlen.github.io/arbitrary-definitions-design-system/install/).
+loads — no recompile, no fork. See [Using the CSS](https://kejadlen.github.io/gloss/install/).
 
 ## Claude Code plugin
 
@@ -102,10 +103,10 @@ format). Install it from anywhere:
 
 ```console
 $ claude
-> /plugin marketplace add kejadlen/arbitrary-definitions-design-system
-> /plugin install arbitrary-definitions@arbitrary-definitions
+> /plugin marketplace add kejadlen/gloss
+> /plugin install gloss@gloss
 ```
 
-Then invoke `/arbitrary-definitions:design-system` for the exact component
+Then invoke `/gloss:design-system` for the exact component
 contracts, tokens, and voice guidance to build new interfaces that look like
 they came from the same hand as this one.

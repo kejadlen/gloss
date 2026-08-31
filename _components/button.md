@@ -67,7 +67,7 @@ disabled primary still reads as the primary.
 </details>
 </figure>
 
-<div class="ad-callout">
+<div class="gl-callout">
   <p class="type-label">disabled vs. aria-disabled</p>
   <p>
     A <code>disabled</code> button is removed from the tab order, so a reader
@@ -80,7 +80,7 @@ disabled primary still reads as the primary.
 
 ## With an icon
 
-Pass an icon as the first child. The gap is `--ad-space-2xs`, set by the
+Pass an icon as the first child. The gap is `--gl-space-2xs`, set by the
 button itself.
 
 <figure class="example">
@@ -144,12 +144,12 @@ class Button needs, and only anchors reach for it.
 <figure class="example">
 <figcaption>Anchor as button</figcaption>
 <div>
-<a class="btn" data-variant="primary" href="/arbitrary-definitions-design-system/components/icon-button/">Next: IconButton</a>
-<a class="btn" data-variant="ghost" href="/arbitrary-definitions-design-system/foundations/color/">Back to color</a>
+<a class="btn" data-variant="primary" href="/gloss/components/icon-button/">Next: IconButton</a>
+<a class="btn" data-variant="ghost" href="/gloss/foundations/color/">Back to color</a>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;a class=&quot;btn&quot; data-variant=&quot;primary&quot; href=&quot;/arbitrary-definitions-design-system/components/icon-button/&quot;&gt;Next: IconButton&lt;/a&gt;
-&lt;a class=&quot;btn&quot; data-variant=&quot;ghost&quot; href=&quot;/arbitrary-definitions-design-system/foundations/color/&quot;&gt;Back to color&lt;/a&gt;</code></pre>
+<pre><code>&lt;a class=&quot;btn&quot; data-variant=&quot;primary&quot; href=&quot;/gloss/components/icon-button/&quot;&gt;Next: IconButton&lt;/a&gt;
+&lt;a class=&quot;btn&quot; data-variant=&quot;ghost&quot; href=&quot;/gloss/foundations/color/&quot;&gt;Back to color&lt;/a&gt;</code></pre>
 </details>
 </figure>
 

@@ -7,11 +7,13 @@ summary: >-
   about it that is not arbitrary.
 ---
 
-## Where the name comes from
+## Where this comes from
 
-Arbitrary Definitions is a personal umbrella for side projects — self-hosted,
-single-user tools built for one household or one person, never a SaaS
-product. Almost nothing in a design system is derived: the accent is teal
+Gloss is a name and nothing more — it is not an argument about the system.
+The argument is in the umbrella it belongs to. Arbitrary Definitions is a
+personal umbrella for side projects — self-hosted, single-user tools built
+for one household or one person, never a SaaS product. Almost nothing in a
+design system is derived: the accent is teal
 because someone liked it, the type scale ratio is 1.20 at the small end and
 1.25 at the large end because that is what looked right, not because either
 number is correct. What makes it a *system* is not that the choices are
@@ -37,7 +39,7 @@ Not the quality of the individual choices. The properties below:
     <div class="card-body">
       <h3>It has names</h3>
       <p>
-        <code>--ad-color-danger</code> survives a change of mind about which
+        <code>--gl-color-danger</code> survives a change of mind about which
         red. <code>#ad3a2c</code> does not.
       </p>
     </div>
@@ -47,7 +49,7 @@ Not the quality of the individual choices. The properties below:
       <h3>It is actually used</h3>
       <p>
         Every color, type, spacing, radius, elevation, and motion value in
-        the components is a <code>var(--ad-*)</code>. Not one is a literal.
+        the components is a <code>var(--gl-*)</code>. Not one is a literal.
       </p>
     </div>
   </article>
@@ -75,7 +77,7 @@ rather than re-derived on every build — a personal site does not need a test
 suite standing between an edit and a deploy to keep five numbers honest.
 
 That contract is deliberately narrower than "every color in the system".
-`--ad-color-text-tertiary` — this palette's own "muted-faint text" step — is
+`--gl-color-text-tertiary` — this palette's own "muted-faint text" step — is
 about 3.46:1 against the page in light mode, under the 4.5:1 floor for normal
 text. That is not a bug to paper over by darkening a real brand value; it is
 a documented, intentional property of the palette (see the
@@ -87,7 +89,7 @@ borders do the elevation work, not high contrast, so it does not invent a
 
 ## The four rules
 
-<div class="ad-callout">
+<div class="gl-callout">
   <p class="type-label">1. No color and no duration outside tokens.css</p>
   <p>
     A hex or a duration in a component stylesheet is a decision made in the
@@ -98,17 +100,17 @@ borders do the elevation work, not high contrast, so it does not invent a
   </p>
 </div>
 
-<div class="ad-callout">
+<div class="gl-callout">
   <p class="type-label">2. Components read aliases, never ramps</p>
   <p>
-    <code>--ad-color-text-primary</code>, not <code>--ad-neutral-900</code>.
+    <code>--gl-color-text-primary</code>, not <code>--gl-neutral-900</code>.
     The ramp is raw material; the alias is the decision. This is the whole
     reason the dark theme is a block of repointed aliases rather than a
     second stylesheet.
   </p>
 </div>
 
-<div class="ad-callout">
+<div class="gl-callout">
   <p class="type-label">3. Every token says what it is for</p>
   <p>
     Every semantic alias on the <a href="<%= relative_url('/foundations/color/') %>">Color page</a>
@@ -117,7 +119,7 @@ borders do the elevation work, not high contrast, so it does not invent a
   </p>
 </div>
 
-<div class="ad-callout">
+<div class="gl-callout">
   <p class="type-label">4. One accent, one dark-mode convention</p>
   <p>
     Never two accents in one view. Dark mode is opt-in — a
@@ -134,8 +136,8 @@ Being honest about the design is being honest about the gaps too.
   components documented here are a from-scratch, best-guess personal-tool
   kit — not a literal recreation of any real app's screens, and not backed
   by a source of truth beyond this site.
-- **No logo or brand mark.** Render "Arbitrary Definitions" or the
-  project's own name in type wherever a mark would go — don't invent one.
+- **No logo or brand mark.** Render "Gloss" or the project's own name in
+  type wherever a mark would go — don't invent one.
 - **The icon set (Lucide) is a flagged substitution** — there's no shipped
   icon library of its own yet.
 - **Signal Teal, the default accent, is one pick among the sanctioned

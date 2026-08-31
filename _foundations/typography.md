@@ -8,31 +8,31 @@ summary: >-
 
 ## Families
 
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-font-sans</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-font-sans</code>
     <span>Interface text — every component, every screen. Web-safe; nothing is loaded for it.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-family: var(--ad-font-sans); font-size: 1.5rem;">
-    Arbitrary Definitions — 0123456789
+  <div class="gl-specimen__sample" style="font-family: var(--gl-font-sans); font-size: 1.5rem;">
+    Gloss — 0123456789
   </div>
 </div>
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-font-mono</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-font-mono</code>
     <span>Every label, meta value, technical/catalog value, and code sample. The system's one loaded webfont.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-family: var(--ad-font-mono); font-size: 1.5rem;">
-    Arbitrary Definitions — 0123456789
+  <div class="gl-specimen__sample" style="font-family: var(--gl-font-mono); font-size: 1.5rem;">
+    Gloss — 0123456789
   </div>
 </div>
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-font-serif</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-font-serif</code>
     <span>Opt-in reading variant for a project that wants an editorial, archival feel. Not loaded by default; web-safe only.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-family: var(--ad-font-serif); font-size: 1.5rem;">
-    Arbitrary Definitions — 0123456789
+  <div class="gl-specimen__sample" style="font-family: var(--gl-font-serif); font-size: 1.5rem;">
+    Gloss — 0123456789
   </div>
 </div>
 
@@ -48,86 +48,86 @@ project that wants an editorial or archival feel. Neither is fetched.
 ## Fluid scale
 
 Eight steps, `clamp()`-based (Utopia, 320→1240px viewport). The body sits at
-`--ad-step-0` — 18px on a phone, 20px on a wide screen — with no fixed
+`--gl-step-0` — 18px on a phone, 20px on a wide screen — with no fixed
 breakpoint in between.
 
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-step--2</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-step--2</code>
     <span>12.5 → 12.8px</span>
     <span>type-label — eyebrows, catalog labels, meta.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-size: var(--ad-step--2);">
+  <div class="gl-specimen__sample" style="font-size: var(--gl-step--2);">
     The quick brown fox jumps over the lazy dog
   </div>
 </div>
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-step--1</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-step--1</code>
     <span>15 → 16px</span>
     <span>type-body-sm and type-mono — secondary copy, technical values.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-size: var(--ad-step--1);">
+  <div class="gl-specimen__sample" style="font-size: var(--gl-step--1);">
     The quick brown fox jumps over the lazy dog
   </div>
 </div>
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-step-0</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-step-0</code>
     <span>18 → 20px</span>
     <span>type-body — the base size, and the body element's own size.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-size: var(--ad-step-0);">
+  <div class="gl-specimen__sample" style="font-size: var(--gl-step-0);">
     The quick brown fox jumps over the lazy dog
   </div>
 </div>
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-step-1</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-step-1</code>
     <span>22 → 25px</span>
     <span>type-h3 — card and subsection headings.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-size: var(--ad-step-1);">
+  <div class="gl-specimen__sample" style="font-size: var(--gl-step-1);">
     The quick brown fox jumps over the lazy dog
   </div>
 </div>
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-step-2</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-step-2</code>
     <span>26 → 31px</span>
     <span>type-h2 — section headings.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-size: var(--ad-step-2);">
+  <div class="gl-specimen__sample" style="font-size: var(--gl-step-2);">
     The quick brown fox jumps over the lazy dog
   </div>
 </div>
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-step-3</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-step-3</code>
     <span>31 → 39px</span>
     <span>type-h1 — screen titles.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-size: var(--ad-step-3);">
+  <div class="gl-specimen__sample" style="font-size: var(--gl-step-3);">
     The quick brown fox jumps over the lazy dog
   </div>
 </div>
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-step-4</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-step-4</code>
     <span>37 → 49px</span>
     <span>type-display — one hero title per screen, at most.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-size: var(--ad-step-4);">
+  <div class="gl-specimen__sample" style="font-size: var(--gl-step-4);">
     The quick brown fox jumps over the lazy dog
   </div>
 </div>
-<div class="ad-specimen">
-  <div class="ad-specimen__meta">
-    <code>--ad-step-5</code>
+<div class="gl-specimen">
+  <div class="gl-specimen__meta">
+    <code>--gl-step-5</code>
     <span>45 → 61px</span>
     <span>Reserved headroom. No compound style claims it yet.</span>
   </div>
-  <div class="ad-specimen__sample" style="font-size: var(--ad-step-5);">
+  <div class="gl-specimen__sample" style="font-size: var(--gl-step-5);">
     The quick brown fox jumps over the lazy dog
   </div>
 </div>
@@ -144,7 +144,7 @@ letter-spacing in a single declaration.
       <tr>
         <td><code>.type-display</code></td>
         <td>600</td>
-        <td><code>--ad-step-4</code></td>
+        <td><code>--gl-step-4</code></td>
         <td>1.08</td>
         <td>-0.015em</td>
         <td>Page-level hero title, once per screen.</td>
@@ -152,7 +152,7 @@ letter-spacing in a single declaration.
       <tr>
         <td><code>.type-h1</code></td>
         <td>600</td>
-        <td><code>--ad-step-3</code></td>
+        <td><code>--gl-step-3</code></td>
         <td>1.12</td>
         <td>-0.012em</td>
         <td>Screen title.</td>
@@ -160,7 +160,7 @@ letter-spacing in a single declaration.
       <tr>
         <td><code>.type-h2</code></td>
         <td>600</td>
-        <td><code>--ad-step-2</code></td>
+        <td><code>--gl-step-2</code></td>
         <td>1.16</td>
         <td>-0.01em</td>
         <td>Section heading.</td>
@@ -168,7 +168,7 @@ letter-spacing in a single declaration.
       <tr>
         <td><code>.type-h3</code></td>
         <td>600</td>
-        <td><code>--ad-step-1</code></td>
+        <td><code>--gl-step-1</code></td>
         <td>1.25</td>
         <td>normal</td>
         <td>Card / subsection heading.</td>
@@ -176,7 +176,7 @@ letter-spacing in a single declaration.
       <tr>
         <td><code>.type-body</code></td>
         <td>400</td>
-        <td><code>--ad-step-0</code></td>
+        <td><code>--gl-step-0</code></td>
         <td>1.55</td>
         <td>normal</td>
         <td>Body copy.</td>
@@ -184,7 +184,7 @@ letter-spacing in a single declaration.
       <tr>
         <td><code>.type-body-sm</code></td>
         <td>400</td>
-        <td><code>--ad-step--1</code></td>
+        <td><code>--gl-step--1</code></td>
         <td>1.5</td>
         <td>normal</td>
         <td>Secondary copy, hints.</td>
@@ -192,7 +192,7 @@ letter-spacing in a single declaration.
       <tr>
         <td><code>.type-label</code></td>
         <td>500</td>
-        <td><code>--ad-step--2</code></td>
+        <td><code>--gl-step--2</code></td>
         <td>1</td>
         <td>0.08em</td>
         <td>Eyebrows, catalog labels, meta — SAVED, RECOMMENDED, OVERDUE.</td>
@@ -200,7 +200,7 @@ letter-spacing in a single declaration.
       <tr>
         <td><code>.type-mono</code></td>
         <td>400</td>
-        <td><code>--ad-step--1</code></td>
+        <td><code>--gl-step--1</code></td>
         <td>1.5</td>
         <td>normal</td>
         <td>Technical values, IDs, dates, code.</td>

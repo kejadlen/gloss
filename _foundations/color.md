@@ -13,12 +13,12 @@ The **ramps** below are raw material: ten steps of neutral (light), the same
 ten inverted for dark mode, and five accent hues. No component references
 them directly.
 
-The **aliases** underneath are the working vocabulary — `--ad-color-text-primary`,
-`--ad-color-surface-card`, `--ad-color-accent`. Every component stylesheet
+The **aliases** underneath are the working vocabulary — `--gl-color-text-primary`,
+`--gl-color-surface-card`, `--gl-color-accent`. Every component stylesheet
 reads from these. Retheming, or switching to dark, means repointing aliases
 at different values — which is exactly what the dark block does.
 
-<div class="ad-callout">
+<div class="gl-callout">
   <p>
     The neutral ramps were authored in <code>oklch()</code>. Every value
     below is that same color converted to flat sRGB hex — not re-picked,
@@ -33,150 +33,150 @@ at different values — which is exactly what the dark block does.
 Low-chroma warm-gray, never stark white or black. Ten steps, not twelve or
 sixteen — the palette defines exactly these.
 
-<p class="ad-muted">Low-chroma warm-gray. Not stark white or black. Ten steps, not twelve: exactly 0/50/100/150/200/300/500/600/800/900 — steps 400 and 700 do not exist.</p>
-<ul class="ad-swatch-grid">
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #faf9f7; color: #171512;">n-0</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#faf9f7</span>
-      <span class="ad-swatch__ratio">1.05 on white</span>
+<p class="gl-muted">Low-chroma warm-gray. Not stark white or black. Ten steps, not twelve: exactly 0/50/100/150/200/300/500/600/800/900 — steps 400 and 700 do not exist.</p>
+<ul class="gl-swatch-grid">
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #faf9f7; color: #171512;">n-0</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#faf9f7</span>
+      <span class="gl-swatch__ratio">1.05 on white</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #fdfdfb; color: #171512;">n-50</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#fdfdfb</span>
-      <span class="ad-swatch__ratio">1.02 on white</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #fdfdfb; color: #171512;">n-50</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#fdfdfb</span>
+      <span class="gl-swatch__ratio">1.02 on white</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #f1f0ed; color: #171512;">n-100</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#f1f0ed</span>
-      <span class="ad-swatch__ratio">1.14 on white</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #f1f0ed; color: #171512;">n-100</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#f1f0ed</span>
+      <span class="gl-swatch__ratio">1.14 on white</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #e8e6e2; color: #171512;">n-150</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#e8e6e2</span>
-      <span class="ad-swatch__ratio">1.25 on white</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #e8e6e2; color: #171512;">n-150</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#e8e6e2</span>
+      <span class="gl-swatch__ratio">1.25 on white</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #dcdad7; color: #171512;">n-200</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#dcdad7</span>
-      <span class="ad-swatch__ratio">1.40 on white</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #dcdad7; color: #171512;">n-200</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#dcdad7</span>
+      <span class="gl-swatch__ratio">1.40 on white</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #c0bdb9; color: #171512;">n-300</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#c0bdb9</span>
-      <span class="ad-swatch__ratio">1.87 on white</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #c0bdb9; color: #171512;">n-300</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#c0bdb9</span>
+      <span class="gl-swatch__ratio">1.87 on white</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #888681; color: #171512;">n-500</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#888681</span>
-      <span class="ad-swatch__ratio">3.64 on white</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #888681; color: #171512;">n-500</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#888681</span>
+      <span class="gl-swatch__ratio">3.64 on white</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #5f5d59; color: #ffffff;">n-600</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#5f5d59</span>
-      <span class="ad-swatch__ratio">6.57 on white</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #5f5d59; color: #ffffff;">n-600</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#5f5d59</span>
+      <span class="gl-swatch__ratio">6.57 on white</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #2a2926; color: #ffffff;">n-800</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#2a2926</span>
-      <span class="ad-swatch__ratio">14.55 on white</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #2a2926; color: #ffffff;">n-800</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#2a2926</span>
+      <span class="gl-swatch__ratio">14.55 on white</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #100f0d; color: #ffffff;">n-900</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#100f0d</span>
-      <span class="ad-swatch__ratio">19.16 on white</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #100f0d; color: #ffffff;">n-900</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#100f0d</span>
+      <span class="gl-swatch__ratio">19.16 on white</span>
     </div>
   </li>
 </ul>
 
-<p class="ad-muted">The same low-chroma warm-gray scale, inverted for dark mode. Same ten step numbers as `neutral`; `0` is the darkest step here (the dark-theme page background) rather than the lightest.</p>
-<ul class="ad-swatch-grid">
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #0e0d0b; color: #ffffff;">nd-0</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#0e0d0b</span>
-      <span class="ad-swatch__ratio">1.08 on black</span>
+<p class="gl-muted">The same low-chroma warm-gray scale, inverted for dark mode. Same ten step numbers as `neutral`; `0` is the darkest step here (the dark-theme page background) rather than the lightest.</p>
+<ul class="gl-swatch-grid">
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #0e0d0b; color: #ffffff;">nd-0</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#0e0d0b</span>
+      <span class="gl-swatch__ratio">1.08 on black</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #151412; color: #ffffff;">nd-50</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#151412</span>
-      <span class="ad-swatch__ratio">1.14 on black</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #151412; color: #ffffff;">nd-50</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#151412</span>
+      <span class="gl-swatch__ratio">1.14 on black</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #1e1d1a; color: #ffffff;">nd-100</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#1e1d1a</span>
-      <span class="ad-swatch__ratio">1.25 on black</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #1e1d1a; color: #ffffff;">nd-100</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#1e1d1a</span>
+      <span class="gl-swatch__ratio">1.25 on black</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #252421; color: #ffffff;">nd-150</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#252421</span>
-      <span class="ad-swatch__ratio">1.35 on black</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #252421; color: #ffffff;">nd-150</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#252421</span>
+      <span class="gl-swatch__ratio">1.35 on black</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #2c2b29; color: #ffffff;">nd-200</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#2c2b29</span>
-      <span class="ad-swatch__ratio">1.48 on black</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #2c2b29; color: #ffffff;">nd-200</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#2c2b29</span>
+      <span class="gl-swatch__ratio">1.48 on black</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #44423f; color: #ffffff;">nd-300</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#44423f</span>
-      <span class="ad-swatch__ratio">2.10 on black</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #44423f; color: #ffffff;">nd-300</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#44423f</span>
+      <span class="gl-swatch__ratio">2.10 on black</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #7c7a76; color: #ffffff;">nd-500</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#7c7a76</span>
-      <span class="ad-swatch__ratio">4.90 on black</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #7c7a76; color: #ffffff;">nd-500</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#7c7a76</span>
+      <span class="gl-swatch__ratio">4.90 on black</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #a09e9a; color: #171512;">nd-600</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#a09e9a</span>
-      <span class="ad-swatch__ratio">7.85 on black</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #a09e9a; color: #171512;">nd-600</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#a09e9a</span>
+      <span class="gl-swatch__ratio">7.85 on black</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #d9d7d4; color: #171512;">nd-800</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#d9d7d4</span>
-      <span class="ad-swatch__ratio">14.62 on black</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #d9d7d4; color: #171512;">nd-800</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#d9d7d4</span>
+      <span class="gl-swatch__ratio">14.62 on black</span>
     </div>
   </li>
-  <li class="ad-swatch">
-    <div class="ad-swatch__chip" style="background: #e9e8e6; color: #171512;">nd-900</div>
-    <div class="ad-swatch__meta">
-      <span class="ad-swatch__hex">#e9e8e6</span>
-      <span class="ad-swatch__ratio">17.15 on black</span>
+  <li class="gl-swatch">
+    <div class="gl-swatch__chip" style="background: #e9e8e6; color: #171512;">nd-900</div>
+    <div class="gl-swatch__meta">
+      <span class="gl-swatch__hex">#e9e8e6</span>
+      <span class="gl-swatch__ratio">17.15 on black</span>
     </div>
   </li>
 </ul>
@@ -186,42 +186,42 @@ sixteen — the palette defines exactly these.
 One swappable accent per project — never two in the same view. Signal Teal is
 the default; the other four are the sanctioned menu a project can switch to.
 
-<ul class="ad-accent-grid">
+<ul class="gl-accent-grid">
   <li>
-    <div class="ad-accent-demo" style="background: #3a6a63;">teal (default)</div>
-    <div class="ad-specimen__meta"><code>#3a6a63</code><span>6.14:1 on white</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Default. Neutral, technical.</p>
+    <div class="gl-accent-demo" style="background: #3a6a63;">teal (default)</div>
+    <div class="gl-specimen__meta"><code>#3a6a63</code><span>6.14:1 on white</span></div>
+    <p class="gl-muted" style="font-size: var(--gl-step--2); margin: var(--gl-space-3xs) 0 0;">Default. Neutral, technical.</p>
   </li>
   <li>
-    <div class="ad-accent-demo" style="background: #9a5a3c;">clay</div>
-    <div class="ad-specimen__meta"><code>#9a5a3c</code><span>5.38:1 on white</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Warm, archival.</p>
+    <div class="gl-accent-demo" style="background: #9a5a3c;">clay</div>
+    <div class="gl-specimen__meta"><code>#9a5a3c</code><span>5.38:1 on white</span></div>
+    <p class="gl-muted" style="font-size: var(--gl-step--2); margin: var(--gl-space-3xs) 0 0;">Warm, archival.</p>
   </li>
   <li>
-    <div class="ad-accent-demo" style="background: #2b4a78;">ink-blue</div>
-    <div class="ad-specimen__meta"><code>#2b4a78</code><span>8.92:1 on white</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Sober, utilitarian.</p>
+    <div class="gl-accent-demo" style="background: #2b4a78;">ink-blue</div>
+    <div class="gl-specimen__meta"><code>#2b4a78</code><span>8.92:1 on white</span></div>
+    <p class="gl-muted" style="font-size: var(--gl-step--2); margin: var(--gl-space-3xs) 0 0;">Sober, utilitarian.</p>
   </li>
   <li>
-    <div class="ad-accent-demo" style="background: #93701f;">ochre</div>
-    <div class="ad-specimen__meta"><code>#93701f</code><span>4.59:1 on white</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Dry, papery.</p>
+    <div class="gl-accent-demo" style="background: #93701f;">ochre</div>
+    <div class="gl-specimen__meta"><code>#93701f</code><span>4.59:1 on white</span></div>
+    <p class="gl-muted" style="font-size: var(--gl-step--2); margin: var(--gl-space-3xs) 0 0;">Dry, papery.</p>
   </li>
   <li>
-    <div class="ad-accent-demo" style="background: #6a3a5c;">plum</div>
-    <div class="ad-specimen__meta"><code>#6a3a5c</code><span>8.85:1 on white</span></div>
-    <p class="ad-muted" style="font-size: var(--ad-step--2); margin: var(--ad-space-3xs) 0 0;">Quiet, personal.</p>
+    <div class="gl-accent-demo" style="background: #6a3a5c;">plum</div>
+    <div class="gl-specimen__meta"><code>#6a3a5c</code><span>8.85:1 on white</span></div>
+    <p class="gl-muted" style="font-size: var(--gl-step--2); margin: var(--gl-space-3xs) 0 0;">Quiet, personal.</p>
   </li>
 </ul>
 
-<div class="ad-callout">
+<div class="gl-callout">
   <p>
     All five clear AA (4.5:1) for white text at their own value, but Ochre is
     the tightest of the five at roughly 4.6:1 — closer to the floor than the
     others (Ink Blue and Plum both clear 8.5:1). That is a real property of a
     dry, papery ochre and is not being rounded away; a project choosing Ochre
     as its accent should re-check any place it sets small white text directly
-    on the accent fill, rather than through <code>--ad-color-accent-fg</code>
+    on the accent fill, rather than through <code>--gl-color-accent-fg</code>
     on a full-size Button.
   </p>
 </div>
@@ -233,7 +233,7 @@ the right half is the dark one.
 
 ### Surfaces
 
-<p class="ad-muted">Backgrounds, from the page itself up to a card sitting on it.</p>
+<p class="gl-muted">Backgrounds, from the page itself up to a card sitting on it.</p>
 
   <table>
     <thead>
@@ -247,12 +247,12 @@ the right half is the dark one.
     <tbody>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #faf9f7"></span>
               <span style="background: #0e0d0b"></span>
             </span>
-            <code>--ad-color-surface-page</code>
+            <code>--gl-color-surface-page</code>
           </div>
         </td>
         <td><code>neutral.0</code></td>
@@ -261,12 +261,12 @@ the right half is the dark one.
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #fdfdfb"></span>
               <span style="background: #151412"></span>
             </span>
-            <code>--ad-color-surface-card</code>
+            <code>--gl-color-surface-card</code>
           </div>
         </td>
         <td><code>neutral.50</code></td>
@@ -275,12 +275,12 @@ the right half is the dark one.
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #f1f0ed"></span>
               <span style="background: #1e1d1a"></span>
             </span>
-            <code>--ad-color-surface-fill</code>
+            <code>--gl-color-surface-fill</code>
           </div>
         </td>
         <td><code>neutral.100</code></td>
@@ -289,12 +289,12 @@ the right half is the dark one.
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #e8e6e2"></span>
               <span style="background: #252421"></span>
             </span>
-            <code>--ad-color-surface-fill-2</code>
+            <code>--gl-color-surface-fill-2</code>
           </div>
         </td>
         <td><code>neutral.150</code></td>
@@ -306,7 +306,7 @@ the right half is the dark one.
 
 ### Borders
 
-<p class="ad-muted">Two weights. Hairlines do most of the elevation work in this system, so there was never a reason for a third.</p>
+<p class="gl-muted">Two weights. Hairlines do most of the elevation work in this system, so there was never a reason for a third.</p>
 
   <table>
     <thead>
@@ -320,12 +320,12 @@ the right half is the dark one.
     <tbody>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #dcdad7"></span>
               <span style="background: #2c2b29"></span>
             </span>
-            <code>--ad-color-border-hairline</code>
+            <code>--gl-color-border-hairline</code>
           </div>
         </td>
         <td><code>neutral.200</code></td>
@@ -334,12 +334,12 @@ the right half is the dark one.
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #c0bdb9"></span>
               <span style="background: #44423f"></span>
             </span>
-            <code>--ad-color-border-default</code>
+            <code>--gl-color-border-default</code>
           </div>
         </td>
         <td><code>neutral.300</code></td>
@@ -351,7 +351,7 @@ the right half is the dark one.
 
 ### Text
 
-<p class="ad-muted">Three levels of emphasis, deliberately not four. Past three, a reader stops perceiving a hierarchy and starts perceiving noise.</p>
+<p class="gl-muted">Three levels of emphasis, deliberately not four. Past three, a reader stops perceiving a hierarchy and starts perceiving noise.</p>
 
   <table>
     <thead>
@@ -365,12 +365,12 @@ the right half is the dark one.
     <tbody>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #100f0d"></span>
               <span style="background: #e9e8e6"></span>
             </span>
-            <code>--ad-color-text-primary</code>
+            <code>--gl-color-text-primary</code>
           </div>
         </td>
         <td><code>neutral.900</code></td>
@@ -379,12 +379,12 @@ the right half is the dark one.
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #5f5d59"></span>
               <span style="background: #a09e9a"></span>
             </span>
-            <code>--ad-color-text-secondary</code>
+            <code>--gl-color-text-secondary</code>
           </div>
         </td>
         <td><code>neutral.600</code></td>
@@ -393,12 +393,12 @@ the right half is the dark one.
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #888681"></span>
               <span style="background: #7c7a76"></span>
             </span>
-            <code>--ad-color-text-tertiary</code>
+            <code>--gl-color-text-tertiary</code>
           </div>
         </td>
         <td><code>neutral.500</code></td>
@@ -410,7 +410,7 @@ the right half is the dark one.
 
 ### Accent
 
-<p class="ad-muted">One swappable accent per project, held constant across a whole view. `-ink` and `-soft` re-derive from `--ad-color-accent` via `color-mix()`, so retheming the accent retones both automatically.</p>
+<p class="gl-muted">One swappable accent per project, held constant across a whole view. `-ink` and `-soft` re-derive from `--gl-color-accent` via `color-mix()`, so retheming the accent retones both automatically.</p>
 
   <table>
     <thead>
@@ -424,12 +424,12 @@ the right half is the dark one.
     <tbody>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #3a6a63"></span>
               <span style="background: #3a6a63"></span>
             </span>
-            <code>--ad-color-accent</code>
+            <code>--gl-color-accent</code>
           </div>
         </td>
         <td><code>accent.teal</code></td>
@@ -438,12 +438,12 @@ the right half is the dark one.
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #ffffff"></span>
               <span style="background: #ffffff"></span>
             </span>
-            <code>--ad-color-accent-fg</code>
+            <code>--gl-color-accent-fg</code>
           </div>
         </td>
         <td><code>#ffffff</code></td>
@@ -452,24 +452,24 @@ the right half is the dark one.
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--ad-color-surface-fill) 0 4px, var(--ad-color-surface-card) 4px 8px);"></span>
-            <code>--ad-color-accent-ink</code>
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--gl-color-surface-fill) 0 4px, var(--gl-color-surface-card) 4px 8px);"></span>
+            <code>--gl-color-accent-ink</code>
           </div>
         </td>
-        <td><code>color-mix(in oklch, var(--ad-color-accent) 78%, black)</code></td>
-        <td><code>color-mix(in oklch, var(--ad-color-accent) 78%, black)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-accent) 78%, black)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-accent) 78%, black)</code></td>
         <td>Text sitting on an `-soft` accent tint — an IconButton's active state, an accent avatar's initials.</td>
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--ad-color-surface-fill) 0 4px, var(--ad-color-surface-card) 4px 8px);"></span>
-            <code>--ad-color-accent-soft</code>
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--gl-color-surface-fill) 0 4px, var(--gl-color-surface-card) 4px 8px);"></span>
+            <code>--gl-color-accent-soft</code>
           </div>
         </td>
-        <td><code>color-mix(in oklch, var(--ad-color-accent) 12%, white)</code></td>
-        <td><code>color-mix(in oklch, var(--ad-color-accent) 12%, white)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-accent) 12%, white)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-accent) 12%, white)</code></td>
         <td>The tint behind an accent Badge, a toggled IconButton, an accent avatar chip.</td>
       </tr>
     </tbody>
@@ -477,7 +477,7 @@ the right half is the dark one.
 
 ### Status
 
-<p class="ad-muted">Exactly two states, both fixed — they read the same in every project and are never swapped the way the accent is.</p>
+<p class="gl-muted">Exactly two states, both fixed — they read the same in every project and are never swapped the way the accent is.</p>
 
   <table>
     <thead>
@@ -491,12 +491,12 @@ the right half is the dark one.
     <tbody>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #3f7a4a"></span>
               <span style="background: #3f7a4a"></span>
             </span>
-            <code>--ad-color-success</code>
+            <code>--gl-color-success</code>
           </div>
         </td>
         <td><code>#3f7a4a</code></td>
@@ -505,23 +505,23 @@ the right half is the dark one.
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--ad-color-surface-fill) 0 4px, var(--ad-color-surface-card) 4px 8px);"></span>
-            <code>--ad-color-success-bg</code>
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--gl-color-surface-fill) 0 4px, var(--gl-color-surface-card) 4px 8px);"></span>
+            <code>--gl-color-success-bg</code>
           </div>
         </td>
-        <td><code>color-mix(in oklch, var(--ad-color-success) 12%, white)</code></td>
-        <td><code>color-mix(in oklch, var(--ad-color-success) 12%, white)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-success) 12%, white)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-success) 12%, white)</code></td>
         <td>Tint behind a success Badge. Mixed against literal white, so it stays constant across themes.</td>
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip ad-alias-chip--pair" aria-hidden="true">
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #ad3a2c"></span>
               <span style="background: #ad3a2c"></span>
             </span>
-            <code>--ad-color-danger</code>
+            <code>--gl-color-danger</code>
           </div>
         </td>
         <td><code>#ad3a2c</code></td>
@@ -530,13 +530,13 @@ the right half is the dark one.
       </tr>
       <tr>
         <td>
-          <div class="ad-alias-row">
-            <span class="ad-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--ad-color-surface-fill) 0 4px, var(--ad-color-surface-card) 4px 8px);"></span>
-            <code>--ad-color-danger-bg</code>
+          <div class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--gl-color-surface-fill) 0 4px, var(--gl-color-surface-card) 4px 8px);"></span>
+            <code>--gl-color-danger-bg</code>
           </div>
         </td>
-        <td><code>color-mix(in oklch, var(--ad-color-danger) 10%, white)</code></td>
-        <td><code>color-mix(in oklch, var(--ad-color-danger) 10%, white)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-danger) 10%, white)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-danger) 10%, white)</code></td>
         <td>Tint behind a danger Badge. Mixed against literal white, so it stays constant across themes.</td>
       </tr>
     </tbody>
@@ -552,7 +552,7 @@ and checked by hand rather than by a build-time test.
 
 ### Text — 4.5:1 minimum
 
-<p class="ad-muted">WCAG 2.1 SC 1.4.3 (normal-size text)</p>
+<p class="gl-muted">WCAG 2.1 SC 1.4.3 (normal-size text)</p>
 
   <table>
     <thead>
@@ -566,9 +566,9 @@ and checked by hand rather than by a build-time test.
     <tbody>
       <tr>
         <td>
-          <span class="ad-alias-row">
-            <span class="ad-alias-chip" aria-hidden="true" style="background: #faf9f7; color: #100f0d; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <code>color-text-primary<br><span class="ad-subtle">on color-surface-page</span></code>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #faf9f7; color: #100f0d; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-text-primary<br><span class="gl-subtle">on color-surface-page</span></code>
           </span>
         </td>
         <td>Body copy</td>
@@ -577,9 +577,9 @@ and checked by hand rather than by a build-time test.
       </tr>
       <tr>
         <td>
-          <span class="ad-alias-row">
-            <span class="ad-alias-chip" aria-hidden="true" style="background: #faf9f7; color: #5f5d59; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <code>color-text-secondary<br><span class="ad-subtle">on color-surface-page</span></code>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #faf9f7; color: #5f5d59; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-text-secondary<br><span class="gl-subtle">on color-surface-page</span></code>
           </span>
         </td>
         <td>Supporting copy</td>
@@ -588,9 +588,9 @@ and checked by hand rather than by a build-time test.
       </tr>
       <tr>
         <td>
-          <span class="ad-alias-row">
-            <span class="ad-alias-chip" aria-hidden="true" style="background: #3a6a63; color: #ffffff; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <code>color-accent-fg<br><span class="ad-subtle">on color-accent</span></code>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #3a6a63; color: #ffffff; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-accent-fg<br><span class="gl-subtle">on color-accent</span></code>
           </span>
         </td>
         <td>The label on a primary or dark-variant Button.</td>
@@ -599,9 +599,9 @@ and checked by hand rather than by a build-time test.
       </tr>
       <tr>
         <td>
-          <span class="ad-alias-row">
-            <span class="ad-alias-chip" aria-hidden="true" style="background: #ffffff; color: #3f7a4a; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <code>color-success<br><span class="ad-subtle">on color-accent-fg</span></code>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #ffffff; color: #3f7a4a; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-success<br><span class="gl-subtle">on color-accent-fg</span></code>
           </span>
         </td>
         <td>Success text on a light backdrop — proxied by color-accent-fg</td>
@@ -610,9 +610,9 @@ and checked by hand rather than by a build-time test.
       </tr>
       <tr>
         <td>
-          <span class="ad-alias-row">
-            <span class="ad-alias-chip" aria-hidden="true" style="background: #ffffff; color: #ad3a2c; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <code>color-danger<br><span class="ad-subtle">on color-accent-fg</span></code>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #ffffff; color: #ad3a2c; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-danger<br><span class="gl-subtle">on color-accent-fg</span></code>
           </span>
         </td>
         <td>Overdue/destructive text on a light backdrop</td>
@@ -622,17 +622,17 @@ and checked by hand rather than by a build-time test.
     </tbody>
   </table>
 
-<div class="ad-callout">
+<div class="gl-callout">
   <p>
     Two things this contract deliberately does not assert.
-    <strong>Text tertiary</strong> — <code>--ad-color-text-tertiary</code>
+    <strong>Text tertiary</strong> — <code>--gl-color-text-tertiary</code>
     (neutral.500) is roughly 3.46:1 against the page in light mode, under the
     4.5:1 floor. That step is documented as muted-faint text — placeholders
     and de-emphasized metadata, never body copy — so this is a real,
     intentional property of the palette, not a bug to patch by darkening the
     step.
-    <strong>Borders</strong> — <code>--ad-color-border-hairline</code> and
-    <code>--ad-color-border-default</code> sit well under the 3:1 that WCAG
+    <strong>Borders</strong> — <code>--gl-color-border-hairline</code> and
+    <code>--gl-color-border-default</code> sit well under the 3:1 that WCAG
     1.4.11 asks of a meaningful boundary. Hairline (1px) borders and dividers
     do most of the elevation work here — borders are deliberately quiet, and
     this system never claims a 3:1 bar for them, so this contract does not
@@ -644,7 +644,7 @@ and checked by hand rather than by a build-time test.
 
 - **Never write a hex outside `assets/css/tokens.css`.** If a component
   needs a color that does not exist yet, add the alias.
-- **One accent per project, never two in a view.** Swapping `--ad-color-accent`
+- **One accent per project, never two in a view.** Swapping `--gl-color-accent`
   re-derives `-ink` and `-soft` automatically via `color-mix()`.
-- **`--ad-color-success` and `--ad-color-danger` are fixed.** They read the
+- **`--gl-color-success` and `--gl-color-danger` are fixed.** They read the
   same in every project and are never swapped the way the accent is.

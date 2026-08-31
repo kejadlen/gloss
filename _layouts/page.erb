@@ -37,7 +37,7 @@
 <script>
   (function () {
     try {
-      var stored = localStorage.getItem("ad-theme");
+      var stored = localStorage.getItem("gl-theme");
       if (stored === "dark" || stored === "light") {
         document.documentElement.setAttribute("data-theme", stored);
       }
@@ -48,20 +48,20 @@
 </script>
 </head>
 <body>
-  <a class="ad-doc-skip" href="#main">Skip to content</a>
+  <a class="gl-doc-skip" href="#main">Skip to content</a>
 
-  <header class="ad-doc-header">
-    <div class="ad-doc-header__inner">
-      <a class="ad-doc-wordmark" href="<%= relative_url('/') %>">
-        <svg class="ad-doc-wordmark__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <header class="gl-doc-header">
+    <div class="gl-doc-header__inner">
+      <a class="gl-doc-wordmark" href="<%= relative_url('/') %>">
+        <svg class="gl-doc-wordmark__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="1.5" y="1.5" width="21" height="21" rx="5" stroke="currentColor" stroke-width="2"/>
           <path d="M7 16.5 12 7l5 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M9.2 13.4h5.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
-        <span>Arbitrary Definitions</span>
-        <span class="ad-doc-wordmark__version">v<%= VERSION %></span>
+        <span>Gloss</span>
+        <span class="gl-doc-wordmark__version">v<%= VERSION %></span>
       </a>
-      <div class="ad-doc-header__actions">
+      <div class="gl-doc-header__actions">
         <button data-variant="ghost" data-size="sm" data-theme-toggle
                 aria-label="Switch color theme" title="Switch color theme">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" data-theme-icon="light">
@@ -72,27 +72,27 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" data-theme-icon="dark" hidden>
             <path d="M20 14.2A8.4 8.4 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
           </svg>
-          <span class="ad-visually-hidden" data-theme-label>Theme</span>
+          <span class="gl-visually-hidden" data-theme-label>Theme</span>
         </button>
         <a class="btn" data-size="sm" href="https://github.com/<%= REPOSITORY %>">Source</a>
       </div>
     </div>
   </header>
 
-  <div class="ad-doc-layout">
-    <aside class="ad-doc-sidebar" data-sidebar data-collapsed="true">
-      <button class="ad-doc-nav-toggle" data-size="sm"
-              data-nav-toggle aria-expanded="false" aria-controls="ad-doc-nav">
+  <div class="gl-doc-layout">
+    <aside class="gl-doc-sidebar" data-sidebar data-collapsed="true">
+      <button class="gl-doc-nav-toggle" data-size="sm"
+              data-nav-toggle aria-expanded="false" aria-controls="gl-doc-nav">
         <span>Browse the system</span>
         <span aria-hidden="true">☰</span>
       </button>
 
-      <nav class="ad-doc-nav" id="ad-doc-nav" aria-label="Design system">
+      <nav class="gl-doc-nav" id="gl-doc-nav" aria-label="Design system">
         <% NAV.each do |group| -%>
-        <div class="ad-doc-nav__group">
-          <h2 class="ad-doc-nav__heading"><%= group["title"] %></h2>
+        <div class="gl-doc-nav__group">
+          <h2 class="gl-doc-nav__heading"><%= group["title"] %></h2>
           <% group["links"].each do |link| -%>
-          <a class="ad-doc-nav__link" href="<%= relative_url(link["url"]) %>"
+          <a class="gl-doc-nav__link" href="<%= relative_url(link["url"]) %>"
              <% if url == link["url"] %>aria-current="page"<% end %>><%= link["text"] %></a>
           <% end -%>
         </div>
@@ -100,13 +100,13 @@
       </nav>
     </aside>
 
-    <main class="ad-doc-main" id="main">
+    <main class="gl-doc-main" id="main">
       <%= body %>
     </main>
   </div>
 
-  <footer class="ad-doc-footer">
-    <div class="ad-doc-footer__inner">
+  <footer class="gl-doc-footer">
+    <div class="gl-doc-footer__inner">
       <p><%= TITLE %> v<%= VERSION %> — built with Ruby <%= RUBY_VERSION %>.</p>
       <p><a href="https://github.com/<%= REPOSITORY %>">View the source</a></p>
     </div>

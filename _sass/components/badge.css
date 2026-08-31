@@ -7,34 +7,34 @@
    shape needs. Tone is an attribute, not a modifier class. */
 
 .badge {
-  --_bg: var(--ad-color-surface-fill);
-  --_fg: var(--ad-color-text-secondary);
-  --_border: var(--ad-color-border-hairline);
+  --_bg: var(--gl-color-surface-fill);
+  --_fg: var(--gl-color-text-secondary);
+  --_border: var(--gl-color-border-hairline);
 
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
   padding: 0.1875rem 0.5rem;
   border: 1px solid var(--_border);
-  border-radius: var(--ad-radius-sm);
+  border-radius: var(--gl-radius-sm);
   background: var(--_bg);
   color: var(--_fg);
-  font-family: var(--ad-font-mono);
-  font-size: var(--ad-step--2);
+  font-family: var(--gl-font-mono);
+  font-size: var(--gl-step--2);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   line-height: 1;
   white-space: nowrap;
 }
 
-.badge[data-tone="accent"]  { --_bg: var(--ad-color-accent-soft);  --_fg: var(--ad-color-accent-ink);  --_border: transparent; }
-.badge[data-tone="success"] { --_bg: var(--ad-color-success-bg);   --_fg: var(--ad-color-success);      --_border: transparent; }
-.badge[data-tone="danger"]  { --_bg: var(--ad-color-danger-bg);    --_fg: var(--ad-color-danger);       --_border: transparent; }
+.badge[data-tone="accent"]  { --_bg: var(--gl-color-accent-soft);  --_fg: var(--gl-color-accent-ink);  --_border: transparent; }
+.badge[data-tone="success"] { --_bg: var(--gl-color-success-bg);   --_fg: var(--gl-color-success);      --_border: transparent; }
+.badge[data-tone="danger"]  { --_bg: var(--gl-color-danger-bg);    --_fg: var(--gl-color-danger);       --_border: transparent; }
 
 .badge-set {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--ad-space-2xs);
+  gap: var(--gl-space-2xs);
 }
 
 /* Tag
@@ -49,30 +49,30 @@
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.625rem;
-  border-radius: var(--ad-radius-sm);
-  background: var(--ad-color-surface-fill);
-  border: 1px solid var(--ad-color-border-default);
-  color: var(--ad-color-text-secondary);
-  font-family: var(--ad-font-mono);
-  font-size: var(--ad-step--2);
+  border-radius: var(--gl-radius-sm);
+  background: var(--gl-color-surface-fill);
+  border: 1px solid var(--gl-color-border-default);
+  color: var(--gl-color-text-secondary);
+  font-family: var(--gl-font-mono);
+  font-size: var(--gl-step--2);
   line-height: 1;
 }
 
 .tag[data-dashed] {
   background: transparent;
   border-style: dashed;
-  color: var(--ad-color-text-tertiary);
+  color: var(--gl-color-text-tertiary);
   cursor: pointer;
 }
 
 .tag button {
   all: unset;
   cursor: pointer;
-  color: var(--ad-color-text-tertiary);
+  color: var(--gl-color-text-tertiary);
   line-height: 1;
   font-size: 0.75rem;
 }
-.tag button:hover { color: var(--ad-color-text-primary); }
+.tag button:hover { color: var(--gl-color-text-primary); }
 
 .tag-set {
   display: flex;

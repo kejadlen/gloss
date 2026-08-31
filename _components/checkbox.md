@@ -8,7 +8,7 @@ summary: Native checkbox, tinted with the accent color. No hand-drawn box.
 `input[type="checkbox"]` is the component — styled bare with `accent-color`
 rather than a custom box, so the browser draws its own check. This is a real
 reduction, not just a rename: it deletes the hand-drawn SVG-checkmark markup
-that a `.ad-choice__box` span used to need. The wrapping `<label>` is told
+that a `.gl-choice__box` span used to need. The wrapping `<label>` is told
 apart from Field's label structurally — it `:has()` a checkbox as a direct
 child — so it needs no class either.
 

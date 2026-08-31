@@ -39,12 +39,12 @@ summary: Native select, styled to match Input exactly.
 </details>
 </figure>
 
-<div class="ad-callout">
+<div class="gl-callout">
   <p>
     The chevron is the one place in this component set that cannot reach a
-    <code>var(--ad-*)</code> token — a data-URI <code>background-image</code>
+    <code>var(--gl-*)</code> token — a data-URI <code>background-image</code>
     cannot reference a custom property, so its stroke is a literal hex, kept
-    close to <code>--ad-color-text-secondary</code> and commented in the source.
+    close to <code>--gl-color-text-secondary</code> and commented in the source.
   </p>
 </div>
 

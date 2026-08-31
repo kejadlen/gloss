@@ -67,7 +67,7 @@ Three screens, abbreviated to what each one adds.
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg>
       <span class="type-label">Photo preview</span>
     </div>
-    <label class="field" style="margin-top: var(--ad-space-m);">
+    <label class="field" style="margin-top: var(--gl-space-m);">
       Name
       <input placeholder="Dishwasher manual" />
     </label>
@@ -92,11 +92,11 @@ Three screens, abbreviated to what each one adds.
     <ul class="card">
       <li>
         <span class="avatar" data-square><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg></span>
-        <div class="pattern-row" style="font-size: var(--ad-step--1);">PDF · 2.1MB</div>
+        <div class="pattern-row" style="font-size: var(--gl-step--1);">PDF · 2.1MB</div>
       </li>
     </ul>
-    <div class="type-label" style="margin: var(--ad-space-m) 0 var(--ad-space-2xs);">Notes</div>
-    <p style="font-size: var(--ad-step--1); color: var(--ad-color-text-secondary); line-height:1.55; margin:0;">No notes yet.</p>
+    <div class="type-label" style="margin: var(--gl-space-m) 0 var(--gl-space-2xs);">Notes</div>
+    <p style="font-size: var(--gl-step--1); color: var(--gl-color-text-secondary); line-height:1.55; margin:0;">No notes yet.</p>
   </div>
 </div>
 </div>

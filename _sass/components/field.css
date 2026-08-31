@@ -12,28 +12,28 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: var(--ad-space-2xs);
+  gap: var(--gl-space-2xs);
   min-width: 0;
-  font-family: var(--ad-font-mono);
-  font-size: var(--ad-step--2);
+  font-family: var(--gl-font-mono);
+  font-size: var(--gl-step--2);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--ad-color-text-secondary);
+  color: var(--gl-color-text-secondary);
 }
 
 /* Hint and error read the native fine-print element. `role="alert"` is a
    real live-region role for validation text, so it doubles as the selector
    that turns a hint red. */
 .field > small {
-  font-family: var(--ad-font-sans);
-  font-size: var(--ad-step--2);
+  font-family: var(--gl-font-sans);
+  font-size: var(--gl-step--2);
   text-transform: none;
   letter-spacing: normal;
   font-weight: 400;
-  color: var(--ad-color-text-tertiary);
+  color: var(--gl-color-text-tertiary);
 }
-.field > small[role="alert"] { color: var(--ad-color-danger); }
+.field > small[role="alert"] { color: var(--gl-color-danger); }
 
 /* Input / Select — bordered, matched to each other exactly. Both tags ARE
    the component, so they are styled bare; nothing else on this site uses a
@@ -41,26 +41,26 @@
 input:not([type="checkbox"]):not([type="radio"]),
 select {
   width: 100%;
-  padding: var(--ad-space-xs) var(--ad-space-s);
-  background: var(--ad-color-surface-card);
-  border: 1px solid var(--ad-color-border-default);
-  border-radius: var(--ad-radius-sm);
-  color: var(--ad-color-text-primary);
-  font-family: var(--ad-font-sans);
-  font-size: var(--ad-step--1);
+  padding: var(--gl-space-xs) var(--gl-space-s);
+  background: var(--gl-color-surface-card);
+  border: 1px solid var(--gl-color-border-default);
+  border-radius: var(--gl-radius-sm);
+  color: var(--gl-color-text-primary);
+  font-family: var(--gl-font-sans);
+  font-size: var(--gl-step--1);
   text-transform: none;
   letter-spacing: normal;
   font-weight: 400;
   outline: none;
-  transition: border-color var(--ad-dur-fast) var(--ad-ease),
-              box-shadow var(--ad-dur-fast) var(--ad-ease);
+  transition: border-color var(--gl-dur-fast) var(--gl-ease),
+              box-shadow var(--gl-dur-fast) var(--gl-ease);
 }
-input::placeholder { color: var(--ad-color-text-tertiary); }
+input::placeholder { color: var(--gl-color-text-tertiary); }
 
 input:not([type="checkbox"]):not([type="radio"]):focus,
 select:focus {
-  border-color: var(--ad-color-accent);
-  box-shadow: 0 0 0 2px var(--ad-color-accent-soft);
+  border-color: var(--gl-color-accent);
+  box-shadow: 0 0 0 2px var(--gl-color-accent-soft);
 }
 
 input:not([type="checkbox"]):not([type="radio"]):disabled,
@@ -71,21 +71,21 @@ select:disabled {
 
 /* The chevron is the one flagged color exception in this component set:
    CSS cannot point a data-URI background-image at a custom property, so its
-   stroke is a literal hex rather than a var(--ad-*) reference. It is picked
-   to match --ad-color-text-secondary and commented here so it is not
+   stroke is a literal hex rather than a var(--gl-*) reference. It is picked
+   to match --gl-color-text-secondary and commented here so it is not
    mistaken for a stray color. */
 select {
   appearance: none;
-  padding-inline-end: var(--ad-space-l);
+  padding-inline-end: var(--gl-space-l);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%235f5d59' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right var(--ad-space-xs) center;
+  background-position: right var(--gl-space-xs) center;
 }
 
 input[aria-invalid="true"],
 select[aria-invalid="true"] {
-  border-color: var(--ad-color-danger);
-  background-color: var(--ad-color-danger-bg);
+  border-color: var(--gl-color-danger);
+  background-color: var(--gl-color-danger-bg);
 }
 
 /* Checkbox / Radio — the real native controls, tinted with accent-color
@@ -101,12 +101,12 @@ input[type="radio"] {
   width: 1.125rem;
   height: 1.125rem;
   margin: 0;
-  accent-color: var(--ad-color-accent);
+  accent-color: var(--gl-color-accent);
   cursor: pointer;
 }
 input[type="checkbox"]:not([role="switch"]):focus-visible,
 input[type="radio"]:focus-visible {
-  outline: 2px solid var(--ad-color-accent);
+  outline: 2px solid var(--gl-color-accent);
   outline-offset: 2px;
 }
 
@@ -114,14 +114,14 @@ label:has(> input[type="checkbox"]:not([role="switch"])),
 label:has(> input[type="radio"]) {
   display: inline-flex;
   align-items: center;
-  gap: var(--ad-space-2xs);
+  gap: var(--gl-space-2xs);
   cursor: pointer;
-  font-family: var(--ad-font-sans);
-  font-size: var(--ad-step--1);
+  font-family: var(--gl-font-sans);
+  font-size: var(--gl-step--1);
   font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
-  color: var(--ad-color-text-primary);
+  color: var(--gl-color-text-primary);
 }
 label:has(> input:disabled) { cursor: default; opacity: 0.5; }
 
@@ -135,11 +135,11 @@ label:has(> input:disabled) { cursor: default; opacity: 0.5; }
 .switch {
   display: inline-flex;
   align-items: center;
-  gap: var(--ad-space-2xs);
+  gap: var(--gl-space-2xs);
   cursor: pointer;
-  font-family: var(--ad-font-sans);
-  font-size: var(--ad-step--1);
-  color: var(--ad-color-text-primary);
+  font-family: var(--gl-font-sans);
+  font-size: var(--gl-step--1);
+  color: var(--gl-color-text-primary);
 }
 .switch input[role="switch"] { position: absolute; opacity: 0; width: 2.25rem; height: 1.25rem; margin: 0; }
 
@@ -148,9 +148,9 @@ label:has(> input:disabled) { cursor: default; opacity: 0.5; }
   flex: none;
   width: 2.25rem;
   height: 1.25rem;
-  border-radius: var(--ad-radius-full);
-  background: var(--ad-color-border-default);
-  transition: background-color var(--ad-dur-base) var(--ad-ease);
+  border-radius: var(--gl-radius-full);
+  background: var(--gl-color-border-default);
+  transition: background-color var(--gl-dur-base) var(--gl-ease);
 }
 .switch span::after {
   content: "";
@@ -159,14 +159,14 @@ label:has(> input:disabled) { cursor: default; opacity: 0.5; }
   inset-inline-start: 2px;
   width: 1rem;
   height: 1rem;
-  border-radius: var(--ad-radius-full);
-  background: var(--ad-color-accent-fg);
-  box-shadow: var(--ad-shadow-sm);
-  transition: translate var(--ad-dur-base) var(--ad-ease);
+  border-radius: var(--gl-radius-full);
+  background: var(--gl-color-accent-fg);
+  box-shadow: var(--gl-shadow-sm);
+  transition: translate var(--gl-dur-base) var(--gl-ease);
 }
-.switch input[role="switch"]:checked + span { background: var(--ad-color-accent); }
+.switch input[role="switch"]:checked + span { background: var(--gl-color-accent); }
 .switch input[role="switch"]:checked + span::after { translate: 1rem 0; }
-.switch input[role="switch"]:focus-visible + span { outline: 2px solid var(--ad-color-accent); outline-offset: 2px; }
+.switch input[role="switch"]:focus-visible + span { outline: 2px solid var(--gl-color-accent); outline-offset: 2px; }
 .switch:has(input:disabled) { cursor: default; opacity: 0.5; }
 
 /* Rows of fields — used by the settings-form pattern. `<form>`/`<fieldset>`
@@ -176,31 +176,31 @@ label:has(> input:disabled) { cursor: default; opacity: 0.5; }
 form {
   display: flex;
   flex-direction: column;
-  gap: var(--ad-space-s);
+  gap: var(--gl-space-s);
   max-width: 28rem;
 }
 .form-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  gap: var(--ad-space-xs);
+  gap: var(--gl-space-xs);
 }
 /* Vertically stacked fields — the other half of form layout alongside
    .form-row's side-by-side pair. */
-.field-stack { display: flex; flex-direction: column; gap: var(--ad-space-s); }
+.field-stack { display: flex; flex-direction: column; gap: var(--gl-space-s); }
 fieldset {
   display: flex;
   flex-direction: column;
-  gap: var(--ad-space-2xs);
+  gap: var(--gl-space-2xs);
   margin: 0;
   padding: 0;
   border: 0;
 }
 fieldset > legend {
-  padding: 0 0 var(--ad-space-2xs);
-  font-family: var(--ad-font-mono);
-  font-size: var(--ad-step--2);
+  padding: 0 0 var(--gl-space-2xs);
+  font-family: var(--gl-font-mono);
+  font-size: var(--gl-step--2);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--ad-color-text-secondary);
+  color: var(--gl-color-text-secondary);
 }
