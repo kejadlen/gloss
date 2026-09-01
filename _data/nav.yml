@@ -3,6 +3,7 @@
     - { text: Overview,      url: / }
     - { text: Rationale, url: /rationale/ }
     - { text: Using the CSS, url: /install/ }
+    - { text: Refusals, url: /refusals/ }
 - title: Foundations
   links:
     - { text: Color,      url: /foundations/color/ }

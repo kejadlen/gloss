@@ -150,4 +150,7 @@ Being honest about the design is being honest about the gaps too.
 - **Loop and Archive are generic demonstrations**, not real production
   screens.
 
-Naming these is cheaper than being caught by them.
+Naming these is cheaper than being caught by them. For the shapes this
+system actively refuses to reproduce when a new screen is built on top of
+it — kickers, icon tiles over headings, pulsing status dots, and the rest —
+see [Refusals](<%= relative_url('/refusals/') %>).

@@ -9,7 +9,10 @@ they cover the voice, the visual foundations, and the four hard rules (no
 hex or duration outside `tokens.css`, components read aliases not ramps,
 every token says what it's for, one accent per project, never two in a
 view). `install.md` covers embedding and retheming in more depth than this
-file repeats.
+file repeats. Before shipping a new screen, check it against `refusals.md`
+— the consolidated list of generated-interface tells this system refuses to
+produce (eyebrows over headings, icon tiles above cards, pulsing status
+dots, and the rest).
 
 ## Getting the CSS into another project
 
