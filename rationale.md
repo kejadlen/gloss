@@ -82,10 +82,11 @@ about 3.46:1 against the page in light mode, under the 4.5:1 floor for normal
 text. That is not a bug to paper over by darkening a real brand value; it is
 a documented, intentional property of the palette (see the
 [Color page](<%= relative_url('/foundations/color/') %>)), so the contract
-excludes it rather than silently forcing it to pass. Borders get the same
-treatment for the same reason: this system's own rule is that hairline
-borders do the elevation work, not high contrast, so it does not invent a
-3:1 border assertion it never claimed.
+excludes it rather than silently forcing it to pass. Dividers get the same
+treatment for the same reason: this system's own rule is that a bounded
+surface reads by surface contrast, not by a border, so hairlines are
+reserved for dividers inside a surface and this contract does not invent a
+3:1 assertion for a boundary the system doesn't draw.
 
 ## The four rules
 

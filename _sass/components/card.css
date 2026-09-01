@@ -1,7 +1,9 @@
 /* Card
-   Flat surface, hairline border, radius-lg. `[data-elevated]` is opt-in and
-   reserved for the one focused/primary card in a view — a dialog, the
-   primary capture card — flat is the default everywhere else.
+   Flat surface, no border, radius-lg. `--gl-color-surface-card` is one
+   neutral step lighter than the page around it — that tonal step, not an
+   outline, is what marks the edge. `[data-elevated]` is opt-in and reserved
+   for the one focused/primary card in a view — a dialog, the primary
+   capture card — flat is the default everywhere else.
 
    A <div>/<article> is too generic to select bare, so Card keeps one
    sanctioned class. When Card's job is holding a list of rows — the common
@@ -18,7 +20,7 @@
   padding: 0;
   list-style: none;
   background: var(--gl-color-surface-card);
-  border: 1px solid var(--gl-color-border-hairline);
+  border: none;
   border-radius: var(--gl-radius-lg);
   box-shadow: none;
   overflow: hidden;
@@ -93,8 +95,8 @@
   background: var(--gl-color-surface-fill);
 }
 
-.card[data-link] { transition: border-color var(--gl-dur-fast) var(--gl-ease), box-shadow var(--gl-dur-fast) var(--gl-ease); }
-.card[data-link]:hover { border-color: var(--gl-color-border-default); box-shadow: var(--gl-shadow-sm); }
+.card[data-link] { transition: box-shadow var(--gl-dur-fast) var(--gl-ease); }
+.card[data-link]:hover { box-shadow: var(--gl-shadow-sm); }
 .card[data-link]:focus-within { outline: 2px solid var(--gl-color-accent); outline-offset: 2px; }
 
 .card-grid {

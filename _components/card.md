@@ -1,8 +1,9 @@
 ---
 title: Card
 summary: >-
-  Flat surface, hairline border, radius-lg. Elevation is opt-in, reserved for
-  the one focused card in a view — a dialog, the primary capture card.
+  Flat surface, no border, radius-lg. A step lighter than the page marks the
+  edge. Elevation is opt-in, reserved for the one focused card in a view — a
+  dialog, the primary capture card.
 ---
 
 A `<div>`/`<article>` is too generic to style bare, so Card keeps one
@@ -31,7 +32,7 @@ it that has no element of its own to hang a selector on.
 
 <figure class="example">
 <figcaption>Content tile</figcaption>
-<div>
+<div data-surface="sunken">
 <article class="card" style="max-width: 18rem;">
   <div class="card-body">
     <p class="type-label" style="margin:0;">Recommended</p>
@@ -69,7 +70,7 @@ li` descendant selector, no second class needed.
 
 <figure class="example">
 <figcaption>Card of rows</figcaption>
-<div>
+<div data-surface="sunken">
 <ul class="card" style="max-width: 22rem;">
   <li>Dishwasher manual</li>
   <li>Sofa receipt</li>

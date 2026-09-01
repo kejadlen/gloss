@@ -21,8 +21,7 @@ screen that breaks one is off-system.
 <h3>Surface &amp; elevation</h3>
 <ul>
 <li>No cream or beige page. The stock is warm but held close to neutral.</li>
-<li>No side-accent bar on a card, no four-sided border, no bordered card at all.</li>
-<li>No hairline border and soft shadow on the same element. One or the other.</li>
+<li>No side-accent bar on a card, no four-sided border, no border around a bounded surface at all — surface contrast does the identifying work.</li>
 <li>No decorative grid, stripe field, or radial glow. Flat color only.</li>
 <li>No radius above <code>--gl-radius-lg</code> on a card, no custom corner value outside the token scale.</li>
 <li>No dark theme with colored glows.</li>

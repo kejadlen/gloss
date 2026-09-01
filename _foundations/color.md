@@ -631,12 +631,13 @@ and checked by hand rather than by a build-time test.
     and de-emphasized metadata, never body copy — so this is a real,
     intentional property of the palette, not a bug to patch by darkening the
     step.
-    <strong>Borders</strong> — <code>--gl-color-border-hairline</code> and
+    <strong>Dividers</strong> — <code>--gl-color-border-hairline</code> and
     <code>--gl-color-border-default</code> sit well under the 3:1 that WCAG
-    1.4.11 asks of a meaningful boundary. Hairline (1px) borders and dividers
-    do most of the elevation work here — borders are deliberately quiet, and
-    this system never claims a 3:1 bar for them, so this contract does not
-    invent one.
+    1.4.11 asks of a meaningful boundary. That's deliberate: a bounded
+    surface in this system reads by surface contrast, not a border, so these
+    tokens are reserved for dividers inside a surface (a CardRow, a table
+    rule) — never a boundary around one — and this system never claims a
+    3:1 bar for them, so this contract does not invent one.
   </p>
 </div>
 

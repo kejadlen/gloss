@@ -1,17 +1,19 @@
 ---
 title: Button
 summary: >-
-  A flat, quiet button that recedes rather than performs — no gradients, no
-  shine. Five variants, three sizes, one geometry.
+  No border, no ornament — hierarchy is ink density, not an outline. Five
+  variants, three sizes, one geometry.
 ---
 
 ## Variants
 
-`default` is bordered and neutral. `primary` is the accent fill — one
-committing action per view, at most. `dark` is reserved for the single most
-committing action in a screen, typically a final Save; it should be rare.
-`ghost` has no border or fill, for dismissals and tertiary actions. `danger`
-is destructive and irreversible only.
+`default` is quiet — no fill at rest, a flat tint of the stock on hover, the
+same gesture as a CardRow. `primary` is the accent fill — one committing
+action per view, at most. `dark` is reserved for the single most committing
+action in a screen, typically a final Save; it should be rare. `ghost` is
+the same quiet block one step further back — text-secondary instead of
+text-primary — for dismissals and tertiary actions. `danger` is destructive
+and irreversible only.
 
 <figure class="example">
 <figcaption>Variants</figcaption>
@@ -159,11 +161,11 @@ class Button needs, and only anchors reach for it.
   <thead><tr><th scope="col">Element / attribute</th><th scope="col">Values</th><th scope="col">Notes</th></tr></thead>
   <tbody>
     <tr><td><code>button</code></td><td></td><td>Required base. A bare <code>&lt;button&gt;</code> is styled directly — no class. Use <code>&lt;a class="btn"&gt;</code> instead when the control navigates.</td></tr>
-    <tr><td><code>data-variant</code></td><td><code>primary | dark | ghost | danger</code></td><td>Omit for the default, bordered look.</td></tr>
+    <tr><td><code>data-variant</code></td><td><code>primary | dark | ghost | danger</code></td><td>Omit for the default, quiet look — no fill at rest.</td></tr>
     <tr><td><code>data-size</code></td><td><code>sm | lg</code></td><td>Omit for the default (medium) size. Padding only.</td></tr>
     <tr><td><code>data-block</code></td><td>boolean</td><td>Full width of its container.</td></tr>
     <tr><td><code>disabled</code></td><td>boolean</td><td>Removes the button from the tab order.</td></tr>
     <tr><td><code>aria-disabled</code></td><td><code>"true"</code></td><td>Looks disabled, stays focusable.</td></tr>
-    <tr><td><code>[role="group"]</code></td><td></td><td>Wrap adjacent buttons in a group to join their borders and radii.</td></tr>
+    <tr><td><code>[role="group"]</code></td><td></td><td>Wrap adjacent buttons in a group to join their radii; a hairline divider separates them, since the buttons themselves carry no border.</td></tr>
   </tbody>
 </table>

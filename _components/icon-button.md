@@ -7,10 +7,11 @@ summary: >-
 
 ## Variants
 
-`ghost` is the default and transparent. `outline` is a bordered surface, for
-an icon button sitting alone rather than in a toolbar. `accent` is a soft
-accent tint, for a toggled or active state — the segmented-tabs pattern this
-system does not otherwise reach for.
+`ghost` is the default and transparent. `outline` is a raised fill (no
+border — the name is kept for API compatibility, not for what it looks
+like), for an icon button sitting alone rather than in a toolbar. `accent`
+is a soft accent tint, for a toggled or active state — the segmented-tabs
+pattern this system does not otherwise reach for.
 
 A square icon-only button is still a `<button>`, but there is no attribute
 that tells it apart from a plain [Button](<%= relative_url('/components/button/') %>)

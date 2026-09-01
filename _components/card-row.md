@@ -13,7 +13,7 @@ class of CardRow's own.
 
 <figure class="example">
 <figcaption>Rows</figcaption>
-<div>
+<div data-surface="sunken">
 <ul class="card" style="max-width: 22rem;">
   <li>Renew passport</li>
   <li>Dentist checkup</li>
@@ -38,7 +38,7 @@ a hover fill on its own; no `--clickable` modifier to remember.
 
 <figure class="example">
 <figcaption>Clickable rows</figcaption>
-<div>
+<div data-surface="sunken">
 <ul class="card" style="max-width: 22rem;">
   <li><button>Tax return 2025.pdf</button></li>
   <li><button>Warranty card.pdf</button></li>
@@ -60,7 +60,7 @@ patterns for it in context).
 
 <figure class="example">
 <figcaption>Leading icon, trailing meta</figcaption>
-<div>
+<div data-surface="sunken">
 <ul class="card" style="max-width: 24rem;">
   <li>
     <span class="avatar" data-square>
