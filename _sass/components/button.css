@@ -1,7 +1,10 @@
 /* Button
-   A flat, quiet button that recedes rather than performs — no gradients, no
-   shine. Variants: default, primary, dark, ghost, danger. Sizes: sm, md
-   (default), lg — padding and font step only, weight and radius stay put.
+   No border, no ornament — hierarchy is ink density, not an outline. A
+   STAMP (primary, dark, danger) is a solid block of colour; a QUIET action
+   (default, ghost) carries no fill at rest and picks up a flat tint of the
+   stock on hover, the same gesture as a CardRow. Variants: default, primary,
+   dark, ghost, danger. Sizes: sm, md (default), lg — padding and font step
+   only, weight and radius stay put.
 
    The contract is the element itself: a bare <button> is styled directly, no
    class required. An <a> that acts like a button (navigates rather than
@@ -13,9 +16,8 @@
 
 button:not(.icon-button),
 a.btn {
-  --_bg: var(--gl-color-surface-card);
+  --_bg: transparent;
   --_fg: var(--gl-color-text-primary);
-  --_border: var(--gl-color-border-default);
   --_pad: var(--gl-space-xs) var(--gl-space-s);
   --_font: var(--gl-step--1);
 
@@ -24,25 +26,39 @@ a.btn {
   justify-content: center;
   gap: var(--gl-space-2xs);
   padding: var(--_pad);
-  border: 1px solid var(--_border);
+  border: none;
   border-radius: var(--gl-radius-md);
   background: var(--_bg);
   color: var(--_fg);
-  font-family: var(--gl-font-sans);
+  font-family: var(--gl-font-mono);
   font-size: var(--_font);
-  font-weight: 550;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  transition: filter var(--gl-dur-fast) var(--gl-ease),
-              border-color var(--gl-dur-fast) var(--gl-ease);
+  transition: background-color var(--gl-dur-fast) var(--gl-ease),
+              color var(--gl-dur-fast) var(--gl-ease),
+              filter var(--gl-dur-fast) var(--gl-ease);
 }
 
-:is(button:not(.icon-button), a.btn):hover:not(:disabled):not([aria-disabled="true"]) { filter: brightness(0.96); }
-:is(button:not(.icon-button), a.btn):active:not(:disabled):not([aria-disabled="true"]) { filter: brightness(0.92); }
+/* Quiet variants (default, ghost) carry no fill at rest; hovering picks up
+   a flat tint of the stock instead of darkening a border that isn't there. */
+:is(button:not(.icon-button), a.btn):not([data-variant="primary"]):not([data-variant="dark"]):not([data-variant="danger"]):hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--gl-color-surface-fill);
+  color: var(--gl-color-text-primary);
+}
+
+/* Stamp variants (primary, dark, danger) are already ink — hovering just
+   darkens the fill in place. */
+:is(button:not(.icon-button), a.btn)[data-variant="primary"]:hover:not(:disabled):not([aria-disabled="true"]),
+:is(button:not(.icon-button), a.btn)[data-variant="dark"]:hover:not(:disabled):not([aria-disabled="true"]),
+:is(button:not(.icon-button), a.btn)[data-variant="danger"]:hover:not(:disabled):not([aria-disabled="true"]) { filter: brightness(0.96); }
+:is(button:not(.icon-button), a.btn)[data-variant="primary"]:active:not(:disabled):not([aria-disabled="true"]),
+:is(button:not(.icon-button), a.btn)[data-variant="dark"]:active:not(:disabled):not([aria-disabled="true"]),
+:is(button:not(.icon-button), a.btn)[data-variant="danger"]:active:not(:disabled):not([aria-disabled="true"]) { filter: brightness(0.92); }
 
 button:not(.icon-button):disabled,
 :is(button:not(.icon-button), a.btn)[aria-disabled="true"] {
@@ -53,7 +69,6 @@ button:not(.icon-button):disabled,
 :is(button:not(.icon-button), a.btn)[data-variant="primary"] {
   --_bg: var(--gl-color-accent);
   --_fg: var(--gl-color-accent-fg);
-  --_border: var(--gl-color-accent);
 }
 
 /* Reserved for the single most-committing action in a view — a final Save,
@@ -61,13 +76,12 @@ button:not(.icon-button):disabled,
 :is(button:not(.icon-button), a.btn)[data-variant="dark"] {
   --_bg: var(--gl-color-text-primary);
   --_fg: var(--gl-color-surface-page);
-  --_border: var(--gl-color-text-primary);
 }
 
+/* Same quiet block as default, one step further back: text-secondary at
+   rest instead of text-primary. */
 :is(button:not(.icon-button), a.btn)[data-variant="ghost"] {
-  --_bg: transparent;
-  --_fg: var(--gl-color-text-primary);
-  --_border: transparent;
+  --_fg: var(--gl-color-text-secondary);
 }
 
 /* The source hardcodes this label white rather than deriving it — danger
@@ -77,7 +91,6 @@ button:not(.icon-button):disabled,
 :is(button:not(.icon-button), a.btn)[data-variant="danger"] {
   --_bg: var(--gl-color-danger);
   --_fg: var(--gl-color-accent-fg);
-  --_border: var(--gl-color-danger);
 }
 
 :is(button:not(.icon-button), a.btn)[data-size="sm"] { --_pad: 0.375rem 0.75rem; --_font: 0.8125rem; }
@@ -86,7 +99,10 @@ button:not(.icon-button):disabled,
 :is(button:not(.icon-button), a.btn)[data-block] { width: 100%; }
 
 /* Button group — [role="group"] is already the correct ARIA role for a
-   toolbar of related buttons, so it doubles as the styling hook for free. */
+   toolbar of related buttons, so it doubles as the styling hook for free.
+   A hairline divider stands in for the border the buttons themselves no
+   longer carry — without one, two adjacent quiet buttons would read as a
+   single wide button. */
 [role="group"] {
   display: inline-flex;
   isolation: isolate;
@@ -94,7 +110,7 @@ button:not(.icon-button):disabled,
 [role="group"] > button { border-radius: 0; }
 [role="group"] > button:first-child { border-start-start-radius: var(--gl-radius-md); border-end-start-radius: var(--gl-radius-md); }
 [role="group"] > button:last-child { border-start-end-radius: var(--gl-radius-md); border-end-end-radius: var(--gl-radius-md); }
-[role="group"] > button + button { margin-inline-start: -1px; }
+[role="group"] > button + button { border-inline-start: 1px solid var(--gl-color-border-hairline); }
 [role="group"] > button:hover,
 [role="group"] > button:focus-visible { z-index: 1; }
 
@@ -105,7 +121,6 @@ button:not(.icon-button):disabled,
 .icon-button {
   --_size: 2.125rem;
   --_bg: transparent;
-  --_border: transparent;
   --_fg: var(--gl-color-text-secondary);
 
   display: inline-flex;
@@ -115,7 +130,7 @@ button:not(.icon-button):disabled,
   height: var(--_size);
   padding: 0;
   flex: none;
-  border: 1px solid var(--_border);
+  border: none;
   border-radius: var(--gl-radius-md);
   background: var(--_bg);
   color: var(--_fg);
@@ -123,11 +138,13 @@ button:not(.icon-button):disabled,
   transition: background-color var(--gl-dur-fast) var(--gl-ease),
               color var(--gl-dur-fast) var(--gl-ease);
 }
-.icon-button:hover:not(:disabled) { background: var(--gl-color-surface-fill-2); }
+.icon-button:hover:not(:disabled) { background: var(--gl-color-surface-fill); }
 .icon-button:disabled { opacity: 0.5; cursor: default; }
 
 .icon-button[data-size="sm"] { --_size: 1.75rem; }
 .icon-button[data-size="lg"] { --_size: 2.5rem; }
 
-.icon-button[data-variant="outline"] { --_bg: var(--gl-color-surface-card); --_border: var(--gl-color-border-default); --_fg: var(--gl-color-text-primary); }
+/* No border on either variant — "outline" keeps its name for API
+   compatibility, but reads as a raised fill instead of a bordered box. */
+.icon-button[data-variant="outline"] { --_bg: var(--gl-color-surface-fill); --_fg: var(--gl-color-text-primary); }
 .icon-button[data-variant="accent"]  { --_bg: var(--gl-color-accent-soft); --_fg: var(--gl-color-accent-ink); }
