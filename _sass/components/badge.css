@@ -1,35 +1,38 @@
 /* Badge
-   Mono, uppercase, tracked — the catalog-label convention for status and
-   meta values (SAVED, OVERDUE, RECOMMENDED). A label, never a button.
+   A catalog mark, not a tinted pill: a small ink square in the tone colour
+   plus mono uppercase text, on no background. No border, no radius — status
+   reads as a marginal annotation on the row it belongs to, not a control.
 
    A <span> is too generic to style globally — it is used all over running
    prose for unrelated reasons — so Badge gets the one sanctioned class this
    shape needs. Tone is an attribute, not a modifier class. */
 
 .badge {
-  --_bg: var(--gl-color-surface-fill);
   --_fg: var(--gl-color-text-secondary);
-  --_border: var(--gl-color-border-hairline);
 
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.1875rem 0.5rem;
-  border: 1px solid var(--_border);
-  border-radius: var(--gl-radius-sm);
-  background: var(--_bg);
+  gap: 0.375rem;
   color: var(--_fg);
   font-family: var(--gl-font-mono);
   font-size: var(--gl-step--2);
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.09em;
   line-height: 1;
   white-space: nowrap;
 }
+.badge::before {
+  content: "";
+  width: 0.375rem;
+  height: 0.375rem;
+  flex: none;
+  background: var(--_fg);
+}
 
-.badge[data-tone="accent"]  { --_bg: var(--gl-color-accent-soft);  --_fg: var(--gl-color-accent-ink);  --_border: transparent; }
-.badge[data-tone="success"] { --_bg: var(--gl-color-success-bg);   --_fg: var(--gl-color-success);      --_border: transparent; }
-.badge[data-tone="danger"]  { --_bg: var(--gl-color-danger-bg);    --_fg: var(--gl-color-danger);       --_border: transparent; }
+.badge[data-tone="accent"]  { --_fg: var(--gl-color-accent-ink); }
+.badge[data-tone="success"] { --_fg: var(--gl-color-success); }
+.badge[data-tone="danger"]  { --_fg: var(--gl-color-danger); }
 
 .badge-set {
   display: flex;
@@ -49,9 +52,9 @@
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.625rem;
+  border: none;
   border-radius: var(--gl-radius-sm);
   background: var(--gl-color-surface-fill);
-  border: 1px solid var(--gl-color-border-default);
   color: var(--gl-color-text-secondary);
   font-family: var(--gl-font-mono);
   font-size: var(--gl-step--2);

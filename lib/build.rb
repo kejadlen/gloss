@@ -67,6 +67,7 @@ PAGES = [
   ["index.md", "/", nil],
   ["rationale.md", "/rationale/", nil],
   ["install.md", "/install/", nil],
+  ["refusals.md", "/refusals/", nil],
   *Dir[File.join(ROOT, "_foundations/*.md")].sort.map { |f| [f, "/foundations/#{File.basename(f, ".md")}/", "Foundations"] },
   *Dir[File.join(ROOT, "_components/*.md")].sort.map { |f| [f, "/components/#{File.basename(f, ".md")}/", "Components"] },
   *Dir[File.join(ROOT, "_patterns/*.md")].sort.map { |f| [f, "/patterns/#{File.basename(f, ".md")}/", "Patterns"] },

@@ -1,7 +1,9 @@
 /* Card
-   Flat surface, hairline border, radius-lg. `[data-elevated]` is opt-in and
-   reserved for the one focused/primary card in a view — a dialog, the
-   primary capture card — flat is the default everywhere else.
+   Flat surface, no border, radius-lg. `--gl-color-surface-card` is one
+   neutral step lighter than the page around it — that tonal step, not an
+   outline, is what marks the edge. `[data-elevated]` is opt-in and reserved
+   for the one focused/primary card in a view — a dialog, the primary
+   capture card — flat is the default everywhere else.
 
    A <div>/<article> is too generic to select bare, so Card keeps one
    sanctioned class. When Card's job is holding a list of rows — the common
@@ -18,7 +20,7 @@
   padding: 0;
   list-style: none;
   background: var(--gl-color-surface-card);
-  border: 1px solid var(--gl-color-border-hairline);
+  border: none;
   border-radius: var(--gl-radius-lg);
   box-shadow: none;
   overflow: hidden;
@@ -67,10 +69,11 @@
 .card > li > a:only-child:hover { background: var(--gl-color-surface-fill); }
 
 /* Documentation-only extras: a body/footer pair and a responsive grid, used
-   by the prose pages (rationale.md, index.md) to show a Card as a plain
-   content tile rather than a data row. Neither is part of Card's props —
-   they exist because a content tile's inner layout has no element of its
-   own to hang a selector on. */
+   by the prose pages (rationale.md, index.md, refusals.md) to show a Card
+   as a plain content tile rather than a data row. Neither is part of
+   Card's props — they exist because a content tile's inner layout has no
+   element of its own to hang a selector on. .card-body ul is the same idea
+   applied to a checklist tile (refusals.md) instead of a single paragraph. */
 .card-body {
   display: flex;
   flex-direction: column;
@@ -78,7 +81,9 @@
   padding: var(--gl-space-m);
 }
 .card-body h3 { margin: 0; font: 600 var(--gl-step-0)/1.3 var(--gl-font-sans); }
-.card-body p { margin: 0; color: var(--gl-color-text-secondary); font-size: var(--gl-step--1); }
+.card-body p,
+.card-body ul { margin: 0; color: var(--gl-color-text-secondary); font-size: var(--gl-step--1); }
+.card-body ul { padding-left: 1.125em; }
 .card-footer {
   display: flex;
   flex-wrap: wrap;
@@ -90,8 +95,8 @@
   background: var(--gl-color-surface-fill);
 }
 
-.card[data-link] { transition: border-color var(--gl-dur-fast) var(--gl-ease), box-shadow var(--gl-dur-fast) var(--gl-ease); }
-.card[data-link]:hover { border-color: var(--gl-color-border-default); box-shadow: var(--gl-shadow-sm); }
+.card[data-link] { transition: box-shadow var(--gl-dur-fast) var(--gl-ease); }
+.card[data-link]:hover { box-shadow: var(--gl-shadow-sm); }
 .card[data-link]:focus-within { outline: 2px solid var(--gl-color-accent); outline-offset: 2px; }
 
 .card-grid {

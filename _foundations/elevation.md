@@ -1,15 +1,24 @@
 ---
 title: Elevation
 summary: >-
-  Two shadow levels only. Hairline (1px) borders do most of the elevation
-  work in this system; shadow is reserved for the one floating layer in a view.
+  Two shadow levels only. A bounded surface reads by being a step lighter
+  than what's behind it, not by a border around its edge; shadow is reserved
+  for the one floating layer in a view.
 ---
 
-## Borders do the work
+## Surface contrast does the work
 
-This system's own rule: hairline (1px) borders and dividers do most of the
-elevation work. A flat, bordered [Card](<%= relative_url('/components/card/') %>)
-is the default everywhere. Shadow is the exception, not the baseline.
+This system's own rule: no border marks the edge of a bounded surface. A
+flat [Card](<%= relative_url('/components/card/') %>) is the default
+everywhere — `--gl-color-surface-card` is one neutral step lighter than
+`--gl-color-surface-page` around it, and that tonal step is what reads as
+"a card," not an outline. Shadow is the exception, not the baseline.
+
+Hairlines have not disappeared from the system — a
+[CardRow](<%= relative_url('/components/card-row/') %>) still divides from
+its neighbor on one, a table still rules its rows, an underline tab still
+sits on one — they just no longer wrap a whole surface. A divider inside a
+card; never a border around one.
 
 ## The two levels
 
@@ -32,7 +41,7 @@ is the default everywhere. Shadow is the exception, not the baseline.
 <article class="card">
   <div class="card-body">
     <h3 style="font-size: var(--gl-step--1);">Flat</h3>
-    <p>The default. A hairline border, no shadow.</p>
+    <p>The default. A step lighter than the page, no border, no shadow.</p>
   </div>
 </article>
 <article class="card" data-elevated>
@@ -46,7 +55,7 @@ is the default everywhere. Shadow is the exception, not the baseline.
 <pre><code>&lt;article class="card"&gt;
   &lt;div class="card-body"&gt;
     &lt;h3&gt;Flat&lt;/h3&gt;
-    &lt;p&gt;The default. A hairline border, no shadow.&lt;/p&gt;
+    &lt;p&gt;The default. A step lighter than the page, no border, no shadow.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/article&gt;
 &lt;article class="card" data-elevated&gt;
@@ -69,7 +78,8 @@ tokens still apply; they simply stop being the primary signal.
 
 - **At most one `--gl-shadow-float` on screen.** If two things both claim to
   be the topmost layer, neither is.
-- **Border or shadow, not both, for a given surface's edge.** A card that
-  both borders and floats looks like a sticker.
+- **No border around a bounded surface, ever.** Surface contrast does the
+  identifying work a border would; a card that borders and floats looks like
+  a sticker.
 - **Never animate a shadow's blur.** If a floated element needs to arrive,
   animate its `opacity`, or do not animate it at all.

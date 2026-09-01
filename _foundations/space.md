@@ -70,7 +70,7 @@ summary: >-
 
 <figure class="example">
 <figcaption>The same card at three densities</figcaption>
-<div data-layout="grid">
+<div data-layout="grid" data-surface="sunken">
 <article class="card">
   <div class="card-body" style="gap: var(--gl-space-3xs); padding: var(--gl-space-xs);">
     <h3 style="font-size: var(--gl-step--1);">Compact</h3>
