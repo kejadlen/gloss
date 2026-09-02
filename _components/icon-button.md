@@ -46,6 +46,13 @@ sitting alone — `variant`/`size` mean different things for each — so
 
 ## Sizes
 
+The box is square and fluid, and it is not a number of its own: it is two
+rungs of the space scale around one line of the type a
+[Button](<%= relative_url('/components/button/') %>) of the same size would
+set. So the three sizes come out at 25px, 35–38px, and 39–43px — level with
+their Button counterparts at any window width, and still level if the scale
+is ever retuned.
+
 <figure class="example">
 <figcaption>Sizes</figcaption>
 <div>
@@ -91,7 +98,7 @@ An icon-only control almost always wants a [Tooltip](<%= relative_url('/componen
   <tbody>
     <tr><td><code>button.icon-button</code></td><td></td><td>Required base — the one class in this component, since nothing distinguishes it from Button structurally.</td></tr>
     <tr><td><code>aria-label</code></td><td>string</td><td>Required — becomes the accessible name and the native tooltip.</td></tr>
-    <tr><td><code>data-size</code></td><td><code>sm | lg</code></td><td>28 / 40px square. Omit for the default 34px.</td></tr>
+    <tr><td><code>data-size</code></td><td><code>sm | lg</code></td><td>Square, matching the Button of the same size: 25px small, 39–43px large. Omit for the default, 35–38px.</td></tr>
     <tr><td><code>data-variant</code></td><td><code>outline | accent</code></td><td>Omit for the default, transparent ghost look.</td></tr>
   </tbody>
 </table>

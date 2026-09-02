@@ -6,6 +6,12 @@
    dark, ghost, danger. Sizes: sm, md (default), lg — padding and font step
    only, weight and radius stay put.
 
+   The default used to pad itself with --gl-space-xs/-s, which are the rungs
+   a layout reaches for between two controls, not inside one: on a wide
+   viewport they grew the default button taller than the large one. Every
+   size now sits one rung further down the same scale — see the block at
+   the bottom.
+
    The contract is the element itself: a bare <button> is styled directly, no
    class required. An <a> that acts like a button (navigates rather than
    changes something — see the Button page's "Links that act like buttons")
@@ -18,14 +24,15 @@ button:not(.icon-button),
 a.btn {
   --_bg: transparent;
   --_fg: var(--gl-color-text-primary);
-  --_pad: var(--gl-space-xs) var(--gl-space-s);
+  --_pad-y: var(--gl-space-2xs);
+  --_pad-x: var(--gl-space-xs);
   --_font: var(--gl-step--1);
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--gl-space-2xs);
-  padding: var(--_pad);
+  padding: var(--_pad-y) var(--_pad-x);
   border: none;
   border-radius: var(--gl-radius-md);
   background: var(--_bg);
@@ -93,8 +100,13 @@ button:not(.icon-button):disabled,
   --_fg: var(--gl-color-accent-fg);
 }
 
-:is(button:not(.icon-button), a.btn)[data-size="sm"] { --_pad: 0.375rem 0.75rem; --_font: 0.8125rem; }
-:is(button:not(.icon-button), a.btn)[data-size="lg"] { --_pad: 0.75rem 1.375rem; --_font: var(--gl-step-0); }
+/* Each size is one step of the space scale wide and, at the ends, one step
+   of the type scale. Medium and large share a rung vertically and part on
+   type size, which is what keeps them in order at every viewport width: the
+   scale is fluid, so two sizes that differed only by which fluid rung they
+   padded with could — and did — cross over on a wide screen. */
+:is(button:not(.icon-button), a.btn)[data-size="sm"] { --_pad-y: var(--gl-space-3xs); --_pad-x: var(--gl-space-2xs); --_font: 0.8125rem; }
+:is(button:not(.icon-button), a.btn)[data-size="lg"] { --_pad-x: var(--gl-space-s); --_font: var(--gl-step-0); }
 
 :is(button:not(.icon-button), a.btn)[data-block] { width: 100%; }
 
@@ -117,9 +129,17 @@ button:not(.icon-button):disabled,
 /* IconButton — a square icon-only button. Always needs an aria-label; it
    becomes both the accessible name and the native tooltip. There is no
    attribute that distinguishes "a button that is only an icon" from a plain
-   Button, so this is the one sanctioned class in this file. */
+   Button, so this is the one sanctioned class in this file.
+
+   The box is not a number of its own: it is written the way Button's height
+   arrives — two rungs of padding around one 1.15 line of the label type it
+   would carry if it had a label. So the two are the same height at every
+   viewport width, and stay that way when the scale is retuned, instead of a
+   fixed square drifting away from a fluid button. */
 .icon-button {
-  --_size: 2.125rem;
+  --_pad: var(--gl-space-2xs);
+  --_line: var(--gl-step--1);
+  --_size: calc(2 * var(--_pad) + 1.15 * var(--_line));
   --_bg: transparent;
   --_fg: var(--gl-color-text-secondary);
 
@@ -141,8 +161,9 @@ button:not(.icon-button):disabled,
 .icon-button:hover:not(:disabled) { background: var(--gl-color-surface-fill); }
 .icon-button:disabled { opacity: 0.5; cursor: default; }
 
-.icon-button[data-size="sm"] { --_size: 1.75rem; }
-.icon-button[data-size="lg"] { --_size: 2.5rem; }
+/* Same two overrides Button's own sm and lg make, so the pairs stay level. */
+.icon-button[data-size="sm"] { --_pad: var(--gl-space-3xs); --_line: 0.8125rem; }
+.icon-button[data-size="lg"] { --_line: var(--gl-step-0); }
 
 /* No border on either variant — "outline" keeps its name for API
    compatibility, but reads as a raised fill instead of a bordered box. */
