@@ -43,8 +43,10 @@ space scale is fluid and the size on the wider rung would otherwise
 overtake the one on the narrower.
 
 Being fluid, a medium button runs 35–38px tall depending on the width of
-the window, a little over IconButton's fixed 34px box. The two sit close
-together in a row but do not lock to each other.
+the window. [IconButton](<%= relative_url('/components/icon-button/') %>)
+builds its square from the same two rungs, so the two are exactly the same
+height at every width and in every size — a button and an icon button in a
+toolbar line up without either being told the other's measurements.
 
 <figure class="example">
 <figcaption>Sizes</figcaption>

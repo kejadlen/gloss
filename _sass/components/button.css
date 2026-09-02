@@ -129,9 +129,17 @@ button:not(.icon-button):disabled,
 /* IconButton — a square icon-only button. Always needs an aria-label; it
    becomes both the accessible name and the native tooltip. There is no
    attribute that distinguishes "a button that is only an icon" from a plain
-   Button, so this is the one sanctioned class in this file. */
+   Button, so this is the one sanctioned class in this file.
+
+   The box is not a number of its own: it is written the way Button's height
+   arrives — two rungs of padding around one 1.15 line of the label type it
+   would carry if it had a label. So the two are the same height at every
+   viewport width, and stay that way when the scale is retuned, instead of a
+   fixed square drifting away from a fluid button. */
 .icon-button {
-  --_size: 2.125rem;
+  --_pad: var(--gl-space-2xs);
+  --_line: var(--gl-step--1);
+  --_size: calc(2 * var(--_pad) + 1.15 * var(--_line));
   --_bg: transparent;
   --_fg: var(--gl-color-text-secondary);
 
@@ -153,8 +161,9 @@ button:not(.icon-button):disabled,
 .icon-button:hover:not(:disabled) { background: var(--gl-color-surface-fill); }
 .icon-button:disabled { opacity: 0.5; cursor: default; }
 
-.icon-button[data-size="sm"] { --_size: 1.75rem; }
-.icon-button[data-size="lg"] { --_size: 2.5rem; }
+/* Same two overrides Button's own sm and lg make, so the pairs stay level. */
+.icon-button[data-size="sm"] { --_pad: var(--gl-space-3xs); --_line: 0.8125rem; }
+.icon-button[data-size="lg"] { --_line: var(--gl-step-0); }
 
 /* No border on either variant — "outline" keeps its name for API
    compatibility, but reads as a raised fill instead of a bordered box. */
