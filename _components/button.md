@@ -35,8 +35,10 @@ and irreversible only.
 
 ## Sizes
 
-Sizes adjust padding only — the font stays on the type scale, it does not
-grow a step of its own.
+Sizes move padding, and at the two ends of the ramp one step of font size
+with it — weight, radius, and letter-spacing never move. Medium is the
+default, and it lands within a pixel of a default IconButton's 34px box, so
+a button and an icon button in the same row line up.
 
 <figure class="example">
 <figcaption>Sizes</figcaption>
@@ -162,7 +164,7 @@ class Button needs, and only anchors reach for it.
   <tbody>
     <tr><td><code>button</code></td><td></td><td>Required base. A bare <code>&lt;button&gt;</code> is styled directly — no class. Use <code>&lt;a class="btn"&gt;</code> instead when the control navigates.</td></tr>
     <tr><td><code>data-variant</code></td><td><code>primary | dark | ghost | danger</code></td><td>Omit for the default, quiet look — no fill at rest.</td></tr>
-    <tr><td><code>data-size</code></td><td><code>sm | lg</code></td><td>Omit for the default (medium) size. Padding only.</td></tr>
+    <tr><td><code>data-size</code></td><td><code>sm | lg</code></td><td>Omit for the default (medium) size. Padding, plus one step of font size at each end.</td></tr>
     <tr><td><code>data-block</code></td><td>boolean</td><td>Full width of its container.</td></tr>
     <tr><td><code>disabled</code></td><td>boolean</td><td>Removes the button from the tab order.</td></tr>
     <tr><td><code>aria-disabled</code></td><td><code>"true"</code></td><td>Looks disabled, stays focusable.</td></tr>
