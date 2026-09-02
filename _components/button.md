@@ -40,6 +40,11 @@ with it — weight, radius, and letter-spacing never move. Medium is the
 default, and it lands within a pixel of a default IconButton's 34px box, so
 a button and an icon button in the same row line up.
 
+At every size the label sits one pixel below the geometric centre of the
+box. Centred exactly, a word with no descenders reads high — the eye counts
+the empty descender space under it as part of the word. The pixel is a
+deliberate correction, not a rounding error.
+
 <figure class="example">
 <figcaption>Sizes</figcaption>
 <div>
