@@ -160,8 +160,3 @@ rather than a decorative flourish. Nothing pill-shaped except true pills.
   `:last-child` reset.
 - **A value not on the scale is a bug**, not a nudge. If a gap looks wrong,
   the scale is wrong and should change for everybody.
-- **A control's own padding is not on this scale.** Button, Tag, Badge, and
-  Tabs size themselves with a small fixed ramp of their own. This scale is
-  fluid, and a control that grows with the viewport stops matching the
-  controls beside it — the default Button was once taller than the large
-  one for exactly that reason.

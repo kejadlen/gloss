@@ -6,10 +6,11 @@
    dark, ghost, danger. Sizes: sm, md (default), lg — padding and font step
    only, weight and radius stay put.
 
-   The three sizes share one literal padding ramp rather than reading the
-   space scale: --gl-space-xs/-s are layout gaps, and being fluid they grew
-   the default button past the large one on a wide viewport. Control padding
-   is its own small, fixed ramp — see the sizes block at the bottom.
+   The default used to pad itself with --gl-space-xs/-s, which are the rungs
+   a layout reaches for between two controls, not inside one: on a wide
+   viewport they grew the default button taller than the large one. Every
+   size now sits one rung further down the same scale — see the block at
+   the bottom.
 
    The contract is the element itself: a bare <button> is styled directly, no
    class required. An <a> that acts like a button (navigates rather than
@@ -23,8 +24,8 @@ button:not(.icon-button),
 a.btn {
   --_bg: transparent;
   --_fg: var(--gl-color-text-primary);
-  --_pad-y: 0.5rem;
-  --_pad-x: 1rem;
+  --_pad-y: var(--gl-space-2xs);
+  --_pad-x: var(--gl-space-xs);
   --_font: var(--gl-step--1);
 
   display: inline-flex;
@@ -99,13 +100,13 @@ button:not(.icon-button):disabled,
   --_fg: var(--gl-color-accent-fg);
 }
 
-/* One ramp, three rungs — 0.375/0.5/0.625rem of vertical padding, the
-   horizontal exactly twice each. Medium lands within a pixel of
-   IconButton's default 2.125rem box (its label is fluid, that box is not),
-   so a Button and an IconButton in the same toolbar line up without either
-   being told the other's size. */
-:is(button:not(.icon-button), a.btn)[data-size="sm"] { --_pad-y: 0.375rem; --_pad-x: 0.75rem; --_font: 0.8125rem; }
-:is(button:not(.icon-button), a.btn)[data-size="lg"] { --_pad-y: 0.625rem; --_pad-x: 1.25rem; --_font: var(--gl-step-0); }
+/* Each size is one step of the space scale wide and, at the ends, one step
+   of the type scale. Medium and large share a rung vertically and part on
+   type size, which is what keeps them in order at every viewport width: the
+   scale is fluid, so two sizes that differed only by which fluid rung they
+   padded with could — and did — cross over on a wide screen. */
+:is(button:not(.icon-button), a.btn)[data-size="sm"] { --_pad-y: var(--gl-space-3xs); --_pad-x: var(--gl-space-2xs); --_font: 0.8125rem; }
+:is(button:not(.icon-button), a.btn)[data-size="lg"] { --_pad-x: var(--gl-space-s); --_font: var(--gl-step-0); }
 
 :is(button:not(.icon-button), a.btn)[data-block] { width: 100%; }
 

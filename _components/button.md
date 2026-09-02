@@ -35,10 +35,16 @@ and irreversible only.
 
 ## Sizes
 
-Sizes move padding, and at the two ends of the ramp one step of font size
-with it — weight, radius, and letter-spacing never move. Medium is the
-default, and it lands within a pixel of a default IconButton's 34px box, so
-a button and an icon button in the same row line up.
+Sizes move one rung down the space scale, and at the two ends of the ramp
+one step of font size with it — weight, radius, and letter-spacing never
+move. Medium and large pad themselves with the same rung and part on type
+size instead; that is what holds their order at every width, since the
+space scale is fluid and the size on the wider rung would otherwise
+overtake the one on the narrower.
+
+Being fluid, a medium button runs 35–38px tall depending on the width of
+the window, a little over IconButton's fixed 34px box. The two sit close
+together in a row but do not lock to each other.
 
 <figure class="example">
 <figcaption>Sizes</figcaption>
