@@ -25,18 +25,13 @@ a.btn {
   --_fg: var(--gl-color-text-primary);
   --_pad-y: 0.5rem;
   --_pad-x: 1rem;
-  --_shift: 1px;
   --_font: var(--gl-step--1);
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--gl-space-2xs);
-  /* Optically centred, not geometrically: a mono label reads a shade high
-     in the box, so it gets one pixel more above it than below. The two
-     calcs cancel, so the button's height is exactly 2 × --_pad-y + the
-     line box either way. */
-  padding: calc(var(--_pad-y) + var(--_shift)) var(--_pad-x) calc(var(--_pad-y) - var(--_shift));
+  padding: var(--_pad-y) var(--_pad-x);
   border: none;
   border-radius: var(--gl-radius-md);
   background: var(--_bg);
