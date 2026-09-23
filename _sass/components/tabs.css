@@ -20,25 +20,26 @@
 
 [role="tablist"] {
   display: flex;
-  gap: var(--gl-space-s);
+  gap: var(--gl-space-3xs);
   border-bottom: var(--gl-border-w) solid var(--gl-color-border-hairline);
 }
 
-/* Underline. Mono labels standing on the hairline, flush with the content
-   edge, with a 2px accent bar drawn over the hairline under the selected
-   label. Hover only darkens the label to text-primary, the ink the selected
-   tab wears, so the one mark on the line always means "you are here". A
-   surface tint was tried and dropped: a tint of the stock is ~1.1:1 against
-   the card and all but invisible. The bar is a pseudo-element, not a
-   border, so it lies flat instead of inheriting the button's radius and
-   curling up at the ends. Scoped away from segmented, which shares the
-   element but none of this shape. */
+/* Underline. Mono labels standing on the hairline, with a 2px accent bar
+   drawn over the hairline under the selected label. Hover fills the tab
+   with surface-fill-2, squared off at the bottom so it reads as a tab
+   standing on the line rather than a floating pill. It is one step darker
+   than the surface-fill a quiet Button uses, because at ~1.1:1 that one
+   all but vanished on the card; hover also darkens the label to
+   text-primary. The bar is a pseudo-element, not a border, so it lies flat
+   instead of inheriting the button's radius and curling up at the ends.
+   Scoped away from segmented, which shares the element but none of this
+   shape. */
 [role="tablist"]:not([data-variant="segmented"]) [role="tab"] {
   position: relative;
-  padding: var(--gl-space-3xs) 0;
+  padding: var(--gl-space-3xs) var(--gl-space-2xs);
   background: none;
   border: 0;
-  border-radius: var(--gl-radius-sm);
+  border-radius: var(--gl-radius-sm) var(--gl-radius-sm) 0 0;
   color: var(--gl-color-text-secondary);
   font-family: var(--gl-font-mono);
   font-size: var(--gl-step--1);
@@ -46,18 +47,19 @@
   letter-spacing: 0.01em;
   line-height: 1.15;
   cursor: pointer;
-  transition: color var(--gl-dur-fast) var(--gl-ease);
+  transition: background-color var(--gl-dur-fast) var(--gl-ease), color var(--gl-dur-fast) var(--gl-ease);
 }
 [role="tablist"]:not([data-variant="segmented"]) [role="tab"]::after {
   content: "";
   position: absolute;
-  inset-inline: 0;
+  inset-inline: var(--gl-space-2xs);
   bottom: calc(-1 * var(--gl-border-w));
   height: 2px;
   background: transparent;
   transition: background-color var(--gl-dur-fast) var(--gl-ease);
 }
 [role="tablist"]:not([data-variant="segmented"]) [role="tab"]:hover {
+  background: var(--gl-color-surface-fill-2);
   color: var(--gl-color-text-primary);
 }
 [role="tablist"]:not([data-variant="segmented"]) [role="tab"][aria-selected="true"] {
