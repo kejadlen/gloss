@@ -52,8 +52,11 @@ a.btn {
 }
 
 /* Quiet variants (default, ghost) carry no fill at rest; hovering picks up
-   a flat tint of the stock instead of darkening a border that isn't there. */
-:is(button:not(.icon-button), a.btn):not([data-variant="primary"]):not([data-variant="dark"]):not([data-variant="danger"]):hover:not(:disabled):not([aria-disabled="true"]) {
+   a flat tint of the stock instead of darkening a border that isn't there.
+   Tabs are <button>s too but own their hover (tabs.css): this rule's
+   specificity would otherwise paint the selected segment the colour of its
+   own track until the pointer left it. */
+:is(button:not(.icon-button), a.btn):not([role="tab"]):not([data-variant="primary"]):not([data-variant="dark"]):not([data-variant="danger"]):hover:not(:disabled):not([aria-disabled="true"]) {
   background: var(--gl-color-surface-fill);
   color: var(--gl-color-text-primary);
 }

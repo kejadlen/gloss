@@ -16,8 +16,9 @@ nothing else.
 
 ## Underline
 
-Mono, with an accent underline. For primary section navigation — a project's
-own tabs, never a filter. This is the default; no `data-variant` needed.
+Mono labels over a hairline; the selected one is marked by a short accent bar
+as wide as its label, and hovering picks up the same flat tint as a quiet
+Button. For primary section navigation — a project's own tabs, never a filter. This is the default; no `data-variant` needed.
 
 <figure class="example">
 <figcaption>Underline</figcaption>
