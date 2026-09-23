@@ -17,9 +17,9 @@ nothing else.
 ## Underline
 
 Mono labels standing on a hairline; the selected one is marked by an accent
-bar as wide as its label, and hovering draws the same bar in text-secondary.
-For primary section navigation — a project's own tabs, never a filter. This is
-the default; no `data-variant` needed.
+bar as wide as its label, and hovering darkens the label. For primary section
+navigation — a project's own tabs, never a filter. This is the default; no
+`data-variant` needed.
 
 <figure class="example">
 <figcaption>Underline</figcaption>
