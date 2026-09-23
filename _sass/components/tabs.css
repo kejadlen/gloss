@@ -26,10 +26,11 @@
 
 /* Underline. Mono labels standing on the hairline, flush with the content
    edge, with a 2px bar drawn over the hairline under the label: accent for
-   the selected tab, text-tertiary on hover. Hover is a bar rather than a
+   the selected tab, text-secondary on hover. Hover is a bar rather than a
    surface tint because a tint of the stock is ~1.1:1 against the card and
-   all but invisible; text-tertiary holds 3.5:1 against both surfaces, and
-   the two bars differ in hue as well as position. The bar is a
+   all but invisible; text-secondary is the label's own resting ink, 6:1 or
+   better on both surfaces in both themes, and the neutral bar reads apart
+   from the accent one by hue. The bar is a
    pseudo-element, not a border, so it lies flat instead of inheriting the
    button's radius and curling up at the ends. Scoped away from segmented,
    which shares the element but none of this shape. */
@@ -61,7 +62,7 @@
   color: var(--gl-color-text-primary);
 }
 [role="tablist"]:not([data-variant="segmented"]) [role="tab"]:hover::after {
-  background: var(--gl-color-text-tertiary);
+  background: var(--gl-color-text-secondary);
 }
 [role="tablist"]:not([data-variant="segmented"]) [role="tab"][aria-selected="true"] {
   color: var(--gl-color-text-primary);
