@@ -20,21 +20,22 @@
 
 [role="tablist"] {
   display: flex;
-  gap: var(--gl-space-3xs);
+  gap: var(--gl-space-s);
   border-bottom: var(--gl-border-w) solid var(--gl-color-border-hairline);
 }
 
-/* Underline. Each tab is a quiet control sitting just above the hairline —
-   same mono label and flat hover tint as a quiet Button — and the selected
-   one is marked by a short accent bar drawn on the hairline itself, as wide
-   as the label rather than the hit area. The bar is a pseudo-element, not a
-   border, so it lies flat instead of inheriting the button's radius and
-   curling up at the ends. Scoped away from segmented, which shares the
-   element but none of this shape. */
+/* Underline. Mono labels standing on the hairline, flush with the content
+   edge, with a 2px bar drawn over the hairline under the label: accent for
+   the selected tab, text-tertiary on hover. Hover is a bar rather than a
+   surface tint because a tint of the stock is ~1.1:1 against the card and
+   all but invisible; text-tertiary holds 3.5:1 against both surfaces, and
+   the two bars differ in hue as well as position. The bar is a
+   pseudo-element, not a border, so it lies flat instead of inheriting the
+   button's radius and curling up at the ends. Scoped away from segmented,
+   which shares the element but none of this shape. */
 [role="tablist"]:not([data-variant="segmented"]) [role="tab"] {
   position: relative;
-  padding: var(--gl-space-3xs) var(--gl-space-2xs);
-  margin-bottom: var(--gl-space-3xs);
+  padding: var(--gl-space-3xs) 0;
   background: none;
   border: 0;
   border-radius: var(--gl-radius-sm);
@@ -45,21 +46,22 @@
   letter-spacing: 0.01em;
   line-height: 1.15;
   cursor: pointer;
-  transition: background-color var(--gl-dur-fast) var(--gl-ease), color var(--gl-dur-fast) var(--gl-ease);
+  transition: color var(--gl-dur-fast) var(--gl-ease);
 }
 [role="tablist"]:not([data-variant="segmented"]) [role="tab"]::after {
   content: "";
   position: absolute;
-  inset-inline: var(--gl-space-2xs);
-  bottom: calc(-1 * (var(--gl-space-3xs) + var(--gl-border-w)));
+  inset-inline: 0;
+  bottom: calc(-1 * var(--gl-border-w));
   height: 2px;
-  border-radius: var(--gl-radius-full);
   background: transparent;
   transition: background-color var(--gl-dur-fast) var(--gl-ease);
 }
 [role="tablist"]:not([data-variant="segmented"]) [role="tab"]:hover {
-  background: var(--gl-color-surface-fill);
   color: var(--gl-color-text-primary);
+}
+[role="tablist"]:not([data-variant="segmented"]) [role="tab"]:hover::after {
+  background: var(--gl-color-text-tertiary);
 }
 [role="tablist"]:not([data-variant="segmented"]) [role="tab"][aria-selected="true"] {
   color: var(--gl-color-text-primary);
