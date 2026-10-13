@@ -38,7 +38,7 @@ This is a small, personal project, so it is built as plainly as it can be:
   underneath it in a `<details>`, the exact same markup as literal text.
   There is no generator keeping the two in sync — there is only one copy.
 
-No component stylesheet contains a color literal or a duration — every one is a `var(--gl-*)`, with one flagged exception (Select's chevron — see `_sass/components/field.css`).
+No component stylesheet contains a color literal or a duration — every one is a `var(--gl-*)`.
 
 ## Requirements
 

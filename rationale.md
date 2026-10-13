@@ -95,9 +95,9 @@ reserved for dividers inside a surface and this contract does not invent a
   <p>
     A hex or a duration in a component stylesheet is a decision made in the
     dark, and it is the kind that breaks the moment somebody adds a theme. No
-    component stylesheet in this repository contains either; the one flagged
-    exception is Select's chevron, which CSS cannot point at a custom
-    property inside a data-URI, and it is commented as such.
+    component stylesheet in this repository contains either. Even Select's
+    chevron, a data-URI that can't read a custom property, lives in
+    tokens.css as <code>--gl-icon-chevron-down</code>, redefined per theme.
   </p>
 </div>
 

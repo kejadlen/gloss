@@ -41,10 +41,10 @@ summary: Native select, styled to match Input exactly.
 
 <div class="gl-callout">
   <p>
-    The chevron is the one place in this component set that cannot reach a
-    <code>var(--gl-*)</code> token — a data-URI <code>background-image</code>
-    cannot reference a custom property, so its stroke is a literal hex, kept
-    close to <code>--gl-color-text-secondary</code> and commented in the source.
+    The chevron is the <code>--gl-icon-chevron-down</code> token. A data-URI
+    can't reference a custom property, so tokens.css bakes
+    <code>--gl-color-text-secondary</code> into its stroke and redefines it
+    for the dark theme.
   </p>
 </div>
 
