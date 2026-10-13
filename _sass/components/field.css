@@ -37,12 +37,13 @@
 
 /* Input / Select — bordered, matched to each other exactly. Both tags ARE
    the component, so they are styled bare; nothing else on this site uses a
-   text input or a select. Padding sits on Button's rungs, less the border,
-   so a control and a default Button are the same height. */
+   text input or a select. Inline padding is the xs rung less the border;
+   block padding is a full xs rung, so a control stands a touch taller than
+   a default Button. */
 input:not([type="checkbox"]):not([type="radio"]),
 select {
   width: 100%;
-  padding: calc(var(--gl-space-2xs) - 1px) calc(var(--gl-space-xs) - 1px);
+  padding: var(--gl-space-xs) calc(var(--gl-space-xs) - 1px);
   line-height: 1.15;
   background: var(--gl-color-surface-card);
   border: 1px solid var(--gl-color-border-default);
