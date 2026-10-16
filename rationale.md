@@ -139,8 +139,8 @@ Being honest about the design is being honest about the gaps too.
   by a source of truth beyond this site.
 - **No logo or brand mark.** Render "Gloss" or the project's own name in
   type wherever a mark would go — don't invent one.
-- **The icon set (Lucide) is a flagged substitution** — there's no shipped
-  icon library of its own yet.
+- **The icon set is only what these pages use** — ten tokens, not a
+  library. Add one to `tokens.css` when a screen needs it.
 - **Signal Teal, the default accent, is one pick among the sanctioned
   alternates**, not a fixed identity.
 - **No Table, Callout, or Progress component.** An earlier pass at this site

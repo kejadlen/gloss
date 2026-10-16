@@ -27,6 +27,9 @@ a.btn {
   --_pad-y: var(--gl-space-2xs);
   --_pad-x: var(--gl-space-xs);
   --_font: var(--gl-step--1);
+  /* The flex gap already separates the icon from the label. */
+  --gl-icon-start: var(--gl-icon);
+  --gl-icon-style-spacing: 0;
 
   display: inline-flex;
   align-items: center;
@@ -145,6 +148,10 @@ button:not(.icon-button):disabled,
   --_size: calc(2 * var(--_pad) + 1.15 * var(--_line));
   --_bg: transparent;
   --_fg: var(--gl-color-text-secondary);
+  /* No spacing, so stray whitespace in the markup can't push the icon
+     off-center. */
+  --gl-icon-start: var(--gl-icon);
+  --gl-icon-style-spacing: 0;
 
   display: inline-flex;
   align-items: center;
@@ -157,6 +164,7 @@ button:not(.icon-button):disabled,
   border-radius: var(--gl-radius-md);
   background: var(--_bg);
   color: var(--_fg);
+  font-size: var(--_line);
   cursor: pointer;
   transition: background-color var(--gl-dur-fast) var(--gl-ease),
               color var(--gl-dur-fast) var(--gl-ease);

@@ -20,17 +20,13 @@ Hover or tab to the button below.
 <figcaption>Tooltip</figcaption>
 <div>
 <span>
-  <button class="icon-button" aria-label="Delete" aria-describedby="tooltip-basic">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13" /></svg>
-  </button>
+  <button class="icon-button" aria-label="Delete" aria-describedby="tooltip-basic" style="--gl-icon: var(--gl-icon-trash)"></button>
   <span role="tooltip" id="tooltip-basic">Delete</span>
 </span>
 </div>
 <details open><summary>Markup</summary>
 <pre><code>&lt;span&gt;
-  &lt;button class=&quot;icon-button&quot; aria-label=&quot;Delete&quot; aria-describedby=&quot;tooltip-basic&quot;&gt;
-    &lt;svg width=&quot;16&quot; height=&quot;16&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.75&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13&quot; /&gt;&lt;/svg&gt;
-  &lt;/button&gt;
+  &lt;button class=&quot;icon-button&quot; aria-label=&quot;Delete&quot; aria-describedby=&quot;tooltip-basic&quot; style=&quot;--gl-icon: var(--gl-icon-trash)&quot;&gt;&lt;/button&gt;
   &lt;span role=&quot;tooltip&quot; id=&quot;tooltip-basic&quot;&gt;Delete&lt;/span&gt;
 &lt;/span&gt;</code></pre>
 </details>

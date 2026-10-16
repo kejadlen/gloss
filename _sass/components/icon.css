@@ -1,0 +1,104 @@
+/* Icon
+   Icons are tokens (--gl-icon-* in tokens.css), placed by setting a custom
+   property — no <svg> in the markup. Adapted from Lea Verou's @nudeui/icons
+   0.0.3 (MIT), https://lea.verou.me/blog/2026/icons/, minus its opt-in
+   classes: style queries reach every browser this system supports, and
+   the class list is closed.
+
+   --gl-icon-start renders in ::before, --gl-icon-end in ::after. --gl-icon
+   means "give this component an icon"; each component redirects it to a
+   location (see button.css). An icon takes over that pseudo-element, so a
+   component that already draws its own ::before or ::after must not
+   redirect there.
+
+   All three are non-inheriting: an icon on a <p> must not repeat on every
+   <a> inside it. The pseudo-element inherits explicitly instead. */
+
+@property --gl-icon {
+  syntax: "*";
+  inherits: false;
+}
+@property --gl-icon-start {
+  syntax: "*";
+  inherits: false;
+}
+@property --gl-icon-end {
+  syntax: "*";
+  inherits: false;
+}
+
+/* A 1em square of the text color, masked by the icon. The image-set()
+   first candidate is a transparent placeholder for the box's content; the
+   second only exists to make the declaration fail — and so drop the
+   pseudo-element — when the icon property is unset. overflow: hidden puts
+   the box's baseline at its bottom edge so vertical-align can center it on
+   the cap height (https://blog.kizu.dev/cap-height-align/). */
+@container style(--gl-icon-start) {
+  ::before {
+    --gl-icon-start: inherit;
+    content: image-set(linear-gradient(transparent 0 100%), var(--gl-icon-start));
+    display: inline-block;
+    vertical-align: calc(0.5cap - var(--gl-icon-style-size, 1em) / 2 + var(--gl-icon-style-voffset, -0.02em));
+    overflow: hidden;
+    width: var(--gl-icon-style-size, 1em);
+    height: var(--gl-icon-style-size, 1em);
+    background-color: var(--gl-icon-style-color, currentColor);
+    mask: var(--gl-icon-start) no-repeat center / contain;
+    pointer-events: none;
+    forced-color-adjust: none;
+    flex: none;
+  }
+  :where(:not(:empty))::before { margin-inline-end: var(--gl-icon-style-spacing, 0.3em); }
+}
+
+@container style(--gl-icon-end) {
+  ::after {
+    --gl-icon-end: inherit;
+    content: image-set(linear-gradient(transparent 0 100%), var(--gl-icon-end));
+    display: inline-block;
+    vertical-align: calc(0.5cap - var(--gl-icon-style-size, 1em) / 2 + var(--gl-icon-style-voffset, -0.02em));
+    overflow: hidden;
+    width: var(--gl-icon-style-size, 1em);
+    height: var(--gl-icon-style-size, 1em);
+    background-color: var(--gl-icon-style-color, currentColor);
+    mask: var(--gl-icon-end) no-repeat center / contain;
+    pointer-events: none;
+    forced-color-adjust: none;
+    flex: none;
+  }
+  :where(:not(:empty))::after { margin-inline-start: var(--gl-icon-style-spacing, 0.3em); }
+}
+
+/* WebKit only, each fix in its own layer so any unlayered rule beats it.
+   https://bugs.webkit.org/show_bug.cgi?id=301609 — icons stay missing
+   until the first interaction; an animation forces style to re-resolve
+   against the right container. Its default duration is already zero.
+   https://bugs.webkit.org/show_bug.cgi?id=325900 — `inherit` on a
+   non-inheriting registered property is unreliable, so WebKit gets them
+   inheriting (the later registration wins) and descendants reset instead. */
+@keyframes gl-webkit-301609 {}
+
+@supports ((-webkit-nbsp-mode: normal) or (-webkit-touch-callout: none) or (font: -apple-system-body)) and (content-visibility: auto) {
+  @layer gl-webkit-301609 {
+    ::before,
+    ::after { animation-name: gl-webkit-301609; }
+  }
+
+  @property --gl-icon-start {
+    syntax: "*";
+    inherits: true;
+  }
+  @property --gl-icon-end {
+    syntax: "*";
+    inherits: true;
+  }
+
+  @layer gl-webkit-325900 {
+    @container style(--gl-icon-start) {
+      * { --gl-icon-start: initial; }
+    }
+    @container style(--gl-icon-end) {
+      * { --gl-icon-end: initial; }
+    }
+  }
+}

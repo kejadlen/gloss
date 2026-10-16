@@ -55,6 +55,10 @@ guessing from a similar one or from memory:
   regardless, so using them as selectors invents nothing.
 - `data-*` attributes for variants and states: `data-variant="primary"`,
   `data-size="sm"`, `data-tone="danger"`, `data-elevated`.
+- Icons are custom properties, never `<svg>` markup: `--gl-icon:
+  var(--gl-icon-trash)` on a Button, IconButton, or Avatar, or
+  `--gl-icon-start`/`--gl-icon-end` on anything else. See
+  `_foundations/icons.md`.
 - Exactly seven plain, unmodified classes exist, each because there is no
   element or attribute to hang a selector on: `.btn` (an `<a>` acting as a
   button — a bare `a` selector would catch every prose link on the page),

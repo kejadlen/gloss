@@ -25,7 +25,7 @@ Three screens, abbreviated to what each one adds.
     </div>
     <ul class="card">
       <li>
-        <span class="avatar" data-square><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg></span>
+        <span class="avatar" data-square style="--gl-icon: var(--gl-icon-package)"></span>
         <div class="pattern-row">
           <div class="pattern-file-title pattern-file-title--truncate">Dishwasher manual</div>
           <div class="type-label pattern-file-meta">PDF · 2.1MB</div>
@@ -33,7 +33,7 @@ Three screens, abbreviated to what each one adds.
         <span class="type-mono pattern-row__meta">2h</span>
       </li>
       <li>
-        <span class="avatar" data-square><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg></span>
+        <span class="avatar" data-square style="--gl-icon: var(--gl-icon-package)"></span>
         <div class="pattern-row">
           <div class="pattern-file-title">Sofa receipt</div>
           <div class="type-label pattern-file-meta">JPG · 640KB</div>
@@ -41,7 +41,7 @@ Three screens, abbreviated to what each one adds.
         <span class="type-mono pattern-row__meta">1d</span>
       </li>
       <li>
-        <span class="avatar" data-square><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg></span>
+        <span class="avatar" data-square style="--gl-icon: var(--gl-icon-package)"></span>
         <div class="pattern-row">
           <div class="pattern-file-title">Passport scan</div>
           <div class="type-label pattern-file-meta">PDF · 890KB</div>
@@ -51,20 +51,18 @@ Three screens, abbreviated to what each one adds.
     </ul>
   </div>
   <div class="pattern-dock">
-    <button data-variant="primary" data-size="lg" data-block>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h1.5l1-1.5h9l1 1.5H20a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z" /><circle cx="12" cy="13" r="3.5" /></svg>
+    <button data-variant="primary" data-size="lg" data-block style="--gl-icon: var(--gl-icon-camera)">
       Take a photo
     </button>
   </div>
 </div>
 <div class="pattern-phone">
   <header class="pattern-phone__header">
-    <button class="icon-button" data-size="sm" aria-label="Back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg></button>
+    <button class="icon-button" data-size="sm" aria-label="Back" style="--gl-icon: var(--gl-icon-chevron-left)"></button>
     <span class="pattern-phone__title">Save</span>
   </header>
   <div class="pattern-phone__body">
-    <div class="pattern-photo-slot">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg>
+    <div class="pattern-photo-slot" style="--gl-icon-start: var(--gl-icon-package)">
       <span class="type-label">Photo preview</span>
     </div>
     <label class="field" style="margin-top: var(--gl-space-m);">
@@ -79,7 +77,7 @@ Three screens, abbreviated to what each one adds.
 </div>
 <div class="pattern-phone">
   <header class="pattern-phone__header">
-    <button class="icon-button" data-size="sm" aria-label="Back"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg></button>
+    <button class="icon-button" data-size="sm" aria-label="Back" style="--gl-icon: var(--gl-icon-chevron-left)"></button>
     <span class="type-label">Archive</span>
   </header>
   <div class="pattern-phone__body">
@@ -91,7 +89,7 @@ Three screens, abbreviated to what each one adds.
     <div class="type-label pattern-aside__label--tight">File</div>
     <ul class="card">
       <li>
-        <span class="avatar" data-square><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg></span>
+        <span class="avatar" data-square style="--gl-icon: var(--gl-icon-package)"></span>
         <div class="pattern-row" style="font-size: var(--gl-step--1);">PDF · 2.1MB</div>
       </li>
     </ul>

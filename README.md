@@ -1,7 +1,7 @@
 # Gloss
 
 The design system for Arbitrary Definitions, a personal umbrella of
-self-hosted, single-user tools. Sixteen components and five foundations,
+self-hosted, single-user tools. Sixteen components and six foundations,
 documented by a small Ruby/ERB site (no Jekyll) with hand-maintained CSS and
 hand-written content.
 

@@ -66,6 +66,13 @@
 
 .gl-doc-header__actions { margin-inline-start: auto; display: flex; align-items: center; gap: var(--gl-space-2xs); }
 
+/* Shows the theme in effect, following the same selectors as tokens.css. */
+[data-theme-toggle] { --gl-icon: var(--gl-icon-sun); --gl-icon-style-size: 1rem; }
+:root[data-theme="dark"] [data-theme-toggle] { --gl-icon: var(--gl-icon-moon); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) [data-theme-toggle] { --gl-icon: var(--gl-icon-moon); }
+}
+
 .gl-doc-layout {
   display: grid;
   grid-template-columns: 16rem minmax(0, 1fr);

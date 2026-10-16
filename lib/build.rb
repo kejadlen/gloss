@@ -48,6 +48,7 @@ LANG        = "en"
 CSS_BUNDLES = {
   "base" => %w[base/reset.css base/typography.css],
   "components" => %w[
+    components/icon.css
     components/button.css
     components/field.css
     components/badge.css

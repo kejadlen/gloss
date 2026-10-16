@@ -92,20 +92,19 @@ disabled primary still reads as the primary.
 
 ## With an icon
 
-Pass an icon as the first child. The gap is `--gl-space-2xs`, set by the
-button itself.
+Set `--gl-icon` to one of the [icon tokens](<%= relative_url('/foundations/icons/') %>).
+The button draws it before the label, at the label's size and color, with
+the button's own `--gl-space-2xs` gap.
 
 <figure class="example">
 <figcaption>Icon</figcaption>
 <div>
-<button data-variant="primary">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+<button data-variant="primary" style="--gl-icon: var(--gl-icon-plus)">
   New
 </button>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;button data-variant=&quot;primary&quot;&gt;
-  &lt;svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.9&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M12 5v14M5 12h14&quot; /&gt;&lt;/svg&gt;
+<pre><code>&lt;button data-variant=&quot;primary&quot; style=&quot;--gl-icon: var(--gl-icon-plus)&quot;&gt;
   New
 &lt;/button&gt;</code></pre>
 </details>
@@ -174,6 +173,7 @@ class Button needs, and only anchors reach for it.
     <tr><td><code>data-variant</code></td><td><code>primary | dark | ghost | danger</code></td><td>Omit for the default, quiet look — no fill at rest.</td></tr>
     <tr><td><code>data-size</code></td><td><code>sm | lg</code></td><td>Omit for the default (medium) size. Padding, plus one step of font size at each end.</td></tr>
     <tr><td><code>data-block</code></td><td>boolean</td><td>Full width of its container.</td></tr>
+    <tr><td><code>--gl-icon</code></td><td>an icon token</td><td>Draws the icon before the label. See <a href="<%= relative_url('/foundations/icons/') %>">Icons</a>.</td></tr>
     <tr><td><code>disabled</code></td><td>boolean</td><td>Removes the button from the tab order.</td></tr>
     <tr><td><code>aria-disabled</code></td><td><code>"true"</code></td><td>Looks disabled, stays focusable.</td></tr>
     <tr><td><code>[role="group"]</code></td><td></td><td>Wrap adjacent buttons in a group to join their radii; a hairline divider separates them, since the buttons themselves carry no border.</td></tr>

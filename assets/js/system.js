@@ -35,9 +35,6 @@
   function paintToggle(theme) {
     document.querySelectorAll("[data-theme-toggle]").forEach(function (toggle) {
       var next = theme === "dark" ? "light" : "dark";
-      toggle.querySelectorAll("[data-theme-icon]").forEach(function (icon) {
-        icon.hidden = icon.dataset.themeIcon !== theme;
-      });
       toggle.setAttribute("aria-label", "Switch to the " + next + " theme");
       toggle.setAttribute("title", "Switch to the " + next + " theme");
       var label = toggle.querySelector("[data-theme-label]");

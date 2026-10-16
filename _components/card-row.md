@@ -63,9 +63,7 @@ patterns for it in context).
 <div data-surface="sunken">
 <ul class="card" style="max-width: 24rem;">
   <li>
-    <span class="avatar" data-square>
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" /><path d="M3 8l9 5 9-5M12 13v8" /></svg>
-    </span>
+    <span class="avatar" data-square style="--gl-icon: var(--gl-icon-package)"></span>
     <div style="flex:1; min-width:0;">
       <div style="font-weight: 550;">Dishwasher manual</div>
       <div class="type-label" style="margin-top: 2px;">PDF · 2.1MB</div>
@@ -77,9 +75,7 @@ patterns for it in context).
 <details><summary>Markup</summary>
 <pre><code>&lt;ul class=&quot;card&quot; style=&quot;max-width: 24rem;&quot;&gt;
   &lt;li&gt;
-    &lt;span class=&quot;avatar&quot; data-square&gt;
-      &lt;svg width=&quot;17&quot; height=&quot;17&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.75&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M21 8 12 3 3 8v8l9 5 9-5V8Z&quot; /&gt;&lt;path d=&quot;M3 8l9 5 9-5M12 13v8&quot; /&gt;&lt;/svg&gt;
-    &lt;/span&gt;
+    &lt;span class=&quot;avatar&quot; data-square style=&quot;--gl-icon: var(--gl-icon-package)&quot;&gt;&lt;/span&gt;
     &lt;div style=&quot;flex:1; min-width:0;&quot;&gt;
       &lt;div style=&quot;font-weight: 550;&quot;&gt;Dishwasher manual&lt;/div&gt;
       &lt;div class=&quot;type-label&quot; style=&quot;margin-top: 2px;&quot;&gt;PDF · 2.1MB&lt;/div&gt;

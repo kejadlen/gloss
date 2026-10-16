@@ -110,6 +110,10 @@
    <span> is too generic for a bare selector, so it keeps one class. */
 .avatar {
   --_size: 1.875rem;
+  --gl-icon-start: var(--gl-icon);
+  /* Sized from the box, not the initials' small font, so it follows data-size. */
+  --gl-icon-style-size: calc(var(--_size) * 0.55);
+  --gl-icon-style-spacing: 0;
 
   display: inline-flex;
   align-items: center;

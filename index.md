@@ -55,7 +55,7 @@ same afternoon.
     <div class="card-body">
       <h3><a href="<%= relative_url('/foundations/color/') %>">Foundations</a></h3>
       <p>
-        Color, type, space, elevation, and motion — with contrast ratios
+        Color, type, space, elevation, motion, and icons — with contrast ratios
         computed from the tokens and checked by hand, not typed by guess.
       </p>
     </div>
