@@ -36,14 +36,15 @@
   --gl-color-surface-fill: #e8e6e2;
   --gl-color-surface-fill-2: #dcdad7;
 
-  /* Borders */
+  /* Borders. Default outlines controls, so it holds 3:1 (WCAG 1.4.11)
+     against both the card and the page; hairline only divides. */
   --gl-color-border-hairline: #dcdad7;
-  --gl-color-border-default: #c0bdb9;
+  --gl-color-border-default: #888681;
 
   /* Text */
   --gl-color-text-primary: #100f0d;
   --gl-color-text-secondary: #5f5d59;
-  --gl-color-text-tertiary: #888681;
+  --gl-color-text-tertiary: #686662;
 
   /* Icons — monochrome SVGs, painted as a mask in the text color by
      components/icon.css, so their own stroke color never shows. */
@@ -65,6 +66,11 @@
   /* Accent */
   --gl-color-accent: #3a6a63;
   --gl-color-accent-fg: #ffffff;
+  /* The accent as a foreground on a neutral surface — links, the focus
+     ring, the selected-tab bar. Light reads the accent as is; dark lifts it
+     toward white, since a fill-strength accent is under 3:1 on a dark card.
+     Derived, so a swapped accent follows. */
+  --gl-color-accent-text: var(--gl-color-accent);
   --gl-color-accent-ink: color-mix(in oklch, var(--gl-color-accent) 78%, black);
   --gl-color-accent-soft: color-mix(in oklch, var(--gl-color-accent) 12%, white);
 
@@ -125,10 +131,17 @@
     --gl-color-surface-fill: #1e1d1a;
     --gl-color-surface-fill-2: #252421;
     --gl-color-border-hairline: #2c2b29;
-    --gl-color-border-default: #44423f;
+    --gl-color-border-default: #7c7a76;
     --gl-color-text-primary: #e9e8e6;
     --gl-color-text-secondary: #a09e9a;
-    --gl-color-text-tertiary: #7c7a76;
+    --gl-color-text-tertiary: #8f8d89;
+    --gl-color-accent-text: color-mix(in oklch, var(--gl-color-accent) 55%, white);
+    --gl-color-accent-ink: color-mix(in oklch, var(--gl-color-accent) 40%, white);
+    --gl-color-accent-soft: color-mix(in oklch, var(--gl-color-accent) 16%, var(--gl-color-surface-card));
+    --gl-color-success: #72b07c;
+    --gl-color-success-bg: color-mix(in oklch, var(--gl-color-success) 14%, var(--gl-color-surface-card));
+    --gl-color-danger: #e8907f;
+    --gl-color-danger-bg: color-mix(in oklch, var(--gl-color-danger) 14%, var(--gl-color-surface-card));
     --gl-icon-chevron-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23a09e9a' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   }
 }
@@ -140,10 +153,17 @@
   --gl-color-surface-fill: #1e1d1a;
   --gl-color-surface-fill-2: #252421;
   --gl-color-border-hairline: #2c2b29;
-  --gl-color-border-default: #44423f;
+  --gl-color-border-default: #7c7a76;
   --gl-color-text-primary: #e9e8e6;
   --gl-color-text-secondary: #a09e9a;
-  --gl-color-text-tertiary: #7c7a76;
+  --gl-color-text-tertiary: #8f8d89;
+  --gl-color-accent-text: color-mix(in oklch, var(--gl-color-accent) 55%, white);
+  --gl-color-accent-ink: color-mix(in oklch, var(--gl-color-accent) 40%, white);
+  --gl-color-accent-soft: color-mix(in oklch, var(--gl-color-accent) 16%, var(--gl-color-surface-card));
+  --gl-color-success: #72b07c;
+  --gl-color-success-bg: color-mix(in oklch, var(--gl-color-success) 14%, var(--gl-color-surface-card));
+  --gl-color-danger: #e8907f;
+  --gl-color-danger-bg: color-mix(in oklch, var(--gl-color-danger) 14%, var(--gl-color-surface-card));
   --gl-icon-chevron-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23a09e9a' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 

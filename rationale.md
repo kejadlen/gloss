@@ -69,24 +69,22 @@ Not the quality of the individual choices. The properties below:
 Contrast. A ratio is a physical fact about two colors and a pair of eyes,
 and it does not care what the brand guidelines say.
 
-So it is the one thing this system checks rather than eyeballs. Five
-pairings have to hold, computed once from the token values with the
-standard WCAG 2.1 relative-luminance formula and written down as fact on the
+So it is the one thing this system checks rather than eyeballs. A short
+list of pairings has to hold in both themes, computed once from the token
+values with the standard WCAG relative-luminance formula and written down as
+fact on the
 [contract table](<%= relative_url('/foundations/color/') %>#contrast-that-has-to-hold)
 rather than re-derived on every build — a personal site does not need a test
-suite standing between an edit and a deploy to keep five numbers honest.
+suite standing between an edit and a deploy to keep a dozen numbers honest.
 
-That contract is deliberately narrower than "every color in the system".
-`--gl-color-text-tertiary` — this palette's own "muted-faint text" step — is
-about 3.19:1 against the page in light mode, under the 4.5:1 floor for normal
-text. That is not a bug to paper over by darkening a real brand value; it is
-a documented, intentional property of the palette (see the
-[Color page](<%= relative_url('/foundations/color/') %>)), so the contract
-excludes it rather than silently forcing it to pass. Dividers get the same
-treatment for the same reason: this system's own rule is that a bounded
-surface reads by surface contrast, not by a border, so hairlines are
-reserved for dividers inside a surface and this contract does not invent a
-3:1 assertion for a boundary the system doesn't draw.
+That contract covers every color that carries text or marks a control,
+including `--gl-color-text-tertiary`, which used to sit at 3.19:1 and be
+excused as "muted-faint". It carried hints and placeholders, which are text
+someone has to read, so it was darkened rather than excused. What the
+contract still leaves out is hairlines and fills: a bounded surface reads by
+surface contrast, not by a border, so hairlines are reserved for dividers
+inside a surface and the contract does not invent a 3:1 assertion for a
+boundary the system doesn't draw.
 
 ## The four rules
 

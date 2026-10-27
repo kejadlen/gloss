@@ -66,7 +66,7 @@ flash the wrong theme before your bundle runs.
 
 Because every component reads an alias, retheming is a matter of repointing
 a handful of custom properties after the token file loads — most of all,
-`--gl-color-accent`, which `-ink` and `-soft` re-derive from automatically via
+`--gl-color-accent`, which `-text`, `-ink` and `-soft` re-derive from automatically via
 `color-mix()`.
 
 ```css

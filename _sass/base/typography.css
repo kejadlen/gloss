@@ -28,7 +28,7 @@ p, ul, ol { margin: 0 0 var(--gl-space-s); }
 li + li { margin-top: var(--gl-space-3xs); }
 
 a {
-  color: var(--gl-color-accent);
+  color: var(--gl-color-accent-text);
   text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
   text-underline-offset: 0.18em;
   text-decoration-thickness: 1px;
@@ -68,6 +68,11 @@ code, kbd, samp, pre {
   border-radius: var(--gl-radius-sm);
   white-space: nowrap;
 }
+/* On a phone a long token name would push the page sideways (WCAG
+   1.4.10), so there it may break. */
+@media (max-width: 34rem) {
+  :not(pre) > code { white-space: normal; overflow-wrap: anywhere; }
+}
 
 kbd {
   display: inline-block;
@@ -84,6 +89,6 @@ kbd {
 blockquote {
   margin-block: var(--gl-space-s);
   padding-left: var(--gl-space-s);
-  border-left: 2px solid var(--gl-color-accent);
+  border-left: 2px solid var(--gl-color-accent-text);
   color: var(--gl-color-text-secondary);
 }

@@ -62,9 +62,12 @@ hr {
   background: var(--gl-color-border-hairline);
 }
 
-/* One focus ring, defined once. No component is allowed its own. */
+/* One focus ring, defined once. No component is allowed its own.
+   !important because several components reset a <button> with
+   `all: unset` (segmented tabs, CardRow, Tag, Toast), and that reset's
+   own selector outranks this one — it took the ring with it. */
 :focus-visible {
-  outline: 2px solid var(--gl-color-accent);
+  outline: 2px solid var(--gl-color-accent-text) !important;
   outline-offset: 2px;
   border-radius: var(--gl-radius-sm);
 }
