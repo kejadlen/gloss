@@ -2,8 +2,8 @@
 title: Toast
 summary: >-
   A fixed bottom-right flash bar — the real pattern used for delete
-  confirmations. Auto-dismisses after roughly 8 seconds in practice; wire
-  that timer into the consuming app.
+  confirmations. A toast with an action stays until it is used or
+  dismissed; only a plain message may time out.
 ---
 
 ## Basic
@@ -15,6 +15,12 @@ example below stays in document flow so it does not cover the page;
 action and dismiss buttons are plain `<button>`s told apart by
 `aria-label="Dismiss"`, an attribute the icon-only close control needs
 anyway.
+
+Don't put a toast with an action on a timer. An Undo that disappears after
+a few seconds is a time limit on the only way to take the action back (WCAG
+2.2.1), and someone using a screen reader or a switch may not reach it in
+time. A message with no action can time out, but pause the timer while the
+toast is hovered or holds focus.
 
 <figure class="example">
 <figcaption>Toast</figcaption>
