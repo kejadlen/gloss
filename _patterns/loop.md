@@ -81,7 +81,7 @@ actual project built on this system would write.
         </ul>
       </section>
     </div>
-    <aside class="pattern-dashboard__aside">
+    <aside class="pattern-dashboard__aside" aria-label="This week">
       <div class="type-label pattern-aside__label">This week</div>
       <div class="pattern-week">
         <div class="pattern-week__day">

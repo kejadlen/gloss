@@ -58,7 +58,10 @@
 .pattern-list { border: none; border-radius: 0; background: none; }
 .pattern-list li:first-child { border-top: 1px solid var(--gl-color-border-hairline); }
 
-.pattern-complete {
+/* `button.` for the same reason as button.gl-doc-nav-toggle in shell.css:
+   button.css's base rule is one element + one class, so a bare class lost
+   and the box drew with no border at all — an invisible checkbox. */
+button.pattern-complete {
   all: unset;
   width: 18px;
   height: 18px;
@@ -67,7 +70,7 @@
   cursor: pointer;
   border: 1.5px solid var(--gl-color-text-secondary);
 }
-.pattern-complete[data-tone="danger"] { border-color: var(--gl-color-danger); }
+button.pattern-complete[data-tone="danger"] { border-color: var(--gl-color-danger); }
 
 .pattern-row { flex: 1; min-width: 0; }
 .pattern-row__title { font-weight: 500; }
