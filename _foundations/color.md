@@ -233,7 +233,7 @@ the right half is the dark one.
 
 ### Surfaces
 
-<p class="gl-muted">Backgrounds, from the page itself up to a card sitting on it.</p>
+<p class="gl-muted">Backgrounds, from the page itself up to a card sitting on it. In light mode the page is a full ramp step under the card, not the half step between neutral.0 and neutral.50, which was too fine for a card to read against; the two fills step down with it.</p>
 
   <table>
     <thead>
@@ -249,13 +249,13 @@ the right half is the dark one.
         <td>
           <div class="gl-alias-row">
             <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
-              <span style="background: #faf9f7"></span>
+              <span style="background: #f1f0ed"></span>
               <span style="background: #0e0d0b"></span>
             </span>
             <code>--gl-color-surface-page</code>
           </div>
         </td>
-        <td><code>neutral.0</code></td>
+        <td><code>neutral.100</code></td>
         <td><code>neutral_dark.0</code></td>
         <td>The page itself. Nothing sits behind it.</td>
       </tr>
@@ -277,13 +277,13 @@ the right half is the dark one.
         <td>
           <div class="gl-alias-row">
             <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
-              <span style="background: #f1f0ed"></span>
+              <span style="background: #e8e6e2"></span>
               <span style="background: #1e1d1a"></span>
             </span>
             <code>--gl-color-surface-fill</code>
           </div>
         </td>
-        <td><code>neutral.100</code></td>
+        <td><code>neutral.150</code></td>
         <td><code>neutral_dark.100</code></td>
         <td>Recessed fill — a hovered row, a segmented-tab track, a photo placeholder.</td>
       </tr>
@@ -291,13 +291,13 @@ the right half is the dark one.
         <td>
           <div class="gl-alias-row">
             <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
-              <span style="background: #e8e6e2"></span>
+              <span style="background: #dcdad7"></span>
               <span style="background: #252421"></span>
             </span>
             <code>--gl-color-surface-fill-2</code>
           </div>
         </td>
-        <td><code>neutral.150</code></td>
+        <td><code>neutral.200</code></td>
         <td><code>neutral_dark.150</code></td>
         <td>A second, deeper fill step — the diagonal-grain stripe inside an empty photo slot.</td>
       </tr>
@@ -567,23 +567,23 @@ and checked by hand rather than by a build-time test.
       <tr>
         <td>
           <span class="gl-alias-row">
-            <span class="gl-alias-chip" aria-hidden="true" style="background: #faf9f7; color: #100f0d; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #f1f0ed; color: #100f0d; display: grid; place-items: center; font-size: 10px;">Aa</span>
             <code>color-text-primary<br><span class="gl-subtle">on color-surface-page</span></code>
           </span>
         </td>
         <td>Body copy</td>
-        <td class="num">18.21</td>
+        <td class="num">16.81</td>
         <td class="num">15.86</td>
       </tr>
       <tr>
         <td>
           <span class="gl-alias-row">
-            <span class="gl-alias-chip" aria-hidden="true" style="background: #faf9f7; color: #5f5d59; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #f1f0ed; color: #5f5d59; display: grid; place-items: center; font-size: 10px;">Aa</span>
             <code>color-text-secondary<br><span class="gl-subtle">on color-surface-page</span></code>
           </span>
         </td>
         <td>Supporting copy</td>
-        <td class="num">6.24</td>
+        <td class="num">5.76</td>
         <td class="num">7.26</td>
       </tr>
       <tr>
@@ -626,7 +626,7 @@ and checked by hand rather than by a build-time test.
   <p>
     Two things this contract deliberately does not assert.
     <strong>Text tertiary</strong> — <code>--gl-color-text-tertiary</code>
-    (neutral.500) is roughly 3.46:1 against the page in light mode, under the
+    (neutral.500) is roughly 3.19:1 against the page in light mode, under the
     4.5:1 floor. That step is documented as muted-faint text — placeholders
     and de-emphasized metadata, never body copy — so this is a real,
     intentional property of the palette, not a bug to patch by darkening the

@@ -78,7 +78,7 @@ suite standing between an edit and a deploy to keep five numbers honest.
 
 That contract is deliberately narrower than "every color in the system".
 `--gl-color-text-tertiary` — this palette's own "muted-faint text" step — is
-about 3.46:1 against the page in light mode, under the 4.5:1 floor for normal
+about 3.19:1 against the page in light mode, under the 4.5:1 floor for normal
 text. That is not a bug to paper over by darkening a real brand value; it is
 a documented, intentional property of the palette (see the
 [Color page](<%= relative_url('/foundations/color/') %>)), so the contract

@@ -28,11 +28,13 @@
   --gl-accent-ochre: #93701f;
   --gl-accent-plum: #6a3a5c;
 
-  /* Surfaces */
-  --gl-color-surface-page: #faf9f7;
+  /* Surfaces. The page sits a full ramp step under the card: at
+     neutral.0 under neutral.50 a card all but vanished. Fill and fill-2
+     step down with it, so each stays one step off what it sits on. */
+  --gl-color-surface-page: #f1f0ed;
   --gl-color-surface-card: #fdfdfb;
-  --gl-color-surface-fill: #f1f0ed;
-  --gl-color-surface-fill-2: #e8e6e2;
+  --gl-color-surface-fill: #e8e6e2;
+  --gl-color-surface-fill-2: #dcdad7;
 
   /* Borders */
   --gl-color-border-hairline: #dcdad7;

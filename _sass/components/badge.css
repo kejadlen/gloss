@@ -61,9 +61,13 @@
   line-height: 1;
 }
 
+/* `border: none` above leaves the width at medium (3px), so the dashed
+   border names its own width; the padding gives up that pixel so the
+   slot stands exactly as tall as a tag beside it. */
 .tag[data-dashed] {
+  padding: calc(0.25rem - 1px) calc(0.625rem - 1px);
   background: transparent;
-  border-style: dashed;
+  border: 1px dashed var(--gl-color-border-default);
   color: var(--gl-color-text-tertiary);
   cursor: pointer;
 }

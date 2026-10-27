@@ -49,7 +49,7 @@ from the OS — the toggle UI on every page depends on this exact mechanism.
 Both repoint the same semantic aliases at the inverted neutral ramp.
 
 ```css
-:root { --gl-color-surface-page: #faf9f7; }
+:root { --gl-color-surface-page: #f1f0ed; }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) { --gl-color-surface-page: #0e0d0b; }
