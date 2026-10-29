@@ -77,7 +77,7 @@ just state the fact ("Nothing tracked yet."). See README's "The idea" and
 ## Retheming
 
 One accent per project, held constant — swap `--gl-color-accent` after
-`tokens.css` loads; `-ink` and `-soft` re-derive automatically via
+`tokens.css` loads; `-text`, `-ink` and `-soft` re-derive automatically via
 `color-mix()`. `--gl-color-success` and `--gl-color-danger` are fixed and
 never swapped. Re-check contrast after retheming — the system's own
 guarantees (see the [Color foundation](foundations/color.md)) are about its

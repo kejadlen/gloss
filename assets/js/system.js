@@ -118,7 +118,36 @@
     });
   }
 
+  // Tooltips are CSS-only to show, but WCAG 1.4.13 also wants one to close
+  // on Escape without the pointer or focus moving. The attribute stays
+  // until both have left the wrapper, so the bubble doesn't pop back.
+  function setUpTooltips() {
+    var wrappers = 'span:has(> [role="tooltip"])';
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape") return;
+      document.querySelectorAll(wrappers).forEach(function (wrapper) {
+        if (wrapper.matches(":hover, :focus-within")) {
+          wrapper.setAttribute("data-tooltip-dismissed", "");
+        }
+      });
+    });
+
+    function clear(event) {
+      var wrapper = event.target.closest && event.target.closest("[data-tooltip-dismissed]");
+      if (!wrapper) return;
+      setTimeout(function () {
+        if (!wrapper.matches(":hover, :focus-within")) {
+          wrapper.removeAttribute("data-tooltip-dismissed");
+        }
+      }, 0);
+    }
+    document.addEventListener("pointerout", clear);
+    document.addEventListener("focusout", clear);
+  }
+
   setUpTheme();
   setUpTabs();
   setUpNavToggle();
+  setUpTooltips();
 })();

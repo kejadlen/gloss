@@ -10,7 +10,7 @@ summary: Native select, styled to match Input exactly.
 <figure class="example">
 <figcaption>Select</figcaption>
 <div>
-<select style="max-width: 20rem;">
+<select aria-label="Period" style="max-width: 20rem;">
   <option>Day</option>
   <option selected="">Week</option>
   <option>Month</option>
@@ -18,7 +18,7 @@ summary: Native select, styled to match Input exactly.
 </select>
 </div>
 <details open><summary>Markup</summary>
-<pre><code>&lt;select style=&quot;max-width: 20rem;&quot;&gt;
+<pre><code>&lt;select aria-label=&quot;Period&quot; style=&quot;max-width: 20rem;&quot;&gt;
   &lt;option&gt;Day&lt;/option&gt;
   &lt;option selected=&quot;&quot;&gt;Week&lt;/option&gt;
   &lt;option&gt;Month&lt;/option&gt;
@@ -32,10 +32,10 @@ summary: Native select, styled to match Input exactly.
 <figure class="example">
 <figcaption>Disabled</figcaption>
 <div>
-<select disabled="" style="max-width: 20rem;"><option>Week</option></select>
+<select aria-label="Period" disabled="" style="max-width: 20rem;"><option>Week</option></select>
 </div>
 <details><summary>Markup</summary>
-<pre><code>&lt;select disabled=&quot;&quot; style=&quot;max-width: 20rem;&quot;&gt;&lt;option&gt;Week&lt;/option&gt;&lt;/select&gt;</code></pre>
+<pre><code>&lt;select aria-label=&quot;Period&quot; disabled=&quot;&quot; style=&quot;max-width: 20rem;&quot;&gt;&lt;option&gt;Week&lt;/option&gt;&lt;/select&gt;</code></pre>
 </details>
 </figure>
 

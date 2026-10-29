@@ -1,8 +1,8 @@
 ---
 title: Tooltip
 summary: >-
-  Dark mono tooltip on hover, positioned above the child. Pure CSS — shown on
-  hover and keyboard focus, no JavaScript required.
+  Dark mono tooltip on hover, positioned above the child. Shown by CSS on
+  hover and keyboard focus; system.js adds Escape to dismiss.
 ---
 
 ## Basic
@@ -13,6 +13,11 @@ has no attribute of its own, but it does not need one: `:has()` selects "a
 span that contains a `[role=tooltip]` bubble" precisely, so the wrapper stays
 bare too. Pair the trigger's `aria-describedby` with the bubble's `id` so the
 tooltip is announced, not just shown.
+
+The pointer can move onto the bubble without it closing, and Escape hides
+it without moving the pointer or focus — both are WCAG 1.4.13 asks. The
+showing is CSS; the Escape handling lives in `assets/js/system.js`, so a
+consuming app that skips that script loses only the dismissal.
 
 Hover or tab to the button below.
 

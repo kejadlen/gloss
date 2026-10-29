@@ -39,6 +39,10 @@
   font-size: var(--gl-step--1);
 }
 .card > li:first-child { border-top: none; }
+/* Rows meet. typography.css spaces prose list items apart, and that
+   margin would sit outside each row, leaving a strip of a hovered row
+   unfilled above the next one's hairline. */
+.card > li + li { margin-top: 0; }
 
 /* A row whose ENTIRE content is wrapped in a real <button> or <a> — the
    accessible way to make a row clickable — fills the row edge-to-edge and
@@ -97,7 +101,7 @@
 
 .card[data-link] { transition: box-shadow var(--gl-dur-fast) var(--gl-ease); }
 .card[data-link]:hover { box-shadow: var(--gl-shadow-sm); }
-.card[data-link]:focus-within { outline: 2px solid var(--gl-color-accent); outline-offset: 2px; }
+.card[data-link]:focus-within { outline: 2px solid var(--gl-color-accent-text); outline-offset: 2px; }
 
 .card-grid {
   display: grid;

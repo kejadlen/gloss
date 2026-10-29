@@ -97,13 +97,13 @@ button:not(.icon-button):disabled,
   --_fg: var(--gl-color-text-secondary);
 }
 
-/* The source hardcodes this label white rather than deriving it — danger
-   is not "on a filled accent surface", so --gl-color-accent-fg is reused
-   here only because its resolved value is the same literal white, not
-   because the two roles are the same thing. */
+/* Same label as dark: the page color. Dark mode lifts the danger red so
+   it reads as text on a dark card, and a white label on that lighter fill
+   would drop to about 2.4:1; the page color holds 5.39:1 in light and
+   8.07:1 in dark. */
 :is(button:not(.icon-button), a.btn)[data-variant="danger"] {
   --_bg: var(--gl-color-danger);
-  --_fg: var(--gl-color-accent-fg);
+  --_fg: var(--gl-color-surface-page);
 }
 
 /* Each size is one step of the space scale wide and, at the ends, one step

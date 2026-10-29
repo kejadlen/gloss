@@ -61,19 +61,32 @@
   line-height: 1;
 }
 
+/* `border: none` above leaves the width at medium (3px), so the dashed
+   border names its own width; the padding gives up that pixel so the
+   slot stands exactly as tall as a tag beside it. */
 .tag[data-dashed] {
+  padding: calc(0.25rem - 1px) calc(0.625rem - 1px);
   background: transparent;
-  border-style: dashed;
+  border: 1px dashed var(--gl-color-border-default);
   color: var(--gl-color-text-tertiary);
   cursor: pointer;
 }
 
 .tag button {
   all: unset;
+  position: relative;
   cursor: pointer;
   color: var(--gl-color-text-tertiary);
   line-height: 1;
   font-size: 0.75rem;
+}
+/* The × glyph is about 7 by 12px. This invisible box grows the hit area to
+   24px square (WCAG 2.5.8) without growing the tag; it spills into the
+   tag's own padding sideways and 2px past its top and bottom. */
+.tag button::after {
+  content: "";
+  position: absolute;
+  inset: calc(50% - 0.75rem) calc(50% - 0.75rem);
 }
 .tag button:hover { color: var(--gl-color-text-primary); }
 

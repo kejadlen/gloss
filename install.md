@@ -49,7 +49,7 @@ from the OS — the toggle UI on every page depends on this exact mechanism.
 Both repoint the same semantic aliases at the inverted neutral ramp.
 
 ```css
-:root { --gl-color-surface-page: #faf9f7; }
+:root { --gl-color-surface-page: #f1f0ed; }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) { --gl-color-surface-page: #0e0d0b; }
@@ -66,7 +66,7 @@ flash the wrong theme before your bundle runs.
 
 Because every component reads an alias, retheming is a matter of repointing
 a handful of custom properties after the token file loads — most of all,
-`--gl-color-accent`, which `-ink` and `-soft` re-derive from automatically via
+`--gl-color-accent`, which `-text`, `-ink` and `-soft` re-derive from automatically via
 `color-mix()`.
 
 ```css

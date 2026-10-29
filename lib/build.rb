@@ -103,6 +103,11 @@ def render_page(source_path, url, section)
   # wrapped for editor readability, not for literal line breaks.
   content_html = Kramdown::Document.new(content, input: "GFM", syntax_highlighter: nil, hard_wrap: false).to_html
 
+  # Code samples and reference tables scroll sideways on a narrow screen,
+  # and a scroll region a keyboard can't reach can't be scrolled without a
+  # mouse (WCAG 2.1.1). A tab stop on each is the plainest fix.
+  content_html = content_html.gsub("<pre>", '<pre tabindex="0">').gsub(/<table>/, '<table tabindex="0">')
+
   # index.md sets `layout: default` to skip the auto title header and build
   # its own hero markup instead; every other page gets one generated here.
   body =

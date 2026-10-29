@@ -1,5 +1,5 @@
-/* Tooltip — a dark mono label on hover, positioned above the child. Pure CSS:
-   the trigger and bubble are siblings inside one relatively-positioned span,
+/* Tooltip — a dark mono label on hover, positioned above the child. CSS to
+   show (system.js adds Escape to dismiss): the trigger and bubble are siblings inside one relatively-positioned span,
    shown on :hover/:focus-within so it works from the keyboard too.
 
    `[role="tooltip"]` is the correct ARIA role for the bubble itself, so it
@@ -32,13 +32,28 @@ span:has(> [role="tooltip"]) {
   z-index: 20;
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
   transition: opacity var(--gl-dur-fast) var(--gl-ease);
+}
+/* WCAG 1.4.13 asks that a pointer can move onto the bubble without it
+   vanishing. The bubble is inside the hovered span, so hovering it keeps it
+   open; this strip bridges the margin between the two. */
+[role="tooltip"]::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 100%;
+  height: 0.375rem;
 }
 span:has(> [role="tooltip"]):hover > [role="tooltip"],
 span:has(> [role="tooltip"]):focus-within > [role="tooltip"] {
   opacity: 1;
   visibility: visible;
+}
+/* Escape hides it without moving the pointer or focus (system.js sets the
+   attribute and clears it once the pointer and focus have both left). */
+span:has(> [role="tooltip"])[data-tooltip-dismissed] > [role="tooltip"] {
+  opacity: 0;
+  visibility: hidden;
 }
 
 /* Toast — the real pattern used for delete confirmations: a flat bar with an
@@ -70,13 +85,20 @@ span:has(> [role="tooltip"]):focus-within > [role="tooltip"] {
   z-index: 60;
 }
 [role="status"] > span { flex: 1; }
+/* Both buttons stand at least 24px tall, and Dismiss 24px square, so
+   each meets WCAG 2.5.8 on its own rather than by spacing. */
 [role="status"] button {
   all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.5rem;
   cursor: pointer;
   font-weight: 600;
   color: var(--gl-color-danger);
 }
 [role="status"] button[aria-label="Dismiss"] {
+  min-width: 1.5rem;
   color: var(--gl-color-text-tertiary);
   font-size: 1rem;
   font-weight: 400;

@@ -15,6 +15,8 @@ them in one place, so a new screen can be checked against the whole list at
 once instead of five pages in sequence. These are laws, not preferences: a
 screen that breaks one is off-system.
 
+<h2 class="gl-visually-hidden">The checklist</h2>
+
 <div class="card-grid">
 <article class="card">
 <div class="card-body">

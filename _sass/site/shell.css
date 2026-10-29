@@ -55,7 +55,7 @@
   height: 1.375rem;
   flex: none;
   align-self: center;
-  color: var(--gl-color-accent);
+  color: var(--gl-color-accent-text);
 }
 .gl-doc-wordmark__version {
   font-family: var(--gl-font-mono);
@@ -115,7 +115,7 @@
 .gl-doc-nav__link:hover { color: var(--gl-color-text-primary); background: var(--gl-color-surface-fill); }
 .gl-doc-nav__link[aria-current="page"] {
   color: var(--gl-color-accent-ink);
-  border-inline-start-color: var(--gl-color-accent);
+  border-inline-start-color: var(--gl-color-accent-text);
   background: var(--gl-color-accent-soft);
   font-weight: 500;
 }
@@ -140,7 +140,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--gl-color-accent);
+  color: var(--gl-color-accent-text);
 }
 
 .gl-doc-main h2 {

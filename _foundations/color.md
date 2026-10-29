@@ -1,7 +1,7 @@
 ---
 title: Color
 summary: >-
-  Two neutral ramps, five accents, two fixed semantic colors, seventeen
+  Two neutral ramps, five accents, two fixed semantic colors, eighteen
   semantic aliases. Low-chroma warm-gray, never stark white or black.
 ---
 
@@ -152,7 +152,7 @@ sixteen — the palette defines exactly these.
     </div>
   </li>
   <li class="gl-swatch">
-    <div class="gl-swatch__chip" style="background: #7c7a76; color: #ffffff;">nd-500</div>
+    <div class="gl-swatch__chip" style="background: #7c7a76; color: #000000;">nd-500</div>
     <div class="gl-swatch__meta">
       <span class="gl-swatch__hex">#7c7a76</span>
       <span class="gl-swatch__ratio">4.90 on black</span>
@@ -233,7 +233,7 @@ the right half is the dark one.
 
 ### Surfaces
 
-<p class="gl-muted">Backgrounds, from the page itself up to a card sitting on it.</p>
+<p class="gl-muted">Backgrounds, from the page itself up to a card sitting on it. In light mode the page is a full ramp step under the card, not the half step between neutral.0 and neutral.50, which was too fine for a card to read against; the two fills step down with it.</p>
 
   <table>
     <thead>
@@ -249,13 +249,13 @@ the right half is the dark one.
         <td>
           <div class="gl-alias-row">
             <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
-              <span style="background: #faf9f7"></span>
+              <span style="background: #f1f0ed"></span>
               <span style="background: #0e0d0b"></span>
             </span>
             <code>--gl-color-surface-page</code>
           </div>
         </td>
-        <td><code>neutral.0</code></td>
+        <td><code>neutral.100</code></td>
         <td><code>neutral_dark.0</code></td>
         <td>The page itself. Nothing sits behind it.</td>
       </tr>
@@ -277,13 +277,13 @@ the right half is the dark one.
         <td>
           <div class="gl-alias-row">
             <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
-              <span style="background: #f1f0ed"></span>
+              <span style="background: #e8e6e2"></span>
               <span style="background: #1e1d1a"></span>
             </span>
             <code>--gl-color-surface-fill</code>
           </div>
         </td>
-        <td><code>neutral.100</code></td>
+        <td><code>neutral.150</code></td>
         <td><code>neutral_dark.100</code></td>
         <td>Recessed fill — a hovered row, a segmented-tab track, a photo placeholder.</td>
       </tr>
@@ -291,13 +291,13 @@ the right half is the dark one.
         <td>
           <div class="gl-alias-row">
             <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
-              <span style="background: #e8e6e2"></span>
+              <span style="background: #dcdad7"></span>
               <span style="background: #252421"></span>
             </span>
             <code>--gl-color-surface-fill-2</code>
           </div>
         </td>
-        <td><code>neutral.150</code></td>
+        <td><code>neutral.200</code></td>
         <td><code>neutral_dark.150</code></td>
         <td>A second, deeper fill step — the diagonal-grain stripe inside an empty photo slot.</td>
       </tr>
@@ -306,7 +306,7 @@ the right half is the dark one.
 
 ### Borders
 
-<p class="gl-muted">Two weights. Hairlines do most of the elevation work in this system, so there was never a reason for a third.</p>
+<p class="gl-muted">Two weights. Hairlines divide inside a surface and stay faint; the default weight outlines a control, so it has to clear WCAG 1.4.11's 3:1.</p>
 
   <table>
     <thead>
@@ -336,15 +336,15 @@ the right half is the dark one.
         <td>
           <div class="gl-alias-row">
             <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
-              <span style="background: #c0bdb9"></span>
-              <span style="background: #44423f"></span>
+              <span style="background: #888681"></span>
+              <span style="background: #7c7a76"></span>
             </span>
             <code>--gl-color-border-default</code>
           </div>
         </td>
-        <td><code>neutral.300</code></td>
-        <td><code>neutral_dark.300</code></td>
-        <td>Input and button borders — anything a reader has to recognize as a control.</td>
+        <td><code>neutral.500</code></td>
+        <td><code>neutral_dark.500</code></td>
+        <td>The edge of a control — an input, a select, a switch's track. Holds 3:1 against the card and the page.</td>
       </tr>
     </tbody>
   </table>
@@ -395,22 +395,22 @@ the right half is the dark one.
         <td>
           <div class="gl-alias-row">
             <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
-              <span style="background: #888681"></span>
-              <span style="background: #7c7a76"></span>
+              <span style="background: #686662"></span>
+              <span style="background: #8f8d89"></span>
             </span>
             <code>--gl-color-text-tertiary</code>
           </div>
         </td>
-        <td><code>neutral.500</code></td>
-        <td><code>neutral_dark.500</code></td>
-        <td>Placeholders and de-emphasized metadata only — never body text. This step is intentionally sub-AA against the page; see the caveat on the Color page.</td>
+        <td><code>#686662</code></td>
+        <td><code>#8f8d89</code></td>
+        <td>Placeholders, hints and de-emphasized metadata — never body text. Off the ramp on purpose: the darkest gray that still sits under secondary while clearing 4.5:1 on the page, card and fill.</td>
       </tr>
     </tbody>
   </table>
 
 ### Accent
 
-<p class="gl-muted">One swappable accent per project, held constant across a whole view. `-ink` and `-soft` re-derive from `--gl-color-accent` via `color-mix()`, so retheming the accent retones both automatically.</p>
+<p class="gl-muted">One swappable accent per project, held constant across a whole view. `-text`, `-ink` and `-soft` re-derive from `--gl-color-accent` via `color-mix()`, so retheming the accent retones all three automatically, in both themes. Dark mode mixes them toward white and the card instead of toward black and white, since the fill-strength accent is only 3:1 on a dark card.</p>
 
   <table>
     <thead>
@@ -453,12 +453,26 @@ the right half is the dark one.
       <tr>
         <td>
           <div class="gl-alias-row">
+            <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
+              <span style="background: #3a6a63"></span>
+              <span style="background: #90aba6"></span>
+            </span>
+            <code>--gl-color-accent-text</code>
+          </div>
+        </td>
+        <td><code>var(--gl-color-accent)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-accent) 55%, white)</code></td>
+        <td>The accent as a foreground on a neutral surface — links, the focus ring, the selected-tab bar, a focused input's border.</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="gl-alias-row">
             <span class="gl-alias-chip" aria-hidden="true" style="background: repeating-linear-gradient(45deg, var(--gl-color-surface-fill) 0 4px, var(--gl-color-surface-card) 4px 8px);"></span>
             <code>--gl-color-accent-ink</code>
           </div>
         </td>
         <td><code>color-mix(in oklch, var(--gl-color-accent) 78%, black)</code></td>
-        <td><code>color-mix(in oklch, var(--gl-color-accent) 78%, black)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-accent) 40%, white)</code></td>
         <td>Text sitting on an `-soft` accent tint — an IconButton's active state, an accent avatar's initials.</td>
       </tr>
       <tr>
@@ -469,7 +483,7 @@ the right half is the dark one.
           </div>
         </td>
         <td><code>color-mix(in oklch, var(--gl-color-accent) 12%, white)</code></td>
-        <td><code>color-mix(in oklch, var(--gl-color-accent) 12%, white)</code></td>
+        <td><code>color-mix(in oklch, var(--gl-color-accent) 16%, var(--gl-color-surface-card))</code></td>
         <td>The tint behind an accent Badge, a toggled IconButton, an accent avatar chip.</td>
       </tr>
     </tbody>
@@ -477,7 +491,7 @@ the right half is the dark one.
 
 ### Status
 
-<p class="gl-muted">Exactly two states, both fixed — they read the same in every project and are never swapped the way the accent is.</p>
+<p class="gl-muted">Exactly two states, both fixed — they read the same in every project and are never swapped the way the accent is. Dark mode lifts each one so it still reads as text on a dark card, and mixes the tints into the card rather than white.</p>
 
   <table>
     <thead>
@@ -494,13 +508,13 @@ the right half is the dark one.
           <div class="gl-alias-row">
             <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #3f7a4a"></span>
-              <span style="background: #3f7a4a"></span>
+              <span style="background: #72b07c"></span>
             </span>
             <code>--gl-color-success</code>
           </div>
         </td>
         <td><code>#3f7a4a</code></td>
-        <td><code>#3f7a4a</code></td>
+        <td><code>#72b07c</code></td>
         <td>Success text and icons — a completed task's check, a saved-state badge.</td>
       </tr>
       <tr>
@@ -511,21 +525,21 @@ the right half is the dark one.
           </div>
         </td>
         <td><code>color-mix(in oklch, var(--gl-color-success) 12%, white)</code></td>
-        <td><code>color-mix(in oklch, var(--gl-color-success) 12%, white)</code></td>
-        <td>Tint behind a success Badge. Mixed against literal white, so it stays constant across themes.</td>
+        <td><code>color-mix(in oklch, var(--gl-color-success) 14%, var(--gl-color-surface-card))</code></td>
+        <td>Tint behind a success Badge.</td>
       </tr>
       <tr>
         <td>
           <div class="gl-alias-row">
             <span class="gl-alias-chip gl-alias-chip--pair" aria-hidden="true">
               <span style="background: #ad3a2c"></span>
-              <span style="background: #ad3a2c"></span>
+              <span style="background: #e8907f"></span>
             </span>
             <code>--gl-color-danger</code>
           </div>
         </td>
         <td><code>#ad3a2c</code></td>
-        <td><code>#ad3a2c</code></td>
+        <td><code>#e8907f</code></td>
         <td>Overdue/destructive text, the Toast undo action, a danger Button's fill.</td>
       </tr>
       <tr>
@@ -536,8 +550,8 @@ the right half is the dark one.
           </div>
         </td>
         <td><code>color-mix(in oklch, var(--gl-color-danger) 10%, white)</code></td>
-        <td><code>color-mix(in oklch, var(--gl-color-danger) 10%, white)</code></td>
-        <td>Tint behind a danger Badge. Mixed against literal white, so it stays constant across themes.</td>
+        <td><code>color-mix(in oklch, var(--gl-color-danger) 14%, var(--gl-color-surface-card))</code></td>
+        <td>Tint behind a danger Badge and an invalid Input or Select.</td>
       </tr>
     </tbody>
   </table>
@@ -547,12 +561,12 @@ the right half is the dark one.
 Color is the one part of this system that is not arbitrary: a ratio is a
 fact about two colors and a pair of eyes, and it does not care what the
 palette wants. The pairings below are fixed facts about the token values
-above, computed once with the standard WCAG 2.1 relative-luminance formula
+above, computed once with the standard WCAG 2.x relative-luminance formula
 and checked by hand rather than by a build-time test.
 
 ### Text — 4.5:1 minimum
 
-<p class="gl-muted">WCAG 2.1 SC 1.4.3 (normal-size text)</p>
+<p class="gl-muted">WCAG 2.2 SC 1.4.3 (normal-size text). Each pairing is measured on the darkest surface that text actually sits on, so it holds everywhere above it.</p>
 
   <table>
     <thead>
@@ -567,24 +581,46 @@ and checked by hand rather than by a build-time test.
       <tr>
         <td>
           <span class="gl-alias-row">
-            <span class="gl-alias-chip" aria-hidden="true" style="background: #faf9f7; color: #100f0d; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #f1f0ed; color: #100f0d; display: grid; place-items: center; font-size: 10px;">Aa</span>
             <code>color-text-primary<br><span class="gl-subtle">on color-surface-page</span></code>
           </span>
         </td>
         <td>Body copy</td>
-        <td class="num">18.21</td>
+        <td class="num">16.81</td>
         <td class="num">15.86</td>
       </tr>
       <tr>
         <td>
           <span class="gl-alias-row">
-            <span class="gl-alias-chip" aria-hidden="true" style="background: #faf9f7; color: #5f5d59; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #f1f0ed; color: #5f5d59; display: grid; place-items: center; font-size: 10px;">Aa</span>
             <code>color-text-secondary<br><span class="gl-subtle">on color-surface-page</span></code>
           </span>
         </td>
         <td>Supporting copy</td>
-        <td class="num">6.24</td>
+        <td class="num">5.76</td>
         <td class="num">7.26</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #e8e6e2; color: #686662; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-text-tertiary<br><span class="gl-subtle">on color-surface-fill</span></code>
+          </span>
+        </td>
+        <td>Hints, placeholders, metadata — its darkest backdrop</td>
+        <td class="num">4.60</td>
+        <td class="num">5.09</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #e8e6e2; color: #3a6a63; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-accent-text<br><span class="gl-subtle">on color-surface-fill</span></code>
+          </span>
+        </td>
+        <td>Links, on their darkest backdrop</td>
+        <td class="num">4.92</td>
+        <td class="num">6.87</td>
       </tr>
       <tr>
         <td>
@@ -593,51 +629,107 @@ and checked by hand rather than by a build-time test.
             <code>color-accent-fg<br><span class="gl-subtle">on color-accent</span></code>
           </span>
         </td>
-        <td>The label on a primary or dark-variant Button.</td>
+        <td>The label on a primary Button</td>
         <td class="num">6.14</td>
         <td class="num">6.14</td>
       </tr>
       <tr>
         <td>
           <span class="gl-alias-row">
-            <span class="gl-alias-chip" aria-hidden="true" style="background: #ffffff; color: #3f7a4a; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <code>color-success<br><span class="gl-subtle">on color-accent-fg</span></code>
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #ad3a2c; color: #f1f0ed; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-surface-page<br><span class="gl-subtle">on color-danger</span></code>
           </span>
         </td>
-        <td>Success text on a light backdrop — proxied by color-accent-fg</td>
-        <td class="num">5.13</td>
-        <td class="num">5.13</td>
+        <td>The label on a danger Button</td>
+        <td class="num">5.39</td>
+        <td class="num">8.07</td>
       </tr>
       <tr>
         <td>
           <span class="gl-alias-row">
-            <span class="gl-alias-chip" aria-hidden="true" style="background: #ffffff; color: #ad3a2c; display: grid; place-items: center; font-size: 10px;">Aa</span>
-            <code>color-danger<br><span class="gl-subtle">on color-accent-fg</span></code>
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #fdfdfb; color: #3f7a4a; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-success<br><span class="gl-subtle">on color-surface-card</span></code>
           </span>
         </td>
-        <td>Overdue/destructive text on a light backdrop</td>
-        <td class="num">6.14</td>
-        <td class="num">6.14</td>
+        <td>Success text</td>
+        <td class="num">5.04</td>
+        <td class="num">7.20</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #fdfdfb; color: #ad3a2c; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-danger<br><span class="gl-subtle">on color-surface-card</span></code>
+          </span>
+        </td>
+        <td>Overdue and destructive text</td>
+        <td class="num">6.03</td>
+        <td class="num">7.65</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #f9ebe9; color: #100f0d; display: grid; place-items: center; font-size: 10px;">Aa</span>
+            <code>color-text-primary<br><span class="gl-subtle">on color-danger-bg</span></code>
+          </span>
+        </td>
+        <td>The value in an invalid Input</td>
+        <td class="num">16.50</td>
+        <td class="num">12.41</td>
+      </tr>
+    </tbody>
+  </table>
+
+### Controls — 3:1 minimum
+
+<p class="gl-muted">WCAG 2.2 SC 1.4.11 (the boundary of a control, and the focus indicator).</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Pairing</th>
+        <th scope="col">Where it shows up</th>
+        <th scope="col" class="num">Light</th>
+        <th scope="col" class="num">Dark</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #f1f0ed; box-shadow: inset 0 0 0 2px #888681;"></span>
+            <code>color-border-default<br><span class="gl-subtle">on color-surface-page</span></code>
+          </span>
+        </td>
+        <td>The edge of an input, select or switch track — its weakest backdrop</td>
+        <td class="num">3.19</td>
+        <td class="num">4.30</td>
+      </tr>
+      <tr>
+        <td>
+          <span class="gl-alias-row">
+            <span class="gl-alias-chip" aria-hidden="true" style="background: #e8e6e2; box-shadow: inset 0 0 0 2px #3a6a63;"></span>
+            <code>color-accent-text<br><span class="gl-subtle">on color-surface-fill</span></code>
+          </span>
+        </td>
+        <td>The focus ring and the selected-tab bar, on their darkest backdrop</td>
+        <td class="num">4.92</td>
+        <td class="num">6.87</td>
       </tr>
     </tbody>
   </table>
 
 <div class="gl-callout">
   <p>
-    Two things this contract deliberately does not assert.
-    <strong>Text tertiary</strong> — <code>--gl-color-text-tertiary</code>
-    (neutral.500) is roughly 3.46:1 against the page in light mode, under the
-    4.5:1 floor. That step is documented as muted-faint text — placeholders
-    and de-emphasized metadata, never body copy — so this is a real,
-    intentional property of the palette, not a bug to patch by darkening the
-    step.
-    <strong>Dividers</strong> — <code>--gl-color-border-hairline</code> and
-    <code>--gl-color-border-default</code> sit well under the 3:1 that WCAG
-    1.4.11 asks of a meaningful boundary. That's deliberate: a bounded
-    surface in this system reads by surface contrast, not a border, so these
-    tokens are reserved for dividers inside a surface (a CardRow, a table
-    rule) — never a boundary around one — and this system never claims a
-    3:1 bar for them, so this contract does not invent one.
+    One thing this contract deliberately does not assert.
+    <strong>Hairlines and fills</strong> — <code>--gl-color-border-hairline</code>
+    and the surface steps sit well under 3:1 against each other. That's
+    deliberate: a bounded surface in this system reads by surface contrast,
+    not a border, so hairlines are reserved for dividers inside a surface (a
+    CardRow, a table rule) and fills for hover tints, never the only marker
+    of a control. Anything a reader has to recognize as a control is drawn
+    with <code>--gl-color-border-default</code>, which the table above holds
+    to 3:1.
   </p>
 </div>
 
@@ -646,6 +738,6 @@ and checked by hand rather than by a build-time test.
 - **Never write a hex outside `assets/css/tokens.css`.** If a component
   needs a color that does not exist yet, add the alias.
 - **One accent per project, never two in a view.** Swapping `--gl-color-accent`
-  re-derives `-ink` and `-soft` automatically via `color-mix()`.
+  re-derives `-text`, `-ink` and `-soft` automatically via `color-mix()`.
 - **`--gl-color-success` and `--gl-color-danger` are fixed.** They read the
   same in every project and are never swapped the way the accent is.
